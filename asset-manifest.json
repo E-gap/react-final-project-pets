@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/react-final-project-pets/static/css/main.7acaea2f.css",
-    "main.js": "/react-final-project-pets/static/js/main.96291fa7.js",
+    "main.css": "/react-final-project-pets/static/css/main.b2649c54.css",
+    "main.js": "/react-final-project-pets/static/js/main.7b602436.js",
     "static/css/666.5076c93c.chunk.css": "/react-final-project-pets/static/css/666.5076c93c.chunk.css",
     "static/js/666.ea20cfa0.chunk.js": "/react-final-project-pets/static/js/666.ea20cfa0.chunk.js",
     "index.html": "/react-final-project-pets/index.html",
-    "main.7acaea2f.css.map": "/react-final-project-pets/static/css/main.7acaea2f.css.map",
-    "main.96291fa7.js.map": "/react-final-project-pets/static/js/main.96291fa7.js.map",
+    "main.b2649c54.css.map": "/react-final-project-pets/static/css/main.b2649c54.css.map",
+    "main.7b602436.js.map": "/react-final-project-pets/static/js/main.7b602436.js.map",
     "666.5076c93c.chunk.css.map": "/react-final-project-pets/static/css/666.5076c93c.chunk.css.map",
     "666.ea20cfa0.chunk.js.map": "/react-final-project-pets/static/js/666.ea20cfa0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.96291fa7.js"
+    "static/css/main.b2649c54.css",
+    "static/js/main.7b602436.js"
   ]
 }
