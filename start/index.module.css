@@ -1,0 +1,20 @@
+:root {
+  --yellow_cl: #ffc107;
+  --red_cl: #f43f5e;
+  --green_cl: #00c3ad;
+  --gray_cl: #888888;
+  --white_cl: #ffffff;
+  --blue-light_cl: #cce4fb;
+
+  --accent_cl: #ff8356;
+  --link_cl: #54adff;
+
+  --gr-blue_cl: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
+  --gr-yellow_cl: linear-gradient(90deg, #ff634e 0%, #ffdf48 105.44%);
+
+  --bg_cl: #fef9f9;
+  --black_cl: #111111;
+
+  --shadow_default: 3px 8px 14px rgba(136, 198, 253, 0.19);
+  --shadow_hover: 7px 13px 14px rgba(116, 177, 232, 0.24);
+}
