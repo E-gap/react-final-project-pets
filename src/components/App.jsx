@@ -1,3 +1,13 @@
+import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+
+import SharedLayout from './SharedLayout/SharedLayout';
+
+//const Register = lazy(() => import('../pages/Register/Register'));
+//const Login = lazy(() => import('../pages/Login/Login'));
+//const Contacts = lazy(() => import('../pages/Contacts/Contacts'));
+const NotFound = lazy(() => import('../pages/NotFound/NotFound'));
+
 export const App = () => {
   return (
     <div
@@ -10,9 +20,15 @@ export const App = () => {
         color: '#010101',
       }}
     >
-      Hello word!
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<NotFound />} />
+          <Route path="register" element={<NotFound />} />
 
-      11/05/2023
+          <Route path="contacts" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
     </div>
   );
 };
