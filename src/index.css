@@ -1,5 +1,20 @@
 @import-normalize; /* bring in normalize.css styles */
-
+:root {
+  --color-orange: #ffc107;
+  --color-light: #fdf7f2;
+  --color-dark: #111111;
+  --color-blue-gradient: linear-gradient(
+    290.46deg,
+    #419ef1 0%,
+    #9bd0ff 107.89%
+  );
+  --color-blue: #54adff;
+  --color-light-blue: #cce4fb;
+  --color-green: #00c3ad;
+  --color-red: #f43f5e;
+  --shadow-default: 3px 8px 14px rgba(136, 198, 253, 0.19);
+  --shadow-hover: 7px 13px 14px rgba(116, 177, 232, 0.24);
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
