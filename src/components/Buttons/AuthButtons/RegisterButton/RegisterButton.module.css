@@ -1,0 +1,22 @@
+.btn {
+  background-color: var(--color-light-background);
+  width: 165px;
+  height: 40px;
+
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  color: var(--color-orange);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 40px;
+  border: 2px solid var(--color-orange);
+
+  transition: all ease 250ms;
+}

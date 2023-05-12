@@ -1,1 +1,44 @@
+.nav {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+}
+.navLink {
+  font-family: 'Manrope';
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 44px;
+  letter-spacing: 0.04em;
+  color: var(--color-dark);
+  text-decoration: none;
+}
+.navLink:global(.active) {
+  color: var(--color-orange);
+  font-weight: 700;
+}
+@media screen and (min-width: 768px) {
+  .nav {
+    margin-top: 68px;
+    row-gap: 60px;
+  }
+  .navLink {
+    font-size: 48px;
+    line-height: 66px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .nav {
+    margin-top: 0;
+    margin-left: 159px;
+    row-gap: 0;
+    flex-direction: row;
 
+    column-gap: 40px;
+  }
+  .navLink {
+    font-size: 20px;
+    line-height: 27px;
+  }
+}

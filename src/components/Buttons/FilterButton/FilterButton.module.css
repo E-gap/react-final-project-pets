@@ -1,7 +1,7 @@
 .btn {
   border: 2px solid var(--color-blue);
   border-radius: 40px;
-  padding: 8px 20px;
+  padding: 8px 38px;
 
   font-family: 'Manrope';
   font-weight: 700;
@@ -16,9 +16,11 @@
   background: var(--color-light-background);
   transition: all linear 250ms;
 }
-.btnFavorite {
-  background-color: var(--color-blue);
-  color: var(--color-light-background);
+.icon {
+  color: inherit;
+  margin-left: 8px;
+  width: 24px;
+  height: 24px;
 }
 .btn:focus,
 .btn:hover {
@@ -27,10 +29,12 @@
   color: var(--color-light-background);
   transition: all linear 250ms;
 }
-.icon {
-  color: inherit;
-  margin-left: 12px;
-  transform: rotate(25deg);
-  width: 24px;
-  height: 24px;
+.active {
+  border-color: var(--color-blue-gradient);
+  background: var(--color-blue-gradient);
+  color: var(--color-light-background);
+}
+.active:focus,
+.active:hover {
+  background: var(--color-blue);
 }

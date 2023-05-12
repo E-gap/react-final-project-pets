@@ -1,0 +1,29 @@
+.btn {
+  width: 165px;
+  height: 40px;
+  background-color: var(--color-orange);
+
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  color: var(--color-light-background);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 40px;
+  border: 2px solid var(--color-orange);
+
+  transition: all ease 250ms;
+}
+.icon {
+  color: inherit;
+  margin-left: 8px;
+  transform: rotate(25deg);
+  width: 24px;
+  height: 24px;
+}
