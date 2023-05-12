@@ -1,1 +1,99 @@
+.header {
+  position: relative;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mobileMenuButtons {
+  display: flex;
+}
+.menuBtn {
+  font-family: 'Manrope';
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  color: var(--color-orange);
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.avatar {
+  width: 24px;
+  height: 24px;
+  color: var(--color-orange);
+  margin-right: 8px;
+}
+.burger {
+  width: 24px;
+  height: 24px;
+  color: var(--color-orange);
+}
+.mobileMenu {
+  padding-top: 20px;
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+.avatarMobile {
+  width: 28px;
+  height: 28px;
+  color: var(--color-orange);
+  margin-right: 12px;
+}
+.show {
+  display: flex;
+}
+.lol {
+  margin-right: 100px;
+}
+@media screen and (min-width: 768px) {
+  .header {
+    padding: 24px 32px;
+  }
+  .avatar {
+    width: 28px;
+    height: 28px;
+    margin-right: 12px;
+  }
+  .name {
+    margin-right: 38px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .header {
+    padding: 20px 16px;
+    justify-content: start;
+  }
+  .mobileMenuButtons {
+    display: none;
+  }
+  .profile {
+    font-family: 'Manrope';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.04em;
+    color: var(--color-orange);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .menuBtn {
+    margin-left: auto;
+  }
+}
