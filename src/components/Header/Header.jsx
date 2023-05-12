@@ -1,32 +1,31 @@
 import { RxTextAlignJustify, RxAvatar, RxCross1 } from 'react-icons/rx';
-import { Link } from 'react-router-dom';
-import { useState, useRef } from 'react';
 
-import Navigation from 'components/Navigation/Navigation';
-import AuthMenu from 'components/Buttons/AuthButtons/AuthMenu';
+import { useState, useRef, lazy } from 'react';
 
-import { ReactComponent as LogoBig } from '../../images/header/logoBig.svg';
-import { ReactComponent as LogoSmall } from '../../images/header/logoSmall.svg';
+
 
 import css from './Header.module.css';
+import Logo from 'components/Logo/Logo';
+
+const Navigation = lazy(() => import('../Navigation/Navigation')); 
+const AuthMenu = lazy(() => import('../Buttons/AuthButtons/AuthMenu')); 
+
 
 const Header = () => {
   const name = 'Anna';
   const { current } = useRef(window.innerWidth);
-  const [isAuth, setIsAuth] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <div className={css.header}>
-      <Link className={css.logo} to="/">
-        {current <= 767 ? <LogoSmall /> : <LogoBig />}
-      </Link>
+    <header className={css.header + " container"}>
+      <Logo />
       {current >= 1280 && <Navigation />}
-      {current >= 1280 && (
+      {current >= 1280 && isAuth &&(
         <button className={css.menuBtn} type="button">
           <RxAvatar className={css.avatarMobile} />
           {name}
         </button>
-      )}
+      )}{!isAuth && current >= 1280 && <AuthMenu />}
       <div className={css.mobileMenuButtons}>
         {isAuth && !menuOpen && (
           <button className={css.menuBtn} type="button">
@@ -58,7 +57,7 @@ const Header = () => {
         )}
         <Navigation />
       </div>
-    </div>
+    </header>
   );
 };
 

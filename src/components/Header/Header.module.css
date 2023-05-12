@@ -1,6 +1,5 @@
 .header {
   position: relative;
-  padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,12 +36,18 @@
   color: var(--color-orange);
 }
 .mobileMenu {
-  padding-top: 20px;
   position: absolute;
+  z-index: 100;
   top: 60px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;
+  
+  width: 100vw;
+  height: 100vh;
+
+  background-color: var(--color-light-background);
+
+  padding-top: 20px;
   display: none;
   flex-direction: column;
   align-items: center;
@@ -60,9 +65,7 @@
   margin-right: 100px;
 }
 @media screen and (min-width: 768px) {
-  .header {
-    padding: 24px 32px;
-  }
+  .mobileMenu {top: 70px}
   .avatar {
     width: 28px;
     height: 28px;

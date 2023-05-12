@@ -5,7 +5,7 @@ import css from './LoginButton.module.css';
 
 const LoginButton = () => {
   return (
-    <Link className={css.btn}>
+    <Link to="login" className={css.btn}>
       Log IN
       <IoPawOutline className={css.icon} />
     </Link>

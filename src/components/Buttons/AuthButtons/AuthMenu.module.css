@@ -8,5 +8,7 @@
     margin-right: 24px;
   }
   @media screen and (min-width: 1280px) {
+    margin-right: 0;
+    margin-left: auto;
   }
 }
