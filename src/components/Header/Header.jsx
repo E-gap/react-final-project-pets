@@ -16,7 +16,7 @@ const Header = () => {
   const [isAuth, setIsAuth] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <div className={css.header}>
+    <header className={css.header}>
       <Link className={css.logo} to="/">
         {current <= 767 ? <LogoSmall /> : <LogoBig />}
       </Link>
@@ -58,7 +58,7 @@ const Header = () => {
         )}
         <Navigation />
       </div>
-    </div>
+    </header>
   );
 };
 
