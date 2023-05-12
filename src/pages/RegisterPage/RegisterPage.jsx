@@ -1,9 +1,13 @@
-//import css from './RegisterPage.module.css';
+import css from './RegisterPage.module.css';
+import AuthForm from "components/AuthForm/AuthForm";
 
 const RegisterPage = () => {
   return (
-    <div>
-      <p>RegisterPage</p>
+    <div className={css.section}>
+      <div className={css.container}>
+        <p className={css.title}>Registration</p>
+        <AuthForm  />
+      </div>
     </div>
   );
 };

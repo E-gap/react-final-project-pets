@@ -1,1 +1,25 @@
-
+.section {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-image: url("../../../start/bg/bg-desctop@2x.png");
+   width: 100%;
+   height: 100%;
+}
+.container {
+    padding: 60px 75px 60px 75px;
+    background: #FFFFFF;
+    box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
+    border-radius: 40px;
+}
+.title {
+   font-family: 'Manrope';
+   font-weight: 500;
+   font-size: 36px;
+   line-height: 1.36;
+   text-align: center;
+   letter-spacing: 0.04em;
+   color: #111111;
+   margin-top: 0;
+   margin-bottom: 40px;
+}
