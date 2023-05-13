@@ -5,7 +5,8 @@ import css from './AuthMenu.module.css';
 const AuthMenu = () => {
   return (
     <div className={css.auth}>
-      <LoginButton /> <RegisterButton />
+      <LoginButton /> 
+      <RegisterButton />
     </div>
   );
 };
