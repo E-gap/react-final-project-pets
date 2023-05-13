@@ -2,6 +2,7 @@
   border: 2px solid var(--color-blue);
   border-radius: 40px;
   padding: 8px 20px;
+  margin-top: 20px;
 
   font-family: 'Manrope';
   font-weight: 700;
@@ -13,7 +14,7 @@
   justify-content: center;
   align-items: center;
   color: var(--color-blue);
-  background: var(--color-light-background);
+  background: #ffffff;
   transition: all linear 250ms;
 }
 .btnFavorite {
@@ -33,4 +34,14 @@
   transform: rotate(25deg);
   width: 24px;
   height: 24px;
+}
+@media screen and (min-width: 768px) {
+  .btn {
+    margin-left: 24px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .btn {
+    margin-left: 0;
+  }
 }
