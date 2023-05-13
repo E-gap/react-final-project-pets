@@ -1,1 +1,23 @@
-
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (min-width: 768px) {
+  .list {
+    width: 704px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .list {
+    width: 1248px;
+  }
+}

@@ -1,11 +1,33 @@
-//import css from './NoticesSearch.module.css';
+import css from './NoticesCategoriesList.module.css';
+import propTypes from 'prop-types';
+import NoticesCategoryItem from 'components/NoticesCategoryItem/NoticesCategoryItem';
 
-const NoticesSearch = () => {
-  return (
-    <div>
-      <p>NoticesSearch</p>
-    </div>
-  );
+const NoticesCategoriesList = ({ items }) => {
+  const elements = items.map(item => (
+    <NoticesCategoryItem
+      key={item.id}
+      src={item.url}
+      sex={item.sex}
+      favorite={item.favorite}
+      region={item.region}
+      option={item.option}
+      years={item.years}
+      title={item.title}
+    />
+  ));
+  return <ul className={css.list}>{elements}</ul>;
 };
 
-export default NoticesSearch;
+NoticesCategoriesList.defaultProps = {
+  items: [],
+};
+
+NoticesCategoriesList.propTypes = {
+  items: propTypes.arrayOf(
+    propTypes.shape({
+      id: propTypes.number.isRequired,
+    })
+  ),
+};
+
+export default NoticesCategoriesList;

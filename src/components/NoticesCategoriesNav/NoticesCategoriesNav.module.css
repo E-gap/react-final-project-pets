@@ -1,1 +1,41 @@
-
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+  margin: 24px 0;
+  align-items: flex-start;
+  padding: 0;
+}
+.link {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 40px;
+  background-color: var(--color-light-blue);
+  border: none;
+  font-family: 'Manrope';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.37;
+  color: var(--color-blue);
+  text-decoration: none;
+  transition: all linear 250ms;
+}
+.link:hover {
+  background-color: var(--color-blue);
+  color: #fef9f9;
+}
+@media screen and (min-width: 768px) {
+  .list {
+    width: 319px;
+    gap: 12px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .list {
+    width: 540px;
+    margin-top: 43px;
+  }
+}

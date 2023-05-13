@@ -10,6 +10,8 @@
   );
   --color-blue: #54adff;
   --color-light-blue: #cce4fb;
+  --color-wight: #ffffff;
+
   --color-green: #00c3ad;
   --color-red: #f43f5e;
   --color-light-background: #fef9f9;
@@ -26,6 +28,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-light);
 }
 
 code {
