@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/react-final-project-pets/static/css/main.7c3c1500.css",
-    "main.js": "/react-final-project-pets/static/js/main.d411e87f.js",
-    "static/css/743.5feb574b.chunk.css": "/react-final-project-pets/static/css/743.5feb574b.chunk.css",
-    "static/js/743.5f8ab514.chunk.js": "/react-final-project-pets/static/js/743.5f8ab514.chunk.js",
-    "static/css/169.628c2a5a.chunk.css": "/react-final-project-pets/static/css/169.628c2a5a.chunk.css",
-    "static/js/169.b1d78141.chunk.js": "/react-final-project-pets/static/js/169.b1d78141.chunk.js",
+    "main.js": "/react-final-project-pets/static/js/main.fb219183.js",
+    "static/css/743.fa1d2b39.chunk.css": "/react-final-project-pets/static/css/743.fa1d2b39.chunk.css",
+    "static/js/743.425f34b7.chunk.js": "/react-final-project-pets/static/js/743.425f34b7.chunk.js",
+    "static/css/169.6a2ffca9.chunk.css": "/react-final-project-pets/static/css/169.6a2ffca9.chunk.css",
+    "static/js/169.e89a6118.chunk.js": "/react-final-project-pets/static/js/169.e89a6118.chunk.js",
     "static/css/308.091789f0.chunk.css": "/react-final-project-pets/static/css/308.091789f0.chunk.css",
     "static/js/308.c53af737.chunk.js": "/react-final-project-pets/static/js/308.c53af737.chunk.js",
     "static/css/666.5076c93c.chunk.css": "/react-final-project-pets/static/css/666.5076c93c.chunk.css",
@@ -22,11 +22,11 @@
     "static/media/logoBig.svg": "/react-final-project-pets/static/media/logoBig.6e2f51eeb062dc6472f5.svg",
     "index.html": "/react-final-project-pets/index.html",
     "main.7c3c1500.css.map": "/react-final-project-pets/static/css/main.7c3c1500.css.map",
-    "main.d411e87f.js.map": "/react-final-project-pets/static/js/main.d411e87f.js.map",
-    "743.5feb574b.chunk.css.map": "/react-final-project-pets/static/css/743.5feb574b.chunk.css.map",
-    "743.5f8ab514.chunk.js.map": "/react-final-project-pets/static/js/743.5f8ab514.chunk.js.map",
-    "169.628c2a5a.chunk.css.map": "/react-final-project-pets/static/css/169.628c2a5a.chunk.css.map",
-    "169.b1d78141.chunk.js.map": "/react-final-project-pets/static/js/169.b1d78141.chunk.js.map",
+    "main.fb219183.js.map": "/react-final-project-pets/static/js/main.fb219183.js.map",
+    "743.fa1d2b39.chunk.css.map": "/react-final-project-pets/static/css/743.fa1d2b39.chunk.css.map",
+    "743.425f34b7.chunk.js.map": "/react-final-project-pets/static/js/743.425f34b7.chunk.js.map",
+    "169.6a2ffca9.chunk.css.map": "/react-final-project-pets/static/css/169.6a2ffca9.chunk.css.map",
+    "169.e89a6118.chunk.js.map": "/react-final-project-pets/static/js/169.e89a6118.chunk.js.map",
     "308.091789f0.chunk.css.map": "/react-final-project-pets/static/css/308.091789f0.chunk.css.map",
     "308.c53af737.chunk.js.map": "/react-final-project-pets/static/js/308.c53af737.chunk.js.map",
     "666.5076c93c.chunk.css.map": "/react-final-project-pets/static/css/666.5076c93c.chunk.css.map",
@@ -40,6 +40,6 @@
   },
   "entrypoints": [
     "static/css/main.7c3c1500.css",
-    "static/js/main.d411e87f.js"
+    "static/js/main.fb219183.js"
   ]
 }
