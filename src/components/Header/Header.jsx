@@ -2,30 +2,31 @@ import { RxTextAlignJustify, RxAvatar, RxCross1 } from 'react-icons/rx';
 
 import { useState, useRef, lazy } from 'react';
 
-
-
 import css from './Header.module.css';
 import Logo from 'components/Logo/Logo';
 
-const Navigation = lazy(() => import('../Navigation/Navigation')); 
-const AuthMenu = lazy(() => import('../Buttons/AuthButtons/AuthMenu')); 
-
+const Navigation = lazy(() => import('../Navigation/Navigation'));
+const AuthMenu = lazy(() => import('../Buttons/AuthButtons/AuthMenu'));
 
 const Header = () => {
   const name = 'Anna';
   const { current } = useRef(window.innerWidth);
-  const [isAuth, setIsAuth] = useState(false);
+
+  // const [isAuth, setIsAuth] = useState(false);
+  // прибрав тимчасово setIsAuth для коректного деплою
+  const [isAuth] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <header className={css.header + " container"}>
+    <header className={css.header + ' container'}>
       <Logo />
       {current >= 1280 && <Navigation />}
-      {current >= 1280 && isAuth &&(
+      {current >= 1280 && isAuth && (
         <button className={css.menuBtn} type="button">
           <RxAvatar className={css.avatarMobile} />
           {name}
         </button>
-      )}{!isAuth && current >= 1280 && <AuthMenu />}
+      )}
+      {!isAuth && current >= 1280 && <AuthMenu />}
       <div className={css.mobileMenuButtons}>
         {isAuth && !menuOpen && (
           <button className={css.menuBtn} type="button">
