@@ -1,11 +1,13 @@
 {
   "files": {
-    "main.css": "/react-final-project-pets/static/css/main.ca46f1d6.css",
-    "main.js": "/react-final-project-pets/static/js/main.85702dd1.js",
+    "main.css": "/react-final-project-pets/static/css/main.7c3c1500.css",
+    "main.js": "/react-final-project-pets/static/js/main.d411e87f.js",
     "static/css/743.5feb574b.chunk.css": "/react-final-project-pets/static/css/743.5feb574b.chunk.css",
     "static/js/743.5f8ab514.chunk.js": "/react-final-project-pets/static/js/743.5f8ab514.chunk.js",
     "static/css/169.628c2a5a.chunk.css": "/react-final-project-pets/static/css/169.628c2a5a.chunk.css",
     "static/js/169.b1d78141.chunk.js": "/react-final-project-pets/static/js/169.b1d78141.chunk.js",
+    "static/css/308.091789f0.chunk.css": "/react-final-project-pets/static/css/308.091789f0.chunk.css",
+    "static/js/308.c53af737.chunk.js": "/react-final-project-pets/static/js/308.c53af737.chunk.js",
     "static/css/666.5076c93c.chunk.css": "/react-final-project-pets/static/css/666.5076c93c.chunk.css",
     "static/js/666.ea20cfa0.chunk.js": "/react-final-project-pets/static/js/666.ea20cfa0.chunk.js",
     "static/css/239.26c54f5d.chunk.css": "/react-final-project-pets/static/css/239.26c54f5d.chunk.css",
@@ -13,26 +15,31 @@
     "static/css/251.5b938383.chunk.css": "/react-final-project-pets/static/css/251.5b938383.chunk.css",
     "static/js/251.3f227bd3.chunk.js": "/react-final-project-pets/static/js/251.3f227bd3.chunk.js",
     "static/js/71.c76d6a20.chunk.js": "/react-final-project-pets/static/js/71.c76d6a20.chunk.js",
+    "static/js/571.f17a6fbf.chunk.js": "/react-final-project-pets/static/js/571.f17a6fbf.chunk.js",
+    "static/media/4.jpg": "/react-final-project-pets/static/media/4.2f35de7ef2e2fe6118e0.jpg",
     "static/media/bg-desctop@2x.png": "/react-final-project-pets/static/media/bg-desctop@2x.f128121863e6a3a0eef5.png",
     "static/media/logoSmall.svg": "/react-final-project-pets/static/media/logoSmall.baf94e4ce1e8af9e0a83.svg",
     "static/media/logoBig.svg": "/react-final-project-pets/static/media/logoBig.6e2f51eeb062dc6472f5.svg",
     "index.html": "/react-final-project-pets/index.html",
-    "main.ca46f1d6.css.map": "/react-final-project-pets/static/css/main.ca46f1d6.css.map",
-    "main.85702dd1.js.map": "/react-final-project-pets/static/js/main.85702dd1.js.map",
+    "main.7c3c1500.css.map": "/react-final-project-pets/static/css/main.7c3c1500.css.map",
+    "main.d411e87f.js.map": "/react-final-project-pets/static/js/main.d411e87f.js.map",
     "743.5feb574b.chunk.css.map": "/react-final-project-pets/static/css/743.5feb574b.chunk.css.map",
     "743.5f8ab514.chunk.js.map": "/react-final-project-pets/static/js/743.5f8ab514.chunk.js.map",
     "169.628c2a5a.chunk.css.map": "/react-final-project-pets/static/css/169.628c2a5a.chunk.css.map",
     "169.b1d78141.chunk.js.map": "/react-final-project-pets/static/js/169.b1d78141.chunk.js.map",
+    "308.091789f0.chunk.css.map": "/react-final-project-pets/static/css/308.091789f0.chunk.css.map",
+    "308.c53af737.chunk.js.map": "/react-final-project-pets/static/js/308.c53af737.chunk.js.map",
     "666.5076c93c.chunk.css.map": "/react-final-project-pets/static/css/666.5076c93c.chunk.css.map",
     "666.ea20cfa0.chunk.js.map": "/react-final-project-pets/static/js/666.ea20cfa0.chunk.js.map",
     "239.26c54f5d.chunk.css.map": "/react-final-project-pets/static/css/239.26c54f5d.chunk.css.map",
     "239.09a759a6.chunk.js.map": "/react-final-project-pets/static/js/239.09a759a6.chunk.js.map",
     "251.5b938383.chunk.css.map": "/react-final-project-pets/static/css/251.5b938383.chunk.css.map",
     "251.3f227bd3.chunk.js.map": "/react-final-project-pets/static/js/251.3f227bd3.chunk.js.map",
-    "71.c76d6a20.chunk.js.map": "/react-final-project-pets/static/js/71.c76d6a20.chunk.js.map"
+    "71.c76d6a20.chunk.js.map": "/react-final-project-pets/static/js/71.c76d6a20.chunk.js.map",
+    "571.f17a6fbf.chunk.js.map": "/react-final-project-pets/static/js/571.f17a6fbf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ca46f1d6.css",
-    "static/js/main.85702dd1.js"
+    "static/css/main.7c3c1500.css",
+    "static/js/main.d411e87f.js"
   ]
 }
