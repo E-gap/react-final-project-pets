@@ -1,1 +1,49 @@
+.user {
+  font-family: 'Manrope';
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  color: var(--color-orange);
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-left: auto;
+  margin-right: 32px;
+}
+.userMargins {
+  margin-bottom: 84px;
+  margin-left: 0;
+  margin-right: 0;
+}
+.avatar {
+  width: 24px;
+  height: 24px;
+  color: var(--color-orange);
+  margin-right: 12px;
+}
+
+
+@media screen and (min-width: 768px) {
+  .avatar {
+    width: 28px;
+    height: 28px;
+  }
+  .user {
+    margin-right: 50px;
+  }
+ }
+  @media screen and (min-width: 1280px) {
+    .header {
+      padding: 20px 16px;
+      justify-content: start;
+    }
+    .mobileMenuButtons {
+      display: none;
+    }
+    .user {
+      margin-left: auto;
+      margin-right: 0;
+    }}
