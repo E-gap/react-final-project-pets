@@ -14,14 +14,14 @@ const Header = () => {
 
   // const [isAuth, setIsAuth] = useState(false);
   // прибрав тимчасово setIsAuth для коректного деплою
-  const [isAuth] = useState(true);
+  const [isAuth] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   
   return (
     <header className={css.header + ' container'}>
       <Logo />
       {current >= 1280 && <Navigation />}
-      {current >= 1280 && !isAuth && <AuthMenu />}
+      {current >= 768 && !isAuth && <AuthMenu />}
       {isAuth && !menuOpen && <UserNav displayName={current >= 768 ? true : false}/>}
       <BurgerMenuBtn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <div
