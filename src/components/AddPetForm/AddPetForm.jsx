@@ -2,12 +2,12 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik } from 'formik';
 
-import ButtonBack from './FormButon/ButtonBack';
-import ButtonNext from './FormButon/ButtonNext';
-import ChooseOption from './ChooseOptions/ChooseOption';
-import MoreInfo from './MoreInfo/MoreInfo';
-import PersonalDetails from './PersonalDetails/PersonalDetails';
-import { INITIAL_STATE } from './InitialState';
+import ButtonBack from '../Buttons/FormButon/ButtonBack';
+import ButtonNext from '../Buttons/FormButon/ButtonNext';
+import ChooseOption from '../../Service/ChooseOptions/ChooseOption';
+import MoreInfo from '../../Service/MoreInfo/MoreInfo';
+import PersonalDetails from '../../Service/PersonalDetails/PersonalDetails';
+import { INITIAL_STATE } from '../../Service/InitialState';
 
 
 const AddPetForm = () => {
@@ -75,7 +75,7 @@ const AddPetForm = () => {
       </ul>
       <Formik initialValues={INITIAL_STATE} onSubmit={handleSubmit}>
         {() => (
-          <form autoComplete="on" >
+          <div>
             {step === 0 && <ChooseOption setCategory={setCategory} />}
             {step === 1 && <PersonalDetails category={category} />}
             {step === 2 && (
@@ -122,7 +122,7 @@ const AddPetForm = () => {
                 />
               )}
             </div>
-          </form>
+          </div>
         )}
       </Formik>
     </div>
