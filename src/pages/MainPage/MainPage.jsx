@@ -1,9 +1,11 @@
 //import css from './MainPage.module.css';
+import Logo from 'components/Logo/Logo';
 
 const MainPage = () => {
   return (
     <div>
-      <p>MainPage</p>
+      <Logo />
+      <p>MainPaged</p>
     </div>
   );
 };
