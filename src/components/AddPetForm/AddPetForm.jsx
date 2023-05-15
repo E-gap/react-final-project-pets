@@ -4,11 +4,10 @@ import { Formik } from 'formik';
 
 import ButtonBack from '../Buttons/FormButon/ButtonBack';
 import ButtonNext from '../Buttons/FormButon/ButtonNext';
-import ChooseOption from '../../Service/ChooseOptions/ChooseOption';
-import MoreInfo from '../../Service/MoreInfo/MoreInfo';
-import PersonalDetails from '../../Service/PersonalDetails/PersonalDetails';
-import { INITIAL_STATE } from '../../Service/InitialState';
-
+import ChooseOption from '../../services/ChooseOptions/ChooseOption';
+import MoreInfo from '../../services/MoreInfo/MoreInfo';
+import PersonalDetails from '../../services/PersonalDetails/PersonalDetails';
+import { INITIAL_STATE } from '../../services/InitialState';
 
 const AddPetForm = () => {
   const [fileInput, setFileInput] = useState('');
@@ -18,8 +17,6 @@ const AddPetForm = () => {
   const navigate = useNavigate();
 
   const steps = ['Choose Option', 'Personal Details', 'More Info'];
-
-  
 
   const handleCancelClick = () => {
     navigate('/user');
@@ -65,10 +62,10 @@ const AddPetForm = () => {
   }, [getPageTitle]);
   return (
     <div>
-      <h1 >{title}</h1>
-      <ul >
+      <h1>{title}</h1>
+      <ul>
         {steps.map((stepName, index) => (
-          <li key={index}  >
+          <li key={index}>
             <span>{stepName}</span>
           </li>
         ))}
@@ -86,7 +83,7 @@ const AddPetForm = () => {
               />
             )}
 
-            <div >
+            <div>
               {step < 2 && (
                 <ButtonNext
                   type="button"
@@ -130,13 +127,3 @@ const AddPetForm = () => {
 };
 
 export default AddPetForm;
-
-
-
-
-
-
-
-
-
-
