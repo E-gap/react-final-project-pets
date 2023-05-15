@@ -9,8 +9,8 @@ import { BrowserRouter } from 'react-router-dom';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      {/* <BrowserRouter basename="/react-final-project-pets"> */}
-      <BrowserRouter>
+      <BrowserRouter basename="/react-final-project-pets">
+        {/* <BrowserRouter> */}
         <App />
       </BrowserRouter>
     </Provider>
