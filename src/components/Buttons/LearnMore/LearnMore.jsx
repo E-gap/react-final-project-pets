@@ -29,6 +29,6 @@ export default LearnMore;
 LearnMore.propTypes = {
   favorite: PropTypes.bool,
   big: PropTypes.bool,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   selector: PropTypes.string,
 };

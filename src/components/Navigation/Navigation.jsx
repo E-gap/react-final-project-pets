@@ -7,10 +7,10 @@ const Navigation = () => {
       <NavLink className={css.navLink} to="/News">
         News
       </NavLink>
-      <NavLink className={css.navLink} to="/Find pet">
+      <NavLink className={css.navLink} to="/notices">
         Find pet
       </NavLink>
-      <NavLink className={css.navLink} to="/Our frineds">
+      <NavLink className={css.navLink} to="/Our friends">
         Our frineds
       </NavLink>
     </nav>
