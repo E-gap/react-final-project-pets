@@ -4,15 +4,15 @@ import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import { App } from 'components/App';
 import './index.css';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
       {/* <BrowserRouter basename="/react-final-project-pets"> */}
-      <HashRouter>
+      <BrowserRouter>
         <App />
-      </HashRouter>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );
