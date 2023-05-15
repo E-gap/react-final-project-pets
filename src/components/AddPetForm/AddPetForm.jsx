@@ -7,19 +7,7 @@ import ButtonNext from './FormButon/ButtonNext';
 import ChooseOption from './ChooseOptions/ChooseOption';
 import MoreInfo from './MoreInfo/MoreInfo';
 import PersonalDetails from './PersonalDetails/PersonalDetails';
-
-const INITIAL_STATE = {
-  category: '',
-  name: '',
-  title: '',
-  birthday: '',
-  breed: '',
-  location: '',
-  comments: '',
-  image: null,
-  sex: '',
-  price: '',
-};
+import { INITIAL_STATE } from './InitialState';
 
 
 const AddPetForm = () => {
