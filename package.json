@@ -1,8 +1,7 @@
 {
   "name": "react-homework-template",
   "version": "0.1.0",
-  "private": true,
-  "homepage": "https://E-gap/react-final-project-pets/",
+  "private": true,  
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.3",
