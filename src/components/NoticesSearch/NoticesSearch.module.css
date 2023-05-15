@@ -55,10 +55,24 @@
   width: 24px;
   height: 24px;
 }
+.searchButtonDel {
+  position: absolute;
+  right: 38px;
+  top: 36px;
+}
+.searchDel {
+  position: absolute;
+  right: 6px;
+  top: 34px;
+}
 .changeColor {
   color: var(--color-blue);
 }
-.changeColor:hover {
+.changeColorDel {
+  color: var(--color-blue);
+}
+.changeColor:hover,
+.changeColorDel:hover {
   color: var(--color-orange);
 }
 @media screen and (min-width: 768px) {
@@ -73,5 +87,13 @@
   .searchButton {
     right: 14px;
     top: 52px;
+  }
+  .searchButtonDel {
+    right: 50px;
+    top: 53px;
+  }
+  .searchDel {
+    right: 14px;
+    top: 50px;
   }
 }

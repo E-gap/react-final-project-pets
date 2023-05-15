@@ -1,8 +1,14 @@
 import css from './NoticesCategoriesList.module.css';
 import propTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
 import NoticesCategoryItem from 'components/NoticesCategoryItem/NoticesCategoryItem';
 
 const NoticesCategoriesList = ({ items }) => {
+  const { pathname } = useLocation();
+
+  const pathnameArr = pathname.split('/');
+  console.log(pathnameArr);
+
   const elements = items.map(item => (
     <NoticesCategoryItem
       key={item.id}
