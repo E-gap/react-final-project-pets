@@ -1,102 +1,43 @@
 .header {
   position: relative;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-}
-.logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.mobileMenuButtons {
-  display: flex;
-}
-.menuBtn {
-  font-family: 'Manrope';
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 22px;
-  letter-spacing: 0.04em;
-  color: var(--color-orange);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.avatar {
-  width: 24px;
-  height: 24px;
-  color: var(--color-orange);
-  margin-right: 8px;
-}
-.burger {
-  width: 24px;
-  height: 24px;
-  color: var(--color-orange);
+  
 }
 .mobileMenu {
   position: absolute;
-  z-index: 100;
-  top: 60px;
+  z-index: 1001;
+  top: -100%;
   left: 50%;
   transform: translateX(-50%);
   
   width: 100vw;
   height: 100vh;
-
-  background-color: var(--color-light-background);
-
   padding-top: 20px;
-  display: none;
+  
+  background-color: transparent;
+  visibility: hidden;
+  opacity: 0;
+  
+  display: flex;
   flex-direction: column;
   align-items: center;
-}
-.avatarMobile {
-  width: 28px;
-  height: 28px;
-  color: var(--color-orange);
-  margin-right: 12px;
+  transition: all ease-in 250ms;
 }
 .show {
-  display: flex;
-}
-.lol {
-  margin-right: 100px;
-}
-@media screen and (min-width: 768px) {
-  .mobileMenu {top: 70px}
-  .avatar {
-    width: 28px;
-    height: 28px;
-    margin-right: 12px;
-  }
-  .name {
-    margin-right: 38px;
-  }
+  background-color: var(--color-light-background);
+  visibility: visible;
+  opacity: 1;
+  top: 60px;
 }
 
+@media screen and (min-width: 768px) {
+  .show {top: 70px}
+}
 @media screen and (min-width: 1280px) {
   .header {
     padding: 20px 16px;
     justify-content: start;
   }
-  .mobileMenuButtons {
-    display: none;
-  }
-  .profile {
-    font-family: 'Manrope';
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 22px;
-    letter-spacing: 0.04em;
-    color: var(--color-orange);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .menuBtn {
-    margin-left: auto;
-  }
+  
 }
