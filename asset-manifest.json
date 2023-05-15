@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-final-project-pets/static/css/main.63bc62a0.css",
-    "main.js": "/react-final-project-pets/static/js/main.bb643a22.js",
+    "main.js": "/react-final-project-pets/static/js/main.49b4120f.js",
     "static/css/743.fa1d2b39.chunk.css": "/react-final-project-pets/static/css/743.fa1d2b39.chunk.css",
     "static/js/743.ba62020a.chunk.js": "/react-final-project-pets/static/js/743.ba62020a.chunk.js",
     "static/css/169.6a2ffca9.chunk.css": "/react-final-project-pets/static/css/169.6a2ffca9.chunk.css",
@@ -10,6 +10,7 @@
     "static/js/308.9564c593.chunk.js": "/react-final-project-pets/static/js/308.9564c593.chunk.js",
     "static/css/666.5076c93c.chunk.css": "/react-final-project-pets/static/css/666.5076c93c.chunk.css",
     "static/js/666.8bacb2c7.chunk.js": "/react-final-project-pets/static/js/666.8bacb2c7.chunk.js",
+    "static/js/942.e3d3e273.chunk.js": "/react-final-project-pets/static/js/942.e3d3e273.chunk.js",
     "static/css/13.f0e8ef58.chunk.css": "/react-final-project-pets/static/css/13.f0e8ef58.chunk.css",
     "static/js/13.9a8ff86c.chunk.js": "/react-final-project-pets/static/js/13.9a8ff86c.chunk.js",
     "static/css/151.153d51e7.chunk.css": "/react-final-project-pets/static/css/151.153d51e7.chunk.css",
@@ -20,6 +21,7 @@
     "static/js/251.1c78873c.chunk.js": "/react-final-project-pets/static/js/251.1c78873c.chunk.js",
     "static/js/71.df1fd9c2.chunk.js": "/react-final-project-pets/static/js/71.df1fd9c2.chunk.js",
     "static/js/213.a2050bfd.chunk.js": "/react-final-project-pets/static/js/213.a2050bfd.chunk.js",
+    "static/js/705.a9d6fb25.chunk.js": "/react-final-project-pets/static/js/705.a9d6fb25.chunk.js",
     "static/js/571.5efd1a39.chunk.js": "/react-final-project-pets/static/js/571.5efd1a39.chunk.js",
     "static/media/4.jpg": "/react-final-project-pets/static/media/4.2f35de7ef2e2fe6118e0.jpg",
     "static/media/bg-desctop@2x.png": "/react-final-project-pets/static/media/bg-desctop@2x.f128121863e6a3a0eef5.png",
@@ -27,7 +29,7 @@
     "static/media/logoBig.svg": "/react-final-project-pets/static/media/logoBig.6e2f51eeb062dc6472f5.svg",
     "index.html": "/react-final-project-pets/index.html",
     "main.63bc62a0.css.map": "/react-final-project-pets/static/css/main.63bc62a0.css.map",
-    "main.bb643a22.js.map": "/react-final-project-pets/static/js/main.bb643a22.js.map",
+    "main.49b4120f.js.map": "/react-final-project-pets/static/js/main.49b4120f.js.map",
     "743.fa1d2b39.chunk.css.map": "/react-final-project-pets/static/css/743.fa1d2b39.chunk.css.map",
     "743.ba62020a.chunk.js.map": "/react-final-project-pets/static/js/743.ba62020a.chunk.js.map",
     "169.6a2ffca9.chunk.css.map": "/react-final-project-pets/static/css/169.6a2ffca9.chunk.css.map",
@@ -36,6 +38,7 @@
     "308.9564c593.chunk.js.map": "/react-final-project-pets/static/js/308.9564c593.chunk.js.map",
     "666.5076c93c.chunk.css.map": "/react-final-project-pets/static/css/666.5076c93c.chunk.css.map",
     "666.8bacb2c7.chunk.js.map": "/react-final-project-pets/static/js/666.8bacb2c7.chunk.js.map",
+    "942.e3d3e273.chunk.js.map": "/react-final-project-pets/static/js/942.e3d3e273.chunk.js.map",
     "13.f0e8ef58.chunk.css.map": "/react-final-project-pets/static/css/13.f0e8ef58.chunk.css.map",
     "13.9a8ff86c.chunk.js.map": "/react-final-project-pets/static/js/13.9a8ff86c.chunk.js.map",
     "151.153d51e7.chunk.css.map": "/react-final-project-pets/static/css/151.153d51e7.chunk.css.map",
@@ -46,10 +49,11 @@
     "251.1c78873c.chunk.js.map": "/react-final-project-pets/static/js/251.1c78873c.chunk.js.map",
     "71.df1fd9c2.chunk.js.map": "/react-final-project-pets/static/js/71.df1fd9c2.chunk.js.map",
     "213.a2050bfd.chunk.js.map": "/react-final-project-pets/static/js/213.a2050bfd.chunk.js.map",
+    "705.a9d6fb25.chunk.js.map": "/react-final-project-pets/static/js/705.a9d6fb25.chunk.js.map",
     "571.5efd1a39.chunk.js.map": "/react-final-project-pets/static/js/571.5efd1a39.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.63bc62a0.css",
-    "static/js/main.bb643a22.js"
+    "static/js/main.49b4120f.js"
   ]
 }
