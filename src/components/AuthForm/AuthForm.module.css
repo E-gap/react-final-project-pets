@@ -18,11 +18,35 @@
     letter-spacing: 0.04em;
     color: #888888;
 }
-.formBtnLog {
-    margin-top: 8px;
+.inputLastReg {
+    width: 458px;
+    height: 48px;
+    padding: 0 12px ;
+    border: 1px solid #54ADFF;
+    border-radius: 40px;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    color: #888888;
+margin-bottom: 8px;
 }
-.formBtnReg {
-    margin-top: 28px;
+.inputLastLog {
+    width: 458px;
+    height: 48px;
+    padding: 0 12px ;
+    border: 1px solid #54ADFF;
+    border-radius: 40px;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    color: #888888;
+margin-bottom: 28px;
 }
 .linklist {
     display: flex;

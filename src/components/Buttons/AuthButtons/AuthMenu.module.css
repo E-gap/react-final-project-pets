@@ -5,10 +5,10 @@
   @media screen and (min-width: 768px) {
     flex-direction: row;
     column-gap: 20px;
-    margin-right: 24px;
+    margin-right: 48px;
+    margin-left: auto;
   }
   @media screen and (min-width: 1280px) {
     margin-right: 0;
-    margin-left: auto;
   }
 }
