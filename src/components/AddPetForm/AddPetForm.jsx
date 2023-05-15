@@ -4,10 +4,10 @@ import { Formik } from 'formik';
 
 import ButtonBack from '../Buttons/FormButon/ButtonBack';
 import ButtonNext from '../Buttons/FormButon/ButtonNext';
-import ChooseOption from '../../Service/ChooseOptions/ChooseOption';
-import MoreInfo from '../../Service/MoreInfo/MoreInfo';
-import PersonalDetails from '../../Service/PersonalDetails/PersonalDetails';
-import { INITIAL_STATE } from '../../Service/InitialState';
+import ChooseOption from '../../services/ChooseOptions/ChooseOption';
+import MoreInfo from '../../services/MoreInfo/MoreInfo';
+import PersonalDetails from '../../services/PersonalDetails/PersonalDetails';
+import { INITIAL_STATE } from '../../services/InitialState';
 
 const AddPetForm = () => {
   const [fileInput, setFileInput] = useState(''); // Стан для вибраного файлу
