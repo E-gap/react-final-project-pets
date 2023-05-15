@@ -3,11 +3,13 @@ import { Route, Routes } from 'react-router-dom';
 
 import SharedLayout from './SharedLayout/SharedLayout';
 
+
 const Register = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const Login = lazy(() => import('../pages/LoginPage/LoginPage'));
 const NoticesPage = lazy(() => import('../pages/NoticesPage/NoticesPage'));
 //const Contacts = lazy(() => import('../pages/Contacts/Contacts'));
 const NotFound = lazy(() => import('../pages/NotFound/NotFound'));
+const AddPetForm = lazy(() => import('./AddPetForm/AddPetForm'));
 
 export const App = () => {
   return (
@@ -18,6 +20,7 @@ export const App = () => {
             <Route index element={<NotFound />} />
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
+            <Route path="add-pet" element={<AddPetForm />} />
             <Route path="Find pet" element={<NoticesPage />} />
             <Route path="*" element={<NotFound />} />
           </Route>
