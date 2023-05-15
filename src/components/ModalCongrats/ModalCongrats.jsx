@@ -19,9 +19,9 @@ const ModalCongrats = () => {
 
   return (
     <>
-      <button onClick={toggleModal} className={css.btn-modal}>
+      {/* <button onClick={toggleModal} className={css.btn-modal}>
         Open
-      </button>
+      </button> */}
 
       {modal && (
         <div className="modal">
