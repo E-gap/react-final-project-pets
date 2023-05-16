@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AiOutlineClose } from 'react-icons/ai';
 import GoToProfile from "components/Buttons/GoToProfile/GoToProfile";
 
@@ -16,6 +16,20 @@ const ModalCongrats = () => {
   } else {
     document.body.classList.remove('active-modal')
   }
+
+  useEffect(() => {
+    function handleKeyDown(event) {
+      if (event.key === 'Escape') {
+        setModal(false);
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   return (
     <>
