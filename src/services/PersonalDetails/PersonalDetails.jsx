@@ -15,7 +15,7 @@ const PersonalDetails = ({ category }) => {
           <ErrorMessage name="title" component="div" />
         </label>
       )}
-      <label htmlFor="name">
+      <label>
         Name:
         <Field placeholder="Type name pet" type="text" name="name" className="add-form-input" />
         {/* Відображення помилки, якщо поле "name" має помилку */}
