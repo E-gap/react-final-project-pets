@@ -4,9 +4,9 @@ import { Route, Routes } from 'react-router-dom';
 import SharedLayout from './SharedLayout/SharedLayout';
 import NoticesCategoriesList from './NoticesCategoriesList/NoticesCategoriesList';
 
-
 const Register = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const Login = lazy(() => import('../pages/LoginPage/LoginPage'));
+const NewsPage = lazy(() => import('pages/NewsPage/NewsPage'));
 const NoticesPage = lazy(() => import('../pages/NoticesPage/NoticesPage'));
 
 //const Contacts = lazy(() => import('../pages/Contacts/Contacts'));
@@ -20,18 +20,19 @@ export const App = () => {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
-            <Route index element={<NotFound />} />
+            <Route index element={<NewsPage />} />
             <Route path="friends" element={<OurFriends />} />
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
+            <Route path="news" element={<NewsPage />} />
             <Route path="notices" element={<NoticesPage />}>
-              <Route path="sell" element={NoticesCategoriesList} />
-              <Route path="lost-found" element={NoticesCategoriesList} />
-              <Route path="for-free" element={NoticesCategoriesList} />
-              <Route path="favorite" element={NoticesCategoriesList} />
-              <Route path="own" element={NoticesCategoriesList} />
+              <Route path="sell" element={<NoticesCategoriesList />} />
+              <Route path="lost-found" element={<NoticesCategoriesList />} />
+              <Route path="for-free" element={<NoticesCategoriesList />} />
+              <Route path="favorite" element={<NoticesCategoriesList />} />
+              <Route path="own" element={<NoticesCategoriesList />} />
             </Route>
-            <Route path="add-pet" element={<AddPetForm />} />          
+            <Route path="add-pet" element={<AddPetForm />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
