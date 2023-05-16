@@ -71,10 +71,14 @@ const AddPetForm = () => {
       <ul>
         {/* Відображення списку кроків форми */}
         {steps.map((stepName, index) => (
-          <li key={index}>
-            <span>{stepName}</span>
-          </li>
-        ))}
+  <li key={index}>
+    <span>
+      {step === 0 && index === 0 && 'Choose Option'}
+      {step === 1 && index === 1 && 'Personal Details'}
+      {step === 2 && index === 2 && 'More Info'}
+    </span>
+  </li>
+))}
       </ul>
       <Formik initialValues={INITIAL_STATE} onSubmit={handleSubmit}>
         {() => (
