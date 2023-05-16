@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchPets, deletePets, addPets } from './petsOperations';
+import { fetchAllPets, deletePets, addPets } from './petsOperations';
 
 export const petsSlice = createSlice({
   name: 'pets',
@@ -10,16 +10,16 @@ export const petsSlice = createSlice({
   },
   extraReducers: builder =>
     builder
-      .addCase(fetchPets.pending, state => {
+      .addCase(fetchAllPets.pending, state => {
         state.isLoading = true;
         state.error = false;
       })
-      .addCase(fetchPets.fulfilled, (state, action) => {
+      .addCase(fetchAllPets.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = false;
         state.pets = action.payload;
       })
-      .addCase(fetchPets.rejected, (state, action) => {
+      .addCase(fetchAllPets.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
@@ -29,9 +29,7 @@ export const petsSlice = createSlice({
       })
       .addCase(deletePets.fulfilled, (state, action) => {
         state.error = false;
-        state.pets = state.pets.filter(
-          pet => pet.id !== action.payload
-        );
+        state.pets = state.pets.filter(pet => pet.id !== action.payload);
       })
       .addCase(addPets.fulfilled, (state, action) => {
         state.error = false;

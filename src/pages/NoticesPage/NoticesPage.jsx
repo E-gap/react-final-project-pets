@@ -1,14 +1,18 @@
 import css from './NoticesPage.module.css';
 import { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import NoticesCategoriesList from 'components/NoticesCategoriesList/NoticesCategoriesList';
 import NoticesSearch from 'components/NoticesSearch/NoticesSearch';
 // import NoticesFilters from 'components/NoticesFilters/NoticesFilters';
 import NoticesCategoriesNav from 'components/NoticesCategoriesNav/NoticesCategoriesNav';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllPets } from '../../redux/pets/petsOperations';
+import { selectPets } from '../../redux/selectors';
+//import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-import url from './4.jpg';
+//import url from './4.jpg';
 
-const initialState = [
+/* const initialState = [
   {
     id: 1,
     option: 'sell',
@@ -90,12 +94,22 @@ const initialState = [
     url: url,
     favorite: false,
   },
-];
+]; */
 const NoticesPage = () => {
+  const [pathFilter, setPathFilter] = useState('sell');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useState(() => {
+    const params = searchParams.get('query');
+    return params ? params : '';
+  });
+
   // eslint-disable-next-line no-unused-vars
-  const [list, setList] = useState(initialState);
+  //const [list, setList] = useState(initialState);
+  const dispatch = useDispatch();
+  const pets = useSelector(selectPets);
 
   const { pathname } = useLocation();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -108,14 +122,34 @@ const NoticesPage = () => {
     } else {
       navigate('/notices/sell');
     }
+
+    const pathnameArr = pathname.split('/');
+
+    const lastPartPath = pathnameArr[pathnameArr.length - 1];
+
+    setPathFilter(lastPartPath);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [pathname]);
+
+  useEffect(() => {
+    const queryParams = {
+      category: pathFilter,
+      title: query,
+    };
+    dispatch(fetchAllPets(queryParams));
+  }, [dispatch, pathFilter, query]);
+
+  const submitSearch = event => {
+    setQuery(event);
+    setSearchParams(event !== '' ? { query: event } : {});
+  };
+
   return (
     <div className={css.container}>
-      <NoticesSearch />
+      <NoticesSearch search={submitSearch} />
       <NoticesCategoriesNav />
       {/* <NoticesFilters /> */}
-      <NoticesCategoriesList items={list} />
+      <NoticesCategoriesList items={pets} />
       {/* <AddPetButton /> */}
       {/* <AddToFavorite /> */}
     </div>

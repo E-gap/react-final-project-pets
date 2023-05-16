@@ -2,11 +2,14 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import Notiflix from 'notiflix';
 
-export const fetchPets = createAsyncThunk(
-  'pets/fetchPets',
-  async function (_, { rejectWithValue }) {
+axios.defaults.baseURL = `http://localhost:3001`;
+
+export const fetchAllPets = createAsyncThunk(
+  'pets/fetchAllPets',
+  async function (queryParams, { rejectWithValue }) {
     try {
-      const response = await axios.get('/pets');
+      const response = await axios.get('/api/notices', queryParams);
+      console.log(response.data);
 
       if (response.statusText !== 'OK') {
         throw new Error('Server Error');

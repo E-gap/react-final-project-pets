@@ -4,14 +4,14 @@ import { useState } from 'react';
 import { RxCross2 } from 'react-icons/rx';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-const NoticesSearch = () => {
+const NoticesSearch = ({ search }) => {
   const [query, setQuery] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
     if (query === '') {
       Notify.warning('Please fill in this field');
-    }
+    } else search(query);
   };
 
   return (
