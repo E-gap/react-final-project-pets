@@ -10,8 +10,8 @@ const Navigation = () => {
       <NavLink className={css.navLink} to="/notices">
         Find pet
       </NavLink>
-      <NavLink className={css.navLink} to="/Our friends">
-        Our frineds
+      <NavLink className={css.navLink} to="/friends">
+        Our friends       
       </NavLink>
     </nav>
   );
