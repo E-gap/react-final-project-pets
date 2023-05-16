@@ -32,6 +32,7 @@ const AddPetForm = () => {
 
   const handleSubmit = async values => {
      // Створення об'єкту formData, який містить поля форми та їх значення
+     handleCancelClick()
     const formData = {
       category: values.category, 
       title: values.title,
