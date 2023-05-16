@@ -1,1 +1,24 @@
+.btn {
+  border-radius: 40px;
+  padding: 8px 5px 5px 5px;
+  width: 40px;
+  height: 40px;
 
+  font-family: 'Manrope';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-blue);
+  background: var(--color-light-blue);
+  
+}
+.icon {
+  color: inherit;
+  width: 26px;
+  height: 22px;
+}
