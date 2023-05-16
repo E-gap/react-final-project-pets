@@ -1,9 +1,14 @@
-//import css from './GoToProfile.module.css';
+import { IoPawOutline } from 'react-icons/io5';
+
+import css from './GoToProfile.module.css';
+
 
 const GoToProfile = () => {
   return (
     <div>
-      <p>GoToProfile</p>
+      <button className={css.button}>
+        Go to profile <IoPawOutline className={css.icon}/>
+        </button>
     </div>
   );
 };

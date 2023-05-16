@@ -7,11 +7,11 @@ const Navigation = () => {
       <NavLink className={css.navLink} to="/News">
         News
       </NavLink>
-      <NavLink className={css.navLink} to="/Find pet">
+      <NavLink className={css.navLink} to="/notices">
         Find pet
       </NavLink>
       <NavLink className={css.navLink} to="/friends">
-        Our friends
+        Our friends       
       </NavLink>
     </nav>
   );

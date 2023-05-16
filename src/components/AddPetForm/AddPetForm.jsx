@@ -4,37 +4,36 @@ import { Formik } from 'formik';
 
 import ButtonBack from '../Buttons/FormButon/ButtonBack';
 import ButtonNext from '../Buttons/FormButon/ButtonNext';
-import ChooseOption from '../../Service/ChooseOptions/ChooseOption';
-import MoreInfo from '../../Service/MoreInfo/MoreInfo';
-import PersonalDetails from '../../Service/PersonalDetails/PersonalDetails';
-import { INITIAL_STATE } from '../../Service/InitialState';
-
+import ChooseOption from '../../services/ChooseOptions/ChooseOption';
+import MoreInfo from '../../services/MoreInfo/MoreInfo';
+import PersonalDetails from '../../services/PersonalDetails/PersonalDetails';
+import { INITIAL_STATE } from '../../services/InitialState';
 
 const AddPetForm = () => {
-  const [fileInput, setFileInput] = useState('');
-  const [step, setStep] = useState(0);
-  const [title, setTitle] = useState('');
-  const [category, setCategory] = useState('');
-  const navigate = useNavigate();
+  const [fileInput, setFileInput] = useState(''); // Стан для вибраного файлу
+  const [step, setStep] = useState(0); // Стан для кроку форми
+  const [title, setTitle] = useState(''); // Стан для заголовку
+  const [category, setCategory] = useState(''); // Стан для категорії
+  const navigate = useNavigate(); // Функція для навігації
 
-  const steps = ['Choose Option', 'Personal Details', 'More Info'];
-
-  
+  const steps = ['Choose Option', 'Personal Details', 'More Info']; // Масив кроків форми
 
   const handleCancelClick = () => {
-    navigate('/user');
+    navigate('/user'); // Перехід до шляху '/user'
   };
 
   const handleNextClick = e => {
-    setStep(prevState => prevState + 1);
+    setStep(prevState => prevState + 1); // Збільшити крок на 1
   };
 
   const handlePrevClick = () => {
-    setStep(prevState => prevState - 1);
+    setStep(prevState => prevState - 1); // Зменшити крок на 1
   };
 
   const handleSubmit = async values => {
-    const formData = new FormData();
+    // Обробник  форми
+    const formData = new FormData(); // Створення нового об'єкту FormData
+    // Додавання полів до об'єкту FormData
     formData.append('category', values.category);
     formData.append('title', values.title);
     formData.append('name', values.name);
@@ -46,13 +45,14 @@ const AddPetForm = () => {
     formData.append('price', values.price);
     formData.append('comments', values.comments);
 
-    formData.forEach((value, key) => console.log(key, ':', value));
+    formData.forEach((value, key) => console.log(key, ':', value)); // Виведення значень полів FormData в консоль
   };
 
   const getPageTitle = useCallback(() => {
+    // Отримання заголовку сторінки залежно від категорії
     const titles = {
       'your-pet': 'Add my pet',
-      sell: 'Add pet for sell',
+      'sell': 'Add pet for sell',
       'lost-found': 'Add to lost or found pet',
       'good-hands': 'Add to give a Pet for Adoption',
       '': 'Add Pet',
@@ -61,14 +61,16 @@ const AddPetForm = () => {
   }, [category]);
 
   useEffect(() => {
-    setTitle(getPageTitle());
+    setTitle(getPageTitle()); // Оновлення заголовку при зміні категорії
   }, [getPageTitle]);
+
   return (
     <div>
-      <h1 >{title}</h1>
-      <ul >
+      <h1>{title}</h1> {/* Відображення заголовку форми */}
+      <ul>
+        {/* Відображення списку кроків форми */}
         {steps.map((stepName, index) => (
-          <li key={index}  >
+          <li key={index}>
             <span>{stepName}</span>
           </li>
         ))}
@@ -76,17 +78,19 @@ const AddPetForm = () => {
       <Formik initialValues={INITIAL_STATE} onSubmit={handleSubmit}>
         {() => (
           <div>
-            {step === 0 && <ChooseOption setCategory={setCategory} />}
-            {step === 1 && <PersonalDetails category={category} />}
+            {/* Відображення поточного кроку форми залежно від значення змінної `step` */}
+            {step === 0 && <ChooseOption setCategory={setCategory} />} {/* Крок 1: Вибір опції */}
+            {step === 1 && <PersonalDetails category={category} />} {/* Крок 2: Особисті дані */}
             {step === 2 && (
               <MoreInfo
                 fileInput={fileInput}
                 setFileInput={setFileInput}
                 category={category}
               />
-            )}
-
-            <div >
+            )} {/* Крок 3: Додаткова інформація */}
+  
+            <div>
+              {/* Відображення кнопки "Next" для переходу до наступного кроку (якщо не останній крок) */}
               {step < 2 && (
                 <ButtonNext
                   type="button"
@@ -95,7 +99,8 @@ const AddPetForm = () => {
                   filled={true}
                 />
               )}
-
+  
+              {/* Відображення кнопки "Done" для відправки форми (якщо останній крок) */}
               {step === 2 && (
                 <ButtonNext
                   type="submit"
@@ -104,7 +109,8 @@ const AddPetForm = () => {
                   clickHandler={handleSubmit}
                 />
               )}
-
+  
+              {/* Відображення кнопки "Back" для переходу до попереднього кроку (якщо не перший крок) */}
               {step > 0 && (
                 <ButtonBack
                   type="button"
@@ -113,7 +119,8 @@ const AddPetForm = () => {
                   text="Back"
                 />
               )}
-
+  
+              {/* Відображення кнопки "Cancel" для скасування створення  (якщо перший крок) */}
               {step === 0 && (
                 <ButtonBack
                   type="button"
@@ -126,17 +133,7 @@ const AddPetForm = () => {
         )}
       </Formik>
     </div>
-  );
-};
+  )};
 
-export default AddPetForm;
-
-
-
-
-
-
-
-
-
+  export default AddPetForm;
 

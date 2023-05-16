@@ -1,9 +1,11 @@
 import css from './NoticesPage.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import NoticesCategoriesList from 'components/NoticesCategoriesList/NoticesCategoriesList';
 import NoticesSearch from 'components/NoticesSearch/NoticesSearch';
 // import NoticesFilters from 'components/NoticesFilters/NoticesFilters';
 import NoticesCategoriesNav from 'components/NoticesCategoriesNav/NoticesCategoriesNav';
+
 import url from './4.jpg';
 
 const initialState = [
@@ -92,6 +94,22 @@ const initialState = [
 const NoticesPage = () => {
   // eslint-disable-next-line no-unused-vars
   const [list, setList] = useState(initialState);
+
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (
+      pathname === '/notices/lost-found' ||
+      pathname === '/notices/for-free' ||
+      pathname === '/notices/favotire' ||
+      pathname === '/notices/own'
+    ) {
+    } else {
+      navigate('/notices/sell');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className={css.container}>
       <NoticesSearch />

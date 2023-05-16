@@ -2,23 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ErrorMessage, Field, Form } from 'formik';
 
-const PersonalDetails= ({ category }) => {
+const PersonalDetails = ({ category }) => {
   return (
     <div className="personal-form-wrapper">
       <Form>
+        {/* Перевірка, чи категорія не є "your-pet" */}
         {category !== 'your-pet' && (
-          <label htmlFor="title" className="add-form-label">
+          <label htmlFor="title" >
             Title of add:
             <Field placeholder="Type title" type="text" name="title" className="add-form-input" />
+            {/* Відображення помилки, якщо поле "title" має помилку */}
             <ErrorMessage name="title" component="div" />
           </label>
         )}
-        <label htmlFor="name" className="add-form-label">
+        <label htmlFor="name" >
           Name:
           <Field placeholder="Type name pet" type="text" name="name" className="add-form-input" />
+          {/* Відображення помилки, якщо поле "name" має помилку */}
           <ErrorMessage name="name" component="div" />
         </label>
-        <label htmlFor="birthday" className="add-form-label">
+        <label htmlFor="birthday" >
           Birthday:
           <Field
             placeholder="Type date of birth"
@@ -27,11 +30,13 @@ const PersonalDetails= ({ category }) => {
             data-pattern="**.**.****"
             className="add-form-input"
           />
+          {/* Відображення помилки, якщо поле "birthday" має помилку */}
           <ErrorMessage name="birthday" component="div" />
         </label>
         <label htmlFor="breed" className="add-form-label">
           Breed:
-          <Field placeholder="Type breed" type="text" name="breed" className="add-form-input" />
+          <Field placeholder="Type breed" type="text" name="breed" />
+          {/* Відображення помилки, якщо поле "breed" має помилку */}
           <ErrorMessage name="breed" component="div" />
         </label>
       </Form>
@@ -44,3 +49,4 @@ PersonalDetails.propTypes = {
 };
 
 export default PersonalDetails;
+
