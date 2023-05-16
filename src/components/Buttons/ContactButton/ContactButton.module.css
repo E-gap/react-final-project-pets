@@ -1,1 +1,31 @@
+.btn {
+  border: 2px solid var(--color-blue);
+  border-radius: 40px;
+  padding: 8px 32px;
+ 
+  
 
+  font-family: 'Manrope';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-blue);
+  background: #ffffff;
+ 
+}
+
+@media screen and (min-width: 768px) {
+  .btn {
+    margin-left: 24px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .btn {
+    margin-left: 0;
+  }
+}
