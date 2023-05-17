@@ -1,10 +1,11 @@
 import css from './NoticesPage.module.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import NoticesCategoriesList from 'components/NoticesCategoriesList/NoticesCategoriesList';
 import NoticesSearch from 'components/NoticesSearch/NoticesSearch';
 // import NoticesFilters from 'components/NoticesFilters/NoticesFilters';
 import NoticesCategoriesNav from 'components/NoticesCategoriesNav/NoticesCategoriesNav';
+
 import AddPetButton from 'components/Buttons/AddPetButton/AddPetButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllPets } from '../../redux/pets/petsOperations';
@@ -104,6 +105,7 @@ const NoticesPage = () => {
     const params = searchParams.get('query');
     return params ? params : '';
   });
+  const { current } = useRef(window.innerWidth);
 
   // eslint-disable-next-line no-unused-vars
   //const [list, setList] = useState(initialState);
@@ -113,6 +115,7 @@ const NoticesPage = () => {
   const { pathname } = useLocation();
 
   const navigate = useNavigate();
+  // const [query, setQuery] = useState('');
 
   useEffect(() => {
     if (
@@ -148,10 +151,33 @@ const NoticesPage = () => {
 
   return (
     <div className={css.container}>
-      <NoticesSearch search={submitSearch} />
+      <NoticesSearch
+        search={submitSearch}
+        title={'Find your favorite pet'}
+        query={query}
+        setQuery={setQuery}
+      />
       <div className={css.wrap}>
         <NoticesCategoriesNav />
-        <AddPetButton className={css.btnAdd} />
+        <AddPetButton
+          style={
+            current <= 767
+              ? {
+                  position: 'fixed',
+                  zIndex: 100,
+                  top: '81vh',
+                  right: '21px',
+                  borderRadius: '50%',
+                  width: '80px',
+                  height: '80px',
+                  flexDirection: 'column-reverse',
+
+                  lineHeight: '1.37',
+                  padding: 0,
+                }
+              : {}
+          }
+        />
       </div>
       {/* <NoticesFilters /> */}
       <NoticesCategoriesList items={pets} />

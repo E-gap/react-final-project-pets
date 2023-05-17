@@ -3,12 +3,12 @@ import { IoAddOutline } from 'react-icons/io5';
 import css from './AddPetButton.module.css';
 import { NavLink } from 'react-router-dom';
 
-const AddPetButton = ({ onClick, className }) => {
+const AddPetButton = ({ onClick, style }) => {
   return (
     <NavLink
       to="/add-pet"
-      className={className}
-      // className={css.btn}
+      style={style}
+      className={css.btn}
       type="button"
       onClick={onClick}
     >

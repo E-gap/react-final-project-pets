@@ -3,7 +3,7 @@ import axios from 'axios';
 import Notiflix from 'notiflix';
 
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: 'http://localhost:3001/api',
 });
 
 /* ((axios.defaults.baseURL = `http://localhost:3001`)); */
