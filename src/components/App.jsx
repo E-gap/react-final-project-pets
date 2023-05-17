@@ -10,6 +10,7 @@ const Register = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const Login = lazy(() => import('../pages/LoginPage/LoginPage'));
 const NewsPage = lazy(() => import('pages/NewsPage/NewsPage'));
 const NoticesPage = lazy(() => import('../pages/NoticesPage/NoticesPage'));
+const UserPage = lazy(() => import('../pages/UserPage/UserPage'));
 
 const NotFound = lazy(() => import('../pages/NotFound/NotFound'));
 const AddPetForm = lazy(() => import('./AddPetForm/AddPetForm'));
@@ -28,6 +29,7 @@ export const App = () => {
               <Route path="register" element={<Register />} />
               <Route path="login" element={<Login />} />
               <Route path="news" element={<NewsPage />} />
+              <Route path="user" element={<UserPage />} />
               <Route path="notices" element={<NoticesPage />}>
                 <Route path="sell" element={NoticesCategoriesList} />
                 <Route path="lost-found" element={NoticesCategoriesList} />
