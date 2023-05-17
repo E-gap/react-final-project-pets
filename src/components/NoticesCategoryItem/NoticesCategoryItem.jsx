@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import css from './NoticesCategoryItem.module.css';
 import LearnMore from 'components/Buttons/LearnMore/LearnMore';
 import getPetAge from './getPetAge';
@@ -21,13 +22,21 @@ const NoticesCategoryItem = ({
   title,
 }) => {
   const petAge = getPetAge(new Date(birthday.split('.').reverse().join('.')));
+  const { current } = useRef(window.innerWidth);
+
   return (
     <li className={css.item}>
       <div className={css.relativeContainer}>
         <img src={src} alt={category} className={css.img} />
         <div className={css.wrapOption}>
           <p className={css.textOption}>{category}</p>
-          <AddToFavorite className={css.btnFav} />
+          <AddToFavorite
+            style={
+              current <= 767 || current >= 1280
+                ? { position: 'absolute', top: 0, left: '230px' }
+                : { position: 'absolute', top: 0, left: '277px' }
+            }
+          />
         </div>
         <div className={css.container}>
           <div className={css.wrap}>
