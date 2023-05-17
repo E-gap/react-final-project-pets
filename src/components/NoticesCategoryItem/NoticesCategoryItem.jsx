@@ -11,6 +11,7 @@ import { GiMale } from 'react-icons/gi';
 import url from '../../images/default_pet.jpg';
 
 const NoticesCategoryItem = ({
+  id, 
   src = url,
   sex,
   favorite,
@@ -51,9 +52,7 @@ const NoticesCategoryItem = ({
       </div>
       <div className={css.wrapText}>
         <h3 className={css.title}>{title}</h3>
-
-        <LearnMore />
-
+        <LearnMore id={id} />      
         {/* <RemovePetButton /> */}
       </div>
     </li>

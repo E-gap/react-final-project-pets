@@ -3,6 +3,7 @@ import { IoPawOutline } from 'react-icons/io5';
 import css from './LearnMore.module.css';
 
 const LearnMore = ({
+  id,
   onClick,
   favorite = false,
   big = true,
@@ -10,6 +11,7 @@ const LearnMore = ({
 }) => {
   return (
     <button
+      id={id}
       className={
         favorite
           ? `${css.btn} ${css.btnFavorite} ${selector}`

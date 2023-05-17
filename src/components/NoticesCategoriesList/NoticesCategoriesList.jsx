@@ -12,6 +12,7 @@ const NoticesCategoriesList = ({ items, onClick }) => {
   const elements = items.map(item => (
     <NoticesCategoryItem
       key={item._id}
+      id={item._id}
       src={item.url}
       sex={item.sex}
       favorite={item.favorite}
