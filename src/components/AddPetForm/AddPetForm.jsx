@@ -9,7 +9,7 @@ import MoreInfo from '../../services/MoreInfo/MoreInfo';
 import PersonalDetails from '../../services/PersonalDetails/PersonalDetails';
 
 import { INITIAL_STATE } from '../../services/InitialState';
-import validationSchema from '../../services/validationSchema';
+// import validationSchema from '../../services/validationSchema';
 
 
 const AddPetForm = () => {
