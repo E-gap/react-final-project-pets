@@ -27,6 +27,25 @@ export const fetchAllPets = createAsyncThunk(
   }
 );
 
+export const fetchPetById = createAsyncThunk(
+  'pets/fetchPetById',
+  async function (id, { rejectWithValue }) {
+    try {
+      const response = await instance.get(`/notices/${id}`);
+      //console.log(response.data);
+      //console.log(response);
+
+      if (response.status !== 200) {
+        throw new Error('Server Error');
+      }
+
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 export const addPets = createAsyncThunk(
   'pets/addPets',
   async function (contact, { rejectWithValue, getState }) {

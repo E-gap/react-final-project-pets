@@ -1,11 +1,11 @@
 import css from './PetLoader.module.css';
-import loader from "./480.gif";
+import loader from './480.gif';
 
 const PetLoader = () => {
   return (
-    <div class={css.loaderContainer}>
-      <div class={css.loader}>
-        <img src={loader} alt="qwerty"  />
+    <div className={css.loaderContainer}>
+      <div className={css.loader}>
+        <img src={loader} alt="qwerty" />
       </div>
     </div>
   );

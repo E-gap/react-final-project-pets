@@ -7,6 +7,7 @@ import { GiFemale } from 'react-icons/gi';
 import { GiMale } from 'react-icons/gi';
 // import AddToFavorite from 'components/Buttons/AddToFavorite/AddToFavorite';
 const NoticesCategoryItem = ({
+  id,
   src,
   sex,
   favorite,
@@ -46,7 +47,7 @@ const NoticesCategoryItem = ({
       <div className={css.wrapText}>
         <h3 className={css.title}>{title}</h3>
 
-        <LearnMore />
+        <LearnMore id={id} />
       </div>
     </li>
   );
