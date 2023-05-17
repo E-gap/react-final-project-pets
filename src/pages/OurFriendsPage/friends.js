@@ -2,6 +2,7 @@ import logo from "./image 45.png";
 
 export const friends = [
   {
+    id: 1,
     logo: logo,
     name: "Whiskas",
     time: "day and night",
@@ -11,6 +12,7 @@ export const friends = [
     phone: "0–800–500–155",
     },
   {
+    id: 2,
     logo: logo,
     name: "Whiskas",
     time: "day and night",
@@ -20,6 +22,7 @@ export const friends = [
     phone: "0–800–500–155",
     },
   {
+    id: 3,
     logo: logo,
     name: "Whiskas",
     time: "day and night",
@@ -29,6 +32,7 @@ export const friends = [
     phone: "0–800–500–155",
     },
   {
+    id: 4,
     logo: logo,
     name: "Whiskas",
     time: "day and night",
@@ -38,6 +42,7 @@ export const friends = [
     phone: "0–800–500–155",
     },
   {
+    id: 5,
     logo: logo,
     name: "Whiskas",
     time: "day and night",
@@ -47,6 +52,7 @@ export const friends = [
     phone: "0–800–500–155",
     },
   {
+    id: 6,
     logo: logo,
     name: "Whiskas",
     time: "day and night",
@@ -56,6 +62,7 @@ export const friends = [
     phone: "0–800–500–155",
     },
   {
+    id: 7,
     logo: logo,
     name: "Whiskas",
     time: "day and night",
@@ -64,7 +71,8 @@ export const friends = [
     email: "whiskas@gmail.com",
     phone: "0–800–500–155",
   },
-   {
+  {
+    id: 8,
     logo: logo,
     name: "Whiskas",
     time: "day and night",
@@ -73,7 +81,8 @@ export const friends = [
     email: "whiskas@gmail.com",
     phone: "0–800–500–155",
   },
-    {
+  {
+    id: 9,
     logo: logo,
     name: "Whiskas",
     time: "day and night",

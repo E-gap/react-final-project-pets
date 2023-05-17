@@ -11,6 +11,7 @@
 
 .relativeContainer {
   position: relative;
+  z-index: 10;
 }
 .img {
   display: block;
@@ -19,6 +20,7 @@
 }
 .wrapOption {
   position: absolute;
+
   left: 0;
   top: 16px;
   width: 126px;
@@ -75,6 +77,34 @@
   font-weight: 700;
   line-height: 1.37;
 }
+.btnFav {
+  position: absolute;
+  top: 0;
+  left: 226px;
+
+  padding: 8px 5px 5px 5px;
+  width: 40px;
+  height: 40px;
+
+  font-family: 'Manrope';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-blue);
+  background: var(--color-light-blue);
+  border-radius: 40px;
+}
+.icon {
+  color: inherit;
+  width: 26px;
+  height: 22px;
+}
+
 @media screen and (min-width: 768px) {
   .item {
     width: 336px;
@@ -86,6 +116,9 @@
   .wrapText {
     margin: 20px 20px 24px;
   }
+  .btnFav {
+    left: 277px;
+  }
 }
 @media screen and (min-width: 1280px) {
   .item {
@@ -96,5 +129,8 @@
   }
   .item:nth-child(4n + 4) {
     margin-right: 0;
+  }
+  .btnFav {
+    left: 230px;
   }
 }

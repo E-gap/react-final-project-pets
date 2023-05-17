@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchAllPets, deletePets, addPets } from './petsOperations';
+import { fetchAllPets, addPets, fetchPetById } from './petsOperations';
 
 export const petsSlice = createSlice({
   name: 'pets',
   initialState: {
+    onePet: {},
     pets: [],
     isLoading: true,
     error: null,
@@ -23,13 +24,17 @@ export const petsSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-      .addCase(deletePets.rejected, (state, action) => {
+      .addCase(fetchPetById.pending, state => {
+        state.isLoading = true;
+        state.error = false;
+      })
+      .addCase(fetchPetById.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
-      .addCase(deletePets.fulfilled, (state, action) => {
+      .addCase(fetchPetById.fulfilled, (state, action) => {
         state.error = false;
-        state.pets = state.pets.filter(pet => pet.id !== action.payload);
+        state.onePet = action.payload;
       })
       .addCase(addPets.fulfilled, (state, action) => {
         state.error = false;

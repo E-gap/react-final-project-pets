@@ -3,7 +3,7 @@ import { friends } from "./friends"
 
 const OurFriendsPage = () => {
   const elements = friends.map(item => (
-    <li className={css.item}>
+    <li key={item.id} className={css.item}>
       <p className={css.itemTitle}>{item.name}</p>
       <div className={css.itemWrapper}>
         <img className={css.itemLogo} src={item.logo} alt="logo" />

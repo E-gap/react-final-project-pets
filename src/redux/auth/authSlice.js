@@ -4,7 +4,7 @@ import { register, login, logout, refresh } from './authOperations';
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    user: { name: null, email: null },
+    user: { email: null, password: null },
     token: null,
     isLogin: false,
     isRefreshing: false,
@@ -17,7 +17,6 @@ const authSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
-        state.isLogin = true;
         state.isRefreshing = false;
       })
       .addCase(register.rejected, state => {

@@ -3,16 +3,71 @@
   margin: 0 auto;
   width: 320px;
 }
+.wrap {
+  position: relative;
+}
+.btnAdd {
+  z-index: 100;
+  position: fixed;
+  top: 81vh;
+  right: 25px;
+
+  border-radius: 50%;
+  padding-bottom: 8px;
+  width: 80px;
+  height: 80px;
+
+  font-family: 'Manrope';
+  font-weight: 700;
+  /* font-size: 16px; */
+  font-size: 12px;
+  line-height: 1.37;
+  letter-spacing: 0.04em;
+
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-wight);
+  background: var(--color-blue);
+}
+.btnFavorite {
+  background-color: var(--color-blue);
+  color: var(--color-light-background);
+}
+.btnAdd:focus,
+.btnAdd:hover {
+  border-color: var(--color-blue-gradient);
+  background: var(--color-blue-gradient);
+  color: var(--color-light-background);
+}
 
 @media screen and (min-width: 768px) {
   .container {
     padding: 0 32px;
     width: 768px;
   }
+  .btnAdd {
+    position: absolute;
+    width: 129px;
+    height: 40px;
+    top: 3px;
+    right: 0;
+    z-index: 10000;
+
+    flex-direction: row;
+    border-radius: 40px;
+    padding: 0;
+    font-size: 16px;
+  }
 }
 @media screen and (min-width: 1280px) {
   .container {
     padding: 0 16px;
     width: 1280px;
+  }
+  .btnAdd {
+    margin-left: 0;
+    top: 3px;
   }
 }

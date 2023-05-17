@@ -5,98 +5,23 @@ import NoticesCategoriesList from 'components/NoticesCategoriesList/NoticesCateg
 import NoticesSearch from 'components/NoticesSearch/NoticesSearch';
 // import NoticesFilters from 'components/NoticesFilters/NoticesFilters';
 import NoticesCategoriesNav from 'components/NoticesCategoriesNav/NoticesCategoriesNav';
+import AddPetButton from 'components/Buttons/AddPetButton/AddPetButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllPets } from '../../redux/pets/petsOperations';
-import { selectPets } from '../../redux/selectors';
+import { fetchAllPets, fetchPetById } from '../../redux/pets/petsOperations';
+import { selectPets, selectOnePet } from '../../redux/selectors';
+
 //import { Notify } from 'notiflix/build/notiflix-notify-aio';
+//import axios from 'axios';
 
 //import url from './4.jpg';
+/* const instance = axios.create({
+  baseURL: process.env.REACT_APP_API_URL,
+}); */
 
-/* const initialState = [
-  {
-    id: 1,
-    option: 'sell',
-    region: 'Lviv',
-    years: '1',
-    sex: 'female',
-    title: 'Lorim.',
-    url: url,
-    favorite: false,
-  },
-  {
-    id: 2,
-    option: 'sell',
-    region: 'Lviv',
-    years: '2',
-    sex: 'male',
-    title: 'Lorim is a friendly and outgoing dog.',
-    url: url,
-    favorite: true,
-  },
-
-  {
-    id: 3,
-    option: 'lost',
-    region: 'Kiyv',
-    years: '2',
-    sex: 'male',
-    title: 'Lorim is a friendly dog.',
-    url: url,
-    favorite: true,
-  },
-  {
-    id: 4,
-    option: 'in good hand',
-    region: 'Odesa',
-    years: '3',
-    sex: 'female',
-    title: 'Lorim is a friendly dog.',
-    url: url,
-    favorite: false,
-  },
-  {
-    id: 5,
-    option: 'in good hand',
-    region: 'Kiyv',
-    years: '3',
-    sex: 'male',
-    title: 'Lorim is a friendly dog.',
-    url: url,
-    favorite: false,
-  },
-  {
-    id: 6,
-    option: 'lost',
-    region: 'Sumy',
-    years: '1',
-    sex: 'female',
-    title: 'Lorim is a friendly dog.',
-    url: url,
-    favorite: true,
-  },
-  {
-    id: 7,
-    option: 'sell',
-    region: 'Lviv',
-    years: '5',
-    sex: 'female',
-    title: 'Lorim is a friendly dog.',
-    url: url,
-    favorite: false,
-  },
-  {
-    id: 8,
-    option: 'sell',
-    region: 'Kiyv',
-    years: '3',
-    sex: 'male',
-    title: 'Lorim is a friendly dog.',
-    url: url,
-    favorite: false,
-  },
-]; */
 const NoticesPage = () => {
   const [pathFilter, setPathFilter] = useState('sell');
+  //const [onePet, setOnePet] = useState({});
+
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(() => {
     const params = searchParams.get('query');
@@ -107,6 +32,7 @@ const NoticesPage = () => {
   //const [list, setList] = useState(initialState);
   const dispatch = useDispatch();
   const pets = useSelector(selectPets);
+  const onePet = useSelector(selectOnePet);
 
   const { pathname } = useLocation();
 
@@ -144,13 +70,45 @@ const NoticesPage = () => {
     setSearchParams(event !== '' ? { query: event } : {});
   };
 
+  /* const fetchPetById = async id => {
+    try {
+      const response = await instance.get(`/notices/${id}`);
+      await setOnePet(response.data);
+      //console.log(onePet);
+      console.log(response);
+
+      if (response.status !== 200) {
+        throw new Error('Server Error');
+      }
+
+      return response.data;
+    } catch (error) {
+      console.log(error.message);
+    }
+  }; */
+
+  const handleLearnMore = e => {
+    if (e.target.parentNode.getAttribute('id') || e.target.getAttribute('id')) {
+      const idNotice =
+        e.target.getAttribute('id') || e.target.parentNode.getAttribute('id');
+      console.log(idNotice);
+      fetchPetById(idNotice);
+      dispatch(fetchPetById(idNotice));
+    }
+  };
+
+  console.log(onePet);
+
   return (
-    <div className={css.container}>
+    <div className={css.container} onClick={handleLearnMore}>
       <NoticesSearch search={submitSearch} />
-      <NoticesCategoriesNav />
+      <div className={css.wrap}>
+        <NoticesCategoriesNav />
+        <AddPetButton className={css.btnAdd} />
+      </div>
       {/* <NoticesFilters /> */}
       <NoticesCategoriesList items={pets} />
-      {/* <AddPetButton /> */}
+
       {/* <AddToFavorite /> */}
     </div>
   );
