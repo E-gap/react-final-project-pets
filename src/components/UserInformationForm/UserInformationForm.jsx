@@ -1,11 +1,11 @@
 import css from './UserInformationForm.module.css';
-import UserInformationFormInput from './UserInformationFormInput/UserInformationFormInput';
+import UserInformationFormInput from '../UserInformationFormInput/UserInformationFormInput';
 
 const UserInformationForm = ({className = ""}) => {
 
   return (
     <div className={`${css.container} ${className}`}>
-      <form action='' className={css.form}>
+      <form action='src/components/UserInformation/UserInformationForm' className={css.form}>
         <label className={css.label} htmlFor="name">Name:</label>
         <UserInformationFormInput id="name"/>
 

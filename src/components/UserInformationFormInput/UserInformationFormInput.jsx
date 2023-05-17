@@ -1,8 +1,7 @@
 import css from './UserInformationFormInput.module.css';
-import edit from '../../../../../images/UserPage/edit.svg';
+import edit from '../../images/UserPage/edit.svg';
 
 const UserInformationFormInput = ({id, value, onChange}) => {
-
   return (
     <div className={css.container}>
       <input type='text' className={css.input} id={id} value={value} onChange={onChange}/>

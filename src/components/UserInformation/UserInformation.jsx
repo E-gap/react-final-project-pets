@@ -1,7 +1,7 @@
 import css from './UserInformation.module.css';
-import camera from '../../../images/UserPage/camera.svg';
-import logout from '../../../images/UserPage/logout.svg';
-import UserInformationForm from './UserInformationForm/UserInformationForm';
+import camera from '../../images/UserPage/camera.svg';
+import logout from '../../images/UserPage/logout.svg';
+import UserInformationForm from '../UserInformationForm/UserInformationForm';
 
 const UserInformation = () => {
 

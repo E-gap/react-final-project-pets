@@ -1,5 +1,5 @@
 import css from './UserPage.module.css';
-import UserInformation from './UserInformation/UserInformation';
+import UserInformation from '../../components/UserInformation/UserInformation';
 
 const UserPage = () => {
   return (
