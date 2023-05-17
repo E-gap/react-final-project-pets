@@ -6,9 +6,9 @@ import { PublicRoute } from './PublicRoute/PublicRoute';
 import SharedLayout from './SharedLayout/SharedLayout';
 import NoticesCategoriesList from './NoticesCategoriesList/NoticesCategoriesList';
 
-
 const Register = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const Login = lazy(() => import('../pages/LoginPage/LoginPage'));
+const NewsPage = lazy(() => import('pages/NewsPage/NewsPage'));
 const NoticesPage = lazy(() => import('../pages/NoticesPage/NoticesPage'));
 
 const NotFound = lazy(() => import('../pages/NotFound/NotFound'));
@@ -39,7 +39,7 @@ export const App = () => {
             </Route>
             <Route element={<PrivateRoute />}>
               <Route path="user" element={<User />} />
-            </Route>
+            </Route>          
           </Route>
         </Routes>
       </Suspense>

@@ -1,11 +1,27 @@
-//import css from './Nav.module.css';
+import PropTypes from 'prop-types';
+import { IoHeartOutline, IoHeart } from 'react-icons/io5';
+import css from './AddToFavorite.module.css';
 
-const Nav = () => {
+const AddToFavorite = ({ onClick, favorite = false, selector = '' }) => {
   return (
-    <div>
-      <p>Nav</p>
-    </div>
+    <button
+      className={
+        favorite
+          ? `${css.btn} ${css.btnFavorite} ${selector}`
+          : `${css.btn} ${selector}`
+      }
+      type="button"
+      onClick={onClick}
+    >
+      {!favorite && <IoHeartOutline className={css.icon} />}
+      {favorite && <IoHeart className={css.icon} />}
+    </button>
   );
 };
+export default AddToFavorite;
 
-export default Nav;
+AddToFavorite.propTypes = {
+  favorite: PropTypes.bool,
+  onClick: PropTypes.func.isRequired,
+  selector: PropTypes.string,
+};
