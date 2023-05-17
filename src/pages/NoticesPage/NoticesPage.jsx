@@ -15,13 +15,9 @@ import { selectPets, selectOnePet } from '../../redux/selectors';
 //import axios from 'axios';
 
 //import url from './4.jpg';
-/* const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
-}); */
 
 const NoticesPage = () => {
   const [pathFilter, setPathFilter] = useState('sell');
-  //const [onePet, setOnePet] = useState({});
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(() => {
@@ -39,7 +35,6 @@ const NoticesPage = () => {
   const { pathname } = useLocation();
 
   const navigate = useNavigate();
-  // const [query, setQuery] = useState('');
 
   useEffect(() => {
     if (
@@ -72,23 +67,6 @@ const NoticesPage = () => {
     setQuery(event);
     setSearchParams(event !== '' ? { query: event } : {});
   };
-
-  /* const fetchPetById = async id => {
-    try {
-      const response = await instance.get(`/notices/${id}`);
-      await setOnePet(response.data);
-      //console.log(onePet);
-      console.log(response);
-
-      if (response.status !== 200) {
-        throw new Error('Server Error');
-      }
-
-      return response.data;
-    } catch (error) {
-      console.log(error.message);
-    }
-  }; */
 
   const handleLearnMore = e => {
     if (e.target.parentNode.getAttribute('id') || e.target.getAttribute('id')) {
