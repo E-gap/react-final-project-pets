@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/982.eabf141c.chunk.js","mappings":"2JAUA,UARiB,WACf,OACE,0BACE,qCAGL,C","sources":["pages/UserPage/UserPage.jsx"],"sourcesContent":["//import css from './UserPage.module.css';\n\nconst UserPage = () => {\n  return (\n    <div>\n      <p>UserPage</p>\n    </div>\n  );\n};\n\nexport default UserPage;\n"],"names":[],"sourceRoot":""}
