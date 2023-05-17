@@ -1,13 +1,20 @@
 import PropTypes from 'prop-types';
 import { IoAddOutline } from 'react-icons/io5';
 import css from './AddPetButton.module.css';
+import { NavLink } from 'react-router-dom';
 
-const AddPetButton = ({ onClick }) => {
+const AddPetButton = ({ onClick, className }) => {
   return (
-    <button className={css.btn} type="button" onClick={onClick}>
+    <NavLink
+      to="/add-pet"
+      className={className}
+      // className={css.btn}
+      type="button"
+      onClick={onClick}
+    >
       <p className={css.title}>Add Pet</p>
       {<IoAddOutline className={css.icon} />}
-    </button>
+    </NavLink>
   );
 };
 export default AddPetButton;
