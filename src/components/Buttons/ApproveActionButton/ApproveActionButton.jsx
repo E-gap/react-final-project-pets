@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { IoTrashOutline } from 'react-icons/io5';
-import css from './ApproveActiontButton.module.css';
+import css from './ApproveActionButton.module.css';
 
-const ApproveActiontButton = ({
+const ApproveActionButton = ({
   onClick,
   favorite = true,
   big = true,
@@ -24,8 +24,8 @@ const ApproveActiontButton = ({
     </button>
   );
 };
-export default ApproveActiontButton;
+export default ApproveActionButton;
 
-ApproveActiontButton.propTypes = {
+ApproveActionButton.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
