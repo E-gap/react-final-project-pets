@@ -1,0 +1,17 @@
+.container{
+}
+
+.form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 16px;
+
+  align-items: baseline;
+}
+
+.label {
+  font-family: 'Manrope';
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.38;
+}

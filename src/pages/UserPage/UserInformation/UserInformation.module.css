@@ -1,0 +1,49 @@
+.container {
+  background: #FFFFFF;
+  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
+  border-radius: 40px;
+  padding: 20px 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photoContainer {
+  border-radius: 40px;
+  overflow: hidden;
+
+  margin-bottom: 14px;
+}
+
+.photo {
+  object-fit: cover;
+}
+
+.editPhotoButton {
+  font-family: 'Manrope';
+  font-size: 12px;
+  line-height: 1.83;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 10px;
+  margin-bottom: 24px;
+}
+
+.form {
+  margin-bottom: 20px;
+}
+
+.logoutButton {
+  font-family: 'Manrope';
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.37;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-right: 10px;
+  color: #888888;
+  align-self: flex-start;
+}

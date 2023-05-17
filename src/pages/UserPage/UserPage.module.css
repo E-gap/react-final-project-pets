@@ -1,1 +1,17 @@
+.container {
+  display: flex;
+  gap: 32px;
+}
 
+.tabContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tabsTitle {
+  font-family: 'Manrope';
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 1.34;
+}
