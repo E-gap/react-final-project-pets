@@ -11,11 +11,9 @@ const Login = lazy(() => import('../pages/LoginPage/LoginPage'));
 const NewsPage = lazy(() => import('pages/NewsPage/NewsPage'));
 const NoticesPage = lazy(() => import('../pages/NoticesPage/NoticesPage'));
 const UserPage = lazy(() => import('../pages/UserPage/UserPage'));
-
 const NotFound = lazy(() => import('../pages/NotFound/NotFound'));
 const AddPetForm = lazy(() => import('./AddPetForm/AddPetForm'));
 const OurFriends = lazy(() => import('../pages/OurFriendsPage/OurFriendsPage'));
-const User = lazy(() => import('../pages/UserPage/UserPage'));
 
 export const App = () => {
   return (
@@ -29,7 +27,7 @@ export const App = () => {
               <Route path="register" element={<Register />} />
               <Route path="login" element={<Login />} />
               <Route path="news" element={<NewsPage />} />
-              <Route path="user" element={<UserPage />} />
+              {/* <Route path="user" element={<UserPage />} /> */}
               <Route path="notices" element={<NoticesPage />}>
                 <Route path="sell" element={NoticesCategoriesList} />
                 <Route path="lost-found" element={NoticesCategoriesList} />
@@ -41,7 +39,7 @@ export const App = () => {
               <Route path="*" element={<NotFound />} />
             </Route>
             <Route element={<PrivateRoute />}>
-              <Route path="user" element={<User />} />
+              <Route path="user" element={<UserPage />} />
             </Route>
           </Route>
         </Routes>
