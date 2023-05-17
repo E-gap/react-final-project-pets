@@ -14,8 +14,9 @@ export const fetchAllPets = createAsyncThunk(
     try {
       const response = await instance.get('/notices', queryParams);
       console.log(response.data);
+      console.log(response);
 
-      if (response.status !== '200') {
+      if (response.status !== 200) {
         throw new Error('Server Error');
       }
 
