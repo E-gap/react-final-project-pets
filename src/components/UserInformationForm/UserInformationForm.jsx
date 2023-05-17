@@ -1,5 +1,6 @@
 import css from './UserInformationForm.module.css';
 import UserInformationFormInput from '../UserInformationFormInput/UserInformationFormInput';
+import PropTypes from 'prop-types';
 
 const UserInformationForm = ({className = ""}) => {
 
@@ -27,6 +28,11 @@ const UserInformationForm = ({className = ""}) => {
     </div>
   );
 };
+
+UserInformationForm.propTypes = {
+  className: PropTypes.string,
+}
+
 
 export default UserInformationForm;
 
