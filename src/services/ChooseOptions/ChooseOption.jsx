@@ -1,72 +1,76 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Field, useFormikContext } from 'formik';
 import PropTypes from 'prop-types';
 
-function ChooseForm(props) {
+const ChooseOption = () => {
+  const { values, setFieldValue } = useFormikContext();
 
-  const [category, setCategory] = useState('');
-
-  // Функція для обробки події зміни вибраної радіокнопки
-  const handleCategoryChange = (event) => {
-    // Оновлення стану 'category'
-    setCategory(event.target.value);
-    // Виклик функції 'setCategory', яка була передана через пропси, з вибраним значенням
-    props.setCategory(event.target.value);
+  const handleCategoryChange = event => {
+    const category = event.target.value;
+    setFieldValue('category', category);
   };
 
   return (
     <div>
       {/* Радіокнопка для категорії "Ваш питомець" */}
-      <input
-        type="radio"
-        name="category"
-        value="your-pet"
-        id="your-pet"
-        checked={category === 'your-pet'}
-        onChange={handleCategoryChange}
-      />
-      <label htmlFor="your-pet">Your pet</label>
+      <label htmlFor="your-pet">
+        <Field
+          type="radio"
+          name="category"
+          value="your-pet"
+          id="your-pet"
+          checked={values.category === 'your-pet'}
+          onChange={handleCategoryChange}
+        />
+        Your pet
+      </label>
 
       {/* Радіокнопка для категорії "Продати" */}
-      <input
-        type="radio"
-        name="category"
-        value="sell"
-        id="sell"
-        checked={category === 'sell'}
-        onChange={handleCategoryChange}
-      />
-      <label htmlFor="sell">Sell</label>
+      <label htmlFor="sell">
+        <Field
+          type="radio"
+          name="category"
+          value="sell"
+          id="sell"
+          checked={values.category === 'sell'}
+          onChange={handleCategoryChange}
+        />
+        Sell
+      </label>
 
       {/* Радіокнопка для категорії "Загублено/знайдено" */}
-      <input
-        type="radio"
-        name="category"
-        value="lost-found"
-        id="lost-found"
-        checked={category === 'lost-found'}
-        onChange={handleCategoryChange}
-      />
-      <label htmlFor="lost-found">Lost/found</label>
+      <label htmlFor="lost-found">
+        <Field
+          type="radio"
+          name="category"
+          value="lost-found"
+          id="lost-found"
+          checked={values.category === 'lost-found'}
+          onChange={handleCategoryChange}
+        />
+        Lost/found
+      </label>
 
       {/* Радіокнопка для категорії "На добрі руки" */}
-      <input
-        type="radio"
-        name="category"
-        value="good-hands"
-        id="good-hands"
-        checked={category === 'good-hands'}
-        onChange={handleCategoryChange}
-      />
-      <label htmlFor="good-hands">In good hands</label>
+      <label htmlFor="good-hands">
+        <Field
+          type="radio"
+          name="category"
+          value="good-hands"
+          id="good-hands"
+          checked={values.category === 'good-hands'}
+          onChange={handleCategoryChange}
+        />
+        In good hands
+      </label>
     </div>
   );
 };
 
-
-ChooseForm.propTypes = {
-  setCategory: PropTypes.func.isRequired,
+ChooseOption.propTypes = {
+  type: PropTypes.string,
 };
+export default ChooseOption;
 
-export default ChooseForm;
 
 
