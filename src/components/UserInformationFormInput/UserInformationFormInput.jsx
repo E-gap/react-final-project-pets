@@ -1,7 +1,6 @@
 import css from './UserInformationFormInput.module.css';
 import edit from '../../images/UserPage/edit.svg';
 import PropTypes from 'prop-types';
-import UserInformationForm from '../UserInformationForm/UserInformationForm';
 
 const UserInformationFormInput = ({id, value = "", onChange}) => {
   return (
@@ -12,7 +11,7 @@ const UserInformationFormInput = ({id, value = "", onChange}) => {
   );
 };
 
-UserInformationForm.propTypes = {
+UserInformationFormInput.propTypes = {
   id: PropTypes.string.isRequired,
   value: PropTypes.string,
   onChange: PropTypes.func,
