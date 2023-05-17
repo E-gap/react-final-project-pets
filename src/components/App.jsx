@@ -27,6 +27,7 @@ export const App = () => {
               <Route path="friends" element={<OurFriends />} />
               <Route path="register" element={<Register />} />
               <Route path="login" element={<Login />} />
+              <Route path="news" element={<NewsPage />} />
               <Route path="notices" element={<NoticesPage />}>
                 <Route path="sell" element={NoticesCategoriesList} />
                 <Route path="lost-found" element={NoticesCategoriesList} />
@@ -39,7 +40,7 @@ export const App = () => {
             </Route>
             <Route element={<PrivateRoute />}>
               <Route path="user" element={<User />} />
-            </Route>          
+            </Route>
           </Route>
         </Routes>
       </Suspense>
