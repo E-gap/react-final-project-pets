@@ -5,9 +5,11 @@ import NoticesCategoriesList from 'components/NoticesCategoriesList/NoticesCateg
 import NoticesSearch from 'components/NoticesSearch/NoticesSearch';
 // import NoticesFilters from 'components/NoticesFilters/NoticesFilters';
 import NoticesCategoriesNav from 'components/NoticesCategoriesNav/NoticesCategoriesNav';
+import AddPetButton from 'components/Buttons/AddPetButton/AddPetButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllPets, fetchPetById } from '../../redux/pets/petsOperations';
 import { selectPets, selectOnePet } from '../../redux/selectors';
+
 //import { Notify } from 'notiflix/build/notiflix-notify-aio';
 //import axios from 'axios';
 
@@ -100,10 +102,13 @@ const NoticesPage = () => {
   return (
     <div className={css.container} onClick={handleLearnMore}>
       <NoticesSearch search={submitSearch} />
-      <NoticesCategoriesNav />
+      <div className={css.wrap}>
+        <NoticesCategoriesNav />
+        <AddPetButton className={css.btnAdd} />
+      </div>
       {/* <NoticesFilters /> */}
       <NoticesCategoriesList items={pets} />
-      {/* <AddPetButton /> */}
+
       {/* <AddToFavorite /> */}
     </div>
   );

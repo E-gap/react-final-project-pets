@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 // import { useLocation } from 'react-router-dom';
 import NoticesCategoryItem from 'components/NoticesCategoryItem/NoticesCategoryItem';
 
-const NoticesCategoriesList = ({ items }) => {
+const NoticesCategoriesList = ({ items, onClick }) => {
   // const { pathname } = useLocation();
 
   /* const pathnameArr = pathname.split('/');
@@ -16,9 +16,9 @@ const NoticesCategoriesList = ({ items }) => {
       src={item.url}
       sex={item.sex}
       favorite={item.favorite}
-      region={item.region}
-      option={item.option}
-      years={item.years}
+      location={item.location}
+      category={item.category}
+      birthday={item.birthday}
       title={item.title}
     />
   ));
