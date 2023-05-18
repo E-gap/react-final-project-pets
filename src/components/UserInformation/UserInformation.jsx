@@ -33,7 +33,7 @@ const UserInformation = () => {
         Edit photo
       </button>
         <UserInformationForm className={css.form} />
-<Logout />
+        <Logout />
         
       </div>
 
