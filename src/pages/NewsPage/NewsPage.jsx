@@ -19,9 +19,9 @@ const NewsPage = () => {
   const getNews = async query => {
     try {
       const response = await instance.get(
-        query ? `/news?query=${query}` : `/news`
+        query ? `/news?title=${query}` : `/news`
       );
-      /* return setNews(response.data); */
+
       if (response.status !== 200) {
         throw new Error('Server Error');
       } else if (response.data.length === 0) {
