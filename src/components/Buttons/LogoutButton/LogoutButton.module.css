@@ -1,0 +1,12 @@
+.logoutButton {
+  font-family: 'Manrope';
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.37;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-right: 10px;
+  color: #888888;
+  align-self: flex-start;
+}

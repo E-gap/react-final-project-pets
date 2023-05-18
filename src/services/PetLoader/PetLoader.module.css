@@ -7,3 +7,10 @@
     margin-top: 40px;
     margin-left: 25px;
 }
+
+@media screen and (max-width: 1280px) {
+  .loaderContainer {
+    display: none;
+}
+  
+}
