@@ -20,5 +20,5 @@ const AddPetButton = ({ onClick, style }) => {
 export default AddPetButton;
 
 AddPetButton.propTypes = {
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
 };

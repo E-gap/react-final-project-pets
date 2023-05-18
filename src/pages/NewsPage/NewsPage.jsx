@@ -16,9 +16,11 @@ const NewsPage = () => {
 
   console.log(query);
 
-  const getNews = async () => {
+  const getNews = async query => {
     try {
-      const response = await instance.get('/news');
+      const response = await instance.get(
+        query ? `/news?query=${query}` : `/news`
+      );
       /* return setNews(response.data); */
       if (response.status !== 200) {
         throw new Error('Server Error');
@@ -34,8 +36,8 @@ const NewsPage = () => {
   };
 
   useEffect(() => {
-    getNews();
-  }, []);
+    getNews(query);
+  }, [query]);
   const items = news
     .slice(0, 6)
     .map(item => <NewsItem key={item._id} topic={item} />);
