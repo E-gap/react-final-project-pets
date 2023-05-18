@@ -19,20 +19,22 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className={css.header + ' container'}>
-      <Logo />
-      {current >= 1280 && <Navigation />}
-      {current >= 768 && !isAuth && <AuthMenu />}
-      {isAuth && !menuOpen && (
-        <UserNav displayName={current >= 768 ? true : false} />
-      )}
-      <BurgerMenuBtn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-      <div
-        className={menuOpen ? `${css.mobileMenu} ${css.show}` : css.mobileMenu}
-      >
-        {!isAuth && current <= 767 && <AuthMenu />}
-        {isAuth && current <= 767 && <UserNav margins={true} />}
-        <Navigation />
+    <header className={css.header}>
+      <div className='container header_container'>
+        <Logo />
+          {current >= 1280 && <Navigation />}
+          {current >= 768 && !isAuth && <AuthMenu />}
+          {isAuth && !menuOpen && (
+            <UserNav displayName={current >= 768 ? true : false} />
+          )}
+          <BurgerMenuBtn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+          <div
+            className={menuOpen ? `${css.mobileMenu} ${css.show}` : css.mobileMenu}
+          >
+            {!isAuth && current <= 767 && <AuthMenu />}
+            {isAuth && current <= 767 && <UserNav margins={true} />}
+            <Navigation />
+          </div>
       </div>
     </header>
   );
