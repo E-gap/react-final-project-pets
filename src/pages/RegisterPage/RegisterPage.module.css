@@ -2,7 +2,7 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   background-image: url("../../../start/bg/bg-desctop@2x.png");
+   background-image: url("../../images/bg/bg-desctop-min.png");
    margin-top: 44px;
 }
 .container {
