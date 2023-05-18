@@ -8,26 +8,38 @@ import css from './ModalNotice.module.css';
 
 const modalRoot = document.querySelector('#notice-modal-root');
 
-const ModalNotice = () => {
-  const [modal, setModal] = useState(false);
+const ModalNotice = ({
+  closeModal,
+  title,
+  comments,
+  price,
+  category,
+  breed,
+  name,
+  location,
+  birthday,
+  sex,
+  src,
+}) => {
+  // const [modal, setModal] = useState(false);
 
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
 
-  const toggleModal = () => {
-    setModal(!modal);
-  };
+  // const toggleModal = () => {
+  //   setModal(!modal);
+  // };
 
-  if (modal) {
-    document.body.classList.add('active-modal');
-  } else {
-    document.body.classList.remove('active-modal');
-  }
+  // if (modal) {
+  //   document.body.classList.add('active-modal');
+  // } else {
+  //   document.body.classList.remove('active-modal');
+  // }
   // close on Escape
   useEffect(() => {
     function handleKeyDown(event) {
       if (event.key === 'Escape') {
-        setModal(false);
+        closeModal();
       }
     }
 
@@ -35,6 +47,7 @@ const ModalNotice = () => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // phone, Email :
@@ -53,13 +66,13 @@ const ModalNotice = () => {
       });
   }, []);
 
-  const handlePhoneChange = e => {
-    setPhone(e.target.value);
-  };
+  // const handlePhoneChange = e => {
+  //   setPhone(e.target.value);
+  // };
 
-  const handleEmailChange = e => {
-    setEmail(e.target.value);
-  };
+  // const handleEmailChange = e => {
+  //   setEmail(e.target.value);
+  // };
 
   const handlePhoneClick = () => {
     // Perform phone contact logic
@@ -146,36 +159,36 @@ const ModalNotice = () => {
     // </>
     createPortal(
       <div className="modal">
-        <div onClick={toggleModal} className={css.overlay}></div>
+        <div onClick={closeModal} className={css.overlay}></div>
         <div className={css.content}>
           <div className={css.imgWrap}>
-            <img src="" alt="" className={css.image} />
+            <img src={src} alt="" className={css.image} />
             <div className={css.optionContainer}>
-              <p className={css.optionText}>option back</p>
+              <p className={css.optionText}>{category}</p>
             </div>
           </div>
           <div className={css.contentWrap}>
-            <h2 className={css.title}>Title from BACKEND</h2>
+            <h2 className={css.title}>{title}</h2>
             <ul>
               <li className={css.item}>
                 <p className={css.itemTitle}>Name:</p>
-                <p className={css.description}>back</p>
+                <p className={css.description}>{name}</p>
               </li>
               <li className={css.item}>
                 <p className={css.itemTitle}>Birthday:</p>
-                <p className={css.description}>back</p>
+                <p className={css.description}>{birthday}</p>
               </li>
               <li className={css.item}>
                 <p className={css.itemTitle}>Breed:</p>
-                <p className={css.description}>back</p>
+                <p className={css.description}>{breed}</p>
               </li>
               <li className={css.item}>
                 <p className={css.itemTitle}>Place:</p>
-                <p className={css.description}>back</p>
+                <p className={css.description}>{location}</p>
               </li>
               <li className={css.item}>
                 <p className={css.itemTitle}>The sex:</p>
-                <p className={css.description}>back</p>
+                <p className={css.description}>{sex}</p>
               </li>
               <li className={css.item}>
                 <p className={css.itemTitle}>Email:</p>
@@ -195,7 +208,7 @@ const ModalNotice = () => {
               </li>
               <li className={css.item}>
                 <p className={css.itemTitle}>Comments:</p>
-                <p className={css.description}>back</p>
+                <p className={css.description}>{comments}</p>
               </li>
             </ul>
             <div className={css.wrap}>
@@ -203,7 +216,7 @@ const ModalNotice = () => {
               <AddToFavorite />
             </div>
           </div>
-          <button className={css.closeBtn} onClick={toggleModal}>
+          <button className={css.closeBtn} onClick={closeModal}>
             <AiOutlineClose className={css.closeIcon} />
           </button>
         </div>

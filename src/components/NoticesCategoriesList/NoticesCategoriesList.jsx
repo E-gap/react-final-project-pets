@@ -20,6 +20,10 @@ const NoticesCategoriesList = ({ items, onClick }) => {
       category={item.category}
       birthday={item.birthday}
       title={item.title}
+      price={item.price}
+      comments={item.comments}
+      breed={item.breed}
+      name={item.name}
     />
   ));
   return <ul className={css.list}>{elements}</ul>;
