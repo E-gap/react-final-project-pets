@@ -1,0 +1,88 @@
+.container {
+  background: #FFFFFF;
+  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
+  border-radius: 40px;
+  padding: 20px;
+
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+
+  position: relative;
+}
+
+.petsPhoto {
+  width: 160px;
+  height: 160px;
+  border-radius: 40px;
+  object-fit: cover;
+}
+
+
+.petInformationList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.petInformationFirstListItem {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.informationText {
+  font-family: 'Manrope';
+  font-size: 16px;
+  line-height: 1.38;
+}
+
+.informationTextLabel {
+  font-weight: 600;
+}
+
+.deleteButton {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1279px) {
+  .container {
+    gap: 20px;
+  }
+
+  .petsPhoto {
+    width: 128px;
+    height: 128px;
+    border-radius: 20px;
+  }
+
+  .informationText {
+    font-size: 14px;
+    line-height: 1.57;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  .petsPhoto {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .petsPhoto {
+    width: 240px;
+    height: 240px;
+  }
+
+  .petInformationList {
+    gap: 12px;
+  }
+}

@@ -7,12 +7,18 @@
 
 .input {
   padding: 4px 48px 4px 12px;
-  height: 40px;
+  height: 32px;
   outline: none;
 
   font-family: 'Manrope';
   font-size: 16px;
   line-height: 1.37;
+}
+
+@media screen and (max-width: 767px) {
+  .input {
+    height: 28px;
+  }
 }
 
 .editIcon {
