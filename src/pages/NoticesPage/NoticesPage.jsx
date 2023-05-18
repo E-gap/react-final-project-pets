@@ -87,41 +87,44 @@ const NoticesPage = () => {
   console.log(onePet);
 
   return (
-    <div className={css.container} onClick={handleLearnMore}>
-      <NoticesSearch
-        search={submitSearch}
-        title={'Find your favorite pet'}
-        /* query={query} */
-        /* setQuery={setQuery} */
-      />
+    <>
+      <section className={css.section}>
+        <div className={css.container} onClick={handleLearnMore}>
+          <NoticesSearch
+            search={submitSearch}
+            title={'Find your favorite pet'}
+            /* query={query} */
+            /* setQuery={setQuery} */
+          />
 
-      <div className={css.wrap}>
-        <NoticesCategoriesNav />
-        <AddPetButton
-          style={
-            current <= 767
-              ? {
-                  position: 'fixed',
-                  zIndex: 100,
-                  top: '81vh',
-                  right: '21px',
-                  borderRadius: '50%',
-                  width: '80px',
-                  height: '80px',
-                  flexDirection: 'column-reverse',
+          <div className={css.wrap}>
+            <NoticesCategoriesNav />
+            <AddPetButton
+              style={
+                current <= 767
+                  ? {
+                      position: 'fixed',
+                      zIndex: 100,
+                      top: '81vh',
+                      right: '21px',
+                      borderRadius: '50%',
+                      width: '80px',
+                      height: '80px',
+                      flexDirection: 'column-reverse',
 
-                  lineHeight: '1.37',
-                  padding: 0,
-                }
-              : {}
-          }
-        />
-      </div>
-      {/* <NoticesFilters /> */}
-      <NoticesCategoriesList items={pets} />
+                      lineHeight: '1.37',
+                      padding: 0,
+                    }
+                  : {}
+              }
+            />
+          </div>
 
-      {/* <AddToFavorite /> */}
-    </div>
+          {/* <NoticesFilters /> */}
+          <NoticesCategoriesList items={pets} />
+        </div>
+      </section>
+    </>
   );
 };
 

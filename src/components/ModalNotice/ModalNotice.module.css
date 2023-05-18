@@ -21,7 +21,8 @@ p {
   padding: 0;
 }
 
-.modal, .overlay {
+.modal,
+.overlay {
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -29,6 +30,7 @@ p {
   right: 0;
   bottom: 0;
   position: fixed;
+  z-index: 1000;
 }
 
 .overlay {
@@ -49,16 +51,17 @@ p {
   /* padding: 0 12px 16px 12px; */
   background-color: #ffffff;
   border-radius: 20px;
+  z-index: 1000;
 
-@media screen and (max-width: 767px){
-  flex-direction: column;
-}
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+  }
 
-@media screen and (min-width: 768px){
-  width: 681px;
-  height: 540px;
-  padding: 0;
-  border-radius: 40px;
+  @media screen and (min-width: 768px) {
+    width: 681px;
+    height: 540px;
+    padding: 0;
+    border-radius: 40px;
   }
 }
 
@@ -66,7 +69,6 @@ p {
   display: flex;
   justify-content: space-between;
   padding: 0;
-  
 }
 
 .item:not(:last-child) {
@@ -78,45 +80,43 @@ p {
   font-weight: 600;
   font-size: 12px;
   line-height: 1.33;
-  
 
-@media screen and (min-width: 768px){
-  font-size: 16px;
-  line-height: 1.36;
-}
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.36;
+  }
 }
 
 .description {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
-  
 
-@media screen and (min-width: 768px){
-  font-size: 16px;
-  line-height: 1.36;
-}
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.36;
+  }
 }
 
 .imgWrap {
   background-color: transparent;
 
-@media screen and (min-width: 768px){
-  position: relative;
-  border-radius: 40px;
-}
+  @media screen and (min-width: 768px) {
+    position: relative;
+    border-radius: 40px;
+  }
 }
 
-.contentWrap{
+.contentWrap {
   margin-top: 12px;
   margin-left: 12px;
   max-width: 256px;
 
-@media screen and (min-width: 768px){
-  position: absolute;
-  margin-top: 20px;
-  margin-left: 318px;
-}
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 318px;
+  }
 }
 
 .avatar {
@@ -129,12 +129,12 @@ p {
   background-color: rgb(108, 127, 175);
   border-radius: 0px 0px 40px 40px;
 
-@media screen and (min-width: 768px){
-  margin-top: 32px;
-  margin-left: 32px;
-  width: 262px;
-  height: 298px;
-  }   
+  @media screen and (min-width: 768px) {
+    margin-top: 32px;
+    margin-left: 32px;
+    width: 262px;
+    height: 298px;
+  }
 }
 
 .optionText {
@@ -153,9 +153,9 @@ p {
   background-color: #cce4fb;
   border-radius: 0px 16px 16px 0px;
 
-@media screen and (min-width: 768px) {
-  top: 48px;
-  left: 32px;
+  @media screen and (min-width: 768px) {
+    top: 48px;
+    left: 32px;
   }
 }
 
@@ -166,13 +166,11 @@ p {
   letter-spacing: -0.01em;
   padding: 0;
 
-@media screen and (min-width: 768px) {
-  font-size: 28px;
-  line-height: 1.35;
-  width: 321px;
-
+  @media screen and (min-width: 768px) {
+    font-size: 28px;
+    line-height: 1.35;
+    width: 321px;
   }
-
 }
 
 .wrap {
@@ -181,14 +179,14 @@ p {
   margin-top: 682px;
   margin-bottom: 24px;
 
-@media screen and (max-width: 767px) {
-  flex-direction: column;
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
   }
-@media screen and (min-width: 768px) {
-  flex-wrap: wrap;
-  margin-top: 476px;
-  margin-bottom: 24px;
-  margin-left: 375px;
+  @media screen and (min-width: 768px) {
+    flex-wrap: wrap;
+    margin-top: 476px;
+    margin-bottom: 24px;
+    margin-left: 375px;
   }
 }
 
@@ -197,7 +195,7 @@ p {
   justify-content: center;
   align-items: center;
   margin-left: 15px;
-  margin-bottom: 8px ;
+  margin-bottom: 8px;
   padding: 8px 20px;
 
   width: 256px;
@@ -210,24 +208,23 @@ p {
   line-height: 1.37;
   letter-spacing: 0.04em;
 
-  background-color: #FEF9F9;
-  border: 2px solid #54ADFF;
+  background-color: #fef9f9;
+  border: 2px solid #54adff;
   border-radius: 40px;
-  color: #54ADFF;
-@media screen and (min-width:768px){
-  width: 129px;
-  
-}
+  color: #54adff;
+  @media screen and (min-width: 768px) {
+    width: 129px;
+  }
 }
 
 .textWrap {
   margin-left: 12px;
   @media screen and (min-width: 768px) {
-  position: absolute;
-  margin-top: 340px;
-  margin-left: 32px;
-  display: flex;
-  width: fit-content;
+    position: absolute;
+    margin-top: 340px;
+    margin-left: 32px;
+    display: flex;
+    width: fit-content;
   }
 }
 
@@ -240,12 +237,11 @@ p {
   letter-spacing: 0.04em;
   color: #000000;
 
-@media screen and (min-width: 768px){
-  font-size: 16px;
-  line-height: 1.5;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.5;
+  }
 }
-}
-
 
 .closeBtn {
   position: absolute;
@@ -257,19 +253,18 @@ p {
 }
 .button:hover,
 .button:focus {
-  background-color: #54ADFF;
-  color: #FEF9F9;
-  border: 1px solid #54ADFF;
+  background-color: #54adff;
+  color: #fef9f9;
+  border: 1px solid #54adff;
 }
 
 .closeIcon {
   width: 24px;
   height: 24px;
-  color: #54ADFF;
+  color: #54adff;
 }
 
 .closeIcon:hover,
 .closeIcon:focus {
   color: black;
 }
-
