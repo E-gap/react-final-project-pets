@@ -10,13 +10,14 @@
 }
 
 .photoContainer {
-  border-radius: 40px;
-  overflow: hidden;
-
-  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .photo {
+  border-radius: 40px;
+  margin-bottom: 14px;
   object-fit: cover;
 }
 
@@ -46,4 +47,26 @@
   padding-right: 10px;
   color: #888888;
   align-self: flex-start;
+}
+
+@media screen and (max-width: 1279px) and (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .photoContainer {
+    order: 2;
+    flex-grow: 1;
+  }
+
+  .dataContainer {
+    order: 1;
+    width: 355px;
+    max-width: 355px;
+  }
+
+  .editPhotoButton {
+    margin: 0;
+  }
 }
