@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ErrorMessage, Field} from 'formik';
+import { ErrorMessage, Field, validateYupSchema} from 'formik';
 
 const PersonalDetails = ({ category }) => {
   // console.log(category,"kat")

@@ -1,4 +1,4 @@
-import { Field, ErrorMessage } from 'formik';
+import { Field, ErrorMessage, validateYupSchema } from 'formik';
 import PropTypes from 'prop-types';
 
 const MoreInfo = ({ category, fileInput, setFileInput }) => {

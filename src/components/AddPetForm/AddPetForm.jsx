@@ -1,22 +1,25 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Formik,Form} from 'formik';
+import { Formik, Form } from 'formik';
 
 import ButtonBack from '../Buttons/FormButon/ButtonBack';
 import ButtonNext from '../Buttons/FormButon/ButtonNext';
 import ChooseOption from '../../services/ChooseOptions/ChooseOption';
 import MoreInfo from '../../services/MoreInfo/MoreInfo';
 import PersonalDetails from '../../services/PersonalDetails/PersonalDetails';
+
 import { INITIAL_STATE } from '../../services/InitialState';
+// import validationSchema from '../../services/validationSchema';
+
 
 const AddPetForm = () => {
-  const [fileInput, setFileInput] = useState(''); // Стан для вибраного файлу
-  const [step, setStep] = useState(0); // Стан для кроку форми
-  const [title, setTitle] = useState(''); // Стан для заголовку
-  const [category, setCategory] = useState(''); // Стан для категорії
-  const navigate = useNavigate(); // Функція для навігації
+  const [fileInput, setFileInput] = useState('');
+  const [step, setStep] = useState(0);
+  const [title, setTitle] = useState('');
+  const [category, setCategory] = useState('');
+  const navigate = useNavigate();
 
-  const steps = ['Choose Option', 'Personal Details', 'More Info']; // Масив кроків форми
+  const steps = ['Choose Option', 'Personal Details', 'More Info'];
 
   const handleCancelClick = () => {
     navigate('/user'); // Перехід до шляху '/user'
@@ -31,21 +34,21 @@ const AddPetForm = () => {
   };
 
   const handleSubmit = async values => {
-     // Створення об'єкту formData, який містить поля форми та їх значення
-     handleCancelClick()
+    // Створення об'єкту formData, який містить поля форми та їх значення
+
     const formData = {
-      category: values.category, 
+      category: values.category,
       title: values.title,
-      name: values.name, 
+      name: values.name,
       birthday: values.birthday,
       breed: values.breed,
-      sex: values.sex, 
+      sex: values.sex,
       image: fileInput,
-      location: values.location, 
-      price: values.price, 
+      location: values.location,
+      price: values.price,
       comments: values.comments
     };
-  
+
     // чек що приходить з форми
     Object.entries(formData).forEach(([key, value]) => console.log(key, ':', value));
   };
@@ -54,10 +57,10 @@ const AddPetForm = () => {
     // Отримання заголовку сторінки залежно від категорії
     const titles = {
       'your-pet': 'Add my pet',
-      'sell': 'Add pet for sell',
+      sell: 'Add pet for sell',
       'lost-found': 'Add to lost or found pet',
       'good-hands': 'Add to give a Pet for Adoption',
-      '': 'Add Pet',
+      '': 'Add Pet'
     };
     return titles[category] || 'Add Pet';
   }, [category]);
@@ -71,15 +74,15 @@ const AddPetForm = () => {
       <h1>{title}</h1> {/* Відображення заголовку форми */}
       <ul>
         {/* Відображення списку кроків форми */}
-        {steps.map((stepName, index) => (
-  <li key={index}>
-    <span>
-      {step === 0 && index === 0 && 'Choose Option'}
-      {step === 1 && index === 1 && 'Personal Details'}
-      {step === 2 && index === 2 && 'More Info'}
-    </span>
-  </li>
-))}
+        {steps.map((index) => (
+          <li key={index}>
+            <span>
+              {step === 0 && index === 0 && 'Choose Option'}
+              {step === 1 && index === 1 && 'Personal Details'}
+              {step === 2 && index === 2 && 'More Info'}
+            </span>
+          </li>
+        ))}
       </ul>
       <Formik initialValues={INITIAL_STATE} onSubmit={handleSubmit}>
         {() => (
@@ -88,64 +91,32 @@ const AddPetForm = () => {
             {step === 0 && (
               <div>
                 <ChooseOption setCategory={setCategory} /> {/* Крок 1: Вибір опції */}
-                <ButtonNext
-                  type="button"
-                  text="Next"
-                  clickHandler={handleNextClick}
-                  filled={true}
-                />
+                <ButtonNext type="button" text="Next" clickHandler={handleNextClick} filled={true} />
               </div>
             )}
             {step === 1 && (
               <div>
                 <PersonalDetails category={category} /> {/* Крок 2: Особисті дані */}
-                <ButtonNext
-                  type="button"
-                  text="Next"
-                  clickHandler={handleNextClick}
-                  filled={true}
-                />
-                <ButtonBack
-                  type="button"
-                  disabled={!category}
-                  clickHandler={handlePrevClick}
-                  text="Back"
-                />
+                <ButtonNext type="button" text="Next" clickHandler={handleNextClick} filled={true} />
+                <ButtonBack type="button" disabled={!category} clickHandler={handlePrevClick} text="Back" />
               </div>
             )}
             {step === 2 && (
               <div>
-                <MoreInfo
-                  fileInput={fileInput}
-                  setFileInput={setFileInput}
-                  category={category}
-                /> {/* Крок 3: Додаткова інформація */}
-                <ButtonNext
-                  type="submit"
-                  text="Done"
-                  filled={true}
-                  clickHandler={handleSubmit}
-                />
-                <ButtonBack
-                  type="button"
-                  disabled={!category}
-                  clickHandler={handlePrevClick}
-                  text="Back"
-                />
+                <MoreInfo fileInput={fileInput} setFileInput={setFileInput} category={category} />{' '}
+                {/* Крок 3: Додаткова інформація */}
+                <ButtonNext type="submit" text="Done" filled={true} clickHandler={handleSubmit} />
+                <ButtonBack type="button" disabled={!category} clickHandler={handlePrevClick} text="Back" />
               </div>
             )}
             {step === 0 && (
-              <ButtonBack
-                type="button"
-                clickHandler={handleCancelClick}
-                text="Cancel"
-              />
+              <ButtonBack type="button" clickHandler={handleCancelClick} text="Cancel" />
             )}
           </Form>
         )}
       </Formik>
     </div>
-  );};
+  );
+};
 
-  export default AddPetForm;
-
+export default AddPetForm;
