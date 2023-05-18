@@ -6,14 +6,14 @@ import NewsItem from 'components/NewsItem/NewsItem';
 import NoticesSearch from 'components/NoticesSearch/NoticesSearch';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:3001/api/news',
+  baseURL: process.env.REACT_APP_API_URL,
 });
 
 const NewsPage = () => {
   /* const [query, setQuery] = useState(''); */
   const [news, setNews] = useState([]);
   const getNews = async () => {
-    const News = await instance({ method: 'get' });
+    const News = await instance.get('/news');
     return setNews(News.data);
   };
   const onSearch = search => {
