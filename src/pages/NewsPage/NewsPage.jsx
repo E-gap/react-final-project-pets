@@ -10,14 +10,27 @@ const instance = axios.create({
 });
 
 const NewsPage = () => {
-  /* const [query, setQuery] = useState(''); */
+  const [query, setQuery] = useState('');
   const [news, setNews] = useState([]);
+  const [error, setError] = useState('');
+
+  console.log(query);
+
   const getNews = async () => {
-    const News = await instance.get('/news');
-    return setNews(News.data);
-  };
-  const onSearch = search => {
-    console.log(search);
+    try {
+      const response = await instance.get('/news');
+      /* return setNews(response.data); */
+      if (response.status !== 200) {
+        throw new Error('Server Error');
+      } else if (response.data.length === 0) {
+        setError('There are not any news');
+      }
+      setNews(response.data);
+      return response.data;
+    } catch (error) {
+      setError(error.message);
+      return error.message;
+    }
   };
 
   useEffect(() => {
@@ -30,11 +43,11 @@ const NewsPage = () => {
     <div className={css.newsPage + ' container'}>
       <NoticesSearch
         title={'News'}
-        /* query={query}
-        setQuery={setQuery} */
-        search={onSearch}
+        /* query={query} */
+        /* setNews={setNews} */
+        search={setQuery}
       />
-      <ul className={css.list}>{items}</ul>
+      {!error ? <ul className={css.list}>{items}</ul> : <p>{error}</p>}
     </div>
   );
 };
