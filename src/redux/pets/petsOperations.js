@@ -12,7 +12,7 @@ export const fetchAllPets = createAsyncThunk(
   'pets/fetchAllPets',
   async function (queryParams, { rejectWithValue }) {
     try {
-      const response = await instance.get('/notices', queryParams);
+      const response = await instance.get(`/notices/${queryParams}`);
       console.log(response.data);
       console.log(response);
 

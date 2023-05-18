@@ -56,11 +56,11 @@ const NoticesPage = () => {
   }, [pathname]);
 
   useEffect(() => {
-    const queryParams = {
+    /* const queryParams = {
       category: pathFilter,
       title: query,
-    };
-    dispatch(fetchAllPets(queryParams));
+    }; */
+    dispatch(fetchAllPets(pathFilter));
   }, [dispatch, pathFilter, query]);
 
   const submitSearch = event => {
