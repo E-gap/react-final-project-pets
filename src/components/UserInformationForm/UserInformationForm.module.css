@@ -9,6 +9,12 @@
   align-items: baseline;
 }
 
+@media screen and (max-width: 767px) {
+  .form {
+    gap: 12px 8px;
+  }
+}
+
 .label {
   font-family: 'Manrope';
   font-weight: 600;

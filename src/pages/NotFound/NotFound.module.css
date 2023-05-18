@@ -1,4 +1,59 @@
 .notFound {
-  color: red;
-  font-size: 30px;
+  padding-top: 122px;
+
+  height: 601px;
+
+  background-image: url("../../images/bg/bg-mobile-min.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+   @media (min-width: 768px) {
+      padding-top: 114px;
+      height: 1021px;
+      background-image: url("../../images/bg/bg-tablet-min.png"); 
+    }
+
+    @media (min-width: 1280px) {
+      padding-top: 120px;
+      height: 768px;
+      background-image: url("../../images/bg/bg-desctop-min.png");
+    }
+}
+
+.notFound__title {
+  margin-bottom: 80px;
+
+  font-size: 24px;
+  line-height: 1.375;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1.312;
+  }
+}
+
+.wrapper {
+  margin-bottom: 60px;
+
+  width: 280px;
+  height: 123px;
+
+  background-image: url("../../images/not-found/mobile.png");
+
+  @media (min-width: 768px) {
+    margin-bottom: 70px;
+    width: 704px;
+    height:308px;
+    background-image: url("../../images/not-found/tablet.png");
+  }
+
+  @media (min-width: 1280px) {
+    margin:  auto auto 18px auto ;
+    width: 822px;
+    height: 360px;
+    background-image: url("../../images/not-found/desctop.png");
+  }
+
 }

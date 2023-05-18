@@ -17,14 +17,27 @@ const UserInformation = () => {
           width={182}
           height={182}
         />
+
+        <button className={css.editPhotoButton}>
+          <img src={camera} alt="" width={24} height={24} />
+          Edit photo
+        </button>
       </div>
 
-      <button className={css.editPhotoButton}>
+
+
+
+      <div className={css.dataContainer}>
+        <button className={css.editPhotoButton}>
         <img src={camera} alt="" width={24} height={24} />
         Edit photo
       </button>
-      <UserInformationForm className={css.form} />
-      <Logout />
+        <UserInformationForm className={css.form} />
+<Logout />
+        
+      </div>
+
+
     </div>
   );
 };

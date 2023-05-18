@@ -5,6 +5,7 @@ import { PublicRoute } from './PublicRoute/PublicRoute';
 
 import SharedLayout from './SharedLayout/SharedLayout';
 import NoticesCategoriesList from './NoticesCategoriesList/NoticesCategoriesList';
+import MainPage from 'pages/MainPage/MainPage';
 
 const Register = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const Login = lazy(() => import('../pages/LoginPage/LoginPage'));
@@ -17,12 +18,12 @@ const OurFriends = lazy(() => import('../pages/OurFriendsPage/OurFriendsPage'));
 
 export const App = () => {
   return (
-    <div>
+    <>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route element={<PublicRoute />}>
             <Route path="/" element={<SharedLayout />}>
-              <Route index element={<NotFound />} />
+              <Route index element={<MainPage/>}/>
               <Route path="friends" element={<OurFriends />} />
               <Route path="register" element={<Register />} />
               <Route path="login" element={<Login />} />
@@ -43,6 +44,6 @@ export const App = () => {
           </Route>
         </Routes>
       </Suspense>
-    </div>
+    </>
   );
 };
