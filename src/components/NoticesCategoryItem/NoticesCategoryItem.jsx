@@ -1,4 +1,7 @@
 import { useRef, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchPetById } from '../../redux/pets/petsOperations';
+import { selectOnePet } from '../../redux/selectors';
 import css from './NoticesCategoryItem.module.css';
 import LearnMore from 'components/Buttons/LearnMore/LearnMore';
 import getPetAge from './getPetAge';
@@ -20,10 +23,19 @@ const NoticesCategoryItem = ({
   category,
   birthday,
   title,
+  name,
+  breed,
+  price,
+  comments,
 }) => {
   const [showModal, setShowModal] = useState(false);
   const petAge = getPetAge(new Date(birthday.split('.').reverse().join('.')));
   const { current } = useRef(window.innerWidth);
+
+  const onePet = useSelector(selectOnePet);
+  const dispatch = useDispatch();
+
+  console.log(onePet);
 
   let categoryName = '';
 
@@ -44,9 +56,15 @@ const NoticesCategoryItem = ({
     default:
       break;
   }
-
-  const showDetails = () => {
-    setShowModal(true);
+  const handleLearnMore = e => {
+    if (e.target.parentNode.getAttribute('id') || e.target.getAttribute('id')) {
+      const idNotice =
+        e.target.getAttribute('id') || e.target.parentNode.getAttribute('id');
+      console.log(idNotice);
+      fetchPetById(idNotice);
+      dispatch(fetchPetById(idNotice));
+      setShowModal(true);
+    }
   };
 
   const closeModal = () => {
@@ -90,8 +108,22 @@ const NoticesCategoryItem = ({
       </div>
       <div className={css.wrapText}>
         <h3 className={css.title}>{title}</h3>
-        <LearnMore id={id} onClick={showDetails} />
-        {showModal && <ModalNotice onClick={closeModal} />}
+        <LearnMore id={id} onClick={handleLearnMore} />
+        {showModal && (
+          <ModalNotice
+            closeModal={closeModal}
+            title={title}
+            src={src}
+            comments={comments}
+            name={name}
+            birthday={birthday}
+            breed={breed}
+            location={location}
+            sex={sex}
+            category={categoryName}
+            price={price}
+          />
+        )}
         {/* <RemovePetButton /> */}
       </div>
     </li>
