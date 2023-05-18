@@ -27,7 +27,7 @@
   display: flex;
   flex-direction: column;
   padding: 0 12px 12px 12px;
-  justify-content: space-around;
+  height: 222px;
 }
 .bottomWrapper {
   display: flex;
@@ -35,6 +35,11 @@
   margin-top: auto;
 }
 .header {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
   font-weight: 700;
   font-size: 24px;
   line-height: 33px;
@@ -43,6 +48,11 @@
   margin-bottom: 16px;
 }
 .text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
   margin-bottom: 40px;
   font-weight: 400;
   font-size: 16px;
