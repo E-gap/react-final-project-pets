@@ -56,16 +56,22 @@ const NoticesPage = () => {
   }, [pathname]);
 
   useEffect(() => {
-    /* const queryParams = {
+    const queryParams = {
       category: pathFilter,
       title: query,
-    }; */
-    dispatch(fetchAllPets(pathFilter));
+    };
+    dispatch(fetchAllPets(queryParams));
   }, [dispatch, pathFilter, query]);
 
   const submitSearch = event => {
     setQuery(event);
     setSearchParams(event !== '' ? { query: event } : {});
+    const queryParams = {
+      category: pathFilter,
+      title: query,
+    };
+
+    dispatch(fetchAllPets(queryParams));
   };
 
   const handleLearnMore = e => {
