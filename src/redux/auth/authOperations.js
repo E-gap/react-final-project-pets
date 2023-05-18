@@ -6,12 +6,16 @@ const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
 });
 
+// const instance = axios.create({
+//   baseURL: 'http://localhost:3001/api',
+// });
+
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkApi) => {
     try {
       const { data } = await instance.post('/auth/register', credentials);
-      // axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
+      axios.defaults.headers.common.Authorization = `Bearer ${data.token}`;
       Notiflix.Notify.success('You have successfully registered', {
         width: '500px',
         position: 'center-center',
@@ -49,7 +53,7 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkApi) => {
     await instance.post('/auth/logout');
     axios.defaults.headers.common.Authorization = ``;
   } catch (error) {
-    return thunkApi.rejectWithValue(error.message);
+    // return thunkApi.rejectWithValue(error.message);
   }
 });
 
