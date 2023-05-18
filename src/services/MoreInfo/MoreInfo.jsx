@@ -1,4 +1,4 @@
-import { Field, ErrorMessage, validateYupSchema } from 'formik';
+import { Field, ErrorMessage /* validateYupSchema */ } from 'formik';
 import PropTypes from 'prop-types';
 
 const MoreInfo = ({ category, fileInput, setFileInput }) => {
@@ -47,7 +47,7 @@ const MoreInfo = ({ category, fileInput, setFileInput }) => {
           id="pet-image"
           name="pet-image"
           accept=".png, .jpg, .jpeg, .webp"
-          onChange={(event) => setFileInput(event.target.files[0])}
+          onChange={event => setFileInput(event.target.files[0])}
           className="file-input"
         />
         <ErrorMessage name="pet-image" component="div" />
@@ -84,29 +84,22 @@ const MoreInfo = ({ category, fileInput, setFileInput }) => {
       {/* Відображення поля для введення коментарів */}
       <label htmlFor="comments" className="add-form-label">
         Comments
-       
-<Field
-       as="textarea"
-       placeholder="Type comments"
-       name="comments"
-       className="add-form-text-area"
-     />
-<ErrorMessage name="comments" component="div" />
-</label>
-</div>
-);
+        <Field
+          as="textarea"
+          placeholder="Type comments"
+          name="comments"
+          className="add-form-text-area"
+        />
+        <ErrorMessage name="comments" component="div" />
+      </label>
+    </div>
+  );
 };
 
 MoreInfo.propTypes = {
-category: PropTypes.string.isRequired,
-fileInput: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-setFileInput: PropTypes.func.isRequired,
+  category: PropTypes.string.isRequired,
+  fileInput: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  setFileInput: PropTypes.func.isRequired,
 };
 
-export default MoreInfo
-
-
-
-
-
-
+export default MoreInfo;
