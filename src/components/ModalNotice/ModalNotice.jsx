@@ -127,8 +127,8 @@ useEffect(() => {
                 
               </ul>
               <div className={css.wrap}>
-              <AddToFavorite/>
                 <button className={css.button}>Contact</button>
+                <AddToFavorite/>
               </div>
               </div>
               <button className={css.closeBtn} onClick={toggleModal}>
