@@ -4,13 +4,13 @@ import { getAuth } from 'redux/auth/authSelector';
 // import { Loader } from 'shared/Loader/Loader';
 
 export const PublicRoute = () => {
-  const { isLogin } = useSelector(getAuth); //  { isLogin, token }
+  const { isLogin, token } = useSelector(getAuth);
 
   //   if (!isLogin && token) {
   //     return <Loader />;
   //   }
 
-  if (isLogin) {
+  if (isLogin && token) {
     return <Navigate to="/user" />;
   }
   return <Outlet />;

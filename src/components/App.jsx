@@ -23,7 +23,7 @@ export const App = () => {
         <Routes>
           <Route element={<PublicRoute />}>
             <Route path="/" element={<SharedLayout />}>
-              <Route index element={<MainPage/>}/>
+              <Route index element={<MainPage />} />
               <Route path="friends" element={<OurFriends />} />
               <Route path="register" element={<Register />} />
               <Route path="login" element={<Login />} />
@@ -38,8 +38,10 @@ export const App = () => {
               <Route path="add-pet" element={<AddPetForm />} />
               <Route path="*" element={<NotFound />} />
             </Route>
-            <Route element={<PrivateRoute />}>
-              <Route path="user" element={<UserPage />} />
+          </Route>
+          <Route element={<PrivateRoute />}>
+            <Route path="/" element={<SharedLayout />}>
+              <Route path="/user" element={<UserPage />} />
             </Route>
           </Route>
         </Routes>
