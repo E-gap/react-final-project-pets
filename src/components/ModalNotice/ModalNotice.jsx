@@ -53,13 +53,13 @@ const ModalNotice = () => {
       });
   }, []);
 
-  const handlePhoneChange = e => {
+  /* const handlePhoneChange = e => {
     setPhone(e.target.value);
-  };
+  }; */
 
-  const handleEmailChange = e => {
+  /* const handleEmailChange = e => {
     setEmail(e.target.value);
-  };
+  }; */
 
   const handlePhoneClick = () => {
     // Perform phone contact logic
