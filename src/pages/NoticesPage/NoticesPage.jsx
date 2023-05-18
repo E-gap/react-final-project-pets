@@ -91,8 +91,8 @@ const NoticesPage = () => {
       <NoticesSearch
         search={submitSearch}
         title={'Find your favorite pet'}
-        query={query}
-        setQuery={setQuery}
+        /* query={query} */
+        /* setQuery={setQuery} */
       />
 
       <div className={css.wrap}>

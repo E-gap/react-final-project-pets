@@ -10,7 +10,7 @@ const instance = axios.create({
 });
 
 const NewsPage = () => {
-  const [query, setQuery] = useState('');
+  /* const [query, setQuery] = useState(''); */
   const [news, setNews] = useState([]);
   const getNews = async () => {
     const News = await instance({ method: 'get' });
@@ -19,6 +19,7 @@ const NewsPage = () => {
   const onSearch = search => {
     console.log(search);
   };
+
   useEffect(() => {
     getNews();
   }, []);
@@ -29,8 +30,8 @@ const NewsPage = () => {
     <div className={css.newsPage + ' container'}>
       <NoticesSearch
         title={'News'}
-        query={query}
-        setQuery={setQuery}
+        /* query={query}
+        setQuery={setQuery} */
         search={onSearch}
       />
       <ul className={css.list}>{items}</ul>
