@@ -1,9 +1,9 @@
 import css from './NewsItem.module.css';
 
 const NewsItem = ({ topic }) => {
-  const { id, imgUrl, text, title, date, url } = topic;
+  const { _id, imgUrl, text, title, date, url } = topic;
   return (
-    <li className={css.item} key={id}>
+    <li className={css.item} key={_id}>
       <img className={css.img} src={imgUrl} alt={title} />
       <div className={css.wrapper}>
         <h2 className={css.header}>{title}</h2>

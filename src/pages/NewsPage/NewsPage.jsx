@@ -10,20 +10,29 @@ const instance = axios.create({
 });
 
 const NewsPage = () => {
+  const [query, setQuery] = useState('');
   const [news, setNews] = useState([]);
   const getNews = async () => {
     const News = await instance({ method: 'get' });
     return setNews(News.data);
   };
+  const onSearch = search => {
+    console.log(search);
+  };
   useEffect(() => {
     getNews();
   }, []);
-  const items = news.slice(0, 6).map(item => <NewsItem topic={item} />);
-  console.log(items);
+  const items = news
+    .slice(0, 6)
+    .map(item => <NewsItem key={item._id} topic={item} />);
   return (
     <div className={css.newsPage + ' container'}>
-      {/* <h1 className={css.header}>News</h1> */}
-      <NoticesSearch title={'News'} query={{}} setQuery={{}} search={{}} />
+      <NoticesSearch
+        title={'News'}
+        query={query}
+        setQuery={setQuery}
+        search={onSearch}
+      />
       <ul className={css.list}>{items}</ul>
     </div>
   );
