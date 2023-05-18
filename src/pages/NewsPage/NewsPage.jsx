@@ -14,8 +14,6 @@ const NewsPage = () => {
   const [news, setNews] = useState([]);
   const [error, setError] = useState('');
 
-  console.log(query);
-
   const getNews = async query => {
     try {
       const response = await instance.get(

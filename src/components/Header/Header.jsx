@@ -13,28 +13,31 @@ const AuthMenu = lazy(() => import('../Buttons/AuthButtons/AuthMenu'));
 const Header = () => {
   const { current } = useRef(window.innerWidth);
 
-  // const [isAuth, setIsAuth] = useState(false);
-  // прибрав тимчасово setIsAuth для коректного деплою
   const [isAuth] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className={css.header}>
-      <div className='container header_container'>
+      <div className="container header_container">
         <Logo />
-          {current >= 1280 && <Navigation />}
-          {current >= 768 && !isAuth && <AuthMenu />}
-          {isAuth && !menuOpen && (
-            <UserNav displayName={current >= 768 ? true : false} />
-          )}
-          <BurgerMenuBtn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-          <div
-            className={menuOpen ? `${css.mobileMenu} ${css.show}` : css.mobileMenu}
-          >
-            {!isAuth && current <= 767 && <AuthMenu />}
-            {isAuth && current <= 767 && <UserNav margins={true} />}
-            <Navigation />
-          </div>
+        {current >= 1280 && <Navigation />}
+        {current >= 768 && !isAuth && <AuthMenu />}
+        {isAuth && !menuOpen && (
+          <UserNav displayName={current >= 768 ? true : false} />
+        )}
+        <BurgerMenuBtn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+        <div
+          onClick={e => {
+            return e.target !== e.currentTarget ? setMenuOpen(false) : '';
+          }}
+          className={
+            menuOpen ? `${css.mobileMenu} ${css.show}` : css.mobileMenu
+          }
+        >
+          {!isAuth && current <= 767 && <AuthMenu />}
+          {isAuth && current <= 767 && <UserNav margins={true} />}
+          <Navigation />
+        </div>
       </div>
     </header>
   );
