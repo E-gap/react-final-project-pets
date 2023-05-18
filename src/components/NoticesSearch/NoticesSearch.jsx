@@ -14,6 +14,11 @@ const NoticesSearch = ({ search, title, setNews }) => {
     } else search(query);
   };
 
+  const deleteQuery = () => {
+    setQuery('');
+    search('');
+  };
+
   return (
     <div className={css.container}>
       <h2 className={css.title}>{title}</h2>
@@ -42,7 +47,7 @@ const NoticesSearch = ({ search, title, setNews }) => {
             <button
               className={css.searchDel}
               type="submit"
-              onClick={() => setQuery('')}
+              onClick={deleteQuery}
             >
               <span className={css.changeColorDel}>
                 <RxCross2 style={{ fontSize: 25 }} />
