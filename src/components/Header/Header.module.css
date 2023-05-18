@@ -6,7 +6,7 @@
   padding-top: 20px;
 
   transform: translateX(-50%);
-  
+
   @media (min-width: 768px) {
     padding-top: 24px;
   }
@@ -28,15 +28,15 @@
   top: -100%;
   left: 50%;
   transform: translateX(-50%);
-  
+
   width: 100vw;
   height: 100vh;
   padding-top: 20px;
-  
+
   background-color: transparent;
   visibility: hidden;
   opacity: 0;
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,5 +50,12 @@
 }
 
 @media screen and (min-width: 768px) {
-  .show {top: 70px}
+  .show {
+    top: 70px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .mobileMenu {
+    display: none;
+  }
 }

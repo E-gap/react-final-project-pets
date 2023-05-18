@@ -1,6 +1,6 @@
 .newsPage {
-  font-family: 'Manrope';
   color: var(--color-dark);
+  margin-top: 88px;
 }
 .header {
   font-weight: 700;
@@ -15,6 +15,9 @@
   margin-top: 40px;
 }
 @media screen and (min-width: 768px) {
+  .newsPage {
+    margin-top: 148px;
+  }
   .list {
     flex-direction: row;
     flex-wrap: wrap;

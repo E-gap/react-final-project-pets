@@ -1,4 +1,5 @@
-import { useState, useRef, lazy } from 'react';
+import { useState, lazy } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 import css from './Header.module.css';
 import Logo from 'components/Logo/Logo';
@@ -11,30 +12,32 @@ const Navigation = lazy(() => import('../Navigation/Navigation'));
 const AuthMenu = lazy(() => import('../Buttons/AuthButtons/AuthMenu'));
 
 const Header = () => {
-  const { current } = useRef(window.innerWidth);
-
-  // const [isAuth, setIsAuth] = useState(false);
-  // прибрав тимчасово setIsAuth для коректного деплою
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const isTabletOrDesktop = useMediaQuery({ query: '(min-width: 768px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
   const [isAuth] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className={css.header}>
-      <div className='container header_container'>
+      <div className="container header_container">
         <Logo />
-          {current >= 1280 && <Navigation />}
-          {current >= 768 && !isAuth && <AuthMenu />}
-          {isAuth && !menuOpen && (
-            <UserNav displayName={current >= 768 ? true : false} />
-          )}
-          <BurgerMenuBtn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-          <div
-            className={menuOpen ? `${css.mobileMenu} ${css.show}` : css.mobileMenu}
-          >
-            {!isAuth && current <= 767 && <AuthMenu />}
-            {isAuth && current <= 767 && <UserNav margins={true} />}
-            <Navigation />
-          </div>
+        {isDesktop && <Navigation />}
+        {isTabletOrDesktop && !isAuth && <AuthMenu />}
+        {isAuth && !menuOpen && <UserNav displayName={isTabletOrDesktop} />}
+        <BurgerMenuBtn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+        <div
+          onClick={e => {
+            return e.target !== e.currentTarget ? setMenuOpen(false) : '';
+          }}
+          className={
+            menuOpen ? `${css.mobileMenu} ${css.show}` : css.mobileMenu
+          }
+        >
+          {!isAuth && isMobile && <AuthMenu />}
+          {isAuth && isMobile && <UserNav margins={true} />}
+          <Navigation />
+        </div>
       </div>
     </header>
   );
