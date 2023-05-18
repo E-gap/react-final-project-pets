@@ -3,6 +3,9 @@
   margin: 0 auto;
   width: 320px;
 }
+.section {
+  padding-top: 97px;
+}
 .wrap {
   position: relative;
 }
@@ -44,8 +47,12 @@
 
 @media screen and (min-width: 768px) {
   .container {
-    padding: 0 32px;
     width: 768px;
+    padding: 0 34px;
+  }
+  .section {
+    padding-top: 148px;
+    padding-bottom: 60px;
   }
   .btnAdd {
     position: absolute;
