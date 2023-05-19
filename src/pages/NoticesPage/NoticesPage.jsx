@@ -10,7 +10,7 @@ import PaginationComponent from '../../components/Pagination/PaginationComponent
 import AddPetButton from 'components/Buttons/AddPetButton/AddPetButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllPets, fetchPetById } from '../../redux/pets/petsOperations';
-import { selectPets, selectOnePet } from '../../redux/selectors';
+import { selectPets } from '../../redux/selectors';
 
 //import { Notify } from 'notiflix/build/notiflix-notify-aio';
 //import axios from 'axios';
@@ -33,7 +33,7 @@ const NoticesPage = () => {
   //const [list, setList] = useState(initialState);
   const dispatch = useDispatch();
   const pets = useSelector(selectPets);
-  const onePet = useSelector(selectOnePet);
+  // const onePet = useSelector(selectOnePet);
 
   console.log(onePet);
 

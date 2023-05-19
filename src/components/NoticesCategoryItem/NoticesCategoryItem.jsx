@@ -1,24 +1,28 @@
 import { useRef, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import moment from 'moment';
 import { fetchPetById } from '../../redux/pets/petsOperations';
-import { selectOnePet } from '../../redux/selectors';
+import propTypes from 'prop-types';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import css from './NoticesCategoryItem.module.css';
 import LearnMore from 'components/Buttons/LearnMore/LearnMore';
-import getPetAge from './getPetAge';
+
 import AddToFavorite from 'components/Buttons/AddToFavorite/AddToFavorite';
-// import RemovePetButton from 'components/Buttons/RemovePetButton/RemovePetButton';
+import RemovePetButton from 'components/Buttons/RemovePetButton/RemovePetButton';
 import ModalNotice from 'components/ModalNotice/ModalNotice';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { HiOutlineClock } from 'react-icons/hi';
 import { GiFemale } from 'react-icons/gi';
 import { GiMale } from 'react-icons/gi';
+
+import { useSelector } from 'react-redux';
+import { getAuth } from '../../redux/auth/authSelector';
 import url from '../../images/default_pet.jpg';
 
 const NoticesCategoryItem = ({
   id,
   src = url,
   sex,
-  favorite,
   location,
   category,
   birthday,
@@ -29,13 +33,18 @@ const NoticesCategoryItem = ({
   comments,
 }) => {
   const [showModal, setShowModal] = useState(false);
-  const petAge = getPetAge(new Date(birthday.split('.').reverse().join('.')));
+  const [favorite, setFavorite] = useState(false);
+
   const { current } = useRef(window.innerWidth);
 
-  const onePet = useSelector(selectOnePet);
+  const { isLogin } = useSelector(getAuth);
+  // const User = useSelector(getUser);
+  // console.log(User.email);
+
+  // const onePet = useSelector(selectOnePet);
   const dispatch = useDispatch();
 
-  console.log(onePet);
+  // console.log(onePet);
 
   let categoryName = '';
 
@@ -71,6 +80,14 @@ const NoticesCategoryItem = ({
     setShowModal(false);
   };
 
+  const onFavBtnClick = () => {
+    if (isLogin) {
+      setFavorite(true);
+    } else {
+      Notify.warning('Please, signup or login to add notice to favorites');
+    }
+  };
+
   return (
     <li className={css.item}>
       <div className={css.relativeContainer}>
@@ -78,12 +95,15 @@ const NoticesCategoryItem = ({
         <div className={css.wrapOption}>
           <p className={css.textOption}>{categoryName}</p>
           <AddToFavorite
+            onClick={onFavBtnClick}
+            favorite={favorite}
             style={
               current <= 767 || current >= 1280
                 ? { position: 'absolute', top: 0, left: '230px' }
                 : { position: 'absolute', top: 0, left: '277px' }
             }
           />
+          <RemovePetButton />
         </div>
         <div className={css.container}>
           <div className={css.wrap}>
@@ -94,7 +114,14 @@ const NoticesCategoryItem = ({
           </div>
           <div className={css.wrap}>
             <HiOutlineClock style={{ fontSize: 19, color: '#54ADFF' }} />
-            <p className={css.text}>{petAge}</p>
+            <p className={css.text}>
+              {birthday
+                ? moment(
+                    birthday.split('.').reverse().join('.'),
+                    'YYYYMMDD'
+                  ).fromNow(true)
+                : '-'}
+            </p>
           </div>
           <div className={css.wrap}>
             {sex === 'male' ? (
@@ -124,10 +151,22 @@ const NoticesCategoryItem = ({
             price={price}
           />
         )}
-        {/* <RemovePetButton /> */}
       </div>
     </li>
   );
 };
 
 export default NoticesCategoryItem;
+
+NoticesCategoryItem.propTypes = {
+  src: propTypes.string.isRequired,
+  sex: propTypes.string.isRequired,
+  birthday: propTypes.string.isRequired,
+  location: propTypes.string.isRequired,
+  category: propTypes.string.isRequired,
+  title: propTypes.string.isRequired,
+  breed: propTypes.string.isRequired,
+  comments: propTypes.string.isRequired,
+  id: propTypes.string.isRequired,
+  price: propTypes.string.isRequired,
+};

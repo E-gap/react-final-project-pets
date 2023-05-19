@@ -1,8 +1,12 @@
 import css from './NoticesCategoriesNav.module.css';
+import { useSelector } from 'react-redux';
+import { getAuth } from '../../redux/auth/authSelector';
 import { NavLink, useLocation } from 'react-router-dom';
 const NoticesCategoriesNav = () => {
   const location = useLocation();
   const from = location.state?.from || '/';
+
+  const { isLogin } = useSelector(getAuth);
 
   return (
     <>
@@ -22,16 +26,20 @@ const NoticesCategoriesNav = () => {
             in good hands
           </NavLink>
         </li>
-        <li>
-          <NavLink className={css.link} to="favorite" state={{ from }}>
-            favorite ads
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className={css.link} to="own" state={{ from }}>
-            my ads
-          </NavLink>
-        </li>
+        {isLogin && (
+          <>
+            <li>
+              <NavLink className={css.link} to="favorite" state={{ from }}>
+                favorite ads
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className={css.link} to="own" state={{ from }}>
+                my ads
+              </NavLink>
+            </li>
+          </>
+        )}
       </ul>
     </>
   );
