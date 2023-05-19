@@ -10,7 +10,8 @@ import PaginationComponent from '../../components/Pagination/PaginationComponent
 import AddPetButton from 'components/Buttons/AddPetButton/AddPetButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllPets, fetchPetById } from '../../redux/pets/petsOperations';
-import { selectPets } from '../../redux/selectors';
+import { selectPets, totalPets } from '../../redux/selectors';
+import options from '../../components/Pagination/options';
 
 //import { Notify } from 'notiflix/build/notiflix-notify-aio';
 //import axios from 'axios';
@@ -18,6 +19,7 @@ import { selectPets } from '../../redux/selectors';
 //import url from './4.jpg';
 
 const NoticesPage = () => {
+  const total = useSelector(totalPets);
   const [pathFilter, setPathFilter] = useState('sell');
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -141,7 +143,12 @@ const NoticesPage = () => {
           {/* <NoticesFilters /> */}
           <NoticesCategoriesList items={pets} />
           {pets ? (
-            <PaginationComponent items={pets} searchPage={searchPage} />
+            <PaginationComponent
+              items={pets}
+              searchPage={searchPage}
+              total={total}
+              options={options.noticesOptions}
+            />
           ) : (
             ''
           )}
