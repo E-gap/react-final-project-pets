@@ -15,8 +15,8 @@ export const fetchAllPets = createAsyncThunk(
     try {
       const response = await instance.get(
         title
-          ? `/notices/${category}?title=${title}&page=${page}`
-          : `/notices/${category}?page=${page}`
+          ? `/notices/${category}?title=${title}&page=${page}&limit=12`
+          : `/notices/${category}?page=${page}&limit=12`
       );
 
       if (response.status !== 200) {
