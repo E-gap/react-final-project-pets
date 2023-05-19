@@ -35,6 +35,8 @@ const NoticesPage = () => {
   const pets = useSelector(selectPets);
   const onePet = useSelector(selectOnePet);
 
+  console.log(onePet);
+
   const { pathname } = useLocation();
 
   const navigate = useNavigate();
