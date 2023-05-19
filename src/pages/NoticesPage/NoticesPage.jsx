@@ -5,6 +5,7 @@ import NoticesCategoriesList from 'components/NoticesCategoriesList/NoticesCateg
 import NoticesSearch from 'components/NoticesSearch/NoticesSearch';
 // import NoticesFilters from 'components/NoticesFilters/NoticesFilters';
 import NoticesCategoriesNav from 'components/NoticesCategoriesNav/NoticesCategoriesNav';
+import PaginationComponent from '../../components/Pagination/PaginationComponent';
 
 import AddPetButton from 'components/Buttons/AddPetButton/AddPetButton';
 import { useDispatch, useSelector } from 'react-redux';
@@ -78,13 +79,13 @@ const NoticesPage = () => {
     if (e.target.parentNode.getAttribute('id') || e.target.getAttribute('id')) {
       const idNotice =
         e.target.getAttribute('id') || e.target.parentNode.getAttribute('id');
-      console.log(idNotice);
+      //console.log(idNotice);
       fetchPetById(idNotice);
       dispatch(fetchPetById(idNotice));
     }
   };
 
-  console.log(onePet);
+  //console.log(onePet);
 
   return (
     <>
@@ -122,6 +123,7 @@ const NoticesPage = () => {
 
           {/* <NoticesFilters /> */}
           <NoticesCategoriesList items={pets} />
+          <PaginationComponent items={pets} />
         </div>
       </section>
     </>

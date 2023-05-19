@@ -24,6 +24,6 @@ export default AddToFavorite;
 
 AddToFavorite.propTypes = {
   favorite: PropTypes.bool,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   selector: PropTypes.string,
 };
