@@ -10,7 +10,7 @@ const ButtonNext = ({ type, text, clickHandler, filled, disabled }) => {
 
 export default ButtonNext;
 
-;
+
 
 ButtonNext.defaultProps = {
   type: 'button',
