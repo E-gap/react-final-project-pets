@@ -1,94 +1,100 @@
 import { Field, ErrorMessage /* validateYupSchema */ } from 'formik';
 import PropTypes from 'prop-types';
 
+import { BsPlusLg, BsGenderFemale, BsGenderMale } from 'react-icons/bs';
+
+import css from './MoreInfo.module.css';
+
 const MoreInfo = ({ category, fileInput, setFileInput }) => {
   return (
-    <div className="personal-form-wrapper">
+    <div className={css.form}>
       {/* Відображення вибору статі тільки для певних категорій */}
       {category !== 'your-pet' && (
         <div className="add-form-sex-wrapper">
-          <p>The Sex</p>
-          <label>
-            <Field
-              type="radio"
-              name="sex"
-              value="female"
-              className="add-form-radio-button"
-            />
-            Female
-          </label>
-          <label>
-            <Field
-              type="radio"
-              name="sex"
-              value="male"
-              className="add-form-radio-button"
-            />
-            Male
-          </label>
+          <p className={css.genderHeader}>The Sex</p>
+          <div className={css.genderWrapper}>
+            <label className={css.genderLabel}>
+              <Field
+                type="radio"
+                name="sex"
+                value="female"
+                className={css.genderBtn + ' ' + css.femaleBtn}
+              />
+              <BsGenderFemale className={css.femaleIcon} />
+              <span className={css.genderLabelText}>Female</span>
+            </label>
+            <label className={css.genderLabel}>
+              <Field
+                type="radio"
+                name="sex"
+                value="male"
+                className={css.genderBtn + ' ' + css.maleBtn}
+              />
+              <BsGenderMale className={css.maleIcon} />
+              <span className={css.genderLabelText}>Male</span>
+            </label>
+          </div>
         </div>
       )}
 
       {/* Відображення поля для вибору фото */}
-      <label htmlFor="pet-image" className="add-form-image-label">
-        Add photo
-        <div className="add-form-image-wrapper">
-          {!fileInput && <div>File not selected</div>}
-          {!!fileInput && (
+      <label className={css.fileLabel}>
+        <span>Add photo</span>
+        {/* {!fileInput && <div>File not selected</div>} */}
+        <div className={css.imgWrapper}>
+          {fileInput ? (
             <img
-              id="image"
+              className={css.img}
               src={URL.createObjectURL(fileInput)}
               alt={fileInput.name}
             />
+          ) : (
+            <BsPlusLg className={css.plus} />
           )}
         </div>
         <input
           type="file"
-          id="pet-image"
           name="pet-image"
           accept=".png, .jpg, .jpeg, .webp"
           onChange={event => setFileInput(event.target.files[0])}
-          className="file-input"
+          className={css.fileInput}
         />
         <ErrorMessage name="pet-image" component="div" />
       </label>
-
       {/* Відображення поля для введення розташування тільки для певних категорій */}
       {category !== 'your-pet' && (
-        <label htmlFor="location" className="add-form-label">
-          Location
+        <label className={css.label}>
+          <span className={css.labelText}>Location</span>
           <Field
             placeholder="Type of location"
             type="text"
             name="location"
-            className="add-form-input"
+            className={css.field}
           />
           <ErrorMessage name="location" component="div" />
         </label>
       )}
-
       {/* Відображення поля для введення ціни тільки для категорії "sell" */}
       {category === 'sell' && (
-        <label htmlFor="price" className="add-form-label">
-          Price
+        <label className={css.label}>
+          <span className={css.labelText}>Price</span>
           <Field
             placeholder="Type of price"
             type="text"
             name="price"
-            className="add-form-input"
+            className={css.field}
           />
           <ErrorMessage name="price" component="div" />
         </label>
       )}
-
       {/* Відображення поля для введення коментарів */}
-      <label htmlFor="comments" className="add-form-label">
-        Comments
+      <label className={css.label}>
+        <span className={css.labelText}>Comments</span>
         <Field
           as="textarea"
           placeholder="Type comments"
           name="comments"
-          className="add-form-text-area"
+          className={css.comments}
         />
         <ErrorMessage name="comments" component="div" />
       </label>

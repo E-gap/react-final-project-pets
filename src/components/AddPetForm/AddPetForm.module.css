@@ -1,3 +1,54 @@
-.button{
-margin-right:10px ;
+.main {
+  margin-top: 68px;
+  background-image: url('../../images/bg/bg-mobile-min.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.formikWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.formik {
+  margin-top: 24px;
+  padding: 24px 8px 16px;
+  border-radius: 40px;
+  background-color: var(--color-wight);
+  box-shadow: var(--shadow-default);
+  height: 85vh;
+  width: 280px;
+
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 27px;
+  margin-bottom: 24px;
+  margin-left: 12px;
+  color: var(--color-dark);
+}
+.form1 {
+  display: flex;
+  flex-direction: column;
+}
+.btnWrapper {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .main {
+    background-image: url('../../images/bg/bg-tablet-min.png');
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .main {
+    background-image: url('../../images/bg/bg-desctop-min.png');
+  }
 }

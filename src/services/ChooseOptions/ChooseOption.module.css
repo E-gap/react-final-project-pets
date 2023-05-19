@@ -1,0 +1,31 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  row-gap: 12px;
+}
+.field {
+  appearance: none;
+}
+.label {
+  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.field:checked + .fieldText {
+  color: var(--color-light-background);
+  background-color: var(--color-blue);
+}
+.fieldText {
+  padding: 8px 16px;
+
+  background-color: #cce4fb;
+  border-radius: 40px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0.04em;
+  color: var(--color-blue);
+}

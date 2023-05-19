@@ -2,59 +2,62 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ErrorMessage, Field, useFormikContext } from 'formik';
 
+import css from './PersonalDetails.module.css';
+
 const PersonalDetails = ({ category }) => {
   const { handleChange, setFieldValue } = useFormikContext();
 
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     const { name, value } = e.target;
     handleChange(e);
     setFieldValue(name, value); // Update form values
   };
 
   return (
-    <div className="personal-form-wrapper">
+    <div className={css.form}>
       {category !== 'your-pet' && (
-        <label htmlFor="title">
-          Title of add:
+        <label className={css.label}>
+          <span className={css.labelText}>Title of add</span>
           <Field
             placeholder="Type title"
             type="text"
             name="title"
-            className="add-form-input"
+            className={css.field}
             onChange={handleInputChange}
           />
           <ErrorMessage name="title" component="div" />
         </label>
       )}
-      <label>
-        Name:
+      <label className={css.label}>
+        <span className={css.labelText}>Name pet</span>
         <Field
           placeholder="Type name pet"
           type="text"
           name="name"
-          className="add-form-input"
+          className={css.field}
           onChange={handleInputChange}
         />
         <ErrorMessage name="name" component="div" />
       </label>
-      <label htmlFor="birthday">
-        Birthday:
+      <label className={css.label}>
+        <span className={css.labelText}>Date of birth</span>
         <Field
           placeholder="Type date of birth"
           type="text"
           name="birthday"
           data-pattern="**.**.****"
-          className="add-form-input"
+          className={css.field}
           onChange={handleInputChange}
         />
         <ErrorMessage name="birthday" component="div" />
       </label>
-      <label htmlFor="breed" className="add-form-label">
-        Breed:
+      <label className={css.label}>
+        <span className={css.labelText}>Breed</span>
         <Field
           placeholder="Type breed"
           type="text"
           name="breed"
+          className={css.field}
           onChange={handleInputChange}
         />
         <ErrorMessage name="breed" component="div" />
@@ -68,4 +71,3 @@ PersonalDetails.propTypes = {
 };
 
 export default PersonalDetails;
-
