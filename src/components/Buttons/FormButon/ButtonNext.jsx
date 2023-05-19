@@ -1,37 +1,18 @@
-import PropTypes from 'prop-types';
+import React from 'react';
 
-const ButtonNext = ({
-  text,
-  icon,
-  clickHandler,
-  filled,
-  short,
-  type,
-}) => {
+const ButtonNext = ({ type, text, clickHandler, filled, disabled }) => {
   return (
-    <button
-      type={type}
-      onClick={clickHandler && (() => clickHandler(false))}
-      filled={filled ? 'true' : undefined}
-      short={short}
-    >
+    <button type={type} onClick={clickHandler} disabled={disabled}>
       {text}
-      {icon}
     </button>
   );
 };
 
-ButtonNext.propTypes = {
-  text: PropTypes.string.isRequired,
-  icon: PropTypes.node,
-  clickHandler: PropTypes.func,
-  filled: PropTypes.bool,
-  short: PropTypes.bool,
-  type: PropTypes.oneOf(['button', 'submit', 'reset']),
-};
+export default ButtonNext;
+
+
 
 ButtonNext.defaultProps = {
   type: 'button',
 };
 
-export default ButtonNext;

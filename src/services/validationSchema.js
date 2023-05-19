@@ -3,9 +3,9 @@ import * as Yup from 'yup';
 const validationSchema = {
   0: Yup.object().shape({
     category: Yup.string().required('Category is required'),
-    title: Yup.string().required('Title is required'),
   }),
   1: Yup.object().shape({
+    // title: Yup.string().required('Title is required'),
     name: Yup.string().required('Name is required').min(2, 'Too short!').max(16, 'Too long!'),
     birthday: Yup.string().required('Birthday is required').matches(
       /^([0-9]{2}).([0-9]{2}).([0-9]{4})$/,
