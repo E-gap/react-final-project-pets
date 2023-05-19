@@ -19,12 +19,14 @@ import { selectPets, selectOnePet } from '../../redux/selectors';
 
 const NoticesPage = () => {
   const [pathFilter, setPathFilter] = useState('sell');
-
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const [page, setPage] = useState(1);
   const [query, setQuery] = useState(() => {
     const params = searchParams.get('query');
     return params ? params : '';
   });
+
   const { current } = useRef(window.innerWidth);
 
   // eslint-disable-next-line no-unused-vars
@@ -57,22 +59,18 @@ const NoticesPage = () => {
   }, [pathname]);
 
   useEffect(() => {
+    setSearchParams(query !== '' ? { query, page } : { page: page });
     const queryParams = {
       category: pathFilter,
       title: query,
+      page,
     };
+
     dispatch(fetchAllPets(queryParams));
-  }, [dispatch, pathFilter, query]);
+  }, [dispatch, pathFilter, query, page, setSearchParams]);
 
   const submitSearch = event => {
     setQuery(event);
-    setSearchParams(event !== '' ? { query: event } : {});
-    const queryParams = {
-      category: pathFilter,
-      title: query,
-    };
-
-    dispatch(fetchAllPets(queryParams));
   };
 
   const handleLearnMore = e => {
@@ -83,6 +81,10 @@ const NoticesPage = () => {
       fetchPetById(idNotice);
       dispatch(fetchPetById(idNotice));
     }
+  };
+
+  const searchPage = pageNumber => {
+    setPage(pageNumber);
   };
 
   //console.log(onePet);
@@ -123,7 +125,11 @@ const NoticesPage = () => {
 
           {/* <NoticesFilters /> */}
           <NoticesCategoriesList items={pets} />
-          <PaginationComponent items={pets} />
+          {pets ? (
+            <PaginationComponent items={pets} searchPage={searchPage} />
+          ) : (
+            ''
+          )}
         </div>
       </section>
     </>

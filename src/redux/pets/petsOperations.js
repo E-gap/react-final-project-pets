@@ -11,18 +11,18 @@ const instance = axios.create({
 export const fetchAllPets = createAsyncThunk(
   'pets/fetchAllPets',
   async function (queryParams, { rejectWithValue }) {
-    const { title } = queryParams;
+    const { category, title, page } = queryParams;
     try {
       const response = await instance.get(
         title
-          ? `/notices/${queryParams.category}?title=${queryParams.title}`
-          : `/notices/${queryParams.category}`
+          ? `/notices/${category}?title=${title}&page=${page}`
+          : `/notices/${category}?page=${page}`
       );
 
       if (response.status !== 200) {
         throw new Error('Server Error');
       }
-
+      console.log(response);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
