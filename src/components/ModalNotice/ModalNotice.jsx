@@ -66,7 +66,6 @@ const ModalNotice = ({
       });
   }, []);
 
-
   // const handlePhoneChange = e => {
   //   setPhone(e.target.value);
   // };
@@ -74,7 +73,6 @@ const ModalNotice = ({
   // const handleEmailChange = e => {
   //   setEmail(e.target.value);
   // };
-
 
   const handlePhoneClick = () => {
     // Perform phone contact logic

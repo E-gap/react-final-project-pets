@@ -15,11 +15,12 @@
   align-items: center;
   color: var(--color-blue);
   background: var(--color-light-blue);
-  
+}
+.btn:hover {
+  border: 1px solid var(--color-blue);
 }
 .icon {
   color: inherit;
   width: 26px;
   height: 22px;
 }
-

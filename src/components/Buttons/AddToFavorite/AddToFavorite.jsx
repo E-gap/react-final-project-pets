@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { IoHeartOutline, IoHeart } from 'react-icons/io5';
 import css from './AddToFavorite.module.css';
 
-const AddToFavorite = ({ onClick, favorite = false, selector = '', style }) => {
+const AddToFavorite = ({ onClick, favorite, selector = '', style }) => {
   return (
     <button
       style={style}

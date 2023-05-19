@@ -1,1 +1,40 @@
+.btn {
+  border-radius: 40px;
+  padding: 8px 5px 5px 5px;
+  width: 40px;
+  height: 40px;
 
+  position: absolute;
+  top: 60px;
+  left: 230px;
+
+  font-family: 'Manrope';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-blue);
+  background: var(--color-light-blue);
+}
+.icon {
+  color: inherit;
+  width: 26px;
+  height: 22px;
+}
+.btn:hover {
+  border: 1px solid var(--color-blue);
+}
+@media screen and (min-width: 768px) {
+  .btn {
+    left: 277px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .btn {
+    left: 230px;
+  }
+}
