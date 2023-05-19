@@ -1,6 +1,7 @@
 import axios from 'axios';
 import css from './NewsPage.module.css';
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import NewsItem from 'components/NewsItem/NewsItem';
 import NoticesSearch from 'components/NoticesSearch/NoticesSearch';
@@ -12,7 +13,11 @@ const instance = axios.create({
 });
 
 const NewsPage = () => {
-  const [query, setQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useState(() => {
+    const params = searchParams.get('query');
+    return params ? params : '';
+  });
   const [news, setNews] = useState([]);
   const [totalNews, setTotalNews] = useState(0);
   const [error, setError] = useState('');
@@ -21,6 +26,18 @@ const NewsPage = () => {
   const searchPage = pageNumber => {
     setPage(pageNumber);
   };
+
+  useEffect(() => {
+    if (query && page === 1) {
+      setSearchParams({ query });
+    } else if (query && page > 1) {
+      setSearchParams({ query, page });
+    } else if (!query && page > 1) {
+      setSearchParams({ page });
+    } else if (!query && page === 1) {
+      setSearchParams({});
+    }
+  }, [query, page, setSearchParams]);
 
   useEffect(() => {
     const getNews = async query => {
@@ -40,6 +57,8 @@ const NewsPage = () => {
         setNews(response.data.result);
         setTotalNews(response.data.total);
 
+        console.log(response);
+
         return response.data;
       } catch (error) {
         setError(error.message);
@@ -49,6 +68,9 @@ const NewsPage = () => {
 
     getNews(query);
   }, [query, page]);
+
+  console.log(news);
+  console.log(totalNews);
 
   const items = news
     .slice(0, 6)
