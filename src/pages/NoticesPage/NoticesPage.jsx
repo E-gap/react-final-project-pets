@@ -26,6 +26,7 @@ const NoticesPage = () => {
     const params = searchParams.get('query');
     return params ? params : '';
   });
+  //const [query, setQuery] = useState();
 
   const { current } = useRef(window.innerWidth);
 
@@ -42,26 +43,36 @@ const NoticesPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (query && page === 1) {
+      setSearchParams({ query });
+    } else if (query && page > 1) {
+      setSearchParams({ query, page });
+    } else if (!query && page > 1) {
+      setSearchParams({ page });
+    } else if (!query && page === 1) {
+      setSearchParams({});
+    }
+  }, [query, page, setSearchParams]);
+
+  useEffect(() => {
     if (
-      pathname === '/notices/lost-found' ||
-      pathname === '/notices/for-free' ||
-      pathname === '/notices/favotire' ||
-      pathname === '/notices/own'
+      !query &&
+      page === 1 &&
+      (pathname === '/notices/lost-found' ||
+        pathname === '/notices/for-free' ||
+        pathname === '/notices/favotire' ||
+        pathname === '/notices/own')
     ) {
     } else {
       navigate('/notices/sell');
     }
-
     const pathnameArr = pathname.split('/');
-
     const lastPartPath = pathnameArr[pathnameArr.length - 1];
-
     setPathFilter(lastPartPath);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   useEffect(() => {
-    setSearchParams(query !== '' ? { query, page } : { page: page });
     const queryParams = {
       category: pathFilter,
       title: query,
@@ -71,9 +82,11 @@ const NoticesPage = () => {
     dispatch(fetchAllPets(queryParams));
   }, [dispatch, pathFilter, query, page, setSearchParams]);
 
-  const submitSearch = event => {
-    setQuery(event);
+  const submitSearch = query => {
+    setQuery(query);
   };
+  //console.log(query);
+  //console.log(page);
 
   const handleLearnMore = e => {
     if (e.target.parentNode.getAttribute('id') || e.target.getAttribute('id')) {
