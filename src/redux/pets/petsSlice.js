@@ -6,6 +6,7 @@ export const petsSlice = createSlice({
   initialState: {
     onePet: {},
     pets: [],
+    total: 0,
     isLoading: true,
     error: null,
   },
@@ -18,7 +19,8 @@ export const petsSlice = createSlice({
       .addCase(fetchAllPets.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = false;
-        state.pets = action.payload;
+        state.pets = action.payload.result;
+        state.total = action.payload.total;
       })
       .addCase(fetchAllPets.rejected, (state, action) => {
         state.isLoading = false;

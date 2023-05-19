@@ -159,7 +159,7 @@ const NoticesCategoryItem = ({
 export default NoticesCategoryItem;
 
 NoticesCategoryItem.propTypes = {
-  src: propTypes.string.isRequired,
+  /* src: propTypes.string.isRequired, */
   sex: propTypes.string.isRequired,
   birthday: propTypes.string.isRequired,
   location: propTypes.string.isRequired,

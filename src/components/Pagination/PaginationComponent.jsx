@@ -2,9 +2,12 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { totalPets } from '../../redux/selectors';
 
 const PaginationComponent = ({ items, searchPage }) => {
   const [pageNumber, setPageNumber] = useState(1);
+  const total = useSelector(totalPets);
 
   useEffect(() => {
     const container = document.getElementById('tui-pagination-container');
@@ -37,7 +40,7 @@ const PaginationComponent = ({ items, searchPage }) => {
     };
 
     const pagination = new Pagination(container, options);
-    pagination.reset(items.length);
+    pagination.reset(total);
     let currentPage = pagination.getCurrentPage();
 
     setPageNumber(currentPage);
@@ -46,7 +49,7 @@ const PaginationComponent = ({ items, searchPage }) => {
       currentPage = event.page;
       setPageNumber(currentPage);
     });
-  }, [items.length]);
+  }, [total]);
 
   useEffect(() => {
     searchPage(pageNumber);

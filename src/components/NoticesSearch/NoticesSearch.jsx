@@ -65,5 +65,5 @@ export default NoticesSearch;
 
 NoticesSearch.propTypes = {
   title: propTypes.string.isRequired,
-  search: propTypes.string.isRequired,
+  search: propTypes.func.isRequired,
 };
