@@ -15,11 +15,10 @@
   line-height: 1.37;
   letter-spacing: 0.04em;
 
-  background-color: #FEF9F9;
+  background-color: #54ADFF;
   border: 2px solid #54ADFF;
   border-radius: 40px;
-  color: #54ADFF;
-
+  color: #FEF9F9;
   @media screen and (min-width: 768px){
     width:fit-content;
   }
@@ -29,10 +28,12 @@
 
 .button:hover,
 .button:focus {
-  background-color: #54ADFF;
-  color: #FEF9F9;
-  border: 1px solid #54ADFF;
+  border-color: var(--color-blue-gradient);
+  background: var(--color-blue-gradient);
+  color: var(--color-light-background);
+  transition: all linear 250ms;
 }
+
 
 .icon {
   color: inherit;

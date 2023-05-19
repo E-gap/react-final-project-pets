@@ -164,60 +164,86 @@ const ModalNotice = ({
         <div onClick={closeModal} className={css.overlay}></div>
         <div className={css.content}>
           <div className={css.imgWrap}>
-            <img src={src} alt="" className={css.image} />
+            <img src={src} alt="" className={css.avatar} />
             <div className={css.optionContainer}>
               <p className={css.optionText}>{category}</p>
             </div>
           </div>
           <div className={css.contentWrap}>
             <h2 className={css.title}>{title}</h2>
+            <div className={css.listWrap}>
             <ul>
               <li className={css.item}>
                 <p className={css.itemTitle}>Name:</p>
-                <p className={css.description}>{name}</p>
+                {/* <p className={css.description}>{name}</p> */}
               </li>
               <li className={css.item}>
                 <p className={css.itemTitle}>Birthday:</p>
-                <p className={css.description}>{birthday}</p>
+                {/* <p className={css.description}>{birthday}</p> */}
               </li>
               <li className={css.item}>
                 <p className={css.itemTitle}>Breed:</p>
-                <p className={css.description}>{breed}</p>
               </li>
               <li className={css.item}>
                 <p className={css.itemTitle}>Place:</p>
-                <p className={css.description}>{location}</p>
               </li>
               <li className={css.item}>
                 <p className={css.itemTitle}>The sex:</p>
-                <p className={css.description}>{sex}</p>
               </li>
               <li className={css.item}>
                 <p className={css.itemTitle}>Email:</p>
+              </li>
+              <li className={css.item}>
+                <p className={css.itemTitle}>Phone:</p>
+              </li>
+            </ul>
+            <ul className={css.descriptionList}>
+              <li className={css.item}>
+                <p className={css.description}>{name}</p>
+              </li>
+              <li className={css.item}>
+                <p className={css.description}>{birthday}</p>
+              </li>
+              <li className={css.item}>
+                <p className={css.description}>{breed}</p>
+              </li>
+              <li className={css.item}>
+                <p className={css.description}>{location}</p>
+              </li>
+              <li className={css.item}>
+                <p className={css.description}>{sex}</p>
+              </li>
+              <li className={css.item}>
                 <p className={css.description}>
                   <a href={`mailto:${email}`} onClick={handleEmailClick}>
                     {email}
                   </a>
-                </p>
-              </li>
-              <li className={css.item}>
-                <p className={css.itemTitle}>Phone:</p>
-                <p className={css.description}>
+                </p>            
+                </li>
+                <li className={css.item}>
+                  <p className={css.description}>
                   <a href={`tel:${phone}`} onClick={handlePhoneClick}>
                     {phone}
                   </a>
-                </p>
-              </li>
-              <li className={css.item}>
-                <p className={css.itemTitle}>Comments:</p>
-                <p className={css.description}>{comments}</p>
-              </li>
+                </p>   
+                </li>
             </ul>
+            </div>
+            {/* <div className={css.textWrap}>
+            <p className={css.textContent}>Comments: {comments}</p>
+            </div>
+            <div className={css.wrap}>
+              <button className={css.button}>Contact</button>
+              <AddToFavorite />
+            </div> */}
+          </div>
+          <div className={css.textWrap}>
+            <p className={css.textContent}>Comments: {comments}</p>
+            </div>
             <div className={css.wrap}>
               <button className={css.button}>Contact</button>
               <AddToFavorite />
             </div>
-          </div>
           <button className={css.closeBtn} onClick={closeModal}>
             <AiOutlineClose className={css.closeIcon} />
           </button>

@@ -2,13 +2,6 @@ body.active-modal {
   overflow-y: hidden;
 }
 
-.btn-modal {
-  padding: 10px 20px;
-  display: block;
-  margin: 100px auto 0;
-  font-size: 18px;
-}
-
 ul {
   list-style: none;
   font-style: normal;
@@ -48,8 +41,7 @@ p {
   width: 280px;
   height: 786px;
   transform: translate(-50%, -50%);
-  /* padding: 0 12px 16px 12px; */
-  background-color: #ffffff;
+  background-color: var(--color-wight);
   border-radius: 20px;
   z-index: 1000;
 
@@ -67,7 +59,6 @@ p {
 
 .item {
   display: flex;
-  justify-content: space-between;
   padding: 0;
 }
 
@@ -76,7 +67,6 @@ p {
 }
 
 .itemTitle {
-  /* margin-bottom: 20px; */
   font-weight: 600;
   font-size: 12px;
   line-height: 1.33;
@@ -150,7 +140,7 @@ p {
   font-weight: 500;
   font-size: 14px;
   line-height: 1.357;
-  background-color: #cce4fb;
+  background-color: var(--color-light-blue);
   border-radius: 0px 16px 16px 0px;
 
   @media screen and (min-width: 768px) {
@@ -160,17 +150,36 @@ p {
 }
 
 .title {
+  margin-top: 12px;
   font-weight: 700;
   font-size: 24px;
-  line-height: 1.37px;
+  line-height: 1.37;
   letter-spacing: -0.01em;
   padding: 0;
+  color: var(--color-dark);
 
   @media screen and (min-width: 768px) {
     font-size: 28px;
     line-height: 1.35;
     width: 321px;
   }
+}
+
+.listWrap{
+  display: flex ;
+  margin-top: 20px;
+  margin-bottom: 12px;
+
+  @media screen and (min-width: 768px){
+    margin-bottom: 28px;
+  }
+}
+.descriptionList{
+  margin-left: 20px;
+
+@media screen and (min-width:768px){
+  margin-left: 51px;
+}
 }
 
 .wrap {
@@ -208,13 +217,21 @@ p {
   line-height: 1.37;
   letter-spacing: 0.04em;
 
-  background-color: #fef9f9;
-  border: 2px solid #54adff;
+  background-color: var(--color-light-background);
+  border: 2px solid var(--color-blue);
   border-radius: 40px;
-  color: #54adff;
+  color: var(--color-blue);
   @media screen and (min-width: 768px) {
     width: 129px;
   }
+}
+
+.button:hover,
+.button:focus {
+  border-color: var(--color-blue-gradient);
+  background: var(--color-blue-gradient);
+  color: var(--color-light-background);
+  transition: all linear 250ms;
 }
 
 .textWrap {
@@ -235,7 +252,7 @@ p {
   display: flex;
   align-items: center;
   letter-spacing: 0.04em;
-  color: #000000;
+  color: var(--color-dark);
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
@@ -251,20 +268,15 @@ p {
   border: none;
   background-color: transparent;
 }
-.button:hover,
-.button:focus {
-  background-color: #54adff;
-  color: #fef9f9;
-  border: 1px solid #54adff;
-}
+
 
 .closeIcon {
   width: 24px;
   height: 24px;
-  color: #54adff;
+  color: var(--color-blue);
 }
 
 .closeIcon:hover,
 .closeIcon:focus {
-  color: black;
+  color: var(--color-dark);
 }
