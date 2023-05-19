@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ErrorMessage, Field /* validateYupSchema */ } from 'formik';
+import { ErrorMessage, Field, useFormikContext } from 'formik';
 
 const PersonalDetails = ({ category }) => {
-  // console.log(category,"kat")
+  const { handleChange, setFieldValue } = useFormikContext();
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    handleChange(e);
+    setFieldValue(name, value); // Update form values
+  };
+
   return (
     <div className="personal-form-wrapper">
-      {/* Перевірка, чи категорія не є "your-pet" */}
       {category !== 'your-pet' && (
         <label htmlFor="title">
           Title of add:
@@ -15,8 +21,8 @@ const PersonalDetails = ({ category }) => {
             type="text"
             name="title"
             className="add-form-input"
+            onChange={handleInputChange}
           />
-          {/* Відображення помилки, якщо поле "title" має помилку */}
           <ErrorMessage name="title" component="div" />
         </label>
       )}
@@ -27,8 +33,8 @@ const PersonalDetails = ({ category }) => {
           type="text"
           name="name"
           className="add-form-input"
+          onChange={handleInputChange}
         />
-        {/* Відображення помилки, якщо поле "name" має помилку */}
         <ErrorMessage name="name" component="div" />
       </label>
       <label htmlFor="birthday">
@@ -39,14 +45,18 @@ const PersonalDetails = ({ category }) => {
           name="birthday"
           data-pattern="**.**.****"
           className="add-form-input"
+          onChange={handleInputChange}
         />
-        {/* Відображення помилки, якщо поле "birthday" має помилку */}
         <ErrorMessage name="birthday" component="div" />
       </label>
       <label htmlFor="breed" className="add-form-label">
         Breed:
-        <Field placeholder="Type breed" type="text" name="breed" />
-        {/* Відображення помилки, якщо поле "breed" має помилку */}
+        <Field
+          placeholder="Type breed"
+          type="text"
+          name="breed"
+          onChange={handleInputChange}
+        />
         <ErrorMessage name="breed" component="div" />
       </label>
     </div>
@@ -58,3 +68,4 @@ PersonalDetails.propTypes = {
 };
 
 export default PersonalDetails;
+
