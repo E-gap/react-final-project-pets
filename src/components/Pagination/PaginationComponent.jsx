@@ -55,17 +55,6 @@ const PaginationComponent = ({ items, searchPage }) => {
     searchPage(pageNumber);
   }, [searchPage, pageNumber]);
 
-  /* let pagination;
-
-  if (container) {
-    //console.log(items);
-    pagination = new Pagination(container, options);
-
-    pagination.reset(items.length);
-    //setPage(pagination.getCurrentPage());
-    console.log(page);
-  }  */
-
   return <div id="tui-pagination-container" className="tui-pagination"></div>;
 };
 export default PaginationComponent;
