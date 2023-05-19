@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field,useFormikContext} from 'formik';
+import { Field /* useFormikContext */ } from 'formik';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
@@ -12,7 +12,7 @@ const ChooseOption = ({ setCategory }) => {
   };
 
   return (
-    <div >
+    <div>
       <label htmlFor="your-pet">
         <Field
           type="radio"
@@ -69,6 +69,3 @@ ChooseOption.propTypes = {
 };
 
 export default ChooseOption;
-
-
-
