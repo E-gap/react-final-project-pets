@@ -1,0 +1,27 @@
+.button {
+  width: 248px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 9px 0;
+  /* margin-top: 91px; */
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+
+  color: var(--color-light-background);
+  background-color: var(--color-blue);
+  border-radius: 40px;
+}
+.button:disabled {
+  background-color: var(--color-light-blue);
+}
+.icon {
+  color: inherit;
+  margin-left: 8px;
+  transform: rotate(25deg);
+  width: 24px;
+  height: 24px;
+}

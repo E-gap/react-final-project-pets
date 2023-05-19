@@ -1,0 +1,32 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+  color: var(--color-dark);
+}
+.labelText {
+  margin-bottom: 4px;
+}
+.field {
+  width: auto;
+  padding: 9.5px 16px;
+  color: var(--color-blue);
+
+  border: 1px solid var(--color-blue);
+  border-radius: 40px;
+}
+.field::placeholder {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0.04em;
+  color: #888888;
+}

@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
+import { BsArrowLeft } from 'react-icons/bs';
+import css from './ButtonBack.module.css';
 
 const ButtonBack = ({ text, clickHandler, type }) => {
   return (
-    <button onClick={clickHandler} type={type}>
-      {text}
+    <button className={css.btn} onClick={clickHandler} type={type}>
+      <BsArrowLeft className={css.icon} /> {text}
     </button>
   );
 };

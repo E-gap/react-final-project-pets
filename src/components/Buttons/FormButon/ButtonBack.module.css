@@ -1,0 +1,19 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 21px;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+
+  color: var(--color-blue);
+}
+.icon {
+  color: inherit;
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}

@@ -3,6 +3,8 @@ import { Field /* useFormikContext */ } from 'formik';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import css from './ChooseOption.module.css';
+
 const ChooseOption = ({ setCategory }) => {
   const [category, setLocalCategory] = useState('');
 
@@ -12,53 +14,51 @@ const ChooseOption = ({ setCategory }) => {
   };
 
   return (
-    <div>
-      <label htmlFor="your-pet">
+    <div className={css.form}>
+      <label className={css.label}>
         <Field
+          className={css.field}
           type="radio"
           name="category"
           value="your-pet"
-          id="your-pet"
           checked={category === 'your-pet'}
           onChange={handleCategoryChange}
         />
-        Your pet
+        <span className={css.fieldText}>your pet</span>
       </label>
-
-      <label htmlFor="sell">
+      <label className={css.label}>
         <Field
+          className={css.field}
           type="radio"
           name="category"
           value="sell"
-          id="sell"
           checked={category === 'sell'}
           onChange={handleCategoryChange}
         />
-        Sell
+        <span className={css.fieldText}>sell</span>
       </label>
 
-      <label htmlFor="lost-found">
+      <label className={css.label}>
         <Field
+          className={css.field}
           type="radio"
           name="category"
           value="lost-found"
-          id="lost-found"
           checked={category === 'lost-found'}
           onChange={handleCategoryChange}
         />
-        Lost/found
+        <span className={css.fieldText}>lost/found</span>
       </label>
-
-      <label htmlFor="good-hands">
+      <label className={css.label}>
         <Field
+          className={css.field}
           type="radio"
           name="category"
           value="good-hands"
-          id="good-hands"
           checked={category === 'good-hands'}
           onChange={handleCategoryChange}
         />
-        In good hands
+        <span className={css.fieldText}>in good hands</span>
       </label>
     </div>
   );
