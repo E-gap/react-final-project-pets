@@ -1,17 +1,15 @@
 import React from 'react';
-import { Field /* useFormikContext */ } from 'formik';
-import { useState } from 'react';
+import { Field } from 'formik';
 import PropTypes from 'prop-types';
 
 import css from './ChooseOption.module.css';
 
-const ChooseOption = ({ setCategory }) => {
-  const [category, setLocalCategory] = useState('');
-
+const ChooseOption = ({ selectedCategory, setCategory }) => {
   const handleCategoryChange = event => {
     setCategory(event.target.value);
-    setLocalCategory(event.target.value);
   };
+
+  
 
   return (
     <div className={css.form}>
@@ -21,7 +19,7 @@ const ChooseOption = ({ setCategory }) => {
           type="radio"
           name="category"
           value="your-pet"
-          checked={category === 'your-pet'}
+          checked={selectedCategory === 'your-pet'}
           onChange={handleCategoryChange}
         />
         <span className={css.fieldText}>your pet</span>
@@ -32,7 +30,7 @@ const ChooseOption = ({ setCategory }) => {
           type="radio"
           name="category"
           value="sell"
-          checked={category === 'sell'}
+          checked={selectedCategory === 'sell'}
           onChange={handleCategoryChange}
         />
         <span className={css.fieldText}>sell</span>
@@ -44,7 +42,7 @@ const ChooseOption = ({ setCategory }) => {
           type="radio"
           name="category"
           value="lost-found"
-          checked={category === 'lost-found'}
+          checked={selectedCategory === 'lost-found'}
           onChange={handleCategoryChange}
         />
         <span className={css.fieldText}>lost/found</span>
@@ -55,7 +53,7 @@ const ChooseOption = ({ setCategory }) => {
           type="radio"
           name="category"
           value="good-hands"
-          checked={category === 'good-hands'}
+          checked={selectedCategory === 'good-hands'}
           onChange={handleCategoryChange}
         />
         <span className={css.fieldText}>in good hands</span>
