@@ -26,8 +26,9 @@ const AddPetForm = () => {
     navigate('/user');
   };
 
-  const handleNextClick = () => {
-    setStep(prevState => prevState + 1);
+  const handleNextClick = (event) => {
+    event.preventDefault();
+    setStep((prevState) => prevState + 1);
   };
 
   const handlePrevClick = () => {
@@ -36,6 +37,7 @@ const AddPetForm = () => {
 
   const handleSubmit = useCallback(
     async (values, resetForm) => {
+      
       const formData = {
         category: category,
         title: values.title,
@@ -54,8 +56,9 @@ const AddPetForm = () => {
       );
   
       resetForm();
+      navigate('/user');
     },
-    [category, fileInput]
+    [category, fileInput,navigate]
   );
 
   const getPageTitle = useCallback(() => {
@@ -77,16 +80,14 @@ const AddPetForm = () => {
     <main className={css.main}>
       <div className={css.formikWrapper + ' container'}>
       <ul>
-        {steps.map((index) => (
-  <li key={index}>
-    <span>
-      {step === 0 && index === 0 && 'Choose Option'}
-      {step === 1 && index === 1 && 'Personal Details'}
-      {step === 2 && index === 2 && 'More Info'}
-    </span>
-  </li>
-))}
-      </ul>
+      {steps.map((label, index) => (
+        <li key={index}>
+          <span>
+            {step === index && label}
+          </span>
+        </li>
+      ))}
+    </ul>
         <Formik
           initialValues={INITIAL_STATE}
           validationSchema={validationSchema[step]}
@@ -102,7 +103,7 @@ const AddPetForm = () => {
           }) => (
             <Form className={css.formik}>
               <h1 className={css.title}>{title}</h1>
-              {step === 0 && <ChooseOption setCategory={setCategory} />}
+              {step === 0 && <ChooseOption setCategory={setCategory} selectedCategory={category} />}
               {step === 1 && (
                 <PersonalDetails
                   category={category}
