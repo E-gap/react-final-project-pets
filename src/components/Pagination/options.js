@@ -1,7 +1,13 @@
+const screenWidth = window.screen.width;
+
+const isMobile = screenWidth <= 768;
+
+console.log(isMobile);
+
 const optionsForPaginationNotices = {
   totalItems: 0,
   itemsPerPage: 12,
-  visiblePages: 5,
+  visiblePages: isMobile ? 4 : 5,
   page: 1,
   centerAlign: false,
   firstItemClassName: 'tui-first-child',
@@ -28,7 +34,7 @@ const optionsForPaginationNotices = {
 const optionsForPaginationNews = {
   totalItems: 0,
   itemsPerPage: 6,
-  visiblePages: 5,
+  visiblePages: isMobile ? 4 : 5,
   page: 1,
   centerAlign: false,
   firstItemClassName: 'tui-first-child',

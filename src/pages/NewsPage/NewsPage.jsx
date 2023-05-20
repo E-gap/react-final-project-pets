@@ -57,8 +57,6 @@ const NewsPage = () => {
         setNews(response.data.result);
         setTotalNews(response.data.total);
 
-        console.log(response);
-
         return response.data;
       } catch (error) {
         setError(error.message);
