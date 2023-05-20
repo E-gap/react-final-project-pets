@@ -20,6 +20,8 @@ const AddPetForm = () => {
   const [category, setCategory] = useState('');
   const navigate = useNavigate();
 
+  const steps = ['Choose Option', 'Personal Details', 'More Info'];
+
   const handleCancelClick = () => {
     navigate('/user');
   };
@@ -32,32 +34,35 @@ const AddPetForm = () => {
     setStep(prevState => prevState - 1);
   };
 
-  const handleSubmit = async (values, { resetForm }) => {
-    const formData = {
-      category: values.category,
-      title: values.title,
-      name: values.name,
-      birthday: values.birthday,
-      breed: values.breed,
-      sex: values.sex,
-      image: fileInput,
-      location: values.location,
-      price: values.price,
-      comments: values.comments,
-    };
-
-    Object.entries(formData).forEach(([key, value]) =>
-      console.log(key, ':', value)
-    );
-
-    resetForm();
-  };
+  const handleSubmit = useCallback(
+    async (values, resetForm) => {
+      const formData = {
+        category: category,
+        title: values.title,
+        name: values.name,
+        birthday: values.birthday,
+        breed: values.breed,
+        sex: values.sex,
+        image: fileInput,
+        location: values.location,
+        price: values.price,
+        comments: values.comments,
+      };
+  
+      Object.entries(formData).forEach(([key, value]) =>
+        console.log(key, ':', value)
+      );
+  
+      resetForm();
+    },
+    [category, fileInput]
+  );
 
   const getPageTitle = useCallback(() => {
     const titles = {
-      'your-pet': 'Add my pet',
+      'your-pet': 'Add pet',
       sell: 'Add pet for sell',
-      'lost-found': 'Add to lost or found pet',
+      'lost-found': 'Add lost pet',
       'good-hands': 'Add to give a Pet for Adoption',
       '': 'Add Pet',
     };
@@ -71,10 +76,21 @@ const AddPetForm = () => {
   return (
     <main className={css.main}>
       <div className={css.formikWrapper + ' container'}>
+      <ul>
+        {steps.map((index) => (
+  <li key={index}>
+    <span>
+      {step === 0 && index === 0 && 'Choose Option'}
+      {step === 1 && index === 1 && 'Personal Details'}
+      {step === 2 && index === 2 && 'More Info'}
+    </span>
+  </li>
+))}
+      </ul>
         <Formik
           initialValues={INITIAL_STATE}
           validationSchema={validationSchema[step]}
-          onSubmit={handleSubmit}
+          onSubmit={(values, { resetForm }) => handleSubmit(values, resetForm)}
         >
           {({
             handleChange,
