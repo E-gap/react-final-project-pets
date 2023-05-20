@@ -35,7 +35,8 @@
 #tui-pagination-container .tui-first,
 #tui-pagination-container .tui-last,
 #tui-pagination-container .tui-ico-ellip,
-#tui-pagination-container .tui-last-child {
+#tui-pagination-container .tui-last-child,
+#tui-pagination-container .tui-first-child {
   display: none;
 }
 
