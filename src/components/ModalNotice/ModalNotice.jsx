@@ -1,8 +1,12 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
 import { createPortal } from 'react-dom';
 import { AiOutlineClose } from 'react-icons/ai';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { useSelector } from 'react-redux';
+import { getAuth } from '../../redux/auth/authSelector';
 import AddToFavorite from './temporary/tempAddToFavorite';
+import Contact from './Contact/Contact';
 
 import css from './ModalNotice.module.css';
 
@@ -20,11 +24,17 @@ const ModalNotice = ({
   birthday,
   sex,
   src,
+  // tel,
+  // mail,
 }) => {
   // const [modal, setModal] = useState(false);
 
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
+
+  const [favorite, setFavorite] = useState(false);
+
+  const { isLogin } = useSelector(getAuth);
 
   // const toggleModal = () => {
   //   setModal(!modal);
@@ -84,79 +94,16 @@ const ModalNotice = ({
     console.log('Contacting via email:', email);
   };
 
-  return (
-    // <>
-    //   {/* temporary button to open modal  */}
-    //   <button onClick={toggleModal} className={css.openBtn}>
-    //     Open
-    //   </button>
+  const onFavBtnClick = () => {
+    if (isLogin) {
+      setFavorite(true);
+    } else {
+      Notify.warning('Please, signup or login to add notice to favorites');
+    }
+  };
 
-    //   {modal && (
-    //     <div className="modal">
-    //       <div onClick={toggleModal} className={css.overlay}></div>
-    //       <div className={css.content}>
-    //         <div className={css.imgWrap}>
-    //           <img src="" alt="" className={css.image} />
-    //           <div className={css.optionContainer}>
-    //             <p className={css.optionText}>option back</p>
-    //           </div>
-    //         </div>
-    //         <div className={css.contentWrap}>
-    //           <h2 className={css.title}>Title from BACKEND</h2>
-    //           <ul>
-    //             <li className={css.item}>
-    //               <p className={css.itemTitle}>Name:</p>
-    //               <p className={css.description}>back</p>
-    //             </li>
-    //             <li className={css.item}>
-    //               <p className={css.itemTitle}>Birthday:</p>
-    //               <p className={css.description}>back</p>
-    //             </li>
-    //             <li className={css.item}>
-    //               <p className={css.itemTitle}>Breed:</p>
-    //               <p className={css.description}>back</p>
-    //             </li>
-    //             <li className={css.item}>
-    //               <p className={css.itemTitle}>Place:</p>
-    //               <p className={css.description}>back</p>
-    //             </li>
-    //             <li className={css.item}>
-    //               <p className={css.itemTitle}>The sex:</p>
-    //               <p className={css.description}>back</p>
-    //             </li>
-    //             <li className={css.item}>
-    //               <p className={css.itemTitle}>Email:</p>
-    //               <p className={css.description}>
-    //                 <a href={`mailto:${email}`} onClick={handleEmailClick}>
-    //                   {email}
-    //                 </a>
-    //               </p>
-    //             </li>
-    //             <li className={css.item}>
-    //               <p className={css.itemTitle}>Phone:</p>
-    //               <p className={css.description}>
-    //                 <a href={`tel:${phone}`} onClick={handlePhoneClick}>
-    //                   {phone}
-    //                 </a>
-    //               </p>
-    //             </li>
-    //             <li className={css.item}>
-    //               <p className={css.itemTitle}>Comments:</p>
-    //               <p className={css.description}>back</p>
-    //             </li>
-    //           </ul>
-    //           <div className={css.wrap}>
-    //             <button className={css.button}>Contact</button>
-    //             <AddToFavorite />
-    //           </div>
-    //         </div>
-    //         <button className={css.closeBtn} onClick={toggleModal}>
-    //           <AiOutlineClose className={css.closeIcon} />
-    //         </button>
-    //       </div>
-    //     </div>
-    //   )}
-    // </>
+  return (
+  
     createPortal(
       <div className="modal">
         <div onClick={closeModal} className={css.overlay}></div>
@@ -173,11 +120,9 @@ const ModalNotice = ({
             <ul>
               <li className={css.item}>
                 <p className={css.itemTitle}>Name:</p>
-                {/* <p className={css.description}>{name}</p> */}
               </li>
               <li className={css.item}>
                 <p className={css.itemTitle}>Birthday:</p>
-                {/* <p className={css.description}>{birthday}</p> */}
               </li>
               <li className={css.item}>
                 <p className={css.itemTitle}>Breed:</p>
@@ -227,20 +172,16 @@ const ModalNotice = ({
                 </li>
             </ul>
             </div>
-            {/* <div className={css.textWrap}>
-            <p className={css.textContent}>Comments: {comments}</p>
-            </div>
-            <div className={css.wrap}>
-              <button className={css.button}>Contact</button>
-              <AddToFavorite />
-            </div> */}
           </div>
           <div className={css.textWrap}>
             <p className={css.textContent}>Comments: {comments}</p>
             </div>
             <div className={css.wrap}>
-              <button className={css.button}>Contact</button>
-              <AddToFavorite />
+              <Contact />
+              <AddToFavorite 
+                onClick={onFavBtnClick}
+                favorite={favorite}
+              />
             </div>
           <button className={css.closeBtn} onClick={closeModal}>
             <AiOutlineClose className={css.closeIcon} />
