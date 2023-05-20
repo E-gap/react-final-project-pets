@@ -1,6 +1,7 @@
 //import css from './PaginationComponent.module.css';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
+import propTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
 const PaginationComponent = ({ searchPage, total, options }) => {
@@ -28,3 +29,9 @@ const PaginationComponent = ({ searchPage, total, options }) => {
   return <div id="tui-pagination-container" className="tui-pagination"></div>;
 };
 export default PaginationComponent;
+
+PaginationComponent.propTypes = {
+  searchPage: propTypes.number.isRequired,
+  total: propTypes.number.isRequired,
+  options: propTypes.object.isRequired,
+};
