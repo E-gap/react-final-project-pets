@@ -113,3 +113,5 @@ textarea {
     padding-left: 16px;
   }
 }
+
+@import '../src/components/Pagination/pagination.css';
