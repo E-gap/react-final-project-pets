@@ -3,19 +3,20 @@ import { useMediaQuery } from 'react-responsive';
 
 import css from './Header.module.css';
 import Logo from 'components/Logo/Logo';
+import { useSelector } from 'react-redux';
+import { isUserLogin } from 'redux/auth/authSelector';
 
-const BurgerMenuBtn = lazy(() =>
-  import('components/Buttons/BurgerMenuBtn/BurgerMenuBtn')
-);
-const UserNav = lazy(() => import('components/UserNav/UserNav'));
-const Navigation = lazy(() => import('../Navigation/Navigation'));
-const AuthMenu = lazy(() => import('../Buttons/AuthButtons/AuthMenu'));
+import UserNav from 'components/UserNav/UserNav';
+import Navigation from '../Navigation/Navigation';
+import AuthMenu from '../Buttons/AuthButtons/AuthMenu';
+import BurgerMenuBtn from 'components/Buttons/BurgerMenuBtn/BurgerMenuBtn';
 
 const Header = () => {
+  const isLogin = useSelector(isUserLogin);
+
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   const isTabletOrDesktop = useMediaQuery({ query: '(min-width: 768px)' });
   const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
-  const [isAuth] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -23,8 +24,8 @@ const Header = () => {
       <div className="container header_container">
         <Logo />
         {isDesktop && <Navigation />}
-        {isTabletOrDesktop && !isAuth && <AuthMenu />}
-        {isAuth && !menuOpen && <UserNav displayName={isTabletOrDesktop} />}
+        {isTabletOrDesktop && !isLogin && <AuthMenu />}
+        {isLogin && !menuOpen && <UserNav displayName={isTabletOrDesktop} />}
         <BurgerMenuBtn menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <div
           onClick={e => {
@@ -34,8 +35,8 @@ const Header = () => {
             menuOpen ? `${css.mobileMenu} ${css.show}` : css.mobileMenu
           }
         >
-          {!isAuth && isMobile && <AuthMenu />}
-          {isAuth && isMobile && <UserNav margins={true} />}
+          {!isLogin && isMobile && <AuthMenu />}
+          {isLogin && isMobile && <UserNav margins={true} />}
           <Navigation />
         </div>
       </div>
