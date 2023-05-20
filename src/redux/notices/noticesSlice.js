@@ -25,6 +25,8 @@ export const noticesSlice = createSlice({
       .addCase(fetchAllNotices.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+        state.notices = [];
+        state.total = 0;
       })
       .addCase(fetchNoticeById.pending, state => {
         state.isLoading = true;

@@ -49,8 +49,12 @@ const NewsPage = () => {
         );
 
         if (response.status !== 200) {
+          setNews([]);
+          setTotalNews(0);
           throw new Error('Server Error');
         } else if (response.data.length === 0) {
+          setNews([]);
+          setTotalNews(0);
           setError('There are not any news');
         }
 
@@ -72,13 +76,12 @@ const NewsPage = () => {
     .map(item => <NewsItem key={item._id} topic={item} />);
   return (
     <div className={css.newsPage + ' container'}>
-      <NoticesSearch
-        title={'News'}
-        /* query={query} */
-        /* setNews={setNews} */
-        search={setQuery}
-      />
-      {!error ? <ul className={css.list}>{items}</ul> : <p>{error}</p>}
+      <NoticesSearch title={'News'} search={setQuery} />
+      {!error ? (
+        <ul className={css.list}>{items}</ul>
+      ) : (
+        <p className={css.error}>{error}</p>
+      )}
       {totalNews > options.newsOptions.itemsPerPage ? (
         <div className={css.paginationDiv}>
           <PaginationComponent
