@@ -142,13 +142,15 @@ const NoticesPage = () => {
 
           {/* <NoticesFilters /> */}
           <NoticesCategoriesList items={pets} />
-          {pets ? (
-            <PaginationComponent
-              items={pets}
-              searchPage={searchPage}
-              total={total}
-              options={options.noticesOptions}
-            />
+          {total > options.noticesOptions.itemsPerPage ? (
+            <div className={css.paginationDiv}>
+              <PaginationComponent
+                items={pets}
+                searchPage={searchPage}
+                total={total}
+                options={options.noticesOptions}
+              />
+            </div>
           ) : (
             ''
           )}

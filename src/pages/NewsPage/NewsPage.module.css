@@ -33,3 +33,7 @@
     column-gap: 31px;
   }
 }
+
+.paginationDiv {
+  display: flex;
+}

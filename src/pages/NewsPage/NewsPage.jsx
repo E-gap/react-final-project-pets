@@ -69,9 +69,6 @@ const NewsPage = () => {
     getNews(query);
   }, [query, page]);
 
-  console.log(news);
-  console.log(totalNews);
-
   const items = news
     .slice(0, 6)
     .map(item => <NewsItem key={item._id} topic={item} />);
@@ -84,13 +81,15 @@ const NewsPage = () => {
         search={setQuery}
       />
       {!error ? <ul className={css.list}>{items}</ul> : <p>{error}</p>}
-      {news ? (
-        <PaginationComponent
-          items={news}
-          searchPage={searchPage}
-          total={totalNews}
-          options={options.newsOptions}
-        />
+      {totalNews > options.newsOptions.itemsPerPage ? (
+        <div className={css.paginationDiv}>
+          <PaginationComponent
+            items={news}
+            searchPage={searchPage}
+            total={totalNews}
+            options={options.newsOptions}
+          />
+        </div>
       ) : (
         ''
       )}
