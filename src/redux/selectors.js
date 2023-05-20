@@ -1,5 +1,5 @@
-export const selectPets = state => state.pets.pets;
+export const selectNotices = state => state.notices.notices;
 
-export const selectOnePet = state => state.pets.onePet;
+export const selectOneNotice = state => state.notices.oneNotice;
 
-export const totalPets = state => state.pets.total;
+export const totalNotices = state => state.notices.total;

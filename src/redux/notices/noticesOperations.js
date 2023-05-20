@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import Notiflix from 'notiflix';
+//import Notiflix from 'notiflix';
 
 const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
@@ -8,8 +8,8 @@ const instance = axios.create({
 
 /* ((axios.defaults.baseURL = `http://localhost:3001`)); */
 
-export const fetchAllPets = createAsyncThunk(
-  'pets/fetchAllPets',
+export const fetchAllNotices = createAsyncThunk(
+  'notices/fetchAllNotices',
   async function (queryParams, { rejectWithValue }) {
     const { category, title, page } = queryParams;
     try {
@@ -30,8 +30,8 @@ export const fetchAllPets = createAsyncThunk(
   }
 );
 
-export const fetchPetById = createAsyncThunk(
-  'pets/fetchPetById',
+export const fetchNoticeById = createAsyncThunk(
+  'notices/fetchNoticeById',
   async function (id, { rejectWithValue }) {
     try {
       const response = await instance.get(`/notices/${id}`);
@@ -49,22 +49,22 @@ export const fetchPetById = createAsyncThunk(
   }
 );
 
-export const addPets = createAsyncThunk(
-  'pets/addPets',
+/* export const addNotice = createAsyncThunk(
+  'notices/addNotice',
   async function (contact, { rejectWithValue, getState }) {
-    const statePets = getState().pets.pets;
+    const stateNotices = getState().notices.notices;
 
-    const isCoincidence = statePets.find(
+    const isCoincidence = stateNotices.find(
       item => item.name.toLowerCase() === contact.name.toLowerCase()
     );
 
     if (isCoincidence) {
-      alert(`${contact.name} is already in pets`);
+      alert(`${contact.name} is already in notices`);
       throw new Error("Can't add contact. Server Error");
     }
 
     try {
-      const response = await axios.post('/pets', {
+      const response = await axios.post('/notices', {
         name: contact.name,
         number: contact.number,
       });
@@ -83,13 +83,13 @@ export const addPets = createAsyncThunk(
       return rejectWithValue(error.message);
     }
   }
-);
+); */
 
-export const deletePets = createAsyncThunk(
-  'pets/deletePets',
+/* export const deleteNotices = createAsyncThunk(
+  'notices/deleteNotices',
   async function (id, { rejectWithValue }) {
     try {
-      const response = await axios.delete(`/pets/${id}`);
+      const response = await axios.delete(`/notices/${id}`);
 
       if (response.statusText !== 'OK') {
         throw new Error("Can't delete contact. Server Error");
@@ -105,4 +105,4 @@ export const deletePets = createAsyncThunk(
       return rejectWithValue(error.message);
     }
   }
-);
+); */
