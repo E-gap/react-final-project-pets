@@ -6,8 +6,8 @@
   height: 52px;
   margin-left: auto;
   margin-right: auto;
-  width: 310px;
-  display: flex;
+  /* width: 310px; */
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   padding-left: 0;
@@ -35,7 +35,8 @@
 #tui-pagination-container .tui-first,
 #tui-pagination-container .tui-last,
 #tui-pagination-container .tui-ico-ellip,
-#tui-pagination-container .tui-last-child {
+#tui-pagination-container .tui-next-is-ellip,
+#tui-pagination-container .tui-prev-is-ellip {
   display: none;
 }
 

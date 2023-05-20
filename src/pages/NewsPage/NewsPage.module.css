@@ -33,3 +33,13 @@
     column-gap: 31px;
   }
 }
+
+.paginationDiv {
+  display: flex;
+}
+
+.error {
+  font-size: 40;
+  color: red;
+  display: flex;
+}

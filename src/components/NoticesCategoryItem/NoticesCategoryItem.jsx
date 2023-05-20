@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
-import { fetchPetById } from '../../redux/pets/petsOperations';
+import { fetchNoticeById } from '../../redux/notices/noticesOperations';
 import propTypes from 'prop-types';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import css from './NoticesCategoryItem.module.css';
@@ -41,10 +41,10 @@ const NoticesCategoryItem = ({
   // const User = useSelector(getUser);
   // console.log(User.email);
 
-  // const onePet = useSelector(selectOnePet);
+  // const oneNotice = useSelector(selectOneNotice);
   const dispatch = useDispatch();
 
-  // console.log(onePet);
+  // console.log(oneNotice);
 
   let categoryName = '';
 
@@ -70,8 +70,8 @@ const NoticesCategoryItem = ({
       const idNotice =
         e.target.getAttribute('id') || e.target.parentNode.getAttribute('id');
       console.log(idNotice);
-      fetchPetById(idNotice);
-      dispatch(fetchPetById(idNotice));
+      fetchNoticeById(idNotice);
+      dispatch(fetchNoticeById(idNotice));
       setShowModal(true);
     }
   };

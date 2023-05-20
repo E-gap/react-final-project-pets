@@ -78,3 +78,7 @@
     top: 3px;
   }
 }
+
+.paginationDiv {
+  display: flex;
+}

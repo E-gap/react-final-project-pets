@@ -9,8 +9,11 @@ import PaginationComponent from '../../components/Pagination/PaginationComponent
 
 import AddPetButton from 'components/Buttons/AddPetButton/AddPetButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllPets, fetchPetById } from '../../redux/pets/petsOperations';
-import { selectPets, totalPets } from '../../redux/selectors';
+import {
+  fetchAllNotices,
+  fetchNoticeById,
+} from '../../redux/notices/noticesOperations';
+import { selectNotices, totalNotices } from '../../redux/selectors';
 import options from '../../components/Pagination/options';
 
 //import { Notify } from 'notiflix/build/notiflix-notify-aio';
@@ -19,7 +22,7 @@ import options from '../../components/Pagination/options';
 //import url from './4.jpg';
 
 const NoticesPage = () => {
-  const total = useSelector(totalPets);
+  const total = useSelector(totalNotices);
   const [pathFilter, setPathFilter] = useState('sell');
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -35,10 +38,10 @@ const NoticesPage = () => {
   // eslint-disable-next-line no-unused-vars
   //const [list, setList] = useState(initialState);
   const dispatch = useDispatch();
-  const pets = useSelector(selectPets);
-  // const onePet = useSelector(selectOnePet);
+  const notices = useSelector(selectNotices);
+  // const oneNotice = useSelector(selectOneNotice);
 
-  //console.log(onePet);
+  //console.log(oneNotice);
 
   const { pathname } = useLocation();
 
@@ -81,7 +84,7 @@ const NoticesPage = () => {
       page,
     };
 
-    dispatch(fetchAllPets(queryParams));
+    dispatch(fetchAllNotices(queryParams));
   }, [dispatch, pathFilter, query, page, setSearchParams]);
 
   const submitSearch = query => {
@@ -95,8 +98,8 @@ const NoticesPage = () => {
       const idNotice =
         e.target.getAttribute('id') || e.target.parentNode.getAttribute('id');
       //console.log(idNotice);
-      fetchPetById(idNotice);
-      dispatch(fetchPetById(idNotice));
+      fetchNoticeById(idNotice);
+      dispatch(fetchNoticeById(idNotice));
     }
   };
 
@@ -104,7 +107,7 @@ const NoticesPage = () => {
     setPage(pageNumber);
   };
 
-  //console.log(onePet);
+  //console.log(oneNotice);
 
   return (
     <>
@@ -141,14 +144,15 @@ const NoticesPage = () => {
           </div>
 
           {/* <NoticesFilters /> */}
-          <NoticesCategoriesList items={pets} />
-          {pets ? (
-            <PaginationComponent
-              items={pets}
-              searchPage={searchPage}
-              total={total}
-              options={options.noticesOptions}
-            />
+          <NoticesCategoriesList items={notices} />
+          {total > options.noticesOptions.itemsPerPage ? (
+            <div className={css.paginationDiv}>
+              <PaginationComponent
+                searchPage={searchPage}
+                total={total}
+                options={options.noticesOptions}
+              />
+            </div>
           ) : (
             ''
           )}
