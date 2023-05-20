@@ -60,9 +60,27 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkApi) => {
 export const refresh = createAsyncThunk('auth/current', async (_, thunkApi) => {
   const { token } = thunkApi.getState().auth;
   if (!token) return thunkApi.rejectWithValue('No valid token');
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
   try {
     const { data } = await instance.get('/auth/current');
+    return data;
+  } catch (error) {
+    return thunkApi.rejectWithValue(error.message);
+  }
+});
+
+
+export const updateUser = createAsyncThunk('auth/updateUser', async (formData, thunkApi) => {
+  const { token, user } = thunkApi.getState().auth;
+  if (!token) return thunkApi.rejectWithValue('No valid token');
+  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+  instance.defaults.headers.common.id = user.id;
+
+  try {
+    const { data } = await instance.put("/auth/user/" + user.id, {
+      ...user,
+      ...formData,
+    });
 
     return data;
   } catch (error) {
