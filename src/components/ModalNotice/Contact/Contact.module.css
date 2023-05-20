@@ -32,3 +32,9 @@
     color: var(--color-light-background);
     transition: all linear 250ms;
   }
+
+  .contactLink {
+    color: inherit;
+    width: 100%;
+  }
+  

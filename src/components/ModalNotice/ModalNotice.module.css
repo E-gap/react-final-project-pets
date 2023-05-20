@@ -280,3 +280,8 @@ p {
 .closeIcon:focus {
   color: var(--color-dark);
 }
+
+.contacts {
+  color: var(--color-orange);
+  text-decoration: underline;
+}
