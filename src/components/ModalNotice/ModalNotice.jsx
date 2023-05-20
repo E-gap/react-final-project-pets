@@ -32,6 +32,7 @@ const ModalNotice = ({
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
 
+
   const [favorite, setFavorite] = useState(false);
 
   const { isLogin } = useSelector(getAuth);
@@ -157,14 +158,14 @@ const ModalNotice = ({
                 <p className={css.description}>{sex}</p>
               </li>
               <li className={css.item}>
-                <p className={css.description}>
+                <p className={`${css.description} ${css.contacts}`}>
                   <a href={`mailto:${email}`} onClick={handleEmailClick}>
                     {email}
                   </a>
                 </p>            
                 </li>
                 <li className={css.item}>
-                  <p className={css.description}>
+                  <p className={`${css.description} ${css.contacts}`}>
                   <a href={`tel:${phone}`} onClick={handlePhoneClick}>
                     {phone}
                   </a>
