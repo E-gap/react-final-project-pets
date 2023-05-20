@@ -90,8 +90,6 @@ const NoticesPage = () => {
   const submitSearch = query => {
     setQuery(query);
   };
-  //console.log(query);
-  //console.log(page);
 
   const handleLearnMore = e => {
     if (e.target.parentNode.getAttribute('id') || e.target.getAttribute('id')) {
