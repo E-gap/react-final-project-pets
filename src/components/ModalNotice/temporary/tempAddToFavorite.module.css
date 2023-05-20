@@ -1,4 +1,4 @@
-.button {
+.btn {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -26,8 +26,8 @@
 
 }
 
-.button:hover,
-.button:focus {
+.btn:hover,
+.btn:focus {
   border-color: var(--color-blue-gradient);
   background: var(--color-blue-gradient);
   color: var(--color-light-background);
