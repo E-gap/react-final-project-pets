@@ -1,33 +1,74 @@
 import css from './OurFriendsPage.module.css';
-import { friends } from "./friends"
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import TimeSheet from 'services/TimeSheet/TimeSheet';
+import defaultImg from "./petImg.png"
 
 const OurFriendsPage = () => {
+  const [friends, setFriends] = useState([]);
+
+  const instance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+
+  // console.log(friends)
+
+  const getFriends = async () => {
+    try {
+      const  response = await instance.get('/friends');
+      setFriends(response.data);
+      return response.data;
+    } catch (error) {
+      return error.message;
+    }
+    
+  };
+
+useEffect(() => {
+  getFriends();
+},[])
+  
+  const noReload = () => {
+    elements.preventdefault();
+  }
+
   const elements = friends.map(item => (
-    <li key={item.id} className={css.item}>
-      <p className={css.itemTitle}>{item.name}</p>
+    <li key={item._id} className={css.item}>
+      <a href={item.url} className={css.itemTitle}>
+        {item.title}
+      </a>
       <div className={css.itemWrapper}>
-        <img className={css.itemLogo} src={item.logo} alt="logo" />
+        <img
+          className={css.itemLogo}
+          src={item.imageUrl ? item.imageUrl : defaultImg}
+          alt="logo"
+        />
         <ul className={css.itemList}>
           <li>
-            <p className={css.textTitle}>Time:</p>
-            <p className={css.text}>{item.time}</p>
+            <TimeSheet workDays={item.workDays} />
           </li>
           <li>
-            <p className={css.textTitle}>Address:</p>
-            <a className={css.text} href="https:{item.mapUrl}">
-              {item.address}
+            <a href={item.addressUrl} className={css.itemText}>
+              <p className={css.textTitle}>Address:</p>
+              <p>{item.address ? item.address : 'website only'}</p>
             </a>
           </li>
           <li>
-            <p className={css.textTitle}>Email:</p>
-            <a className={css.text} href="mailto:{item.email}">
-              {item.email}
+            <a
+              href={item.email ? `mailto:${item.email}`: noReload}
+              className={css.itemText}
+            >
+              <p className={css.textTitle}>Email:</p>
+              <p>{item.email ? item.email : 'phone only'}</p>
             </a>
           </li>
           <li>
-            <p className={css.textTitle}>Phone:</p>
-            <a className={css.text} href="tel:{item.phone}">
-              {item.phone}
+            <a
+              href={item.phone ? `tel:${item.phone}`: noReload}
+              className={css.itemText}
+            >
+              <p className={css.textTitle}>Phone:</p>
+              <p>{item.phone ? item.phone : 'email only'}</p>
             </a>
           </li>
         </ul>
@@ -36,10 +77,12 @@ const OurFriendsPage = () => {
   ));
 
   return (
-    <div className={css.container}>
-      <h1 className={css.title}>Our friends</h1>
-      <ul className={css.list}>{elements}</ul>
-    </div>
+    <section className={css.section}>
+      <div className={css.container}>
+        <h1 className={css.title}>Our friends</h1>
+        <ul className={css.list}>{elements}</ul>
+      </div>
+    </section>
   );
 };
 

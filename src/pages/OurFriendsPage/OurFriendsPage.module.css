@@ -1,65 +1,76 @@
+.section {
+  margin-top: 88px;
+  margin-bottom: 80px;
+}
 .container {
   margin: 0 auto;
-  padding: 0 16px;
-  margin-bottom: 80px;
-  width: 1280px;
+  padding: 0 20px;
+  
+  width: 320px;
 }
 .title {
   margin-top: 60px;
-  margin-bottom: 60px;
-  text-align: center;
+  margin-bottom: 24px;
 
   font-family: 'Manrope';
   font-weight: 700;
-  font-size: 48px;
+  font-size: 24px;
   line-height: 1.37;
+  text-align: center;
 
   color: var(--color-black);
 }
 .list {
   display: flex;
-  gap: 24px;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 32px;
-  
-  list-style: none;
-  margin: 0 auto;
-  margin-bottom: 60px;
-  padding: 0;
+  gap: 20px;
+
   align-items: center;
   justify-content: center;
+
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
 }
 .item {
   margin: 0;
   padding: 12px 16px;
-  width: 393px;
 
-  min-height: 287px;
+  width: 280px;
+  height: 279px;
+
   border-radius: 40px;
   box-shadow: var(--shadow-default);
   background-color: var(--color-wight);
 }
+.item:hover,
+.item:focus {
+  box-shadow: var(--shadow-hover);
+}   
 .itemTitle {
-  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
   text-align: center;
   align-items: center;
 
   font-family: 'Manrope';
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.35;
 
   color: var(--color-blue)
 }
 .itemWrapper {
   display: flex;
-  gap: 20px;
+  gap: 12px;
   justify-content: left;
   align-items: center;
 }
 .itemLogo {
-  margin-top: -110px;
+  margin-top: -90px;
+  width: 100px;
 }
 .itemList {
   display: flex;
@@ -67,45 +78,84 @@
   gap: 12px;
   list-style: none;
 }
-.textTitle {
-  font-family: 'Manrope';
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 1.37;
+.itemText {
+  position: relative;
 
-  color: var(--color-black);
-}
-.text {
   font-family: 'Manrope';
   font-weight: 400;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 1.37;
-    
+
   color: var(--color-black);
 }
-.text:hover {
-  color: var(--color-blue)
+.itemText:hover,
+.itemText:focus {
+  color: var(--color-blue);
+}
+.textTitle {
+  font-weight: 600;
 }
 
-/* @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
+  .section {
+  margin-top: 148px;
+}
   .container {
     padding: 0 32px;
     width: 768px;
   }
-   .list {
-    width: 704px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0;
-  }
+  .title {
+  margin-bottom: 60px;
+  font-size: 48px;
 }
-@media screen and (min-width: 1280px) {
-  .container {
-    padding: 0 16px;
-    width: 1280px;
-  }
   .list {
-    width: 1248px;
+  gap: 32px;
   }
-} */
+  .item {
+  width: 336px;
+  height: 310px;
+}
+.itemTitle {
+   margin-bottom: 16px;
+  font-size: 20px;
+}
+.itemText {
+  font-size: 14px;
+}
+.itemLogo {
+  margin-top: -110px;
+  width: 126px;
+}
+}
+
+@media screen and (min-width: 1280px) {
+.section {
+  margin-top: 148px;
+}
+.container {
+  padding: 0 16px;
+  width: 1280px;
+}
+.title {
+  margin-bottom: 60px;
+  font-size: 48px;
+}
+.item {
+  width: 393px;
+  height: 330px;
+}
+.itemWrapper {
+  gap: 20px;
+}
+.itemLogo {
+  margin-top: -110px;
+  width: 146px;
+}
+.itemList {
+  gap: 12px;
+}
+.itemText {
+  font-size: 16px;
+}
+}
 

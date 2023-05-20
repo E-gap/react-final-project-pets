@@ -1,0 +1,90 @@
+.timeText {
+  position: relative;
+
+  font-family: 'Manrope';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.37;
+  text-align: left;
+
+  color: var(--color-black);    
+}
+.timeText:hover,
+.timeText:focus {
+  color: var(--color-blue)
+}
+.textTitle {
+  font-weight: 600;
+}
+.timeContainer {
+  display: none;
+  position: absolute;
+  z-index: 999;
+  padding: 12px;
+  margin-top: 40px;
+  margin-left: -60px;
+
+  width: 110px;
+  height: 140px;
+
+  border: 1px solid var(--color-blue);
+  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
+  border-radius: 8px;
+  background-color: white;
+ 
+  font-family: 'Manrope';
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.33;
+}
+.timeText:hover + .timeContainer {
+  display: inline-block;
+}
+.timeText:focus + .timeContainer {
+  display: inline-block;
+}
+.timeItem {
+  display: flex;
+  gap: 12px;
+  justify-content: right;
+  align-items: center;
+}
+.timeList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+ @media screen and (min-width: 768px) {
+  .timeText {
+  font-size: 14px;   
+}
+.timeContainer {
+  margin-top: 50px;
+  margin-left: -80px;
+  width: 140px;
+  height: 170px;
+  font-size: 13px;
+}
+.timeItem {
+  gap: 15px;
+}
+} 
+
+@media screen and (min-width: 1280px) {
+.timeText {
+  font-size: 16px;   
+}
+.timeContainer {
+  padding: 12px;
+  margin-top: 50px;
+  margin-left: -80px;
+
+  width: 140px;
+  height: 170px;
+  font-size: 13px;
+}
+.timeItem {
+  gap: 15px;
+}
+}
