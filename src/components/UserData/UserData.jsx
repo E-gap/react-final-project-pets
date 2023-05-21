@@ -8,7 +8,6 @@ import { refresh } from '../../redux/auth/authOperations';
 
 const UserData = () => {
 
-
   const dispatch = useDispatch();
 
   useEffect(() => {
