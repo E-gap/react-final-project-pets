@@ -1,9 +1,13 @@
 //import css from './PetsData.module.css';
 
+import MyPetsItem from '../MyPetsItem/MyPetsItem';
+
 const PetsData = () => {
   return (
     <div>
-      <p>PetsData</p>
+      <MyPetsItem />
+      <MyPetsItem />
+      <MyPetsItem />
     </div>
   );
 };

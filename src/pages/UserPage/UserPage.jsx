@@ -1,6 +1,6 @@
 import css from './UserPage.module.css';
-import UserInformation from '../../components/UserInformation/UserInformation';
-import MyPetsItem from '../../components/MyPetsItem/MyPetsItem';
+import UserData from '../../components/UserData/UserData';
+import PetsData from '../../components/PetsData/PetsData';
 
 const UserPage = () => {
   return (
@@ -9,16 +9,14 @@ const UserPage = () => {
         <p className={css.tabsTitle}>
           My Information
         </p>
-        <UserInformation />
+        <UserData/>
       </div>
+
       <div className={`${css.tabContainer}`}>
         <p className={css.tabsTitle}>
           My pets:
         </p>
-
-        <MyPetsItem />
-        <MyPetsItem />
-        <MyPetsItem />
+        <PetsData />
       </div>
     </section>
   );
