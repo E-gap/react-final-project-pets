@@ -31,7 +31,7 @@ const PaginationComponent = ({ searchPage, total, options }) => {
 export default PaginationComponent;
 
 PaginationComponent.propTypes = {
-  searchPage: propTypes.number.isRequired,
+  searchPage: propTypes.func.isRequired,
   total: propTypes.number.isRequired,
   options: propTypes.object.isRequired,
 };
