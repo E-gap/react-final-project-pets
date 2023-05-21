@@ -1,0 +1,32 @@
+.photoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photo {
+  border-radius: 40px;
+  margin-bottom: 14px;
+  object-fit: cover;
+}
+
+.hidden {
+  opacity: 0;
+  height: 0;
+  width: 0;
+  line-height: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+}
+
+.editPhotoButton {
+  font-family: 'Manrope';
+  font-size: 12px;
+  line-height: 1.83;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 10px;
+}

@@ -87,3 +87,18 @@ export const updateUser = createAsyncThunk('auth/updateUser', async (formData, t
     return thunkApi.rejectWithValue(error.message);
   }
 });
+
+export const updateUserAvatar = createAsyncThunk('auth/updateUserAvatar', async (formData, thunkApi) => {
+  const { token, user } = thunkApi.getState().auth;
+  if (!token) return thunkApi.rejectWithValue('No valid token');
+  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+  instance.defaults.headers.common.id = user.id;
+
+  try {
+    const { data } = await instance.put("/auth/avatar/" + user.id, formData);
+
+    return data;
+  } catch (error) {
+    return thunkApi.rejectWithValue(error.message);
+  }
+});

@@ -2,18 +2,18 @@ import css from './UserDataItem.module.css';
 import edit from '../../images/UserPage/edit.svg';
 import check from '../../images/UserPage/check.svg';
 import PropTypes from 'prop-types';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 const UserDataItem = ({ id, initialValue = '', active = '', onFocus, onBlur, onSave }) => {
   const [value, setValue] = useState('');
   const [disabled, setDisabled] = useState(true);
   const inputRef = useRef();
 
-  const handleSave = () => {
+  const handleSave = useCallback(() => {
     setDisabled(true);
     onBlur(id);
     if (onSave && initialValue !== value) onSave(id, value);
-  };
+  }, [setDisabled, onBlur, onSave, initialValue, value, id]);
 
   const handleFocus = () => {
     if (active) return;
