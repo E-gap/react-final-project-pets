@@ -1,4 +1,4 @@
-import { useState, lazy } from 'react';
+import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import css from './Header.module.css';
