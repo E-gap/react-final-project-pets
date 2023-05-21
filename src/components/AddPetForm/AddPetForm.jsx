@@ -1,22 +1,22 @@
-import React, { useState, useEffect, useCallback} from 'react';
-import { useNavigate,  } from 'react-router-dom';
-import { useDispatch} from 'react-redux';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
+import { useMediaQuery } from 'react-responsive';
 
-import {addNotice} from "../../redux/notices/noticesOperations.js"
-
+import { addNotice } from '../../redux/notices/noticesOperations.js';
 
 import ButtonBack from '../Buttons/FormButon/ButtonBack';
 import ButtonNext from '../Buttons/FormButon/ButtonNext';
 import ChooseOption from '../../services/ChooseOptions/ChooseOption';
 import MoreInfo from '../../services/MoreInfo/MoreInfo';
 import PersonalDetails from '../../services/PersonalDetails/PersonalDetails';
+import AddPetSteps from './AddPetSteps/AddPetSteps.jsx';
 
 import validationSchema from '../../services/validationSchema';
 
 import { INITIAL_STATE } from '../../services/InitialState';
 import css from './AddPetForm.module.css';
-
 
 const AddPetForm = () => {
   const [fileInput, setFileInput] = useState('');
@@ -26,16 +26,17 @@ const AddPetForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-
-  const steps = ['Choose Option', 'Personal Details', 'More Info'];
+  // const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const isTabletOrDesktop = useMediaQuery({ query: '(min-width: 768px)' });
+  // const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
 
   const handleCancelClick = () => {
-    navigate(-1)
+    navigate(-1);
   };
 
-  const handleNextClick = (event) => {
+  const handleNextClick = event => {
     event.preventDefault();
-    setStep((prevState) => prevState + 1);
+    setStep(prevState => prevState + 1);
   };
 
   const handlePrevClick = () => {
@@ -45,25 +46,25 @@ const AddPetForm = () => {
   const handleSubmit = useCallback(
     async (values, resetForm) => {
       const newFormData = new FormData();
-  
+
       newFormData.set('category', category);
       newFormData.set('name', values.name);
       newFormData.set('birthday', values.birthday);
       newFormData.set('breed', values.breed);
       newFormData.set('image', fileInput);
       newFormData.set('comments', values.comments);
-  
+
       if (category === 'your-pet') {
         // dispatch(addMyPet(newFormData));
-        navigate(-1);;
+        navigate(-1);
         console.log('your-pet');
         return;
       }
-  
+
       newFormData.set('title', values.title);
       newFormData.set('sex', values.sex);
       newFormData.set('location', values.location);
-  
+
       if (category === 'lost-found') {
         dispatch(addNotice({ category: 'lost-found', newFormData }));
         navigate(-1);
@@ -76,22 +77,21 @@ const AddPetForm = () => {
         navigate(-1);
         return;
       }
-  
+
       newFormData.set('price', values.price);
-  
+
       if (category === 'sell') {
-        dispatch(addNotice({ category:'sell', newFormData }));
+        dispatch(addNotice({ category: 'sell', newFormData }));
         navigate(-1);
         console.log('sell');
         return;
       }
-  
+
       resetForm();
       navigate(-1);
     },
-    [category, fileInput, navigate,dispatch]
+    [category, fileInput, navigate, dispatch]
   );
-  
 
   const getPageTitle = useCallback(() => {
     const titles = {
@@ -111,15 +111,6 @@ const AddPetForm = () => {
   return (
     <main className={css.main}>
       <div className={css.formikWrapper + ' container'}>
-      <ul>
-      {steps.map((label, index) => (
-        <li key={index}>
-          <span>
-            {step === index && label}
-          </span>
-        </li>
-      ))}
-    </ul>
         <Formik
           initialValues={INITIAL_STATE}
           validationSchema={validationSchema[step]}
@@ -133,9 +124,22 @@ const AddPetForm = () => {
             isValid,
             errors,
           }) => (
-            <Form className={css.formik}>
+            <Form
+              className={css.formik}
+              style={{
+                width: isTabletOrDesktop && step === 2 ? '704px' : '458px',
+                alignItems:
+                  isTabletOrDesktop && step === 2 ? 'center' : 'flex-start',
+              }}
+            >
               <h1 className={css.title}>{title}</h1>
-              {step === 0 && <ChooseOption setCategory={setCategory} selectedCategory={category} />}
+              <AddPetSteps currentStep={step} />
+              {step === 0 && (
+                <ChooseOption
+                  setCategory={setCategory}
+                  selectedCategory={category}
+                />
+              )}
               {step === 1 && (
                 <PersonalDetails
                   category={category}
