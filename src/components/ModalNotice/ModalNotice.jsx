@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { AiOutlineClose } from 'react-icons/ai';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
@@ -31,7 +31,6 @@ const ModalNotice = ({
 
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
-
 
   const [favorite, setFavorite] = useState(false);
 
@@ -103,21 +102,19 @@ const ModalNotice = ({
     }
   };
 
-  return (
-  
-    createPortal(
-      <div className="modal">
-        <div onClick={closeModal} className={css.overlay}></div>
-        <div className={css.content}>
-          <div className={css.imgWrap}>
-            <img src={src} alt="" className={css.avatar} />
-            <div className={css.optionContainer}>
-              <p className={css.optionText}>{category}</p>
-            </div>
+  return createPortal(
+    <div className="modal">
+      <div onClick={closeModal} className={css.overlay}></div>
+      <div className={css.content}>
+        <div className={css.imgWrap}>
+          <img src={src} alt="" className={css.avatar} />
+          <div className={css.optionContainer}>
+            <p className={css.optionText}>{category}</p>
           </div>
-          <div className={css.contentWrap}>
-            <h2 className={css.title}>{title}</h2>
-            <div className={css.listWrap}>
+        </div>
+        <div className={css.contentWrap}>
+          <h2 className={css.title}>{title}</h2>
+          <div className={css.listWrap}>
             <ul>
               <li className={css.item}>
                 <p className={css.itemTitle}>Name:</p>
@@ -162,35 +159,31 @@ const ModalNotice = ({
                   <a href={`mailto:${email}`} onClick={handleEmailClick}>
                     {email}
                   </a>
-                </p>            
-                </li>
-                <li className={css.item}>
-                  <p className={`${css.description} ${css.contacts}`}>
+                </p>
+              </li>
+              <li className={css.item}>
+                <p className={`${css.description} ${css.contacts}`}>
                   <a href={`tel:${phone}`} onClick={handlePhoneClick}>
                     {phone}
                   </a>
-                </p>   
-                </li>
+                </p>
+              </li>
             </ul>
-            </div>
           </div>
-          <div className={css.textWrap}>
-            <p className={css.textContent}>Comments: {comments}</p>
-            </div>
-            <div className={css.wrap}>
-              <Contact />
-              <AddToFavorite 
-                onClick={onFavBtnClick}
-                favorite={favorite}
-              />
-            </div>
-          <button className={css.closeBtn} onClick={closeModal}>
-            <AiOutlineClose className={css.closeIcon} />
-          </button>
         </div>
-      </div>,
-      modalRoot
-    )
+        <div className={css.textWrap}>
+          <p className={css.textContent}>Comments: {comments}</p>
+        </div>
+        <div className={css.wrap}>
+          <Contact />
+          <AddToFavorite onClick={onFavBtnClick} favorite={favorite} />
+        </div>
+        <button className={css.closeBtn} onClick={closeModal}>
+          <AiOutlineClose className={css.closeIcon} />
+        </button>
+      </div>
+    </div>,
+    modalRoot
   );
 };
 

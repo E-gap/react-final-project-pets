@@ -82,7 +82,7 @@ const NoticesCategoryItem = ({
 
   const onFavBtnClick = () => {
     if (isLogin) {
-      setFavorite(true);
+      setFavorite(!favorite);
     } else {
       Notify.warning('Please, signup or login to add notice to favorites');
     }

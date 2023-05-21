@@ -13,7 +13,6 @@ import {
   fetchAllNotices,
   fetchNoticeById,
   fetchNoticesByOwner,
-  fetchFavoriteNotices,
 } from '../../redux/notices/noticesOperations';
 import { getAuth } from '../../redux/auth/authSelector';
 import { totalNotices } from '../../redux/selectors';
@@ -78,7 +77,6 @@ const NoticesPage = () => {
   const pathnameArr = pathname.split('/');
   const lastPartPath = pathnameArr[pathnameArr.length - 1];
 
-  console.log(lastPartPath);
   useEffect(() => {
     if (
       !query &&
@@ -106,6 +104,18 @@ const NoticesPage = () => {
     }
 
     dispatch(fetchAllNotices(queryParams));
+
+    const searchNoticesByOwner = () => {
+      try {
+        dispatch(fetchNoticesByOwner());
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    if (isLogin && lastPartPath === 'own') {
+      searchNoticesByOwner();
+    }
   }, [
     dispatch,
     lastPartPath,
@@ -114,27 +124,16 @@ const NoticesPage = () => {
     setSearchParams,
     pathname,
     navigate,
+    isLogin,
   ]);
 
   const submitSearch = query => {
     setQuery(query);
   };
 
-  useEffect(() => {
-    const searchNoticesByOwner = () => {
-      dispatch(fetchNoticesByOwner());
-    };
-
-    const searchFavMotices = () => {
-      dispatch(fetchFavoriteNotices());
-    };
-
-    if (isLogin) {
-      searchNoticesByOwner();
-      searchFavMotices();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   const handleLearnMore = e => {
     if (e.target.parentNode.getAttribute('id') || e.target.getAttribute('id')) {
