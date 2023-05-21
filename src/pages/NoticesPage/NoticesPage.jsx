@@ -12,8 +12,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchAllNotices,
   fetchNoticeById,
+  fetchNoticesByOwner,
 } from '../../redux/notices/noticesOperations';
-import { selectNotices, totalNotices } from '../../redux/selectors';
+import { getAuth } from '../../redux/auth/authSelector';
+import { totalNotices } from '../../redux/selectors';
 import options from '../../components/Pagination/options';
 
 //import { Notify } from 'notiflix/build/notiflix-notify-aio';
@@ -23,7 +25,7 @@ import options from '../../components/Pagination/options';
 
 const NoticesPage = () => {
   const total = useSelector(totalNotices);
-  const [pathFilter, setPathFilter] = useState('sell');
+  // const [pathFilter, setPathFilter] = useState('sell');
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [page, setPage] = useState(1);
@@ -31,6 +33,8 @@ const NoticesPage = () => {
     const params = searchParams.get('query');
     return params ? params : '';
   });
+
+  const { isLogin } = useSelector(getAuth);
   //const [query, setQuery] = useState();
 
   const { current } = useRef(window.innerWidth);
@@ -38,7 +42,7 @@ const NoticesPage = () => {
   // eslint-disable-next-line no-unused-vars
   //const [list, setList] = useState(initialState);
   const dispatch = useDispatch();
-  const notices = useSelector(selectNotices);
+
   // const oneNotice = useSelector(selectOneNotice);
 
   //console.log(oneNotice);
@@ -59,39 +63,77 @@ const NoticesPage = () => {
     }
   }, [query, page, setSearchParams]);
 
+  // useEffect(() => {
+
+  // }, [pathname, navigate]);
+
+  // useEffect(() => {
+  //   const pathnameArr = pathname.split('/');
+  //   const lastPartPath = pathnameArr[pathnameArr.length - 1];
+  //   setPathFilter(lastPartPath);
+  // }, [pathname, setPathFilter]);
+  // console.log(pathFilter);
+
+  const pathnameArr = pathname.split('/');
+  const lastPartPath = pathnameArr[pathnameArr.length - 1];
+
   useEffect(() => {
     if (
       !query &&
       page === 1 &&
       (pathname === '/notices/lost-found' ||
         pathname === '/notices/for-free' ||
-        pathname === '/notices/favotire' ||
+        pathname === '/notices/favorite' ||
         pathname === '/notices/own')
     ) {
     } else {
       navigate('/notices/sell');
     }
-    const pathnameArr = pathname.split('/');
-    const lastPartPath = pathnameArr[pathnameArr.length - 1];
-    setPathFilter(lastPartPath);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
 
-  useEffect(() => {
-    const queryParams = {
-      category: pathFilter,
+    let queryParams = {
+      category: lastPartPath,
       title: query,
       page,
     };
+    if (lastPartPath === 'notices') {
+      queryParams = {
+        category: 'sell',
+        title: query,
+        page,
+      };
+    }
 
     dispatch(fetchAllNotices(queryParams));
-  }, [dispatch, pathFilter, query, page, setSearchParams]);
+
+    const searchNoticesByOwner = () => {
+      try {
+        dispatch(fetchNoticesByOwner());
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    if (isLogin && lastPartPath === 'own') {
+      searchNoticesByOwner();
+    }
+  }, [
+    dispatch,
+    lastPartPath,
+    query,
+    page,
+    setSearchParams,
+    pathname,
+    navigate,
+    isLogin,
+  ]);
 
   const submitSearch = query => {
     setQuery(query);
   };
-  //console.log(query);
-  //console.log(page);
+
+  // useEffect(() => {
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   const handleLearnMore = e => {
     if (e.target.parentNode.getAttribute('id') || e.target.getAttribute('id')) {
@@ -144,7 +186,7 @@ const NoticesPage = () => {
           </div>
 
           {/* <NoticesFilters /> */}
-          <NoticesCategoriesList items={notices} />
+          <NoticesCategoriesList category={lastPartPath} />
           {total > options.noticesOptions.itemsPerPage ? (
             <div className={css.paginationDiv}>
               <PaginationComponent

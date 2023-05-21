@@ -106,3 +106,90 @@ export const fetchNoticeById = createAsyncThunk(
     }
   }
 ); */
+
+export const fetchFavoriteNotices = createAsyncThunk(
+  'notices/fetchFavorite',
+  async (_, { rejectWithValue }) => {
+    // const url = ``;
+    try {
+      // const result = await axios.get(url);
+      // return result.data.data[0].userLikePets;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const addToFavorite = createAsyncThunk(
+  'notices/addFavorite',
+  async (noticeId, { rejectWithValue }) => {
+    // const url = `;
+    try {
+      // const result = await axios.patch(url);
+      // return result.data.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteFromFavorite = createAsyncThunk(
+  'notices/deleteFavorite',
+  async (noticeId, { rejectWithValue }) => {
+    // const url = ;
+    try {
+      // const result = await axios.patch(url);
+      // return result.data.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const addNotice = createAsyncThunk(
+  'notices/addNotice',
+  async (newNotice, { rejectWithValue }) => {
+    try {
+      // const response = await axios.post();
+      // return response.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteNotice = createAsyncThunk(
+  'notices/deleteNotice',
+  async (noticeId, { rejectWithValue }) => {
+    try {
+      // const response = await axios.delete();
+      // return response.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchNoticesByOwner = createAsyncThunk(
+  'notices/fetchNoticesByOwner',
+  async (_, thunkAPI) => {
+    const url = `/notices/user`;
+    try {
+      const result = await axios.get(url);
+      return result.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+// export const addMyPet = createAsyncThunk(
+//   'notices/addMyPet',
+//   async (credentials, { rejectWithValue }) => {
+//     try {
+//       await axios.post('api/pets', credentials);
+//     } catch (error) {
+//       return rejectWithValue(error.message);
+//     }
+//   }
+// );

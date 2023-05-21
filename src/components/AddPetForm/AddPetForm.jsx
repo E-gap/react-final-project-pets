@@ -1,6 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useCallback} from 'react';
+import { useNavigate,  } from 'react-router-dom';
+import { useDispatch} from 'react-redux';
 import { Formik, Form } from 'formik';
+
+import {addNotice} from "../../redux/notices/noticesOperations.js"
+
 
 import ButtonBack from '../Buttons/FormButon/ButtonBack';
 import ButtonNext from '../Buttons/FormButon/ButtonNext';
@@ -13,17 +17,20 @@ import validationSchema from '../../services/validationSchema';
 import { INITIAL_STATE } from '../../services/InitialState';
 import css from './AddPetForm.module.css';
 
+
 const AddPetForm = () => {
   const [fileInput, setFileInput] = useState('');
   const [step, setStep] = useState(0);
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
 
   const steps = ['Choose Option', 'Personal Details', 'More Info'];
 
   const handleCancelClick = () => {
-    navigate('/user');
+    navigate(-1)
   };
 
   const handleNextClick = (event) => {
@@ -37,29 +44,54 @@ const AddPetForm = () => {
 
   const handleSubmit = useCallback(
     async (values, resetForm) => {
-      
-      const formData = {
-        category: category,
-        title: values.title,
-        name: values.name,
-        birthday: values.birthday,
-        breed: values.breed,
-        sex: values.sex,
-        image: fileInput,
-        location: values.location,
-        price: values.price,
-        comments: values.comments,
-      };
+      const newFormData = new FormData();
   
-      Object.entries(formData).forEach(([key, value]) =>
-        console.log(key, ':', value)
-      );
+      newFormData.set('category', category);
+      newFormData.set('name', values.name);
+      newFormData.set('birthday', values.birthday);
+      newFormData.set('breed', values.breed);
+      newFormData.set('image', fileInput);
+      newFormData.set('comments', values.comments);
+  
+      if (category === 'your-pet') {
+        // dispatch(addMyPet(newFormData));
+        navigate(-1);;
+        console.log('your-pet');
+        return;
+      }
+  
+      newFormData.set('title', values.title);
+      newFormData.set('sex', values.sex);
+      newFormData.set('location', values.location);
+  
+      if (category === 'lost-found') {
+        dispatch(addNotice({ category: 'lost-found', newFormData }));
+        navigate(-1);
+        console.log('lost-found');
+        return;
+      }
+
+      if (category === 'good-hands') {
+        dispatch(addNotice({ category: 'in-good-hands', newFormData }));
+        navigate(-1);
+        return;
+      }
+  
+      newFormData.set('price', values.price);
+  
+      if (category === 'sell') {
+        dispatch(addNotice({ category:'sell', newFormData }));
+        navigate(-1);
+        console.log('sell');
+        return;
+      }
   
       resetForm();
-      navigate('/user');
+      navigate(-1);
     },
-    [category, fileInput,navigate]
+    [category, fileInput, navigate,dispatch]
   );
+  
 
   const getPageTitle = useCallback(() => {
     const titles = {

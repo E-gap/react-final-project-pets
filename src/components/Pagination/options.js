@@ -2,8 +2,6 @@ const screenWidth = window.screen.width;
 
 const isMobile = screenWidth <= 768;
 
-console.log(isMobile);
-
 const optionsForPaginationNotices = {
   totalItems: 0,
   itemsPerPage: 12,
