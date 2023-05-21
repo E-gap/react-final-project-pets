@@ -173,10 +173,10 @@ export const deleteNotice = createAsyncThunk(
 export const fetchNoticesByOwner = createAsyncThunk(
   'notices/fetchByOwner',
   async (_, thunkAPI) => {
-    // const url =
+    const url = '/notices/user';
     try {
-      // const result = await axios.get(url);
-      // return result.data.data;
+      const result = await axios.get(url);
+      return result.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
