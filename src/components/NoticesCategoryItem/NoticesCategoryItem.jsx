@@ -73,11 +73,13 @@ const NoticesCategoryItem = ({
       fetchNoticeById(idNotice);
       dispatch(fetchNoticeById(idNotice));
       setShowModal(true);
+      document.body.style.overflow = 'hidden';
     }
   };
 
   const closeModal = () => {
     setShowModal(false);
+    document.body.style.overflow = 'scroll';
   };
 
   const onFavBtnClick = () => {

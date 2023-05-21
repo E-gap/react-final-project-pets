@@ -10,11 +10,15 @@ function ModalApproveAction() {
   const handleOpenModal = (option) => {
     setShowModal(true);
     setModalOption(option);
+    document.body.style.overflow = 'hidden';
+
   };
 
   const handleCloseModal = () => {
     setShowModal(false);
     setModalOption('');
+    document.body.style.overflow = 'scroll';
+
   };
 
   useEffect(() => {

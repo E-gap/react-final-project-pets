@@ -31,6 +31,13 @@ p {
   backdrop-filter: blur(4px);
 }
 
+
+
+/* .modal:target {
+  opacity: 1;
+  pointer-events: auto;
+} */
+
 .content {
   position: absolute;
   top: 50%;
@@ -55,6 +62,11 @@ p {
     padding: 0;
     border-radius: 40px;
   }
+}
+
+.content:target {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .item {
