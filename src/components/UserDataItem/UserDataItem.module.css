@@ -5,6 +5,14 @@
   overflow: hidden;
 }
 
+.container[data-not-editable="true"] {
+  opacity: 0.5;
+}
+
+.container[data-not-editable="true"] .editIcon {
+  cursor: default;
+}
+
 .input {
   padding: 4px 48px 4px 12px;
   height: 32px;

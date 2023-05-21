@@ -2,9 +2,11 @@ import { RxAvatar } from 'react-icons/rx';
 import { Link } from 'react-router-dom';
 
 import css from './UserNav.module.css';
+import { useSelector } from 'react-redux';
+import { getUser } from '../../redux/auth/authSelector';
 
 const UserNav = ({ displayName = true, margins = false }) => {
-  const name = 'Anna';
+  const {name} = useSelector(getUser);
   return (
     <Link
       to="/user"

@@ -14,33 +14,65 @@ const UserDataForm = ({ className = '' }) => {
   const [active, setActive] = useState('');
 
   const onSave = (id, value) => {
-    console.log(id, value);
-    if (id === active) {
-      setActive("");
-    }
     dispatch(updateUser({
       [id]: value,
     }));
   };
 
+  const onBlur = (id) => {
+    if (id === active) {
+      setActive("");
+    }
+  }
+
   return (
     <div className={`${css.container} ${className}`}>
-      <form action='src/components/UserInformation/UserInformationForm' className={css.form}>
+      <form action={""} className={css.form}>
 
         <label className={css.label} htmlFor='name'>Name:</label>
-        <UserDataItem id='name' active={active} onFocus={setActive} initialValue={user?.name || ""} onSave={onSave}/>
+        <UserDataItem id='name'
+                      active={active}
+                      onFocus={setActive}
+                      onBlur={onBlur}
+                      initialValue={user?.name || ""}
+                      onSave={onSave}
+        />
 
         <label className={css.label} htmlFor='email'>Email:</label>
-        <UserDataItem id='email' active={active} onFocus={setActive} initialValue={user?.email || ""} onSave={onSave}/>
+        <UserDataItem id='email'
+                      active={active}
+                      onFocus={setActive}
+                      onBlur={onBlur}
+                      initialValue={user?.email || ""}
+                      onSave={onSave}
+        />
 
         <label className={css.label} htmlFor='birthday'>Birthday:</label>
-        <UserDataItem id='birthday' active={active} onFocus={setActive} initialValue={user?.birthday || ""} onSave={onSave}/>
+        <UserDataItem id='birthday'
+                      active={active}
+                      onFocus={setActive}
+                      onBlur={onBlur}
+                      initialValue={user?.birthday || ""}
+                      onSave={onSave}
+        />
 
         <label className={css.label} htmlFor='phone'>Phone:</label>
-        <UserDataItem id='phone' active={active} onFocus={setActive} initialValue={user?.phone || ""} onSave={onSave}/>
+        <UserDataItem id='phone'
+                      active={active}
+                      onFocus={setActive}
+                      onBlur={onBlur}
+                      initialValue={user?.phone || ""}
+                      onSave={onSave}
+        />
 
         <label className={css.label} htmlFor='city'>City:</label>
-        <UserDataItem id='city' active={active} onFocus={setActive} initialValue={user?.city || ""} onSave={onSave}/>
+        <UserDataItem id='city'
+                      active={active}
+                      onFocus={setActive}
+                      onBlur={onBlur}
+                      initialValue={user?.city || ""}
+                      onSave={onSave}
+        />
 
       </form>
     </div>
