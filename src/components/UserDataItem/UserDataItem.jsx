@@ -28,7 +28,7 @@ const UserDataItem = ({ id, initialValue = '', active = '', onFocus, onBlur, onS
 
   useEffect(() => {
     if (active !== id && active) handleSave();
-  }, [active]);
+  }, [active, handleSave, id]);
 
   return (
     <div className={css.container} data-not-editable={active && active !== id}>
