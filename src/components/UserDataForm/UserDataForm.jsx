@@ -2,31 +2,32 @@ import css from './UserDataForm.module.css';
 import UserDataItem from '../UserDataItem/UserDataItem';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser } from '../../redux/auth/authSelector';
-import { useState } from 'react';
+import { getAuth, getUser } from '../../redux/auth/authSelector';
+import { useCallback, useState } from 'react';
 import { updateUser } from '../../redux/auth/authOperations';
 
 const UserDataForm = ({ className = '' }) => {
 
   const dispatch = useDispatch();
   const user = useSelector(getUser);
+  const { isRefreshing } = useSelector(getAuth);
 
   const [active, setActive] = useState('');
 
-  const onSave = (id, value) => {
+  const onSave = useCallback((id, value) => {
     dispatch(updateUser({
       [id]: value,
     }));
-  };
+  }, [dispatch]);
 
-  const onBlur = (id) => {
+  const onBlur = useCallback((id) => {
     if (id === active) {
       setActive("");
     }
-  }
+  }, [active, setActive]);
 
   return (
-    <div className={`${css.container} ${className}`}>
+    <div className={`${css.container} ${className}`} data-refreshing={isRefreshing}>
       <form action={""} className={css.form}>
 
         <label className={css.label} htmlFor='name'>Name:</label>
