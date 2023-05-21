@@ -13,6 +13,12 @@
   font-family: 'Manrope';
   font-size: 16px;
   line-height: 1.37;
+
+  max-width: 100%;
+}
+
+.input[data-disabled="true"] {
+  cursor: default;
 }
 
 @media screen and (max-width: 767px) {

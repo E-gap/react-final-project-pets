@@ -78,7 +78,7 @@ export const updateUser = createAsyncThunk('auth/updateUser', async (formData, t
 
   try {
     const { data } = await instance.put("/auth/user/" + user.id, {
-      ...user,
+      email: user.email,
       ...formData,
     });
 
