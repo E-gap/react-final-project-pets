@@ -100,7 +100,7 @@ const AddPetForm = () => {
       'your-pet': 'Add pet',
       sell: 'Add pet for sell',
       'lost-found': 'Add lost pet',
-      'good-hands': 'Add to give a Pet for Adoption',
+      'good-hands': 'Add to give a pet for adoption',
       '': 'Add Pet',
     };
     return titles[category] || 'Add Pet';
