@@ -3,50 +3,43 @@ import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { AiOutlineClose } from 'react-icons/ai';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getAuth } from '../../redux/auth/authSelector';
 import AddToFavorite from './temporary/tempAddToFavorite';
 import Contact from './Contact/Contact';
+import { fetchNoticeById } from '../../redux/notices/noticesOperations';
+
+
 import propTypes from 'prop-types';
 
 import css from './ModalNotice.module.css';
 
 const modalRoot = document.querySelector('#notice-modal-root');
 
-const ModalNotice = ({
-  closeModal,
-  title,
-  comments,
-  price,
-  category,
-  breed,
-  name,
-  location,
-  birthday,
-  sex,
-  src,
-  // tel,
-  // mail,
-}) => {
-  // const [modal, setModal] = useState(false);
 
-  const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
+const ModalNotice = ({ 
+  id,
+  closeModal,
+  src,
+}) => {
+  const dispatch = useDispatch();
+  const [notice, setNotice] = useState({});
+
+  const {name, title, birthday, breed, category, comments, email, phone, location, sex } = notice;
 
   const [favorite, setFavorite] = useState(false);
 
   const { isLogin } = useSelector(getAuth);
 
-  // const toggleModal = () => {
-  //   setModal(!modal);
-  // };
-
-  // if (modal) {
-  //   document.body.classList.add('active-modal');
-  // } else {
-  //   document.body.classList.remove('active-modal');
-  // }
-  // close on Escape
+  console.log('id from modal', id);
+  console.log(notice);
+  useEffect(()=> {
+    const fn = async () => {
+      const { payload } = await dispatch(fetchNoticeById(id));
+      return setNotice(payload);
+    };
+    fn();
+  });
   useEffect(() => {
     function handleKeyDown(event) {
       if (event.key === 'Escape') {
@@ -58,42 +51,8 @@ const ModalNotice = ({
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  });
 
-  // phone, Email :
-
-  useEffect(() => {
-    // Simulating data fetching from backend
-    // Replace with your actual API call
-    fetch('your-backend-api-endpoint')
-      .then(response => response.json())
-      .then(data => {
-        setPhone(data.phone);
-        setEmail(data.email);
-      })
-      .catch(error => {
-        console.log('Error fetching data from backend:', error);
-      });
-  }, []);
-
-  // const handlePhoneChange = e => {
-  //   setPhone(e.target.value);
-  // };
-
-  // const handleEmailChange = e => {
-  //   setEmail(e.target.value);
-  // };
-
-  const handlePhoneClick = () => {
-    // Perform phone contact logic
-    console.log('Contacting via phone:', phone);
-  };
-
-  const handleEmailClick = () => {
-    // Perform email contact logic
-    console.log('Contacting via email:', email);
-  };
 
   const onFavBtnClick = () => {
     if (isLogin) {
@@ -104,7 +63,7 @@ const ModalNotice = ({
   };
 
   return createPortal(
-    <div className="modal">
+    <div className={css.modal}>
       <div onClick={closeModal} className={css.overlay}></div>
       <div className={css.content}>
         <div className={css.imgWrap}>
@@ -157,14 +116,14 @@ const ModalNotice = ({
               </li>
               <li className={css.item}>
                 <p className={`${css.description} ${css.contacts}`}>
-                  <a href={`mailto:${email}`} onClick={handleEmailClick}>
+                  <a href={`mailto:${email}`} >
                     {email}
                   </a>
                 </p>
               </li>
               <li className={css.item}>
                 <p className={`${css.description} ${css.contacts}`}>
-                  <a href={`tel:${phone}`} onClick={handlePhoneClick}>
+                  <a href={`tel:${phone}`} >
                     {phone}
                   </a>
                 </p>
@@ -194,7 +153,6 @@ ModalNotice.propTypes = {
   closeModal: propTypes.func,
   title: propTypes.string,
   comments: propTypes.string,
-  price: propTypes.number,
   category: propTypes.string,
   breed: propTypes.string,
   name: propTypes.string,
