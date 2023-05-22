@@ -2,18 +2,20 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   padding-top: 148px;
+   padding-top: 92px;
+   padding-bottom: 200px;
    
-
   background-image: url("../../images/bg/bg-mobile-min.png");
   background-size: cover;
   background-repeat: no-repeat;
 
    @media (min-width: 768px) {
+    padding-top: 148px;
       background-image: url("../../images/bg/bg-tablet-min.png"); 
     }
 
     @media (min-width: 1280px) {
+      padding-top: 148px;
       background-image: url("../../images/bg/bg-desctop-min.png");
     }
 }
