@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { getAuth } from '../../redux/auth/authSelector';
 import AddToFavorite from './temporary/tempAddToFavorite';
 import Contact from './Contact/Contact';
+import propTypes from 'prop-types';
 
 import css from './ModalNotice.module.css';
 
@@ -188,3 +189,19 @@ const ModalNotice = ({
 };
 
 export default ModalNotice;
+
+ModalNotice.propTypes = {
+  closeModal: propTypes.func,
+  title: propTypes.string,
+  comments: propTypes.string,
+  price: propTypes.number,
+  category: propTypes.string,
+  breed: propTypes.string,
+  name: propTypes.string,
+  location: propTypes.string,
+  birthday: propTypes.string,
+  sex: propTypes.string,
+  src: propTypes.string,
+  onClick: propTypes.func.isRequired,
+  selector: propTypes.string,
+};

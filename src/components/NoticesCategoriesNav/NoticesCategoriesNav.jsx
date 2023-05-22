@@ -2,6 +2,7 @@ import css from './NoticesCategoriesNav.module.css';
 import { useSelector } from 'react-redux';
 import { getAuth } from '../../redux/auth/authSelector';
 import { NavLink, useLocation } from 'react-router-dom';
+
 const NoticesCategoriesNav = () => {
   const location = useLocation();
   const from = location.state?.from || '/';
