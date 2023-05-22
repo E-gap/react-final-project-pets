@@ -116,15 +116,14 @@ export const fetchNoticesByOwner = createAsyncThunk(
     const { title, page } = queryParams;
     const { token } = thunkApi.getState().auth;
     if (!token) return thunkApi.rejectWithValue('No valid token');
-    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 
-    console.log('test');
     try {
       const result = await instance.get(
         title
           ? `/notices/user?title=${title}&page=${page}&limit=12`
           : `/notices/user?page=${page}&limit=12`
       );
+
       return result.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
