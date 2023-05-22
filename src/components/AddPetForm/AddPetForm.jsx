@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
 import { useMediaQuery } from 'react-responsive';
 
-import { addNotice,addMyPet } from '../../redux/notices/noticesOperations.js';
+import { addNotice } from '../../redux/notices/noticesOperations.js';
 
 import ButtonBack from '../Buttons/FormButon/ButtonBack';
 import ButtonNext from '../Buttons/FormButon/ButtonNext';
@@ -57,7 +57,7 @@ const AddPetForm = () => {
       newFormData.set('comments', values.comments);
 
       if (category === 'your-pet') {
-        dispatch(addMyPet(newFormData));
+        dispatch(addNotice({ category: 'your-pet', newFormData }));
         navigate(-1);
         console.log('your-pet');
         return;
