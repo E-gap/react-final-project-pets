@@ -5,7 +5,7 @@
 .loader {
     position: absolute;
     margin-top: 40px;
-    margin-left: 25px;
+    margin-left: 22px;
 }
 
 @media screen and (max-width: 1280px) {
