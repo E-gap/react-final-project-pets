@@ -17,6 +17,14 @@ const ModalCongrats = () => {
     document.body.classList.remove('active-modal')
   }
 
+// !!! while connecting modal window don't forget to add functions to avoid scroll 
+
+// on modal open : 
+// document.body.style.overflow = 'hidden';
+
+// on modal close 
+// document.body.style.overflow = 'scroll';
+
   useEffect(() => {
     function handleKeyDown(event) {
       if (event.key === 'Escape') {
