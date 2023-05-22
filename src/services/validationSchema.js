@@ -25,14 +25,7 @@ breed: Yup.string()
 .max(16, 'Breed must not exceed 16 characters'),
   }),
   2: Yup.object().shape({
-
-    // file: Yup.mixed()
-    // .required('File is required')
-    // .test(
-    //   'fileSize',
-    //   'File size must not exceed 3MB',
-    //   value => value && value.size <= 3 * 1024 * 1024
-    // ),
+   
     location: Yup.string().when('category', {
       is: value => ['sell', 'lost-found', 'for-free'].includes(value),
       then: Yup.string()

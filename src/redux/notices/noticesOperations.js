@@ -131,13 +131,13 @@ export const fetchNoticesByOwner = createAsyncThunk(
   }
 );
 
-// export const addMyPet = createAsyncThunk(
-//   'notices/addMyPet',
-//   async (credentials, { rejectWithValue }) => {
-//     try {
-//       await axios.post('api/pets', credentials);
-//     } catch (error) {
-//       return rejectWithValue(error.message);
-//     }
-//   }
-// );
+export const addMyPet = createAsyncThunk(
+  'notices/addMyPet',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      await axios.post('api/pets', credentials);
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);

@@ -26,7 +26,7 @@ const AddPetSteps = ({ currentStep }) => {
 };
 
 AddPetSteps.propTypes = {
-  category: propTypes.number.isRequired,
+  currentStep: propTypes.number.isRequired,
 };
 
 export default AddPetSteps;

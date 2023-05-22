@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
 import { useMediaQuery } from 'react-responsive';
 
-import { addNotice } from '../../redux/notices/noticesOperations.js';
+import { addNotice,addMyPet } from '../../redux/notices/noticesOperations.js';
 
 import ButtonBack from '../Buttons/FormButon/ButtonBack';
 import ButtonNext from '../Buttons/FormButon/ButtonNext';
@@ -45,6 +45,8 @@ const AddPetForm = () => {
 
   const handleSubmit = useCallback(
     async (values, resetForm) => {
+      if (!category) return;
+
       const newFormData = new FormData();
 
       newFormData.set('category', category);
@@ -55,7 +57,7 @@ const AddPetForm = () => {
       newFormData.set('comments', values.comments);
 
       if (category === 'your-pet') {
-        // dispatch(addMyPet(newFormData));
+        dispatch(addMyPet(newFormData));
         navigate(-1);
         console.log('your-pet');
         return;
@@ -73,7 +75,7 @@ const AddPetForm = () => {
       }
 
       if (category === 'good-hands') {
-        dispatch(addNotice({ category: 'in-good-hands', newFormData }));
+        dispatch(addNotice({ category: 'for-free', newFormData }));
         navigate(-1);
         return;
       }

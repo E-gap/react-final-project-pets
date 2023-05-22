@@ -52,8 +52,8 @@ const ChooseOption = ({ selectedCategory, setCategory }) => {
           className={css.field}
           type="radio"
           name="category"
-          value="good-hands"
-          checked={selectedCategory === 'good-hands'}
+          value="for-free"
+          checked={selectedCategory === 'for-free'}
           onChange={handleCategoryChange}
         />
         <span className={css.fieldText}>in good hands</span>
