@@ -34,7 +34,8 @@ export const fetchNoticeById = createAsyncThunk(
   'notices/fetchNoticeById',
   async function (id, { rejectWithValue }) {
     try {
-      const response = await instance.get(`/notices/${id}`);
+      // const response = await instance.get(`/notices/${id}`);
+      const response = await instance.get(`/notices/id/${id}`);
 
       if (response.status !== 200) {
         throw new Error('Server Error');

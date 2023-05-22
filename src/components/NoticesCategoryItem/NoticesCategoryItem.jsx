@@ -141,16 +141,17 @@ const NoticesCategoryItem = ({
         {showModal && (
           <ModalNotice
             closeModal={closeModal}
-            title={title}
+            // title={title}
             src={src}
-            comments={comments}
-            name={name}
-            birthday={birthday}
-            breed={breed}
-            location={location}
-            sex={sex}
-            category={categoryName}
-            price={price}
+            // comments={comments}
+            // name={name}
+            // birthday={birthday}
+            // breed={breed}
+            // location={location}
+            // sex={sex}
+            // category={categoryName}
+            // price={price}
+            id={id}
           />
         )}
       </div>
