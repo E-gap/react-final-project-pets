@@ -1,6 +1,6 @@
 import css from './NoticesCategoriesList.module.css';
 import { useSelector } from 'react-redux';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 // import { useLocation } from 'react-router-dom';
 import NoticesCategoryItem from 'components/NoticesCategoryItem/NoticesCategoryItem';
 import {
@@ -82,7 +82,7 @@ const NoticesCategoriesList = ({ category }) => {
 };
 
 NoticesCategoriesList.propTypes = {
-  category: propTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
 };
 
 export default NoticesCategoriesList;
