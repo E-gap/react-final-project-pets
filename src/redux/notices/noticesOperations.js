@@ -35,8 +35,6 @@ export const fetchNoticeById = createAsyncThunk(
   async function (id, { rejectWithValue }) {
     try {
       const response = await instance.get(`/notices/${id}`);
-      //console.log(response.data);
-      //console.log(response);
 
       if (response.status !== 200) {
         throw new Error('Server Error');
@@ -48,64 +46,6 @@ export const fetchNoticeById = createAsyncThunk(
     }
   }
 );
-
-/* export const addNotice = createAsyncThunk(
-  'notices/addNotice',
-  async function (contact, { rejectWithValue, getState }) {
-    const stateNotices = getState().notices.notices;
-
-    const isCoincidence = stateNotices.find(
-      item => item.name.toLowerCase() === contact.name.toLowerCase()
-    );
-
-    if (isCoincidence) {
-      alert(`${contact.name} is already in notices`);
-      throw new Error("Can't add contact. Server Error");
-    }
-
-    try {
-      const response = await axios.post('/notices', {
-        name: contact.name,
-        number: contact.number,
-      });
-
-      if (response.statusText !== 'Created') {
-        throw new Error("Can't add contact. Server Error");
-      }
-      Notiflix.Notify.success('The new contact has been added', {
-        width: '500px',
-        position: 'center-center',
-        fontSize: '25px',
-        timeout: '1500',
-      });
-      return response.data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-); */
-
-/* export const deleteNotices = createAsyncThunk(
-  'notices/deleteNotices',
-  async function (id, { rejectWithValue }) {
-    try {
-      const response = await axios.delete(`/notices/${id}`);
-
-      if (response.statusText !== 'OK') {
-        throw new Error("Can't delete contact. Server Error");
-      }
-      Notiflix.Notify.warning('The new contact has been deleted', {
-        width: '500px',
-        position: 'center-center',
-        fontSize: '25px',
-        timeout: '1500',
-      });
-      return response.data.id;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-); */
 
 export const fetchFavoriteNotices = createAsyncThunk(
   'notices/fetchFavorite',
@@ -172,13 +112,22 @@ export const deleteNotice = createAsyncThunk(
 
 export const fetchNoticesByOwner = createAsyncThunk(
   'notices/fetchNoticesByOwner',
-  async (_, thunkAPI) => {
-    const url = `/notices/user`;
+  async (queryParams, thunkApi) => {
+    const { title, page } = queryParams;
+    const { token } = thunkApi.getState().auth;
+    if (!token) return thunkApi.rejectWithValue('No valid token');
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+
+    console.log('test');
     try {
-      const result = await axios.get(url);
+      const result = await instance.get(
+        title
+          ? `/notices/user?title=${title}&page=${page}&limit=12`
+          : `/notices/user?page=${page}&limit=12`
+      );
       return result.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );

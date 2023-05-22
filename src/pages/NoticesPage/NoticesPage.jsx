@@ -105,16 +105,17 @@ const NoticesPage = () => {
 
     dispatch(fetchAllNotices(queryParams));
 
-    const searchNoticesByOwner = () => {
+    const searchNoticesByOwner = queryParams => {
       try {
-        dispatch(fetchNoticesByOwner());
+        dispatch(fetchNoticesByOwner(queryParams));
       } catch (error) {
         console.log(error);
       }
     };
 
     if (isLogin && lastPartPath === 'own') {
-      searchNoticesByOwner();
+      const queryParams = { category: '', title: query, page };
+      searchNoticesByOwner(queryParams);
     }
   }, [
     dispatch,

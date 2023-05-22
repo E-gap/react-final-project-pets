@@ -16,7 +16,7 @@ const NoticesCategoriesList = ({ category }) => {
   console.log(pathnameArr); */
   const notices = useSelector(selectNotices);
   const ownNotices = useSelector(getOwnNotices);
-  console.log(ownNotices);
+
   // const favorites = useSelector(getFavoriteNotices);
   let elements;
   if (
