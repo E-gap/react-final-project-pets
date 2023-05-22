@@ -5,23 +5,23 @@
     z-index: 1;
     padding-top: 102px;
 
-    height: 601px;
+    width: 100%;
+    height: 100%;
+   
+
+    transform: translateX(-50%);
 
     background-image: url("../../images/bg/bg-mobile-min.png");
     background-size: cover;
     background-repeat: no-repeat;
 
-    transform: translateX(-50%);
-
     @media (min-width: 768px) {
         padding-top: 144px;
-        height: 1193px;
         background-image: url("../../images/bg/bg-tablet-min.png"); 
     }
 
     @media (min-width: 1280px) {
         padding-top: 0;
-        height: 768px;
         background-image: url("../../images/bg/bg-desctop-min.png");
     }
 }
@@ -53,24 +53,24 @@
     position: relative;
     top: 6px;
 
-    height: 385px;
+    height:473px;
 
     background-image: url("../../images/header/pict-mobile.png");
     background-repeat: no-repeat;
     background-position: center;
 
     @media (min-width: 768px) {
-        top: 3px;
-        height: 818px;
+        top: 0;
+        height: 982px;
         background-image: url("../../images/header/pict-tablet.png");
     }
 
     @media (min-width: 1280px) {
-        top: -441px;
-        left: 347px;
+        margin: auto;
+        top: -541px;
+        left: 181px;
 
-        width: 901px;
-        height: 670px;
+        width: 976px;
 
         background-image: url("../../images/header/pict-desctop.png");
     }
