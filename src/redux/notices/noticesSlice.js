@@ -130,8 +130,10 @@ export const noticesSlice = createSlice({
         state.error = false;
       })
       .addCase(fetchNoticesByOwner.fulfilled, (state, action) => {
+        state.isLoading = false;
         state.error = false;
-        state.ownList = action.payload;
+        state.notices = action.payload.result;
+        state.total = action.payload.total;
       })
       .addCase(fetchNoticesByOwner.rejected, (state, action) => {
         state.isLoading = false;

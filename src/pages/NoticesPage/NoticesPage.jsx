@@ -63,17 +63,6 @@ const NoticesPage = () => {
     }
   }, [query, page, setSearchParams]);
 
-  // useEffect(() => {
-
-  // }, [pathname, navigate]);
-
-  // useEffect(() => {
-  //   const pathnameArr = pathname.split('/');
-  //   const lastPartPath = pathnameArr[pathnameArr.length - 1];
-  //   setPathFilter(lastPartPath);
-  // }, [pathname, setPathFilter]);
-  // console.log(pathFilter);
-
   const pathnameArr = pathname.split('/');
   const lastPartPath = pathnameArr[pathnameArr.length - 1];
 
@@ -132,15 +121,11 @@ const NoticesPage = () => {
     setQuery(query);
   };
 
-  // useEffect(() => {
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
-
   const handleLearnMore = e => {
     if (e.target.parentNode.getAttribute('id') || e.target.getAttribute('id')) {
       const idNotice =
         e.target.getAttribute('id') || e.target.parentNode.getAttribute('id');
-      //console.log(idNotice);
+
       fetchNoticeById(idNotice);
       dispatch(fetchNoticeById(idNotice));
     }
@@ -149,8 +134,6 @@ const NoticesPage = () => {
   const searchPage = pageNumber => {
     setPage(pageNumber);
   };
-
-  //console.log(oneNotice);
 
   return (
     <>

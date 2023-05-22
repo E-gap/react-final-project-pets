@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 // import { useLocation } from 'react-router-dom';
 import NoticesCategoryItem from 'components/NoticesCategoryItem/NoticesCategoryItem';
 import {
-  getOwnNotices,
+  // getOwnNotices,
   // getFavoriteNotices,
   selectNotices,
 } from 'redux/selectors';
@@ -15,7 +15,7 @@ const NoticesCategoriesList = ({ category }) => {
   /* const pathnameArr = pathname.split('/');
   console.log(pathnameArr); */
   const notices = useSelector(selectNotices);
-  const ownNotices = useSelector(getOwnNotices);
+  //const ownNotices = useSelector(getOwnNotices);
 
   // const favorites = useSelector(getFavoriteNotices);
   let elements;
@@ -60,7 +60,7 @@ const NoticesCategoriesList = ({ category }) => {
   //   ));
   // }
   else if (category === 'own') {
-    elements = ownNotices.map(item => (
+    elements = notices.map(item => (
       <NoticesCategoryItem
         key={item._id}
         id={item._id}
