@@ -57,7 +57,7 @@ const NewsPage = () => {
           setTotalNews(0);
           setError('There are not any news');
         }
-
+        setError('');
         setNews(response.data.result);
         setTotalNews(response.data.total);
 
