@@ -1,6 +1,6 @@
 import css from './NoticesCategoriesList.module.css';
 import { useSelector } from 'react-redux';
-//import propTypes from 'prop-types';
+import propTypes from 'prop-types';
 // import { useLocation } from 'react-router-dom';
 import NoticesCategoryItem from 'components/NoticesCategoryItem/NoticesCategoryItem';
 import {
@@ -81,16 +81,8 @@ const NoticesCategoriesList = ({ category }) => {
   return <ul className={css.list}>{elements}</ul>;
 };
 
-/* NoticesCategoriesList.defaultProps = {
-  items: [],
-}; */
-
-/* NoticesCategoriesList.propTypes = {
-  items: propTypes.arrayOf(
-    propTypes.shape({
-      _id: propTypes.string.isRequired,
-    })
-  ),
-}; */
+NoticesCategoriesList.propTypes = {
+  category: propTypes.string.isRequired,
+};
 
 export default NoticesCategoriesList;

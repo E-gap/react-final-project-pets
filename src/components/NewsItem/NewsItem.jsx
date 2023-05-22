@@ -1,3 +1,4 @@
+import propTypes from 'prop-types';
 import css from './NewsItem.module.css';
 
 const NewsItem = ({ topic }) => {
@@ -23,6 +24,19 @@ const NewsItem = ({ topic }) => {
       </div>
     </li>
   );
+};
+
+NewsItem.propTypes = {
+  topic: propTypes.objectOf(
+    propTypes.shape({
+      _id: propTypes.string.isRequired,
+      imgUrl: propTypes.string.isRequired,
+      text: propTypes.string.isRequired,
+      title: propTypes.string.isRequired,
+      date: propTypes.string.isRequired,
+      url: propTypes.string.isRequired,
+    })
+  ),
 };
 
 export default NewsItem;

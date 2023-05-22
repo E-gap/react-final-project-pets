@@ -14,8 +14,6 @@ export const noticesSlice = createSlice({
   name: 'notices',
   initialState: {
     oneNotice: {},
-    ownList: [],
-    favoriteList: [],
     notices: [],
     total: 0,
     isLoading: true,
@@ -140,7 +138,5 @@ export const noticesSlice = createSlice({
         state.error = action.payload;
       }),
 });
-
-//export const { addPet, deletePet } = petsSlice.actions;
 
 export const noticesSliceReducer = noticesSlice.reducer;

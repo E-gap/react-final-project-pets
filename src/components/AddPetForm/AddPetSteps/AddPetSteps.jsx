@@ -1,4 +1,5 @@
 import css from './AddPetSteps.module.css';
+import propTypes from 'prop-types';
 
 const AddPetSteps = ({ currentStep }) => {
   const steps = ['Choose Option', 'Personal Details', 'More Info'];
@@ -22,6 +23,10 @@ const AddPetSteps = ({ currentStep }) => {
     </li>
   ));
   return <ul className={css.list}>{items}</ul>;
+};
+
+AddPetSteps.propTypes = {
+  category: propTypes.number.isRequired,
 };
 
 export default AddPetSteps;
