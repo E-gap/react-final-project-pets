@@ -38,7 +38,12 @@ const OurFriendsPage = () => {
             <TimeSheet workDays={item.workDays} />
           </li>
           <li>
-            <a href={item.addressUrl} className={css.itemText}>
+            <a
+              href={item.addressUrl}
+              target="_blank"
+              rel="noreferrer"
+              className={css.itemText}
+            >
               <p className={css.textTitle}>Address:</p>
               <p>{item.address ? item.address : 'website only'}</p>
             </a>

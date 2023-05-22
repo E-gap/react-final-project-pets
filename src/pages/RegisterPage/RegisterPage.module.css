@@ -2,22 +2,45 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   background-image: url("../../images/bg/bg-desctop-min.png");
-   margin-top: 44px;
+   padding-top: 122px;
+
+  background-image: url("../../images/bg/bg-mobile-min.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+   @media (min-width: 768px) {
+      padding-top: 114px;
+      background-image: url("../../images/bg/bg-tablet-min.png"); 
+    }
+
+    @media (min-width: 1280px) {
+      padding-top: 120px;
+      background-image: url("../../images/bg/bg-desctop-min.png");
+    }
 }
+
 .container {
-    padding: 60px 75px 60px 75px;
+    padding: 40px 12px 40px 12px;
     background: #FFFFFF;
     box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
-    border-radius: 40px;
+    border-radius: 20px;
+
+     @media (min-width: 768px) {
+      padding: 60px 75px 60px 75px;  
+      border-radius: 40px;
+    }
 }
 .title {
    font-family: 'Manrope';
    font-weight: 500;
-   font-size: 36px;
+   font-size: 24px;
    line-height: 1.36;
    text-align: center;
    letter-spacing: 0.04em;
    color: #111111;
    margin-bottom: 40px;
+
+    @media (min-width: 768px) {
+          font-size: 36px;
+    }
 }
