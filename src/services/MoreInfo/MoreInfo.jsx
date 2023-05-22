@@ -65,7 +65,7 @@ const MoreInfo = ({ category, fileInput, setFileInput }) => {
           </div>
           <input
             type="file"
-            name="pet-image"
+            name="photo"
             accept=".png, .jpg, .jpeg, .webp"
             onChange={event => setFileInput(event.target.files[0])}
             className={css.fileInput}

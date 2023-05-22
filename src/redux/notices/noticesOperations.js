@@ -130,3 +130,14 @@ export const fetchNoticesByOwner = createAsyncThunk(
     }
   }
 );
+
+export const addMyPet = createAsyncThunk(
+  'notice/addMyPet',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      await axios.post('create/pets', credentials);
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);

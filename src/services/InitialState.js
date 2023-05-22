@@ -6,7 +6,7 @@ export const INITIAL_STATE = {
     breed: '',
     location: '',
     comments: '',
-    image: null,
+    photo: null,
     sex: '',
     price: '',
   }
