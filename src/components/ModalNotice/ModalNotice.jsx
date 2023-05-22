@@ -8,6 +8,7 @@ import { getAuth } from '../../redux/auth/authSelector';
 import AddToFavorite from './temporary/tempAddToFavorite';
 import Contact from './Contact/Contact';
 import { fetchNoticeById } from '../../redux/notices/noticesOperations';
+import { addToFavorite, deleteFromFavorite } from '../../redux/notices/noticesOperations';
 
 
 import propTypes from 'prop-types';
@@ -31,8 +32,8 @@ const ModalNotice = ({
 
   const { isLogin } = useSelector(getAuth);
 
-  console.log('id from modal', id);
-  console.log(notice);
+  // console.log('id from modal', id);
+  // console.log(notice);
   useEffect(()=> {
     const fn = async () => {
       const { payload } = await dispatch(fetchNoticeById(id));
@@ -54,13 +55,27 @@ const ModalNotice = ({
   });
 
 
+  // const onFavBtnClick = () => {
+  //   if (isLogin) {
+  //     setFavorite(true);
+  //   } else {
+  //     Notify.warning('Please, signup or login to add notice to favorites');
+  //   }
+  // };
+
   const onFavBtnClick = () => {
-    if (isLogin) {
-      setFavorite(true);
+    if (isLogin){
+      // console.log(favorite);
+      setFavorite(prev => !prev);
+      const result = !favorite
+      ? dispatch(addToFavorite(id))
+      : dispatch(deleteFromFavorite(id));
+      return result;
     } else {
       Notify.warning('Please, signup or login to add notice to favorites');
     }
-  };
+  }
+
 
   return createPortal(
     <div className={css.modal}>
