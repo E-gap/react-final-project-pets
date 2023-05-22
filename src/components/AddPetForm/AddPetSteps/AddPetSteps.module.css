@@ -1,0 +1,50 @@
+.list {
+  display: flex;
+  justify-content: space-around;
+  column-gap: 12px;
+  margin-bottom: 16px;
+}
+.item {
+  color: var(--color-blue);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.span {
+  display: block;
+  background-color: var(--color-light-blue);
+  border-radius: 8px;
+  height: 8px;
+  width: 80px;
+  margin-top: 12px;
+}
+.active {
+  background-color: var(--color-blue);
+}
+.completeText {
+  color: var(--color-green);
+}
+.complete {
+  background-color: var(--color-green);
+}
+@media screen and (min-width: 768px) {
+  .list {
+    column-gap: 16px;
+    margin-bottom: 40px;
+  }
+  .item {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+  }
+  .span {
+    width: 120px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .list {
+    margin-bottom: 16px;
+  }
+}

@@ -15,12 +15,13 @@
   border-radius: 40px;
   background-color: var(--color-wight);
   box-shadow: var(--shadow-default);
-  height: 85vh;
   width: 280px;
+  min-height: 496px;
 
   display: flex;
   flex-direction: column;
 }
+
 .title {
   font-weight: 500;
   font-size: 20px;
@@ -39,11 +40,25 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  align-self: center;
 }
 
 @media screen and (min-width: 768px) {
   .main {
     background-image: url('../../images/bg/bg-tablet-min.png');
+  }
+  .formik {
+    min-width: 458px;
+    min-height: 542px;
+    padding: 20px 32px;
+  }
+  .title {
+    margin-left: 0;
+    font-size: 28px;
+    line-height: 38px;
+  }
+  .btnWrapper {
+    flex-direction: row-reverse;
   }
 }
 
