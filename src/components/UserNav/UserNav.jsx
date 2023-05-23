@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 
 import css from './UserNav.module.css';
+
 // import { useSelector } from 'react-redux';
 // import { getUser } from '../../redux/auth/authSelector';
+
 
 const UserNav = ({ displayName = true, margins = false }) => {
   // const { name } = useSelector(getUser);
