@@ -78,30 +78,32 @@ const NewsPage = () => {
   const items = news.map(item => <NewsItem key={item._id} topic={item} />);
 
   return (
-    <div className={css.newsPage + ' container'}>
-      <NoticesSearch title={'News'} search={setQuery} />
-      {wasSearch && !error && news.length > 0 ? (
-        <ul className={css.list}>{items}</ul>
-      ) : wasSearch && !error && items.length === 0 ? (
-        <p className={css.noNews}>There is not any news</p>
-      ) : error ? (
-        <p className={css.error}>{error}</p>
-      ) : (
-        ''
-      )}
-      {totalNews > options.newsOptions.itemsPerPage ? (
-        <div className={css.paginationDiv}>
-          <PaginationComponent
-            items={news}
-            searchPage={searchPage}
-            total={totalNews}
-            options={options.newsOptions}
-          />
-        </div>
-      ) : (
-        ''
-      )}
-    </div>
+    <section className={css.newsPage}>
+      <div className='container'>
+        <NoticesSearch title={'News'} search={setQuery} />
+        {wasSearch && !error && news.length > 0 ? (
+          <ul className={css.list}>{items}</ul>
+        ) : wasSearch && !error && items.length === 0 ? (
+          <p className={css.noNews}>There is not any news</p>
+        ) : error ? (
+          <p className={css.error}>{error}</p>
+        ) : (
+          ''
+        )}
+        {totalNews > options.newsOptions.itemsPerPage ? (
+          <div className={css.paginationDiv}>
+            <PaginationComponent
+              items={news}
+              searchPage={searchPage}
+              total={totalNews}
+              options={options.newsOptions}
+            />
+          </div>
+        ) : (
+          ''
+        )}
+      </div>
+    </section>
   );
 };
 

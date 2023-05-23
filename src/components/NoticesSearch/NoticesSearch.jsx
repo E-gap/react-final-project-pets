@@ -21,7 +21,7 @@ const NoticesSearch = ({ search, title }) => {
   };
 
   return (
-    <div className={css.container}>
+    <div className={css.wrapper}>
       <h2 className={css.title}>{title}</h2>
       <form className={css.form} onSubmit={handleSubmit}>
         <input
