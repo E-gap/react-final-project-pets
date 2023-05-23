@@ -16,6 +16,7 @@ export const register = createAsyncThunk(
   async (credentials, thunkApi) => {
     try {
       const { data } = await instance.post('/auth/register', credentials);
+      localStorage.setItem('isNew', data.email);
       instance.defaults.headers.common.Authorization = `Bearer ${data.token}`;
       Notiflix.Notify.success('You have successfully registered', {
         width: '500px',
