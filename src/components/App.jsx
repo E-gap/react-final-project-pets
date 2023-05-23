@@ -22,6 +22,7 @@ export const App = () => {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route index element={<MainPage />} />
+          <Route path="/add-pet" element={<AddPetForm />} />
           <Route path="/friends" element={<OurFriends />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
@@ -33,7 +34,6 @@ export const App = () => {
             <Route path="favorite" element={NoticesCategoriesList} />
             <Route path="own" element={NoticesCategoriesList} />
           </Route>
-          <Route path="/add-pet" element={<AddPetForm />} />
           <Route path="*" element={<NotFound />} />
           <Route element={<PrivateRoute />}>
             <Route path="/user" element={<UserPage />} />

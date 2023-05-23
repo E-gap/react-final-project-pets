@@ -4,7 +4,8 @@ import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
 import { useMediaQuery } from 'react-responsive';
 
-import { addNotice,addMyPet } from '../../redux/notices/noticesOperations.js';
+import { addNotice } from '../../redux/notices/noticesOperations.js';
+import { createPet } from 'redux/pets/petsOperations.js';
 
 import ButtonBack from '../Buttons/FormButon/ButtonBack';
 import ButtonNext from '../Buttons/FormButon/ButtonNext';
@@ -19,12 +20,13 @@ import { INITIAL_STATE } from '../../services/InitialState';
 import css from './AddPetForm.module.css';
 
 const AddPetForm = () => {
-  const [fileInput, setFileInput] = useState('');
+  const [fileInput, setFileInput] = useState(null);
   const [step, setStep] = useState(0);
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
 
   // const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   const isTabletOrDesktop = useMediaQuery({ query: '(min-width: 768px)' });
@@ -57,7 +59,7 @@ const AddPetForm = () => {
       newFormData.set('comments', values.comments);
 
       if (category === 'your-pet') {
-        dispatch(addMyPet({ category: 'your-pet', newFormData }));
+        dispatch(createPet({ category: 'your-pet', newFormData }));
         navigate(-1);
         console.log('your-pet');
         return;
