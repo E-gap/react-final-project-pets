@@ -6,10 +6,6 @@ const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
 });
 
-// const instance = axios.create({
-//   baseURL: 'http://localhost:3001/api',
-// });
-
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkApi) => {
@@ -26,7 +22,7 @@ export const register = createAsyncThunk(
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 export const login = createAsyncThunk(
@@ -41,6 +37,7 @@ export const login = createAsyncThunk(
         fontSize: '25px',
         timeout: '500',
       });
+      data.user.isNew = localStorage.getItem('isNew') === data.user.email;
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -87,7 +84,7 @@ export const updateUser = createAsyncThunk(
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 export const updateUserAvatar = createAsyncThunk(
@@ -105,5 +102,26 @@ export const updateUserAvatar = createAsyncThunk(
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
-  }
+  },
+);
+
+export const clearIsNew = createAsyncThunk(
+  'auth/clearIsNew',
+  async (_, thunkApi) => {
+    try {
+      const { user } = thunkApi.getState().auth;
+      console.log(user.email);
+      console.log(localStorage.getItem("isNew"));
+      if (user.email === localStorage.getItem("isNew")) {
+        localStorage.removeItem("isNew");
+        return {
+          ...user,
+          isNew: false,
+        }
+      }
+      return user;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  },
 );

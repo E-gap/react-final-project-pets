@@ -14,15 +14,16 @@ const UserData = () => {
     dispatch(refresh());
   }, [dispatch]);
 
+  return (
+    <div className={css.container}>
+      <UserPhoto className={css.photoContainer} />
 
-  return (<div className={css.container}>
-    <UserPhoto className={css.photoContainer}/>
-
-    <div className={css.dataContainer}>
-      <UserDataForm className={css.form} />
-      <Logout />
+      <div className={css.dataContainer}>
+        <UserDataForm className={css.form} />
+        <Logout />
+      </div>
     </div>
-  </div>);
+  );
 };
 
 export default UserData;
