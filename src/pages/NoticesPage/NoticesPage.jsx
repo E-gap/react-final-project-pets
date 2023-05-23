@@ -8,6 +8,7 @@ import NoticesCategoriesNav from 'components/NoticesCategoriesNav/NoticesCategor
 import PaginationComponent from '../../components/Pagination/PaginationComponent';
 
 import AddPetButton from 'components/Buttons/AddPetButton/AddPetButton';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchAllNotices,
@@ -139,6 +140,16 @@ const NoticesPage = () => {
     setPage(1);
   };
 
+  const onAddPetBtn = () => {
+    Notify.warning('Please, signup or login to add a pet', {
+      width: '600px',
+      position: 'center-top',
+      fontSize: '25px',
+      textAlign: 'center',
+      timeout: '1200',
+    });
+  };
+
   return (
     <>
       <section className={css.section}>
@@ -153,6 +164,7 @@ const NoticesPage = () => {
           <div className={css.wrap}>
             <NoticesCategoriesNav setpage={changePage} />
             <AddPetButton
+              onClick={onAddPetBtn}
               style={
                 current <= 767
                   ? {
