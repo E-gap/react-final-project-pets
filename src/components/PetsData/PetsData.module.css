@@ -1,1 +1,18 @@
+.petsList {
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
+.petsListItem {
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 1280px) {
+  .petsList {
+    gap: 24px;
+  }
+}

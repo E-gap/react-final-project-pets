@@ -19,7 +19,7 @@ const UserPage = () => {
         <UserData />
       </div>
 
-      <div className={`${css.tabContainer}`}>
+      <div className={`${css.tabContainer} ${css.myPetsTab}`}>
         <p className={css.tabsTitle}>My pets:</p>
         <PetsData />
       </div>
