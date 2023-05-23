@@ -1,10 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 //import Notiflix from 'notiflix';
+import { REACT_APP_API_URL } from '../../env';
 
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: REACT_APP_API_URL,
 });
+
+/* const instance = axios.create({
+  baseURL: process.env.REACT_APP_API_URL,
+}); */
 
 /* ((axios.defaults.baseURL = `http://localhost:3001`)); */
 
