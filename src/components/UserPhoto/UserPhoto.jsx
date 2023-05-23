@@ -33,7 +33,7 @@ const UserPhoto = ({ className = '' }) => {
         ref={inputRef}
       />
       <img
-        src={user.avatarURL ? user.avatarURL : defaultPhoto}
+        // src={user.avatarURL ? user.avatarURL : defaultPhoto}
         alt="User avatar"
         className={css.photo}
         width={182}
