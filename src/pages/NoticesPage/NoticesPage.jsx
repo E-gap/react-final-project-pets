@@ -25,34 +25,37 @@ import options from '../../components/Pagination/options';
 
 const NoticesPage = () => {
   const total = useSelector(totalNotices);
+  const { pathname } = useLocation();
+
   // const [pathFilter, setPathFilter] = useState('sell');
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [page, setPage] = useState(1);
+  //const [page, setPage] = useState(1);
+
+  const [page, setPage] = useState(() => {
+    const params = searchParams.get('page');
+    return params ? params : 1;
+  });
+
   const [query, setQuery] = useState(() => {
     const params = searchParams.get('query');
     return params ? params : '';
   });
 
   const { isLogin } = useSelector(getAuth);
-  //const [query, setQuery] = useState();
 
   const { current } = useRef(window.innerWidth);
 
-  // eslint-disable-next-line no-unused-vars
-  //const [list, setList] = useState(initialState);
   const dispatch = useDispatch();
-
-  // const oneNotice = useSelector(selectOneNotice);
-
-  //console.log(oneNotice);
-
-  const { pathname } = useLocation();
 
   const pathnameArr = pathname.split('/');
   const lastPartPath = pathnameArr[pathnameArr.length - 1];
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setSearchParams({});
+  }, [pathname, setSearchParams]);
 
   useEffect(() => {
     if (query && page === 1) {
@@ -66,8 +69,6 @@ const NoticesPage = () => {
     }
 
     if (
-      /* !query && */
-      /* page === 1 && */
       pathname === '/notices/lost-found' ||
       pathname === '/notices/for-free' ||
       pathname === '/notices/favorite' ||
@@ -80,13 +81,13 @@ const NoticesPage = () => {
     let queryParams = {
       category: lastPartPath,
       title: query,
-      page,
+      page: searchParams.get('page') ? searchParams.get('page') : 1,
     };
     if (lastPartPath === 'notices') {
       queryParams = {
         category: 'sell',
         title: query,
-        page,
+        page: searchParams.get('page') ? searchParams.get('page') : 1,
       };
     }
 
@@ -113,6 +114,7 @@ const NoticesPage = () => {
     pathname,
     navigate,
     isLogin,
+    searchParams,
   ]);
 
   const submitSearch = query => {
@@ -133,6 +135,10 @@ const NoticesPage = () => {
     setPage(pageNumber);
   };
 
+  const changePage = () => {
+    setPage(1);
+  };
+
   return (
     <>
       <section className={css.section}>
@@ -145,7 +151,7 @@ const NoticesPage = () => {
           />
 
           <div className={css.wrap}>
-            <NoticesCategoriesNav />
+            <NoticesCategoriesNav setpage={changePage} />
             <AddPetButton
               style={
                 current <= 767
