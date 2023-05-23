@@ -36,8 +36,8 @@
 }
 .errorMessageEmail {
     position: absolute;
-    margin-left: 14px;
-    margin-top: 50px;
+    margin-left: 18px;
+    margin-top: 49px;
 
     font-family: 'Manrope';
     font-weight: 400;
@@ -45,11 +45,16 @@
     line-height: 1.33;
 
     color: #F43F5E;
+
+    @media (min-width: 768px) {
+          margin-left: 17px;
+          margin-top: 50px;
+    }
 }
 .validMessageEmail {
     position: absolute;
-    margin-left: 14px;
-    margin-top: 50px;
+    margin-left: 18px;
+    margin-top: 49px;
 
     font-family: 'Manrope';
     font-weight: 400;
@@ -57,11 +62,16 @@
     line-height: 1.33;
 
     color: #00C3AD;
+
+     @media (min-width: 768px) {
+          margin-left: 17px;
+          margin-top: 50px;
+    }
 }
 
 .errorMessagePass {
     position: absolute;
-    margin-left: 14px;
+    margin-left: 18px;
     margin-top: 121px;
     
 
@@ -74,13 +84,13 @@
 
     
      @media (min-width: 768px) {
-         margin-left: 14px;
+         margin-left: 17px;
          margin-top: 130px;
     }
 }
 .validMessagePass {
     position: absolute;
-    margin-left: 14px;
+    margin-left: 18px;
     margin-top: 121px;
     
 
@@ -93,14 +103,14 @@
 
     
      @media (min-width: 768px) {
-         margin-left: 14px;
+         margin-left: 17px;
          margin-top: 130px;
     }
 }
 .errorMessageConfPass {
     position: absolute;
-    margin-left: 14px;
-    margin-top: 210px;
+    margin-left: 18px;
+    margin-top: 193px;
     
 
     font-family: 'Manrope';
@@ -109,11 +119,16 @@
     line-height: 1.33;
 
     color: #F43F5E;
+
+    @media (min-width: 768px) {
+          margin-left: 17px;
+          margin-top: 210px;
+    }
 }
 .validMessageConfPass {
     position: absolute;
-    margin-left: 14px;
-    margin-top: 210px;
+    margin-left: 18px;
+    margin-top: 193px;
     
 
     font-family: 'Manrope';
@@ -122,6 +137,11 @@
     line-height: 1.33;
 
     color: #00C3AD;
+
+        @media (min-width: 768px) {
+          margin-left: 17px;
+          margin-top: 210px;
+    }
 }
 
 .linklist {
@@ -181,11 +201,11 @@
     background-color: white;
     fill: #F43F5E;
     margin-top: -38px;
-    margin-left: 203px;
+    margin-left: 198px;
 
       @media (min-width: 768px) {
          margin-top: -38px;
-         margin-left: 403px;
+         margin-left: 400px;
     }
 }
 
@@ -196,11 +216,11 @@
     background-color: white;
     fill: #00C3AD;
     margin-top: -38px;
-    margin-left: 203px;
+    margin-left: 198px;
 
       @media (min-width: 768px) {
          margin-top: -38px;
-         margin-left: 403px;
+         margin-left: 400px;
     }
 }
 
