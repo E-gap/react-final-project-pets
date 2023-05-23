@@ -7,6 +7,8 @@
   border-bottom-right-radius: 40px;
   box-shadow: var(--shadow-default);
   background-color: var(--color-wight);
+
+  transition: all 200ms ease-out;
 }
 .item:hover,
 .item.focus {
@@ -43,40 +45,46 @@
 }
 .container {
   position: absolute;
-  left: -5px;
+  left: 50%;
   bottom: 16px;
   display: flex;
-  gap: 12px;
-  margin-left: 8px;
-  margin-right: 8px;
-}
-.wrap {
-  display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 4px;
-  width: 83px;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  background-color: var(--color-light-blue);
-  text-align: center;
-  border-radius: 16px;
-  z-index: 1000;
+  gap: 12px;
+  transform: translateX(-50%);
+  
+  width: 264px;
 }
+.wrap_text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  z-index: 1000;
 
-.text {
-  margin: 0;
-  font-family: 'Manrope';
+  background-color: var(--color-light-blue);
+
   font-weight: 600;
   font-size: 12px;
   line-height: 1.37;
+ 
+  border-radius: 16px;
 }
-.wrapText {
-  margin: 14px 15px 24px;
+
+.sex_icon {
+  font-size: 18px;
+  color: #54ADFF;
 }
+
+.sex_desc {
+  white-space: nowrap
+}
+
+.wrap_desc {
+  padding: 14px 15px 24px;
+}
+
 .title {
-  height: 40px;
-  font-family: 'Manrope';
+  height: 66px;
   font-size: 24px;
   font-weight: 700;
   line-height: 1.37;
@@ -89,9 +97,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .container {
-    left: 17px;
-  }
   .item {
     width: 336px;
     margin-bottom: 24px;
@@ -99,17 +104,11 @@
   .item:nth-child(odd) {
     margin-right: 32px;
   }
-  .wrap {
-    width: 88px;
-  }
-  .wrapText {
-    margin: 14px 20px 24px;
+  .wrap_desc {
+    padding: 14px 15px 24px;
   }
 }
 @media screen and (min-width: 1280px) {
-  .container {
-    left: -1px;
-  }
   .item {
     width: 288px;
   }
@@ -118,8 +117,5 @@
   }
   .item:nth-child(4n + 4) {
     margin-right: 0;
-  }
-  .wrap {
-    width: 83px;
   }
 }

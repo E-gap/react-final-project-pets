@@ -2,7 +2,7 @@ import css from './NoticesPage.module.css';
 import { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import NoticesCategoriesList from 'components/NoticesCategoriesList/NoticesCategoriesList';
-import NoticesSearch from 'components/NoticesSearch/NoticesSearch';
+import NoticesSearch from 'components/InputSearch/InputSearch';
 // import NoticesFilters from 'components/NoticesFilters/NoticesFilters';
 import NoticesCategoriesNav from 'components/NoticesCategoriesNav/NoticesCategoriesNav';
 import PaginationComponent from '../../components/Pagination/PaginationComponent';
@@ -136,7 +136,7 @@ const NoticesPage = () => {
   return (
     <>
       <section className={css.section}>
-        <div className={css.container} onClick={handleLearnMore}>
+        <div className='container' onClick={handleLearnMore}>
           <NoticesSearch
             search={submitSearch}
             title={'Find your favorite pet'}

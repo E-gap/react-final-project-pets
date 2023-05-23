@@ -1,4 +1,4 @@
-import css from './NoticesSearch.module.css';
+import css from './InputSearch.module.css';
 import propTypes from 'prop-types';
 import { BsSearch } from 'react-icons/bs';
 import { useState } from 'react';

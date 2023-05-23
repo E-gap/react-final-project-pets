@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import NewsItem from 'components/NewsItem/NewsItem';
-import NoticesSearch from 'components/NoticesSearch/NoticesSearch';
+import NoticesSearch from 'components/InputSearch/InputSearch';
 import PaginationComponent from '../../components/Pagination/PaginationComponent';
 import options from '../../components/Pagination/options';
 

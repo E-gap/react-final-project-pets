@@ -25,7 +25,8 @@
   width: 26px;
   height: 22px;
 }
-.btn:hover {
+.btn:hover,
+.btn:focus {
   border: 1px solid var(--color-blue);
 }
 @media screen and (min-width: 768px) {
