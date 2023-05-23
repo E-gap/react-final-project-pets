@@ -1,10 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 //import Notiflix from 'notiflix';
+import { REACT_APP_API_URL } from '../../env';
 
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: REACT_APP_API_URL,
 });
+
+/* const instance = axios.create({
+  baseURL: process.env.REACT_APP_API_URL,
+}); */
 
 /* ((axios.defaults.baseURL = `http://localhost:3001`)); */
 
@@ -68,6 +73,8 @@ export const addToFavorite = createAsyncThunk(
     try {
       // const result = await axios.patch(url);
       // return result.data.data;
+      const response = await instance.post(`/notices/${noticeId}/favorite}`);
+      return response;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -81,6 +88,8 @@ export const deleteFromFavorite = createAsyncThunk(
     try {
       // const result = await axios.patch(url);
       // return result.data.data;
+      const response = await instance.delete(`/notices/${noticeId}/favorite`);
+      return response;
     } catch (error) {
       return rejectWithValue(error.message);
     }
