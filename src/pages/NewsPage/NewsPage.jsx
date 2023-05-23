@@ -2,6 +2,7 @@ import axios from 'axios';
 import css from './NewsPage.module.css';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { REACT_APP_API_URL } from '../../env';
 
 import NewsItem from 'components/NewsItem/NewsItem';
 import NoticesSearch from 'components/NoticesSearch/NoticesSearch';
@@ -9,7 +10,7 @@ import PaginationComponent from '../../components/Pagination/PaginationComponent
 import options from '../../components/Pagination/options';
 
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: REACT_APP_API_URL,
 });
 
 const NewsPage = () => {
