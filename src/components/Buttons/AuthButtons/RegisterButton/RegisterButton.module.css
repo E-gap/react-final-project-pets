@@ -18,5 +18,11 @@
   border-radius: 40px;
   border: 2px solid var(--color-orange);
 
-  transition: all ease 250ms;
+  transition: all 300ms ease-in-out;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--color-orange);
+  color: var(--color-light-background);
 }

@@ -33,6 +33,8 @@
     font-size: 32px;
     line-height: 1.375;
 
+    animation: text 3s infinite;
+
     @media (min-width: 768px) {
         margin-bottom: 27px;
         font-size: 68px;
@@ -47,6 +49,10 @@
         font-weight: 800;
         line-height: 1.294;
     }    
+}
+
+.main_page__title span{
+    color: var(--color-orange);
 }
 
 .wrapper {

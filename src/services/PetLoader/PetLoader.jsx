@@ -5,9 +5,7 @@ const PetLoader = () => {
 
   return (
     <div className={css.loaderContainer}>
-      <div className={css.loader}>
-        <img src={loader} alt="qwerty" />
-      </div>
+        <img className={css.logo_icon} src={loader} alt="Logo icon" />
     </div>
   );
 };
