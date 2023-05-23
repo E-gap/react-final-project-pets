@@ -4,6 +4,7 @@
   padding-left: 10px;
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
   height: 52px;
+  width: 280px;
   margin-left: auto;
   margin-right: auto;
   /* width: 310px; */
@@ -11,12 +12,16 @@
   align-items: center;
   justify-content: center;
   padding-left: 0;
+
+  @media (min-width: 768px) {
+    width: 310px;
+  }
 }
 
 #tui-pagination-container .tui-page-btn,
 #tui-pagination-container .tui-prev {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   border: 1px solid #cce4fb;
   border-radius: 50%;
   color: #cce4fb;
@@ -26,6 +31,11 @@
   align-items: center;
   justify-content: center;
   font-size: 16px;
+
+  @media (min-width: 768px) {
+    width: 35px;
+    height: 35px;
+  }
 }
 
 .tui-prev .tui-ico-prev {
