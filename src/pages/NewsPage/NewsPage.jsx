@@ -13,6 +13,7 @@ const instance = axios.create({
 });
 
 const NewsPage = () => {
+  const [wasSearch, setWasSearch] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(() => {
     const params = searchParams.get('query');
@@ -49,15 +50,18 @@ const NewsPage = () => {
         );
 
         if (response.status !== 200) {
+          setWasSearch(true);
           setNews([]);
           setTotalNews(0);
           throw new Error('Server Error');
         } else if (response.data.length === 0) {
+          setWasSearch(true);
           setNews([]);
           setTotalNews(0);
           setError('There are not any news');
         }
         setError('');
+        setWasSearch(true);
         setNews(response.data.result);
         setTotalNews(response.data.total);
 
@@ -71,16 +75,19 @@ const NewsPage = () => {
     getNews(query);
   }, [query, page]);
 
-  const items = news
-    .slice(0, 6)
-    .map(item => <NewsItem key={item._id} topic={item} />);
+  const items = news.map(item => <NewsItem key={item._id} topic={item} />);
+
   return (
     <div className={css.newsPage + ' container'}>
       <NoticesSearch title={'News'} search={setQuery} />
-      {!error ? (
+      {wasSearch && !error && news.length > 0 ? (
         <ul className={css.list}>{items}</ul>
-      ) : (
+      ) : wasSearch && !error && items.length === 0 ? (
+        <p className={css.noNews}>There is not any news</p>
+      ) : error ? (
         <p className={css.error}>{error}</p>
+      ) : (
+        ''
       )}
       {totalNews > options.newsOptions.itemsPerPage ? (
         <div className={css.paginationDiv}>
