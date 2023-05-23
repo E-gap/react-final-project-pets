@@ -18,12 +18,19 @@ export const register = createAsyncThunk(
       instance.defaults.headers.common.Authorization = `Bearer ${data.token}`;
       Notiflix.Notify.success('You have successfully registered', {
         width: '500px',
-        position: 'center-center',
+        position: 'center-top',
         fontSize: '25px',
         timeout: '500',
       });
       return data;
     } catch (error) {
+      Notiflix.Notify.warning('Registration failed, please check the credentials', {
+        width: '600px',
+        position: 'center-top',
+        fontSize: '25px',
+        textAlign: 'center',
+        timeout: '1000',
+      });
       return thunkApi.rejectWithValue(error.message);
     }
   }
@@ -37,12 +44,19 @@ export const login = createAsyncThunk(
       instance.defaults.headers.common.Authorization = `Bearer ${data.token}`;
       Notiflix.Notify.success('You have successfully login', {
         width: '500px',
-        position: 'center-center',
+        position: 'center-top',
         fontSize: '25px',
         timeout: '500',
       });
       return data;
     } catch (error) {
+      Notiflix.Notify.warning('Login failed, please check the credentials', {
+        width: '600px',
+        position: 'center-top',
+        fontSize: '25px',
+        textAlign: 'center',
+        timeout: '1000',
+      });
       return thunkApi.rejectWithValue(error.message);
     }
   }
@@ -52,6 +66,12 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkApi) => {
   try {
     await instance.post('/auth/logout');
     instance.defaults.headers.common.Authorization = ``;
+    Notiflix.Notify.success('Logout success', {
+        width: '500px',
+        position: 'center-top',
+        fontSize: '25px',
+        timeout: '500',
+      });
   } catch (error) {
     // return thunkApi.rejectWithValue(error.message);
   }
