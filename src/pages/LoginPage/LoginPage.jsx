@@ -14,7 +14,6 @@ const LoginPage = () => {
   const isLoginForm = Boolean(true);
 
   const handleLogin = data => {
-    console.log(data);
     dispatch(login(data));
   };
   return (

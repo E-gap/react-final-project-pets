@@ -24,7 +24,12 @@ const OurFriendsPage = () => {
 
   const elements = friends.map(item => (
     <li key={item._id} className={css.item}>
-      <a href={item.url} className={css.itemTitle}>
+      <a
+        href={item.url}
+        className={css.itemTitle}
+        target="_blank"
+        rel="noreferrer"
+      >
         {item.title}
       </a>
       <div className={css.itemWrapper}>
