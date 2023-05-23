@@ -1,0 +1,65 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(97, 97, 97, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+  }
+  
+  .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 40px;
+    background-color: var(--color-wight);
+    z-index: 5;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .modal {
+      min-width: 280px;
+    }
+  }
+  
+  @media screen and (min-width: 768px) {
+    .modal {
+      min-width: 680px;
+    }
+  }
+  
+  .btnClose {
+    position: absolute;
+    top: 23px;
+    right: 26px;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* .closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 7px;
+    border: none;
+    background-color: transparent;
+  } */
+  
+
+  .closeIcon {
+    width: 24px;
+    height: 24px;
+    color: var(--color-blue);
+  }
+  .closeIcon:hover,
+  .closeIcon:focus {
+    color: var(--color-dark);
+  }
