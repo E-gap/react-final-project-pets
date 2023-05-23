@@ -1,15 +1,11 @@
-.loaderContainer {
-    position: relative;
-}
+.logo_icon {
+    margin-left: 10px;
 
-.loader {
-    position: absolute;
-    margin-top: 40px;
-    margin-left: 22px;
+    width: 42px;
 }
 
 @media screen and (max-width: 1280px) {
-  .loaderContainer {
-    display: none;
-} 
+    .loaderContainer {
+        display: none;
+    } 
 }
