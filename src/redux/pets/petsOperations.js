@@ -1,14 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { REACT_APP_API_URL } from '../../env';
 
 const instance = axios.create({
-  baseURL: REACT_APP_API_URL,
-});
-
-/* const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
-}); */
+});
 
 export const fetchPets = createAsyncThunk('pets/fetch', async (_, thunkAPI) => {
   const { token } = thunkAPI.getState().auth;

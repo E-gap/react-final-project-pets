@@ -8,7 +8,7 @@ import css from './NoticesCategoryItem.module.css';
 import LearnMore from 'components/Buttons/LearnMore/LearnMore';
 
 import AddToFavorite from 'components/Buttons/AddToFavorite/AddToFavorite';
-import RemovePetButton from 'components/Buttons/RemovePetButton/RemovePetButton';
+// import RemovePetButton from 'components/Buttons/RemovePetButton/RemovePetButton';
 import ModalNotice from 'components/ModalNotice/ModalNotice';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { HiOutlineClock } from 'react-icons/hi';
@@ -86,7 +86,13 @@ const NoticesCategoryItem = ({
     if (isLogin) {
       setFavorite(!favorite);
     } else {
-      Notify.warning('Please, signup or login to add notice to favorites');
+      Notify.warning('Please, signup or login to add notice to favorites', {
+        width: '600px',
+        position: 'center-top',
+        fontSize: '25px',
+        textAlign: 'center',
+        timeout: '1200',
+      });
     }
   };
 
@@ -105,7 +111,7 @@ const NoticesCategoryItem = ({
                 : { position: 'absolute', top: 0, left: '277px' }
             }
           />
-          <RemovePetButton />
+          {/* <RemovePetButton /> */}
         </div>
         <div className={css.container}>
           <div className={css.wrap}>

@@ -1,4 +1,4 @@
-.container {
+.wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,7 +25,9 @@
   box-shadow: var(--shadow-default);
   border: none;
   font-family: 'Inter';
+  color: #888888;
   background-color: var(--color-wight);
+  outline: transparent;
 }
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -64,14 +66,16 @@
   right: 6px;
   top: 34px;
 }
-.changeColor {
-  color: var(--color-blue);
-}
+.changeColor,
 .changeColorDel {
   color: var(--color-blue);
+
+  transition: all 150ms ease-in;
 }
 .changeColor:hover,
-.changeColorDel:hover {
+.changeColor:focus,
+.changeColorDel:hover,
+.changeColorDel:focus {
   color: var(--color-orange);
 }
 @media screen and (min-width: 768px) {

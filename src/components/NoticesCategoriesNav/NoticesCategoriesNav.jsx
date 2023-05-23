@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { getAuth } from '../../redux/auth/authSelector';
 import { NavLink, useLocation } from 'react-router-dom';
 
-const NoticesCategoriesNav = () => {
+const NoticesCategoriesNav = ({ setpage }) => {
   const location = useLocation();
   const from = location.state?.from || '/';
 
@@ -13,17 +13,17 @@ const NoticesCategoriesNav = () => {
     <>
       {!isLogin ? (
         <ul className={css.list}>
-          <li className={css.item}>
+          <li className={css.item} onClick={setpage}>
             <NavLink className={css.link} to="sell" state={{ from }}>
               sell
             </NavLink>
           </li>
-          <li>
+          <li onClick={setpage}>
             <NavLink className={css.link} to="lost-found" state={{ from }}>
               lost/found
             </NavLink>
           </li>
-          <li>
+          <li onClick={setpage}>
             <NavLink className={css.link} to="for-free" state={{ from }}>
               in good hands
             </NavLink>

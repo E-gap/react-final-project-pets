@@ -6,15 +6,13 @@ const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
 });
 
-// const instance = axios.create({
-//   baseURL: 'http://localhost:3001/api',
-// });
 
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkApi) => {
     try {
       const { data } = await instance.post('/auth/register', credentials);
+      localStorage.setItem('isNew', data.email);
       instance.defaults.headers.common.Authorization = `Bearer ${data.token}`;
       Notiflix.Notify.success('You have successfully registered', {
         width: '500px',
@@ -48,6 +46,7 @@ export const login = createAsyncThunk(
         fontSize: '25px',
         timeout: '500',
       });
+      data.user.isNew = localStorage.getItem('isNew') === data.user.email;
       return data;
     } catch (error) {
       Notiflix.Notify.warning('Login failed, please check the credentials', {
@@ -126,4 +125,25 @@ export const updateUserAvatar = createAsyncThunk(
       return thunkApi.rejectWithValue(error.message);
     }
   }
+);
+
+export const clearIsNew = createAsyncThunk(
+  'auth/clearIsNew',
+  async (_, thunkApi) => {
+    try {
+      const { user } = thunkApi.getState().auth;
+      console.log(user.email);
+      console.log(localStorage.getItem("isNew"));
+      if (user.email === localStorage.getItem("isNew")) {
+        localStorage.removeItem("isNew");
+        return {
+          ...user,
+          isNew: false,
+        }
+      }
+      return user;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  },
 );

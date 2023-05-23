@@ -5,6 +5,7 @@
   align-items: center;
   row-gap: 20px;
 }
+
 .navLink {
   font-family: 'Manrope';
   font-weight: 500;
@@ -13,11 +14,20 @@
   letter-spacing: 0.04em;
   color: var(--color-dark);
   text-decoration: none;
+
+  transition: all 200ms ease-in ;
 }
+
+.navLink:hover,
+.navLink:focus {
+  color: var(--color-orange);
+}
+
 .navLink:global(.active) {
   color: var(--color-orange);
   font-weight: 700;
 }
+
 @media screen and (min-width: 768px) {
   .nav {
     margin-top: 68px;
@@ -28,10 +38,11 @@
     line-height: 66px;
   }
 }
+
 @media screen and (min-width: 1280px) {
   .nav {
     margin-top: 0;
-    margin-left: 159px;
+    margin-left: 169px;
     row-gap: 0;
     flex-direction: row;
 

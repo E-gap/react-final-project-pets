@@ -1,6 +1,7 @@
 .newsPage {
   color: var(--color-dark);
-  margin-top: 88px;
+  padding-top: 80px;
+  padding-bottom: 18px;
 }
 .header {
   font-weight: 700;
@@ -12,16 +13,17 @@
   display: flex;
   flex-direction: column;
   row-gap: 24px;
-  margin-top: 40px;
+  margin-top: 24px;
 }
 @media screen and (min-width: 768px) {
   .newsPage {
-    margin-top: 148px;
+    padding-top: 140px;
   }
   .list {
     flex-direction: row;
     flex-wrap: wrap;
     column-gap: 32px;
+    margin-top: 40px;
   }
   .header {
     font-size: 48px;
@@ -31,11 +33,17 @@
 @media screen and (min-width: 1280px) {
   .list {
     column-gap: 31px;
+    margin-top: 59px;
   }
 }
 
 .paginationDiv {
   display: flex;
+  margin-top: 26px;
+
+  @media (min-width: 768px) {
+    margin-top: 46px;
+  }
 }
 
 .error {
