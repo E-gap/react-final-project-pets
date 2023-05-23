@@ -71,7 +71,7 @@ p {
   top: 10px;
   right: 10px;
   padding: 5px 7px;
-  border: none;
+  border-radius: 20px;
   background-color: inherit;
 }
 
@@ -81,8 +81,8 @@ p {
   color: #54ADFF;
 }
 
-.icon-close:hover,
-.icon-close:focus {
+.icon:hover,
+.icon:focus {
   color: black;
 }
 

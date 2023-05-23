@@ -18,14 +18,19 @@ const ModalCongrats = ({show, onClose}) => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [onClose]);
+  });
 
+  const handleBackdropClick = (event) => {
+    if (event.target === event.currentTarget) {
+      onClose && onClose();
+    }
+  }
   return (
     <>
       {/*{modal && (*/}
       {show && (
         <div className={css.modal}>
-          <div className={css.overlay}>
+          <div className={css.overlay} onClick={handleBackdropClick}>
             <div className={css.content}>
               <h2 className={css.title}>Congrats!</h2>
               <p className={css.text}>Your registration is success</p>
