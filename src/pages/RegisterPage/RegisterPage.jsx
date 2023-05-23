@@ -13,7 +13,6 @@ const RegisterPage = () => {
   }
 
   const handleSignup = data => {
-    console.log(data);
     dispatch(register(data));
   };
   

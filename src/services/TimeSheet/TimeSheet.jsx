@@ -29,8 +29,6 @@ const TimeSheet = ({ workDays }) => {
       return;
     } 
   }, [workDays]);
-
-  console.log(state)
   
   const elements = state.map((item, index) => (
     <li key={index} className={css.timeItem}>

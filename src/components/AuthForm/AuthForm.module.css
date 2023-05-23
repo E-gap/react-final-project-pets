@@ -31,6 +31,9 @@
 .errorInput {
     border: 1px solid #F43F5E;
 }
+.validInput {
+    border: 2px solid #00C3AD;
+}
 .errorMessageEmail {
     position: absolute;
     margin-left: 14px;
@@ -42,6 +45,18 @@
     line-height: 1.33;
 
     color: #F43F5E;
+}
+.validMessageEmail {
+    position: absolute;
+    margin-left: 14px;
+    margin-top: 50px;
+
+    font-family: 'Manrope';
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.33;
+
+    color: #00C3AD;
 }
 
 .errorMessagePass {
@@ -63,6 +78,25 @@
          margin-top: 130px;
     }
 }
+.validMessagePass {
+    position: absolute;
+    margin-left: 14px;
+    margin-top: 121px;
+    
+
+    font-family: 'Manrope';
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.33;
+
+    color: #00C3AD;
+
+    
+     @media (min-width: 768px) {
+         margin-left: 14px;
+         margin-top: 130px;
+    }
+}
 .errorMessageConfPass {
     position: absolute;
     margin-left: 14px;
@@ -75,6 +109,19 @@
     line-height: 1.33;
 
     color: #F43F5E;
+}
+.validMessageConfPass {
+    position: absolute;
+    margin-left: 14px;
+    margin-top: 210px;
+    
+
+    font-family: 'Manrope';
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.33;
+
+    color: #00C3AD;
 }
 
 .linklist {
@@ -129,7 +176,25 @@
 
 .close {
     position: absolute;
+    width: 26px;
+    height: 26px;
+    background-color: white;
     fill: #F43F5E;
+    margin-top: -38px;
+    margin-left: 203px;
+
+      @media (min-width: 768px) {
+         margin-top: -38px;
+         margin-left: 403px;
+    }
+}
+
+.valid {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    background-color: white;
+    fill: #00C3AD;
     margin-top: -38px;
     margin-left: 203px;
 
