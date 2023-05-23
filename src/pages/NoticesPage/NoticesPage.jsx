@@ -49,6 +49,9 @@ const NoticesPage = () => {
 
   const { pathname } = useLocation();
 
+  const pathnameArr = pathname.split('/');
+  const lastPartPath = pathnameArr[pathnameArr.length - 1];
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -61,19 +64,14 @@ const NoticesPage = () => {
     } else if (!query && page === 1) {
       setSearchParams({});
     }
-  }, [query, page, setSearchParams]);
 
-  const pathnameArr = pathname.split('/');
-  const lastPartPath = pathnameArr[pathnameArr.length - 1];
-
-  useEffect(() => {
     if (
-      !query &&
-      page === 1 &&
-      (pathname === '/notices/lost-found' ||
-        pathname === '/notices/for-free' ||
-        pathname === '/notices/favorite' ||
-        pathname === '/notices/own')
+      /* !query && */
+      /* page === 1 && */
+      pathname === '/notices/lost-found' ||
+      pathname === '/notices/for-free' ||
+      pathname === '/notices/favorite' ||
+      pathname === '/notices/own'
     ) {
     } else {
       navigate('/notices/sell');
