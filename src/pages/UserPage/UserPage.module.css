@@ -36,6 +36,9 @@
     width: 395px;
     min-width: 395px;
   }
+  .myPetsTab {
+    flex-grow: 1;
+  }
 }
 
 
