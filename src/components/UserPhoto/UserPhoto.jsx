@@ -1,16 +1,16 @@
 import css from './UserPhoto.module.css';
-import defaultPhoto from '../../images/UserPage/photo-default.png';
+// import defaultPhoto from '../../images/UserPage/photo-default.png';
 import camera from '../../images/UserPage/camera.svg';
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux'; //useSelector
 import { updateUserAvatar } from '../../redux/auth/authOperations';
-import { getUser } from '../../redux/auth/authSelector';
+// import { getUser } from '../../redux/auth/authSelector';
 
 const UserPhoto = ({ className = '' }) => {
   const inputRef = useRef(null);
   const dispatch = useDispatch();
-  const user = useSelector(getUser);
+  // const user = useSelector(getUser);
 
   const handlePick = () => {
     inputRef.current.click();
