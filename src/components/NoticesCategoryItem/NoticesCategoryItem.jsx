@@ -113,35 +113,38 @@ const NoticesCategoryItem = ({
           />
           {/* <RemovePetButton /> */}
         </div>
-        <div className={css.container}>
-          <div className={css.wrap}>
-            <HiOutlineLocationMarker
-              style={{ fontSize: 19, color: '#54ADFF' }}
-            />
-            <p className={css.text}>{location}</p>
-          </div>
-          <div className={css.wrap}>
-            <HiOutlineClock style={{ fontSize: 19, color: '#54ADFF' }} />
-            <p className={css.text}>
+        <ul className={css.container}>
+          <li className={css.wrap_text}>
+            <HiOutlineLocationMarker  className={css.sex_icon} />
+            <p className={css.sex_desc}>{location}</p>
+            
+          </li>
+          <li className={css.wrap_text}>
+            <HiOutlineClock  className={css.sex_icon}/>
+            <p className={css.sex_desc}>
               {birthday
-                ? moment(
-                    birthday.split('.').reverse().join('.'),
-                    'YYYYMMDD'
-                  ).fromNow(true)
-                : '-'}
+              ? moment(
+                  birthday.split('.').reverse().join('.'),
+                  'YYYYMMDD'
+                ).fromNow(true)
+              : '-'}
             </p>
-          </div>
-          <div className={css.wrap}>
+            
+          </li>
+          <li className={css.wrap_text}>
             {sex === 'male' ? (
-              <GiMale style={{ fontSize: 19, color: '#54ADFF' }} />
+              <GiMale className={css.sex_icon}/>
             ) : (
-              <GiFemale style={{ fontSize: 19, color: '#54ADFF' }} />
+              <GiFemale  className={css.sex_icon}/>
             )}
-            <p className={css.text}>{sex}</p>
-          </div>
-        </div>
+            <p className={css.sex_desc}>
+              {sex}
+            </p>
+           
+          </li>
+        </ul>
       </div>
-      <div className={css.wrapText}>
+      <div className={css.wrap_desc}>
         <h3 className={css.title}>{title}</h3>
         <LearnMore id={id} onClick={handleLearnMore} />
         {showModal && (
