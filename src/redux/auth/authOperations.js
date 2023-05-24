@@ -2,10 +2,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import Notiflix from 'notiflix';
 
-const instance = axios.create({
+export const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
 });
-
 
 export const register = createAsyncThunk(
   'auth/register',
@@ -22,13 +21,16 @@ export const register = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      Notiflix.Notify.warning('Registration failed, please check the credentials', {
-        width: '600px',
-        position: 'center-top',
-        fontSize: '25px',
-        textAlign: 'center',
-        timeout: '1000',
-      });
+      Notiflix.Notify.warning(
+        'Registration failed, please check the credentials',
+        {
+          width: '600px',
+          position: 'center-top',
+          fontSize: '25px',
+          textAlign: 'center',
+          timeout: '1000',
+        }
+      );
       return thunkApi.rejectWithValue(error.message);
     }
   }
@@ -66,11 +68,11 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkApi) => {
     await instance.post('/auth/logout');
     instance.defaults.headers.common.Authorization = ``;
     Notiflix.Notify.success('Logout success', {
-        width: '500px',
-        position: 'center-top',
-        fontSize: '25px',
-        timeout: '500',
-      });
+      width: '500px',
+      position: 'center-top',
+      fontSize: '25px',
+      timeout: '500',
+    });
   } catch (error) {
     // return thunkApi.rejectWithValue(error.message);
   }
@@ -133,17 +135,17 @@ export const clearIsNew = createAsyncThunk(
     try {
       const { user } = thunkApi.getState().auth;
       console.log(user.email);
-      console.log(localStorage.getItem("isNew"));
-      if (user.email === localStorage.getItem("isNew")) {
-        localStorage.removeItem("isNew");
+      console.log(localStorage.getItem('isNew'));
+      if (user.email === localStorage.getItem('isNew')) {
+        localStorage.removeItem('isNew');
         return {
           ...user,
           isNew: false,
-        }
+        };
       }
       return user;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
-  },
+  }
 );

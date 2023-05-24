@@ -1,10 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+//import axios from 'axios';
 //import Notiflix from 'notiflix';
+import { instance } from '../auth/authOperations';
 
-const instance = axios.create({
+/* const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
-});
+}); */
 
 /* ((axios.defaults.baseURL = `http://localhost:3001`)); */
 
@@ -98,7 +99,7 @@ export const addNotice = createAsyncThunk(
     if (!token) {
       return thunkAPI.rejectWithValue('No valid token');
     }
-    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+    // instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 
     try {
       const { data } = await instance.post('/notices/', newFormData);
@@ -127,7 +128,7 @@ export const fetchNoticesByOwner = createAsyncThunk(
     const { title, page } = queryParams;
     const { token } = thunkApi.getState().auth;
     if (!token) return thunkApi.rejectWithValue('No valid token');
-    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+    // instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 
     try {
       const result = await instance.get(
