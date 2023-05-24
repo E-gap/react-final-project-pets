@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
 import { useMediaQuery } from 'react-responsive';
 
-import { addNotice} from '../../redux/notices/noticesOperations.js';
+import { addNotice } from '../../redux/notices/noticesOperations.js';
 import { createPet } from 'redux/pets/petsOperations.js';
 
 import ButtonBack from '../Buttons/FormButon/ButtonBack';
@@ -50,13 +50,12 @@ const AddPetForm = () => {
 
       const newFormData = new FormData();
 
-      
       newFormData.set('name', values.name);
       newFormData.set('birthday', values.birthday);
       newFormData.set('breed', values.breed);
       newFormData.set('photo', fileInput);
       newFormData.set('comments', values.comments);
-      
+
       if (category === 'your-pet') {
         dispatch(createPet({ newFormData }));
         navigate(-1);
@@ -88,8 +87,12 @@ const AddPetForm = () => {
 
       newFormData.set('price', values.price);
 
+      const formDataObj = {};
+      newFormData.forEach((value, key) => (formDataObj[key] = value));
+      console.log(formDataObj);
+
       if (category === 'sell') {
-        dispatch(addNotice({ category: 'sell', newFormData }));
+        dispatch(addNotice({ category: 'sell', formDataObj }));
         navigate(-1);
         for (const [key, value] of newFormData.entries()) {
           console.log(key, value);
