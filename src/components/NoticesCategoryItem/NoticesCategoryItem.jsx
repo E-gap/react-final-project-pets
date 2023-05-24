@@ -115,32 +115,27 @@ const NoticesCategoryItem = ({
         </div>
         <ul className={css.container}>
           <li className={css.wrap_text}>
-            <HiOutlineLocationMarker  className={css.sex_icon} />
+            <HiOutlineLocationMarker className={css.sex_icon} />
             <p className={css.sex_desc}>{location}</p>
-            
           </li>
           <li className={css.wrap_text}>
-            <HiOutlineClock  className={css.sex_icon}/>
+            <HiOutlineClock className={css.sex_icon} />
             <p className={css.sex_desc}>
               {birthday
-              ? moment(
-                  birthday.split('.').reverse().join('.'),
-                  'YYYYMMDD'
-                ).fromNow(true)
-              : '-'}
+                ? moment(
+                    birthday.split('.').reverse().join('.'),
+                    'YYYYMMDD'
+                  ).fromNow(true)
+                : '-'}
             </p>
-            
           </li>
           <li className={css.wrap_text}>
             {sex === 'male' ? (
-              <GiMale className={css.sex_icon}/>
+              <GiMale className={css.sex_icon} />
             ) : (
-              <GiFemale  className={css.sex_icon}/>
+              <GiFemale className={css.sex_icon} />
             )}
-            <p className={css.sex_desc}>
-              {sex}
-            </p>
-           
+            <p className={css.sex_desc}>{sex}</p>
           </li>
         </ul>
       </div>
@@ -178,7 +173,7 @@ NoticesCategoryItem.propTypes = {
   category: propTypes.string.isRequired,
   title: propTypes.string.isRequired,
   breed: propTypes.string.isRequired,
-  comments: propTypes.string.isRequired,
+  comments: propTypes.string,
   id: propTypes.string.isRequired,
-  price: propTypes.string.isRequired,
+  price: propTypes.string,
 };

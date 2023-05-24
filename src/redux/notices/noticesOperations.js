@@ -91,8 +91,7 @@ export const deleteFromFavorite = createAsyncThunk(
   }
 );
 
-
-export const addNotice  = createAsyncThunk(
+export const addNotice = createAsyncThunk(
   'notices/addNotice',
   async (newFormData, thunkAPI) => {
     const { token } = thunkAPI.getState().auth;
@@ -128,6 +127,7 @@ export const fetchNoticesByOwner = createAsyncThunk(
     const { title, page } = queryParams;
     const { token } = thunkApi.getState().auth;
     if (!token) return thunkApi.rejectWithValue('No valid token');
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 
     try {
       const result = await instance.get(
