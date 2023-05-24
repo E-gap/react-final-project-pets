@@ -12,6 +12,15 @@
 
   margin-left: auto;
   margin-right: 32px;
+  border-radius: 20px;
+  padding-right: 5px;
+
+  transition: all linear 250ms;
+}
+.user:hover,
+.user:focus {
+  background-color: var(--color-orange);
+  color: var(--color-light);
 }
 .userMargins {
   margin-bottom: 84px;
@@ -21,10 +30,9 @@
 .avatar {
   width: 24px;
   height: 24px;
-  color: var(--color-orange);
+  color: inherit;
   margin-right: 12px;
 }
-
 
 @media screen and (min-width: 768px) {
   .avatar {
@@ -34,16 +42,17 @@
   .user {
     margin-right: 50px;
   }
- }
-  @media screen and (min-width: 1280px) {
-    .header {
-      padding: 20px 16px;
-      justify-content: start;
-    }
-    .mobileMenuButtons {
-      display: none;
-    }
-    .user {
-      margin-left: auto;
-      margin-right: 0;
-    }}
+}
+@media screen and (min-width: 1280px) {
+  .header {
+    padding: 20px 16px;
+    justify-content: start;
+  }
+  .mobileMenuButtons {
+    display: none;
+  }
+  .user {
+    margin-left: auto;
+    margin-right: 0;
+  }
+}

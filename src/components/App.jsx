@@ -30,12 +30,12 @@ export const App = () => {
             <Route path="sell" element={NoticesCategoriesList} />
             <Route path="lost-found" element={NoticesCategoriesList} />
             <Route path="for-free" element={NoticesCategoriesList} />
-            <Route path="favorite" element={NoticesCategoriesList} />
-            <Route path="own" element={NoticesCategoriesList} />
           </Route>
-          <Route path="/add-pet" element={<AddPetForm />} />
           <Route path="*" element={<NotFound />} />
           <Route element={<PrivateRoute />}>
+            <Route path="/notices/favorite" element={NoticesCategoriesList} />
+            <Route path="/notices/own" element={NoticesCategoriesList} />
+            <Route path="/add-pet" element={<AddPetForm />} />
             <Route path="/user" element={<UserPage />} />
           </Route>
         </Routes>

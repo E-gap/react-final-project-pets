@@ -1,4 +1,5 @@
-import { useRef, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import { fetchNoticeById } from '../../redux/notices/noticesOperations';
@@ -32,10 +33,12 @@ const NoticesCategoryItem = ({
   price,
   comments,
 }) => {
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
   const [showModal, setShowModal] = useState(false);
   const [favorite, setFavorite] = useState(false);
 
-  const { current } = useRef(window.innerWidth);
+  // const { current } = useRef(window.innerWidth);
 
   const { isLogin } = useSelector(getAuth);
   // const User = useSelector(getUser);
@@ -87,11 +90,12 @@ const NoticesCategoryItem = ({
       setFavorite(!favorite);
     } else {
       Notify.warning('Please, signup or login to add notice to favorites', {
-        width: '600px',
-        position: 'center-top',
-        fontSize: '25px',
-        textAlign: 'center',
-        timeout: '1200',
+        clickToClose: true,
+        // width: '600px',
+        // position: 'center-top',
+        // fontSize: '25px',
+        // textAlign: 'center',
+        // timeout: '1200',
       });
     }
   };
@@ -106,7 +110,7 @@ const NoticesCategoryItem = ({
             onClick={onFavBtnClick}
             favorite={favorite}
             style={
-              current <= 767 || current >= 1280
+              isMobile || isDesktop
                 ? { position: 'absolute', top: 0, left: '230px' }
                 : { position: 'absolute', top: 0, left: '277px' }
             }
@@ -141,7 +145,7 @@ const NoticesCategoryItem = ({
       </div>
       <div className={css.wrap_desc}>
         <h3 className={css.title}>{title}</h3>
-        <LearnMore id={id} onClick={handleLearnMore} />
+        <LearnMore id={id} onClick={handleLearnMore} favorite={favorite} />
         {showModal && (
           <ModalNotice
             closeModal={closeModal}
