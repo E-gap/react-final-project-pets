@@ -47,47 +47,42 @@ const AddPetForm = () => {
     async (values, resetForm) => {
       if (!category) return;
   
-      const formData = {};
+      const formData = new FormData();
   
-      formData.name = values.name;
-      formData.birthday = values.birthday;
-      formData.breed = values.breed;
-      formData.photo = values.photo;
-      formData.comments = values.comments;
+      formData.append('name', values.name);
+      formData.append('birthday', values.birthday);
+      formData.append('breed', values.breed);
+      formData.append('comments', values.comments);
+      formData.append('photo', values.photo); 
   
       if (category === 'your-pet') {
         dispatch(createPet(formData));
-        console.log(formData);
         navigate(-1);
         return;
       }
   
-      formData.category = category;
-      formData.title = values.title;
-      formData.sex = values.sex;
-      formData.location = values.location;
+      formData.append('category', category);
+      formData.append('title', values.title);
+      formData.append('sex', values.sex);
+      formData.append('location', values.location);
   
       if (category === 'lost-found') {
-        dispatch(addNotice({ category: 'lost-found', formData }));
+        dispatch(addNotice(formData));
         navigate(-1);
-        console.log(formData);
-        console.log('lost-found');
         return;
       }
   
       if (category === 'good-hands') {
-        dispatch(addNotice({ category: 'for-free', formData }));
+        dispatch(addNotice(formData));
         navigate(-1);
         return;
       }
   
-      formData.price = values.price;
+      formData.append('price', values.price);
   
       if (category === 'sell') {
-        dispatch(addNotice({ category: 'sell', formData }));
+        dispatch(addNotice(formData));
         navigate(-1);
-        console.log(formData);
-        console.log('sell');
         return;
       }
   
@@ -105,8 +100,8 @@ const AddPetForm = () => {
       'lost-found': 'Add lost pet',
       'good-hands': 'Add to pet for adoption',
     };
-    return titles[category] || 'Add Pet';
-  }, [category]);
+    return step === 0?'Add Pet' : titles[category];
+  },[category,step]);
 
   useEffect(() => {
     setTitle(getPageTitle());
