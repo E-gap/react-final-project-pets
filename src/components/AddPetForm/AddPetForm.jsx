@@ -50,20 +50,22 @@ const AddPetForm = () => {
 
       const newFormData = new FormData();
 
-      newFormData.set('category', category);
+      
       newFormData.set('name', values.name);
       newFormData.set('birthday', values.birthday);
       newFormData.set('breed', values.breed);
       newFormData.set('photo', fileInput);
       newFormData.set('comments', values.comments);
-
+      
       if (category === 'your-pet') {
-        dispatch(createPet({ category: 'your-pet', newFormData }));
+        dispatch(createPet({ newFormData }));
         navigate(-1);
-        console.log('your-pet');
+        for (const [key, value] of newFormData.entries()) {
+          console.log(key, value);
+        }
         return;
       }
-
+      newFormData.set('category', category);
       newFormData.set('title', values.title);
       newFormData.set('sex', values.sex);
       newFormData.set('location', values.location);
@@ -71,6 +73,9 @@ const AddPetForm = () => {
       if (category === 'lost-found') {
         dispatch(addNotice({ category: 'lost-found', newFormData }));
         navigate(-1);
+        for (const [key, value] of newFormData.entries()) {
+          console.log(key, value);
+        }
         console.log('lost-found');
         return;
       }
@@ -86,6 +91,9 @@ const AddPetForm = () => {
       if (category === 'sell') {
         dispatch(addNotice({ category: 'sell', newFormData }));
         navigate(-1);
+        for (const [key, value] of newFormData.entries()) {
+          console.log(key, value);
+        }
         console.log('sell');
         return;
       }
@@ -98,11 +106,10 @@ const AddPetForm = () => {
 
   const getPageTitle = useCallback(() => {
     const titles = {
-      'your-pet': 'Add pet',
+      'your-pet': 'Add my pet',
       sell: 'Add pet for sell',
       'lost-found': 'Add lost pet',
-      'good-hands': 'Add to give a pet for adoption',
-      '': 'Add Pet',
+      'good-hands': 'Add to pet for adoption',
     };
     return titles[category] || 'Add Pet';
   }, [category]);

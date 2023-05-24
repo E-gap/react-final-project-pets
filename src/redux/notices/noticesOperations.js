@@ -91,14 +91,21 @@ export const deleteFromFavorite = createAsyncThunk(
   }
 );
 
-export const addNotice = createAsyncThunk(
+
+export const addNotice  = createAsyncThunk(
   'notices/addNotice',
-  async (newNotice, { rejectWithValue }) => {
+  async (newFormData, thunkAPI) => {
+    const { token } = thunkAPI.getState().auth;
+    if (!token) {
+      return thunkAPI.rejectWithValue('No valid token');
+    }
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+
     try {
-      const response = await axios.post('notices/', newNotice);
-      return response.data;
+      const { data } = await instance.post('/notices/', newFormData);
+      return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

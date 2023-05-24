@@ -70,7 +70,7 @@ const MoreInfo = ({ category, fileInput, setFileInput }) => {
             onChange={event => setFileInput(event.target.files[0])}
             className={css.fileInput}
           />
-          <ErrorMessage name="pet-image" component="div" />
+          <ErrorMessage name="photo" component="div" />
         </label>
       </div>
       <div className={css.inputWrapper}>
