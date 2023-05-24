@@ -64,7 +64,7 @@ const NoticesCategoriesList = ({ category }) => {
       <NoticesCategoryItem
         key={item._id}
         id={item._id}
-        src={item.url}
+        src={item.photo}
         sex={item.sex}
         location={item.location}
         category={item.category}
