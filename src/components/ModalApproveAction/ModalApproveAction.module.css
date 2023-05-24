@@ -1,33 +1,31 @@
-h1 {
+.title {
   font-family: 'Manrope';
   font-weight: 500;
   font-size: 24px;
   line-height: 33px;
   text-align: center;
   color: var(--color-dark);
-  margin-top: 68px;
   margin-bottom: 50px;
-}
 
-@media (min-width: 768px) {
-  h1 {
-    font-size: 36px;
-    line-height: 49px;
-    margin-top: 60px;
-  }
-
-  .modalApprove {
-    width: 608px;
+  @media (min-width: 768px) {
+      font-size: 36px;
+      line-height: 49px;
+    
   }
 }
 
 .modalApprove {
   width: 280px;
+
+  @media (min-width: 768px) {
+      width: 608px;
+  }
 }
 
 .modalBtnContainer {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .text {
@@ -60,8 +58,6 @@ h1 {
   justify-content: center;
   align-items: center;
   padding: 8px 28px;
-  margin-right: 167px;
-  margin-left: 7px;
   width: 129px;
   height: 40px;
   color: var(--color-blue);
@@ -73,7 +69,6 @@ h1 {
   font-weight: 700;
   font-size: 16px;
   line-height: 22px;
-  margin-bottom: 60px;
   cursor: pointer;
 }
 
@@ -102,163 +97,3 @@ h1 {
   border: 2px solid var(--color-blue);
   margin-right: 17px;
 }
-
-
-
-
-/* .modalIcon {
-  fill: #fef9f9;
-  width: 24px;
-  height: 24px;
-  margin-left: 12px;
-  /* position: absolute; */
-  /* width: 24px;
-  height: 20.97px; */
-  /* left: 5.56px;
-  top: -2.59px; */
-  /* transform: rotate(25deg); */
-
-
-
-
-
-/* 
-.modal, .overlay  {
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: fixed;
-}
-
-  .overlay {
-    background: rgba(39, 39, 39, 0.6);
-}
-
-  .modal {
-    width: 100%;
-    height: 100%;
-    padding: 16px 16px 60px 16px;
-
-@media screen and (min-width: 768px){
-    padding: 24px 24px 60px 24px;
-}
-}
-  
-  .content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; 
-   
-    background-color: #fff;
-    border: none;
-    border-radius: 20px;
-    width: 280px;
-    height: 287px;
-
-@media screen and (min-width: 768px){
-    border-radius: 40px;
-    width: 608px;
-    height: 354px;
-  }
-}
-
-  .title {
-  font-weight: 500;
-  font-size: 36px;
-  line-height: 1.33;
-  letter-spacing: 0.04em;
-  text-align: center;
-
-@media screen and (min-width: 768px) {
-      margin-bottom: 20px;
-  }
-}
-
-.buttonWrap {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 16px;
-  
-  @media screen and (min-width: 768px) {
-  }
-}
-
-.modalBtn {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-  padding: 8px 20px;
-
-  width: 129px;
-  height: 40px;
-
-  cursor: pointer;
-  font-family: inherit;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.37;
-  letter-spacing: 0.04em;
- 
-  background-color: #FEF9F9;
-  border: 2px solid #54ADFF;
-  color: #54ADFF;
-  border-radius: 40px;
-
-  
-
-}
-
-.modalBtn:hover,
-.modalBtn:focus {
-  background-color: #54ADFF;
-  color: #FEF9F9;
-  border: 1px solid #54ADFF;
-}
-
-.btnAgree{
-  margin-left: 5px;
-} 
-.icon {
-  color: inherit;
-  margin-left: 8px;
-  width: 24px;
-  height: 24px;
-} 
-
-.closeBtn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 5px 7px;
-  border: none;
-  background-color: transparent;
-}
-
-.closeIcon {
-  width: 24px;
-  height: 24px;
-  color: #54ADFF;
-}
-.closeIcon:hover,
-.closeIcon:focus {
-  color: black;
-}
-  
-p {
-  margin: 0;
-}
-
-   */
