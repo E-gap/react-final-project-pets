@@ -1,0 +1,118 @@
+.titleDelete {
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: var(--color-dark);
+  
+    margin-bottom: 14px;
+  }
+  
+  @media (min-width: 768px) {
+    .titleDelete {
+      font-family: 'Manrope';
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 33px;
+      text-align: center;
+      color: var(--color-dark);
+      margin-top: 68px;
+      margin-bottom: 50px;
+    }
+  }
+  @media (min-width: 768px) {
+    .titleDelete {
+      font-size: 36px;
+      line-height: 49px;
+      margin-top: 60px;
+    }
+  }
+  
+  .modalApprove {
+    width: 280px;
+    /* height: 354px; */
+  }
+  
+  @media (min-width: 768px) {
+    .modalApprove {
+      width: 608px;
+    }
+  }
+  
+  .modalBtnContainer {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .text {
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+    letter-spacing: -0.01em;
+  
+    color: var(--color-dark);
+  
+    max-width: 393px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 44px;
+  }
+  
+  @media (min-width: 768px) {
+    .text {
+      font-size: 24px;
+      line-height: 33px;
+      margin-top: 52px;
+      margin-bottom: 60px;
+    }
+    .modalBtn {
+      display: flex;
+    }
+  }
+  
+  .modalBtn {
+    
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 28px;
+    margin-right: 167 px;
+    margin-left: 7px;
+    width: 129px;
+    height: 40px;
+    background: var(--color-blue);
+    outline: none;
+    border: transparent;
+    border-radius: 40px;
+    color: var(--color-light-background);
+    font-family: 'Manrope';
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 60px;
+    cursor: pointer;
+  }
+  
+  .modalIcon {
+    fill: var(--color-light-background);;
+    width: 24px;
+    height: 24px;
+    margin-left: 12px;
+    transform: rotate(180deg);
+  }
+  
+  .whiteBtn {
+    background-color: var(--color-light-background);;
+    color: var(--color-blue);
+    border: 2px solid var(--color-blue);
+    margin-right: 17px;
+  }
+  
