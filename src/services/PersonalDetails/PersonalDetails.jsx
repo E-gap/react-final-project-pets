@@ -10,7 +10,7 @@ const PersonalDetails = ({ category }) => {
   const handleInputChange = e => {
     const { name, value } = e.target;
     handleChange(e);
-    setFieldValue(name, value); // Update form values
+    setFieldValue(name, value);
   };
 
   return (

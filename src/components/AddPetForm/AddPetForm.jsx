@@ -20,7 +20,6 @@ import { INITIAL_STATE } from '../../services/InitialState';
 import css from './AddPetForm.module.css';
 
 const AddPetForm = () => {
-  const [fileInput, setFileInput] = useState('');
   const [step, setStep] = useState(0);
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
@@ -47,65 +46,57 @@ const AddPetForm = () => {
   const handleSubmit = useCallback(
     async (values, resetForm) => {
       if (!category) return;
-
-      const newFormData = new FormData();
-
-      newFormData.set('name', values.name);
-      newFormData.set('birthday', values.birthday);
-      newFormData.set('breed', values.breed);
-      newFormData.set('photo', fileInput);
-      newFormData.set('comments', values.comments);
-
+  
+      const formData = {};
+  
+      formData.name = values.name;
+      formData.birthday = values.birthday;
+      formData.breed = values.breed;
+      formData.photo = values.photo;
+      formData.comments = values.comments;
+  
       if (category === 'your-pet') {
-        dispatch(createPet({ newFormData }));
+        dispatch(createPet(formData));
+        console.log(formData);
         navigate(-1);
-        for (const [key, value] of newFormData.entries()) {
-          console.log(key, value);
-        }
         return;
       }
-      newFormData.set('category', category);
-      newFormData.set('title', values.title);
-      newFormData.set('sex', values.sex);
-      newFormData.set('location', values.location);
-
+  
+      formData.category = category;
+      formData.title = values.title;
+      formData.sex = values.sex;
+      formData.location = values.location;
+  
       if (category === 'lost-found') {
-        dispatch(addNotice({ category: 'lost-found', newFormData }));
+        dispatch(addNotice({ category: 'lost-found', formData }));
         navigate(-1);
-        for (const [key, value] of newFormData.entries()) {
-          console.log(key, value);
-        }
+        console.log(formData);
         console.log('lost-found');
         return;
       }
-
+  
       if (category === 'good-hands') {
-        dispatch(addNotice({ category: 'for-free', newFormData }));
+        dispatch(addNotice({ category: 'for-free', formData }));
         navigate(-1);
         return;
       }
-
-      newFormData.set('price', values.price);
-
-      const formDataObj = {};
-      newFormData.forEach((value, key) => (formDataObj[key] = value));
-      console.log(formDataObj);
-
+  
+      formData.price = values.price;
+  
       if (category === 'sell') {
-        dispatch(addNotice({ category: 'sell', formDataObj }));
+        dispatch(addNotice({ category: 'sell', formData }));
         navigate(-1);
-        for (const [key, value] of newFormData.entries()) {
-          console.log(key, value);
-        }
+        console.log(formData);
         console.log('sell');
         return;
       }
-
-      resetForm();
+  
       navigate(-1);
+      resetForm();
     },
-    [category, fileInput, navigate, dispatch]
+    [category, navigate, dispatch]
   );
+  
 
   const getPageTitle = useCallback(() => {
     const titles = {
@@ -163,9 +154,8 @@ const AddPetForm = () => {
               )}
               {step === 2 && (
                 <MoreInfo
-                  fileInput={fileInput}
-                  setFileInput={setFileInput}
                   category={category}
+                  value={values}
                 />
               )}
               <div className={css.btnWrapper}>

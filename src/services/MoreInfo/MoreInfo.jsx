@@ -1,11 +1,24 @@
-import { Field, ErrorMessage /* validateYupSchema */ } from 'formik';
+import { Field, ErrorMessage, useFormikContext } from 'formik';
+
 import PropTypes from 'prop-types';
 
 import { BsPlusLg, BsGenderFemale, BsGenderMale } from 'react-icons/bs';
 
 import css from './MoreInfo.module.css';
 
-const MoreInfo = ({ category, fileInput, setFileInput }) => {
+const MoreInfo = ({ category}) => {
+
+  const { setFieldValue, values } = useFormikContext();
+
+  const handleInputChange = e => {
+    const { name, value, files } = e.target;
+    if (name === 'photo') {
+      setFieldValue(name, files[0]);
+    } else {
+      setFieldValue(name, value);
+    }
+  };
+
   return (
     <div
       className={css.form}
@@ -53,11 +66,11 @@ const MoreInfo = ({ category, fileInput, setFileInput }) => {
             {category !== 'your-pet' ? 'Load the pet’s image:' : 'Add photo'}
           </span>
           <div className={css.imgWrapper}>
-            {fileInput ? (
+            {values.photo ? (
               <img
                 className={css.img}
-                src={URL.createObjectURL(fileInput)}
-                alt={fileInput.name}
+                src={URL.createObjectURL(values.photo)}
+                alt={values.photo.name}
               />
             ) : (
               <BsPlusLg className={css.plus} />
@@ -67,7 +80,7 @@ const MoreInfo = ({ category, fileInput, setFileInput }) => {
             type="file"
             name="photo"
             accept=".png, .jpg, .jpeg, .webp"
-            onChange={event => setFileInput(event.target.files[0])}
+            onChange={handleInputChange}
             className={css.fileInput}
           />
           <ErrorMessage name="photo" component="div" />
@@ -121,8 +134,6 @@ const MoreInfo = ({ category, fileInput, setFileInput }) => {
 
 MoreInfo.propTypes = {
   category: PropTypes.string.isRequired,
-  fileInput: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  setFileInput: PropTypes.func.isRequired,
 };
 
 export default MoreInfo;
