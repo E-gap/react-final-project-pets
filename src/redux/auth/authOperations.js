@@ -14,21 +14,23 @@ export const register = createAsyncThunk(
       localStorage.setItem('isNew', data.email);
       instance.defaults.headers.common.Authorization = `Bearer ${data.token}`;
       Notiflix.Notify.success('You have successfully registered', {
-        width: '500px',
-        position: 'center-top',
-        fontSize: '25px',
-        timeout: '500',
+        clickToClose: true,
+        // width: '500px',
+        // position: 'center-top',
+        // fontSize: '25px',
+        // timeout: '1000',
       });
       return data;
     } catch (error) {
       Notiflix.Notify.warning(
         'Registration failed, please check the credentials',
         {
-          width: '600px',
-          position: 'center-top',
-          fontSize: '25px',
-          textAlign: 'center',
-          timeout: '1000',
+          clickToClose: true,
+          // width: '600px',
+          // position: 'center-top',
+          // fontSize: '25px',
+          // textAlign: 'center',
+          // timeout: '1000',
         }
       );
       return thunkApi.rejectWithValue(error.message);
@@ -43,20 +45,22 @@ export const login = createAsyncThunk(
       const { data } = await instance.post('/auth/login', credentials);
       instance.defaults.headers.common.Authorization = `Bearer ${data.token}`;
       Notiflix.Notify.success('You have successfully login', {
-        width: '500px',
-        position: 'center-top',
-        fontSize: '25px',
-        timeout: '500',
+        clickToClose: true,
+        // timeout: '1000',
+        // width: '500px',
+        // position: 'center-top',
+        // fontSize: '25px',
       });
       data.user.isNew = localStorage.getItem('isNew') === data.user.email;
       return data;
     } catch (error) {
       Notiflix.Notify.warning('Login failed, please check the credentials', {
-        width: '600px',
-        position: 'center-top',
-        fontSize: '25px',
-        textAlign: 'center',
-        timeout: '1000',
+        clickToClose: true,
+        // width: '600px',
+        // // position: 'center-top',
+        // fontSize: '25px',
+        // textAlign: 'center',
+        // timeout: '1000',
       });
       return thunkApi.rejectWithValue(error.message);
     }
@@ -68,13 +72,14 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkApi) => {
     await instance.post('/auth/logout');
     instance.defaults.headers.common.Authorization = ``;
     Notiflix.Notify.success('Logout success', {
-      width: '500px',
-      position: 'center-top',
-      fontSize: '25px',
-      timeout: '500',
+      clickToClose: true,
+      // timeout: '1000',
+      // width: '500px',
+      // position: 'center-top',
+      // fontSize: '25px',
     });
   } catch (error) {
-    // return thunkApi.rejectWithValue(error.message);
+    return thunkApi.rejectWithValue(error.message);
   }
 });
 
@@ -134,8 +139,8 @@ export const clearIsNew = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const { user } = thunkApi.getState().auth;
-      console.log(user.email);
-      console.log(localStorage.getItem('isNew'));
+      // console.log(user.email);
+      // console.log(localStorage.getItem('isNew'));
       if (user.email === localStorage.getItem('isNew')) {
         localStorage.removeItem('isNew');
         return {

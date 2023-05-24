@@ -1,15 +1,13 @@
 import css from './OurFriendsPage.module.css';
-import axios from 'axios';
 import { useState, useEffect } from 'react';
 import TimeSheet from 'services/TimeSheet/TimeSheet';
-import defaultImg from "./petImg.png"
+import defaultImg from './petImg.png';
+import { instance } from 'redux/auth/authOperations';
 
 const OurFriendsPage = () => {
   const [friends, setFriends] = useState([]);
 
   useEffect(() => {
-    const instance = axios.create({baseURL: process.env.REACT_APP_API_URL});
-
     const getFriends = async () => {
       try {
         const response = await instance.get('/friends');

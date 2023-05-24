@@ -1,16 +1,12 @@
-import axios from 'axios';
 import css from './NewsPage.module.css';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { instance } from 'redux/auth/authOperations';
 
 import NewsItem from 'components/NewsItem/NewsItem';
 import NoticesSearch from 'components/InputSearch/InputSearch';
 import PaginationComponent from '../../components/Pagination/PaginationComponent';
 import options from '../../components/Pagination/options';
-
-const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
-});
 
 const NewsPage = () => {
   const [wasSearch, setWasSearch] = useState(false);
@@ -79,7 +75,7 @@ const NewsPage = () => {
 
   return (
     <section className={css.newsPage}>
-      <div className='container'>
+      <div className="container">
         <NoticesSearch title={'News'} search={setQuery} />
         {wasSearch && !error && news.length > 0 ? (
           <ul className={css.list}>{items}</ul>

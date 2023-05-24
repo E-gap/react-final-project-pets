@@ -8,8 +8,10 @@ import { getAuth } from '../../redux/auth/authSelector';
 import AddToFavorite from './temporary/tempAddToFavorite';
 import Contact from './Contact/Contact';
 import { fetchNoticeById } from '../../redux/notices/noticesOperations';
-import { addToFavorite, deleteFromFavorite } from '../../redux/notices/noticesOperations';
-
+import {
+  addToFavorite,
+  deleteFromFavorite,
+} from '../../redux/notices/noticesOperations';
 
 import propTypes from 'prop-types';
 
@@ -17,16 +19,22 @@ import css from './ModalNotice.module.css';
 
 const modalRoot = document.querySelector('#notice-modal-root');
 
-
-const ModalNotice = ({ 
-  id,
-  closeModal,
-  src,
-}) => {
+const ModalNotice = ({ id, closeModal, src }) => {
   const dispatch = useDispatch();
   const [notice, setNotice] = useState({});
 
-  const {name, title, birthday, breed, category, comments, email, phone, location, sex } = notice;
+  const {
+    name,
+    title,
+    birthday,
+    breed,
+    category,
+    comments,
+    email,
+    phone,
+    location,
+    sex,
+  } = notice;
 
   const [favorite, setFavorite] = useState(false);
 
@@ -34,7 +42,7 @@ const ModalNotice = ({
 
   // console.log('id from modal', id);
   // console.log(notice);
-  useEffect(()=> {
+  useEffect(() => {
     const fn = async () => {
       const { payload } = await dispatch(fetchNoticeById(id));
       return setNotice(payload);
@@ -54,7 +62,6 @@ const ModalNotice = ({
     };
   });
 
-
   // const onFavBtnClick = () => {
   //   if (isLogin) {
   //     setFavorite(true);
@@ -64,18 +71,17 @@ const ModalNotice = ({
   // };
 
   const onFavBtnClick = () => {
-    if (isLogin){
+    if (isLogin) {
       // console.log(favorite);
       setFavorite(prev => !prev);
       const result = !favorite
-      ? dispatch(addToFavorite(id))
-      : dispatch(deleteFromFavorite(id));
+        ? dispatch(addToFavorite(id))
+        : dispatch(deleteFromFavorite(id));
       return result;
     } else {
       Notify.warning('Please, signup or login to add notice to favorites');
     }
-  }
-
+  };
 
   return createPortal(
     <div className={css.modal}>
@@ -131,16 +137,12 @@ const ModalNotice = ({
               </li>
               <li className={css.item}>
                 <p className={`${css.description} ${css.contacts}`}>
-                  <a href={`mailto:${email}`} >
-                    {email}
-                  </a>
+                  <a href={`mailto:${email}`}>{email}</a>
                 </p>
               </li>
               <li className={css.item}>
                 <p className={`${css.description} ${css.contacts}`}>
-                  <a href={`tel:${phone}`} >
-                    {phone}
-                  </a>
+                  <a href={`tel:${phone}`}>{phone}</a>
                 </p>
               </li>
             </ul>
@@ -175,6 +177,6 @@ ModalNotice.propTypes = {
   birthday: propTypes.string,
   sex: propTypes.string,
   src: propTypes.string,
-  onClick: propTypes.func.isRequired,
+  // onClick: propTypes.func.isRequired,
   selector: propTypes.string,
 };

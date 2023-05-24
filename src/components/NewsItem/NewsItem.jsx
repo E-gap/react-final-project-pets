@@ -10,13 +10,7 @@ const NewsItem = ({ topic }) => {
         <p className={css.text}>{text}</p>
         <div className={css.bottomWrapper}>
           <p className={css.date}>{date.slice(0, 10).replaceAll('-', '/')}</p>
-          <a
-            className={css.link}
-            href={url}
-            target="_blank"
-            without
-            rel="noreferrer"
-          >
+          <a className={css.link} href={url} target="_blank" rel="noreferrer">
             Read more
           </a>
         </div>
