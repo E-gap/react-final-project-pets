@@ -24,7 +24,7 @@ const NoticesCategoriesList = ({ category }) => {
   console.log(pathnameArr); */
   const notices = useSelector(selectNotices);
   const favNotices = useSelector(getFavoriteNotices);
-  console.log(favNotices);
+  /* console.log(favNotices); */
 
   const { pathname } = useLocation();
   const pathnameArr = pathname.split('/');
