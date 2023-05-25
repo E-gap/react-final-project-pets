@@ -6,7 +6,6 @@ import { selectPets } from '../../redux/pets/petsSelectors';
 import { fetchPets } from '../../redux/pets/petsOperations';
 
 const PetsData = () => {
-
   const dispatch = useDispatch();
   const { pets } = useSelector(selectPets);
 
@@ -16,19 +15,18 @@ const PetsData = () => {
 
   return (
     <ul className={css.petsList}>
-      {
-        pets.map((pet) => (
-          <li key={pet['_id']} className={css.petsListItem}>
-            <MyPetsItem id={pet['_id']}
-                        name={pet.name}
-                        birthday={pet.birthDate}
-                        breed={pet.breed}
-                        comments={pet.comments}
-                        photo={pet.photo}
-            />
-          </li>
-        ))
-      }
+      {pets.map(pet => (
+        <li key={pet['_id']} className={css.petsListItem}>
+          <MyPetsItem
+            id={pet['_id']}
+            name={pet.name}
+            birthday={pet.birthday}
+            breed={pet.breed}
+            comments={pet.comments}
+            photo={pet.photo}
+          />
+        </li>
+      ))}
     </ul>
   );
 };

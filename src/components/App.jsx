@@ -27,11 +27,26 @@ export const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/notices" element={<NoticesPage />}>
-            <Route path="sell" element={NoticesCategoriesList} />
-            <Route path="lost-found" element={NoticesCategoriesList} />
-            <Route path="for-free" element={NoticesCategoriesList} />
-            <Route path="/notices/favorite" element={NoticesCategoriesList} />
-            <Route path="/notices/own" element={NoticesCategoriesList} />
+            <Route
+              path="sell"
+              element={<NoticesCategoriesList category="sell" />}
+            />
+            <Route
+              path="lost-found"
+              element={<NoticesCategoriesList category="lost-found" />}
+            />
+            <Route
+              path="for-free"
+              element={<NoticesCategoriesList category="for-free" />}
+            />
+            <Route
+              path="favorite"
+              element={<NoticesCategoriesList category="favorite" />}
+            />
+            <Route
+              path="own"
+              element={<NoticesCategoriesList category="own" />}
+            />
           </Route>
           <Route path="*" element={<NotFound />} />
           <Route element={<PrivateRoute />}>

@@ -19,6 +19,7 @@ import {
 import { getAuth } from '../../redux/auth/authSelector';
 import { totalNotices } from '../../redux/selectors';
 import options from '../../components/Pagination/options';
+import { instance } from 'redux/auth/authOperations';
 
 //import { Notify } from 'notiflix/build/notiflix-notify-aio';
 //import axios from 'axios';
@@ -28,10 +29,13 @@ import options from '../../components/Pagination/options';
 const NoticesPage = () => {
   const total = useSelector(totalNotices);
   const { pathname } = useLocation();
-
   // const [pathFilter, setPathFilter] = useState('sell');
   const [searchParams, setSearchParams] = useSearchParams();
-
+  const fn = async () => {
+    const data = await instance.get('/notices/fvrt');
+    return data;
+  };
+  fn();
   //const [page, setPage] = useState(1);
 
   const [page, setPage] = useState(() => {
@@ -56,7 +60,13 @@ const NoticesPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (pathname === '/notices') {
+      navigate('/notices/sell');
+    }
+  });
+  useEffect(() => {
     setSearchParams({});
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
@@ -69,16 +79,6 @@ const NoticesPage = () => {
       setSearchParams({ page });
     } else if (!query && page === 1) {
       setSearchParams({});
-    }
-
-    if (
-      pathname === '/notices/lost-found' ||
-      pathname === '/notices/for-free' ||
-      pathname === '/notices/favorite' ||
-      pathname === '/notices/own'
-    ) {
-    } else {
-      navigate('/notices/sell');
     }
 
     let queryParams = {
@@ -157,8 +157,8 @@ const NoticesPage = () => {
           <NoticesSearch
             search={submitSearch}
             title={'Find your favorite pet'}
-            /* query={query} */
-            /* setQuery={setQuery} */
+            query={query}
+            setQuery={setQuery}
           />
 
           <div className={css.wrap}>
