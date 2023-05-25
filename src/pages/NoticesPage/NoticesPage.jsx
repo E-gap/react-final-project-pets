@@ -1,5 +1,5 @@
 import css from './NoticesPage.module.css';
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import NoticesCategoriesList from 'components/NoticesCategoriesList/NoticesCategoriesList';
@@ -11,6 +11,7 @@ import PaginationComponent from '../../components/Pagination/PaginationComponent
 import AddPetButton from 'components/Buttons/AddPetButton/AddPetButton';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useDispatch, useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 import {
   fetchAllNotices,
   // fetchFavoriteNotices,
@@ -31,7 +32,7 @@ const NoticesPage = () => {
   const { pathname } = useLocation();
   // const [pathFilter, setPathFilter] = useState('sell');
   const [searchParams, setSearchParams] = useSearchParams();
-
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   //const [page, setPage] = useState(1);
 
   const [page, setPage] = useState(() => {
@@ -46,7 +47,7 @@ const NoticesPage = () => {
 
   const { isLogin } = useSelector(getAuth);
 
-  const { current } = useRef(window.innerWidth);
+  // const { current } = useRef(window.innerWidth);
 
   const dispatch = useDispatch();
 
@@ -167,7 +168,7 @@ const NoticesPage = () => {
             <AddPetButton
               onClick={onAddPetBtn}
               style={
-                current <= 767
+                isMobile
                   ? {
                       position: 'fixed',
                       zIndex: 100,
