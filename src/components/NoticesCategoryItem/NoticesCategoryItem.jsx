@@ -46,21 +46,10 @@ const NoticesCategoryItem = ({
   const [showModal, setShowModal] = useState(false);
   const [favorite, setFavorite] = useState(false);
 
-  // const { current } = useRef(window.innerWidth);
-  // console.log(owner);
-
   const { isLogin } = useSelector(getAuth);
   const { _id } = useSelector(getUser);
 
-  // console.log(id);
-
-  // const User = useSelector(getUser);
-  // console.log(User.email);
-
-  // const oneNotice = useSelector(selectOneNotice);
   const dispatch = useDispatch();
-
-  // console.log(oneNotice);
 
   let categoryName = '';
 
