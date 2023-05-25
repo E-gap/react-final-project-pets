@@ -100,8 +100,6 @@ export const noticesSlice = createSlice({
       })
       .addCase(addNotice.fulfilled, (state, action) => {
         state.error = false;
-        state.notices.push(action.payload.data);
-        state.ownList.push(action.payload.data);
       })
       .addCase(addNotice.rejected, (state, action) => {
         state.isLoading = false;

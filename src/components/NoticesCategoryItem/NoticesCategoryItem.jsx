@@ -195,13 +195,13 @@ export default NoticesCategoryItem;
 
 NoticesCategoryItem.propTypes = {
   /* src: propTypes.string.isRequired, */
-  sex: propTypes.string.isRequired,
-  birthday: propTypes.string.isRequired,
-  location: propTypes.string.isRequired,
-  category: propTypes.string.isRequired,
-  title: propTypes.string.isRequired,
-  breed: propTypes.string.isRequired,
+  sex: propTypes.string,
+  birthday: propTypes.string,
+  location: propTypes.string,
+  category: propTypes.string,
+  title: propTypes.string,
+  breed: propTypes.string,
   comments: propTypes.string,
-  id: propTypes.string.isRequired,
+  id: propTypes.string,
   price: propTypes.string,
 };

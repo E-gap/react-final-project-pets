@@ -139,7 +139,7 @@ export const fetchNoticesByOwner = createAsyncThunk(
           ? `/notices/user?title=${title}&page=${page}&limit=12`
           : `/notices/user?page=${page}&limit=12`
       );
-
+      console.log(result.data);
       return result.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
