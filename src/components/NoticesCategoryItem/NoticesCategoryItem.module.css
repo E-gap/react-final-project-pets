@@ -108,6 +108,9 @@
   .wrap_desc {
     padding: 14px 15px 24px;
   }
+  .img {
+    min-width: 336px;
+  }
 }
 @media screen and (min-width: 1280px) {
   .item {
@@ -118,5 +121,8 @@
   }
   .item:nth-child(4n + 4) {
     margin-right: 0;
+  }
+  .img {
+    min-width: 288px;
   }
 }
