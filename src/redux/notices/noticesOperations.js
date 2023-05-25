@@ -54,7 +54,7 @@ export const fetchFavoriteNotices = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await instance.get('/notices/fvrt');
-
+      // console.log(response);
       return response.data.data;
     } catch (error) {
       return rejectWithValue(error.message);
