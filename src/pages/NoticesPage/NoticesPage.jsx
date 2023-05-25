@@ -1,5 +1,5 @@
 import css from './NoticesPage.module.css';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import NoticesCategoriesList from 'components/NoticesCategoriesList/NoticesCategoriesList';
@@ -57,7 +57,8 @@ const NoticesPage = () => {
 
   useEffect(() => {
     setSearchParams({});
-  }, [pathname, setSearchParams]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
   useEffect(() => {
     if (query && page === 1) {
@@ -107,23 +108,24 @@ const NoticesPage = () => {
       const queryParams = { category: '', title: query, page };
       searchNoticesByOwner(queryParams);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
-    dispatch,
+    // dispatch,
     lastPartPath,
     query,
     page,
-    setSearchParams,
-    pathname,
-    navigate,
+    // setSearchParams,
+    // pathname,
+    // navigate,
     isLogin,
-    searchParams,
+    // searchParams,
   ]);
 
-  const submitSearch = query => {
-    setQuery(query);
-  };
+  const submitSearch = useCallback(search => {
+    setQuery(search);
+  }, []);
 
-  const handleLearnMore = e => {
+  const handleLearnMore = useCallback(e => {
     if (e.target.parentNode.getAttribute('id') || e.target.getAttribute('id')) {
       const idNotice =
         e.target.getAttribute('id') || e.target.parentNode.getAttribute('id');
@@ -131,19 +133,22 @@ const NoticesPage = () => {
       fetchNoticeById(idNotice);
       dispatch(fetchNoticeById(idNotice));
     }
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const searchPage = pageNumber => {
+  const searchPage = useCallback(pageNumber => {
     setPage(pageNumber);
-  };
+  }, []);
 
-  const changePage = () => {
+  const changePage = useCallback(() => {
     setPage(1);
-  };
+  }, []);
 
-  const onAddPetBtn = () => {
+  const onAddPetBtn = useCallback(() => {
     Notify.warning('Please, signup or login to add a pet');
-  };
+  }, []);
+
+  console.log('render');
 
   return (
     <>
