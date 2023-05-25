@@ -86,7 +86,7 @@ const NoticesCategoryItem = ({
       const idNotice =
         e.target.getAttribute('id') || e.target.parentNode.getAttribute('id');
       console.log(idNotice);
-      fetchNoticeById(idNotice);
+
       dispatch(fetchNoticeById(idNotice));
       setShowModal(true);
       document.body.style.overflow = 'hidden';
