@@ -100,8 +100,10 @@ const NoticesCategoryItem = ({
 
   const onFavBtnClick = () => {
     if (isLogin) {
-      dispatch(addToFavorite(id));
-      setFavorite(true);
+      if (!favorite) {
+        dispatch(addToFavorite(id));
+        setFavorite(true);
+      }
       if (favorite) {
         dispatch(deleteFromFavorite(id));
         setFavorite(false);

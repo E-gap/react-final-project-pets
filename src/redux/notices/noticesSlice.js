@@ -4,7 +4,7 @@ import {
   fetchNoticeById,
   addToFavorite,
   deleteFromFavorite,
-  // fetchFavoriteNotices,
+  fetchFavoriteNotices,
   addNotice,
   deleteNotice,
   fetchNoticesByOwner,
@@ -14,7 +14,7 @@ export const noticesSlice = createSlice({
   name: 'notices',
   initialState: {
     oneNotice: {},
-    favoriteList: [],
+    favList: [],
     notices: [],
     total: 0,
     isLoading: true,
@@ -56,35 +56,39 @@ export const noticesSlice = createSlice({
       })
       .addCase(addToFavorite.fulfilled, (state, action) => {
         state.error = false;
-        state.favoriteList.push(action.payload);
+        state.favList.push(action.payload);
       })
       .addCase(addToFavorite.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
-      // .addCase(fetchFavoriteNotices.pending, state => {
-      //   state.isLoading = true;
-      //   state.error = false;
-      // })
-      // .addCase(fetchFavoriteNotices.fulfilled, (state, action) => {
-      //   state.error = false;
-      //   state.notices = action.payload;
-      // })
-      // .addCase(fetchFavoriteNotices.rejected, (state, action) => {
-      //   state.isLoading = false;
-      //   state.error = action.payload;
-      // })
+      .addCase(fetchFavoriteNotices.pending, state => {
+        state.isLoading = true;
+        state.error = false;
+      })
+      .addCase(fetchFavoriteNotices.fulfilled, (state, action) => {
+        state.error = false;
+        // state.favList = { ...state.favList, ...action.payload.result };
+        state.favList = action.payload.result;
+        state.total = action.payload.count;
+        console.log(state.favList);
+        console.log(state.total);
+      })
+      .addCase(fetchFavoriteNotices.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
       .addCase(deleteFromFavorite.pending, state => {
         state.isLoading = true;
         state.error = false;
       })
       .addCase(deleteFromFavorite.fulfilled, (state, action) => {
         state.error = false;
-        const { favoriteList } = state;
-        const index = favoriteList.findIndex(
+        const { favList } = state;
+        const index = favList.findIndex(
           notice => notice._id === action.payload._id
         );
-        favoriteList.splice(index, 1);
+        favList.splice(index, 1);
       })
       .addCase(deleteFromFavorite.rejected, (state, action) => {
         state.isLoading = false;
