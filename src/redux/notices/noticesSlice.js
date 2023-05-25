@@ -71,8 +71,8 @@ export const noticesSlice = createSlice({
         // state.favList = { ...state.favList, ...action.payload.result };
         state.favList = action.payload.result;
         state.total = action.payload.count;
-        console.log(state.favList);
-        console.log(state.total);
+        // console.log(state.favList);
+        // console.log(state.total);
       })
       .addCase(fetchFavoriteNotices.rejected, (state, action) => {
         state.isLoading = false;

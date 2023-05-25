@@ -77,18 +77,23 @@ const NoticesPage = () => {
       setSearchParams({});
     }
 
-    let queryParams = {
+    console.log(pathname);
+    console.log(lastPartPath);
+
+    const queryParams = {
       category: lastPartPath,
       title: query,
-      page: searchParams.get('page') ? searchParams.get('page') : 1,
+      page: page,
     };
-    if (lastPartPath === 'notices') {
+    /* if (lastPartPath === 'notices') {
       queryParams = {
         category: 'sell',
         title: query,
         page: searchParams.get('page') ? searchParams.get('page') : 1,
       };
-    }
+    } */
+
+    //console.log(queryParams);
 
     dispatch(fetchAllNotices(queryParams));
 
@@ -145,6 +150,7 @@ const NoticesPage = () => {
   }, []);
 
   console.log('render');
+  console.log(page);
 
   return (
     <>
