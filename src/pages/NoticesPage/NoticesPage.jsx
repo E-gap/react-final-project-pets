@@ -13,6 +13,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchAllNotices,
+  // fetchFavoriteNotices,
   fetchNoticeById,
   fetchNoticesByOwner,
 } from '../../redux/notices/noticesOperations';

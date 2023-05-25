@@ -52,10 +52,10 @@ export const fetchNoticeById = createAsyncThunk(
 export const fetchFavoriteNotices = createAsyncThunk(
   'notices/fetchFavorite',
   async (_, { rejectWithValue }) => {
-    // const url = ``;
     try {
-      // const result = await axios.get(url);
-      // return result.data.data[0].userLikePets;
+      const response = await instance.get('/notices/fvrt');
+
+      return response.data.data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -70,6 +70,7 @@ export const addToFavorite = createAsyncThunk(
       // const result = await axios.patch(url);
       // return result.data.data;
       const response = await instance.post(`/notices/${noticeId}/favorite`);
+      console.log(response.data.data.result);
       return response.data.data.result;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -85,7 +86,7 @@ export const deleteFromFavorite = createAsyncThunk(
       // const result = await axios.patch(url);
       // return result.data.data;
       const response = await instance.delete(`/notices/${noticeId}/favorite`);
-      console.log(response.data);
+      console.log(response.data.data.result);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
