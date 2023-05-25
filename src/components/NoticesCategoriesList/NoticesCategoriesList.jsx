@@ -31,10 +31,10 @@ const NoticesCategoriesList = ({ category }) => {
   const lastPartPath = pathnameArr[pathnameArr.length - 1];
 
   useEffect(() => {
-    if (isLogin) {
+    if (isLogin && category === 'favorite') {
       dispatch(fetchFavoriteNotices());
     }
-  }, [dispatch, isLogin, lastPartPath]);
+  }, [dispatch, isLogin, lastPartPath, category]);
   //const ownNotices = useSelector(getOwnNotices);
 
   // const favorites = useSelector(getFavoriteNotices);

@@ -149,8 +149,7 @@ const NoticesPage = () => {
     Notify.warning('Please, signup or login to add a pet');
   }, []);
 
-  console.log('render');
-  console.log(page);
+  console.log(total);
 
   return (
     <>
