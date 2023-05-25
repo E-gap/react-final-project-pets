@@ -1,4 +1,5 @@
 import { Field, ErrorMessage, useFormikContext } from 'formik';
+import { useMediaQuery } from 'react-responsive';
 import classnames from 'classnames';
 
 import PropTypes from 'prop-types';
@@ -13,9 +14,12 @@ const MoreInfo = ({
   touched,
   validateLocation,
   validatePrice,
-  validateComments
+  validateComments,
 }) => {
   const { setFieldValue, values } = useFormikContext();
+
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const isTabletOrDesktop = useMediaQuery({ query: '(min-width: 768px)' });
 
   const handleInputChange = e => {
     const { name, value, files } = e.target;
@@ -29,7 +33,14 @@ const MoreInfo = ({
   return (
     <div
       className={css.form}
-      style={{ flexDirection: category === 'your-pet' ? 'column' : 'row' }}
+      style={{
+        flexDirection:
+          isTabletOrDesktop && category === 'your-pet'
+            ? 'column'
+            : isMobile
+            ? 'column'
+            : 'row',
+      }}
     >
       <div className={css.inputWrapper}>
         {category !== 'your-pet' && (
@@ -62,15 +73,20 @@ const MoreInfo = ({
 
         <label
           className={css.fileLabel}
-          style={{ flexDirection: category === 'your-pet' ? 'row' : 'column' }}
+          style={{
+            flexDirection:
+              category === 'your-pet' ? 'row' : isMobile ? 'row' : 'column',
+          }}
         >
           <span
             className={css.addPhoto}
             style={{
-              marginRight: category === 'your-pet' ? '33px' : '0',
+              marginRight: category === 'your-pet' && isMobile ? '33px' : '0',
             }}
           >
-            {category !== 'your-pet' ? 'Load the pet’s image:' : 'Add photo'}
+            {category !== 'your-pet' && !isMobile
+              ? 'Load the pet’s image:'
+              : 'Add photo'}
           </span>
           <div className={css.imgWrapper}>
             {values.photo ? (

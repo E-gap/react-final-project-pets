@@ -1,5 +1,6 @@
 import css from './NoticesPage.module.css';
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import NoticesCategoriesList from 'components/NoticesCategoriesList/NoticesCategoriesList';
@@ -31,7 +32,7 @@ const NoticesPage = () => {
   const { pathname } = useLocation();
   // const [pathFilter, setPathFilter] = useState('sell');
   const [searchParams, setSearchParams] = useSearchParams();
-
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   //const [page, setPage] = useState(1);
 
   const [page, setPage] = useState(() => {
@@ -46,14 +47,16 @@ const NoticesPage = () => {
 
   const { isLogin } = useSelector(getAuth);
 
-  const { current } = useRef(window.innerWidth);
-
   const dispatch = useDispatch();
 
   const pathnameArr = pathname.split('/');
   const lastPartPath = pathnameArr[pathnameArr.length - 1];
 
   const navigate = useNavigate();
+  // useEffect(() => {
+  //   const res = dispatch(fetchFavoriteNotices());
+  //   console.log(res);
+  // }, [dispatch]);
 
   useEffect(() => {
     if (pathname === '/notices') {
@@ -77,19 +80,16 @@ const NoticesPage = () => {
       setSearchParams({});
     }
 
-    console.log(pathname);
-    console.log(lastPartPath);
-
     const queryParams = {
-      category: lastPartPath,
+      category: lastPartPath === 'notices' ? 'sell' : lastPartPath,
       title: query,
-      page: page,
+      page: searchParams.get('page') ? searchParams.get('page') : 1,
     };
+
     /* if (lastPartPath === 'notices') {
       queryParams = {
         category: 'sell',
         title: query,
-        page: searchParams.get('page') ? searchParams.get('page') : 1,
       };
     } */
 
@@ -150,7 +150,6 @@ const NoticesPage = () => {
   }, []);
 
   console.log('render');
-  console.log(page);
 
   return (
     <>
@@ -168,7 +167,7 @@ const NoticesPage = () => {
             <AddPetButton
               onClick={onAddPetBtn}
               style={
-                current <= 767
+                isMobile
                   ? {
                       position: 'fixed',
                       zIndex: 100,

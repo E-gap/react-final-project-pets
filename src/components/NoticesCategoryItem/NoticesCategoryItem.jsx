@@ -36,6 +36,7 @@ const NoticesCategoryItem = ({
   category,
   birthday,
   title,
+  favorite = false,
   name,
   breed,
   price,
@@ -44,9 +45,7 @@ const NoticesCategoryItem = ({
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
   const [showModal, setShowModal] = useState(false);
-  const [favorite, setFavorite] = useState(false);
-
-  // const { current } = useRef(window.innerWidth);
+  const [fav, setFav] = useState(favorite);
   // console.log(owner);
 
   const { isLogin } = useSelector(getAuth);
@@ -102,20 +101,15 @@ const NoticesCategoryItem = ({
     if (isLogin) {
       if (!favorite) {
         dispatch(addToFavorite(id));
-        setFavorite(true);
+        setFav(true);
       }
       if (favorite) {
         dispatch(deleteFromFavorite(id));
-        setFavorite(false);
+        setFav(false);
       }
     } else {
       Notify.warning('Please, signup or login to add notice to favorites', {
         clickToClose: true,
-        // width: '600px',
-        // position: 'center-top',
-        // fontSize: '25px',
-        // textAlign: 'center',
-        // timeout: '1200',
       });
     }
   };
@@ -132,7 +126,7 @@ const NoticesCategoryItem = ({
           <p className={css.textOption}>{categoryName}</p>
           <AddToFavorite
             onClick={onFavBtnClick}
-            favorite={favorite}
+            favorite={fav}
             style={
               isMobile || isDesktop
                 ? { position: 'absolute', top: 0, left: '230px' }
@@ -169,22 +163,9 @@ const NoticesCategoryItem = ({
       </div>
       <div className={css.wrap_desc}>
         <h3 className={css.title}>{title}</h3>
-        <LearnMore id={id} onClick={handleLearnMore} favorite={favorite} />
+        <LearnMore id={id} onClick={handleLearnMore} favorite={fav} />
         {showModal && (
-          <ModalNotice
-            closeModal={closeModal}
-            // title={title}
-            src={src}
-            // comments={comments}
-            // name={name}
-            // birthday={birthday}
-            // breed={breed}
-            // location={location}
-            // sex={sex}
-            // category={categoryName}
-            // price={price}
-            id={id}
-          />
+          <ModalNotice closeModal={closeModal} src={src} id={id} fav={fav} />
         )}
       </div>
     </li>

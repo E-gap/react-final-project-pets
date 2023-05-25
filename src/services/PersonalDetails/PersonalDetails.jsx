@@ -13,7 +13,7 @@ const PersonalDetails = ({
   validateTitle,
   validateName,
   validateBirthday,
-  validateBreed
+  validateBreed,
 }) => {
   const { handleChange, setFieldValue } = useFormikContext();
 
@@ -63,9 +63,11 @@ const PersonalDetails = ({
           })}
           onChange={handleInputChange}
         />
+
         <div className={css.errorMsg}>
           <ErrorMessage name="name" component="div" />
         </div>
+
         {!errors.name && touched.name && (
           <div className={css.validMsg}>
             <p>Name is valid</p>
