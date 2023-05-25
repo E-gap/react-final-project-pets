@@ -188,7 +188,11 @@ const NoticesPage = () => {
           </div>
 
           {/* <NoticesFilters /> */}
-          <NoticesCategoriesList category={lastPartPath} />
+          {!total ? (
+            <p className={css.notNotices}>There are not any notice</p>
+          ) : (
+            <NoticesCategoriesList category={lastPartPath} />
+          )}
           {total > options.noticesOptions.itemsPerPage ? (
             <div className={css.paginationDiv}>
               <PaginationComponent

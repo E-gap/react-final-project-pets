@@ -78,3 +78,10 @@
   display: flex;
   margin-top: 60px;
 }
+
+.notNotices {
+  color: green;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+}
