@@ -1,10 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ErrorMessage, Field, useFormikContext } from 'formik';
+import classnames from 'classnames';
 
 import css from './PersonalDetails.module.css';
 
-const PersonalDetails = ({ category }) => {
+const PersonalDetails = ({
+  category,
+  values,
+  errors,
+  touched,
+  validateTitle,
+  validateName,
+  validateBirthday,
+  validateBreed
+}) => {
   const { handleChange, setFieldValue } = useFormikContext();
 
   const handleInputChange = e => {
@@ -22,10 +32,22 @@ const PersonalDetails = ({ category }) => {
             placeholder="Type title"
             type="text"
             name="title"
-            className={css.field}
+            validate={validateTitle}
+            className={classnames(css.field, {
+              [css.errorField]: errors.title && touched.title,
+              [css.validField]: !errors.title && touched.title,
+            })}
+            required
             onChange={handleInputChange}
-          />
-          <ErrorMessage name="title" component="div" />
+          />{' '}
+          <div className={css.errorMsg}>
+            <ErrorMessage name="title" component="div" />
+          </div>
+          {!errors.title && touched.title && (
+            <div className={css.validMsg}>
+              <p>Title is valid</p>
+            </div>
+          )}
         </label>
       )}
       <label className={css.label}>
@@ -34,10 +56,21 @@ const PersonalDetails = ({ category }) => {
           placeholder="Type name pet"
           type="text"
           name="name"
-          className={css.field}
+          validate={validateName}
+          className={classnames(css.field, {
+            [css.errorField]: errors.name && touched.name,
+            [css.validField]: !errors.name && touched.name,
+          })}
           onChange={handleInputChange}
         />
-        <ErrorMessage name="name" component="div" />
+        <div className={css.errorMsg}>
+          <ErrorMessage name="name" component="div" />
+        </div>
+        {!errors.name && touched.name && (
+          <div className={css.validMsg}>
+            <p>Name is valid</p>
+          </div>
+        )}
       </label>
       <label className={css.label}>
         <span className={css.labelText}>Date of birth</span>
@@ -46,10 +79,21 @@ const PersonalDetails = ({ category }) => {
           type="text"
           name="birthday"
           data-pattern="**.**.****"
-          className={css.field}
+          validate={validateBirthday}
+          className={classnames(css.field, {
+            [css.errorField]: errors.birthday && touched.birthday,
+            [css.validField]: !errors.birthday && touched.birthday,
+          })}
           onChange={handleInputChange}
         />
-        <ErrorMessage name="birthday" component="div" />
+        <div className={css.errorMsg}>
+          <ErrorMessage name="birthday" component="div" />
+        </div>
+        {!errors.birthday && touched.birthday && (
+          <div className={css.validMsg}>
+            <p>Date is valid</p>
+          </div>
+        )}
       </label>
       <label className={css.label}>
         <span className={css.labelText}>Breed</span>
@@ -57,10 +101,21 @@ const PersonalDetails = ({ category }) => {
           placeholder="Type breed"
           type="text"
           name="breed"
-          className={css.field}
+          validate={validateBreed}
+          className={classnames(css.field, {
+            [css.errorField]: errors.breed && touched.breed,
+            [css.validField]: !errors.breed && touched.breed,
+          })}
           onChange={handleInputChange}
         />
-        <ErrorMessage name="breed" component="div" />
+        <div className={css.errorMsg}>
+          <ErrorMessage name="breed" component="div" />
+        </div>
+        {!errors.breed && touched.breed && (
+          <div className={css.validMsg}>
+            <p>Breed is valid</p>
+          </div>
+        )}
       </label>
     </div>
   );
@@ -68,6 +123,13 @@ const PersonalDetails = ({ category }) => {
 
 PersonalDetails.propTypes = {
   category: PropTypes.string.isRequired,
+  values: PropTypes.object,
+  errors: PropTypes.any,
+  touched: PropTypes.any,
+  validateTitle: PropTypes.func,
+  validateName: PropTypes.func,
+  validateBirthday: PropTypes.func,
+  validateBreed: PropTypes.func,
 };
 
 export default PersonalDetails;

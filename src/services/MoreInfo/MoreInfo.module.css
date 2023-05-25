@@ -112,7 +112,26 @@
   letter-spacing: 0.04em;
   color: #888888;
 }
+.errorComments {
+  width: 100%;
+  height: 92px;
+  padding: 9.5px 16px;
+  color: var(--color-blue);
+
+  border: 1px solid #F43F5E;
+  border-radius: 20px;
+}
+.validComments {
+  width: 100%;
+  height: 92px;
+  padding: 9.5px 16px;
+  color: var(--color-blue);
+
+  border: 1px solid #00C3AD;
+  border-radius: 20px;
+}
 .field {
+  position: relative;
   width: 264px;
   padding: 9.5px 16px;
   color: var(--color-blue);
@@ -127,6 +146,64 @@
   letter-spacing: 0.04em;
   color: #888888;
 }
+.errorField {
+  width: 264px;
+  padding: 9.5px 16px;
+  color: var(--color-blue);
+
+  border: 1px solid #F43F5E;
+  border-radius: 40px;
+}
+.validField {
+  width: 264px;
+  padding: 9.5px 16px;
+  color: var(--color-blue);
+
+  border: 1px solid #00C3AD;
+  border-radius: 40px;
+}
+.errorMsg {
+  position: absolute;
+  margin-top: 2px;
+  margin-left: 17px;
+  font-family: 'Manrope';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #F43F5E;
+}
+.validMsg {
+  position: absolute;
+   margin-top: 2px;
+  margin-left: 17px;
+  font-family: 'Manrope';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #00C3AD;
+}
+.errorMsgComments {
+  position: absolute;
+  margin-top: -4px;
+  margin-left: 17px;
+  font-family: 'Manrope';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #F43F5E;
+}
+.validMsgComments {
+  position: absolute;
+   margin-top: -4px;
+  margin-left: 17px;
+  font-family: 'Manrope';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #00C3AD;
+}
+
+
 @media screen and (min-width: 768px) {
   .form {
     flex-direction: row;
