@@ -48,8 +48,7 @@ const ModalNotice = ({ id, closeModal, src }) => {
       return setNotice(payload);
     };
     fn();
-  }, [dispatch, id]);
-  useEffect(() => {
+
     function handleKeyDown(event) {
       if (event.key === 'Escape') {
         closeModal();
@@ -61,6 +60,19 @@ const ModalNotice = ({ id, closeModal, src }) => {
       window.removeEventListener('keydown', handleKeyDown);
     };
   });
+  // }, [dispatch, id]);
+  // useEffect(() => {
+  //   function handleKeyDown(event) {
+  //     if (event.key === 'Escape') {
+  //       closeModal();
+  //     }
+  //   }
+
+  //   window.addEventListener('keydown', handleKeyDown);
+  //   return () => {
+  //     window.removeEventListener('keydown', handleKeyDown);
+  //   };
+  // });
 
   // const onFavBtnClick = () => {
   //   if (isLogin) {
