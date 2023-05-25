@@ -2,7 +2,10 @@ import { useMediaQuery } from 'react-responsive';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
-import { fetchNoticeById } from '../../redux/notices/noticesOperations';
+import {
+  deleteFromFavorite,
+  fetchNoticeById,
+} from '../../redux/notices/noticesOperations';
 import propTypes from 'prop-types';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import css from './NoticesCategoryItem.module.css';
@@ -17,7 +20,10 @@ import { GiFemale } from 'react-icons/gi';
 import { GiMale } from 'react-icons/gi';
 
 import { useSelector } from 'react-redux';
-import { deleteNotice } from '../../redux/notices/noticesOperations';
+import {
+  deleteNotice,
+  addToFavorite,
+} from '../../redux/notices/noticesOperations';
 import { getAuth, getUser } from '../../redux/auth/authSelector';
 import url from '../../images/default_pet.jpg';
 
@@ -46,7 +52,7 @@ const NoticesCategoryItem = ({
   const { isLogin } = useSelector(getAuth);
   const { _id } = useSelector(getUser);
 
-  // console.log(_id);
+  // console.log(id);
 
   // const User = useSelector(getUser);
   // console.log(User.email);
@@ -94,7 +100,12 @@ const NoticesCategoryItem = ({
 
   const onFavBtnClick = () => {
     if (isLogin) {
-      setFavorite(!favorite);
+      dispatch(addToFavorite(id));
+      setFavorite(true);
+      if (favorite) {
+        dispatch(deleteFromFavorite(id));
+        setFavorite(false);
+      }
     } else {
       Notify.warning('Please, signup or login to add notice to favorites', {
         clickToClose: true,

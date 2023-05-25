@@ -4,7 +4,7 @@ import {
   fetchNoticeById,
   addToFavorite,
   deleteFromFavorite,
-  fetchFavoriteNotices,
+  // fetchFavoriteNotices,
   addNotice,
   deleteNotice,
   fetchNoticesByOwner,
@@ -14,6 +14,7 @@ export const noticesSlice = createSlice({
   name: 'notices',
   initialState: {
     oneNotice: {},
+    favoriteList: [],
     notices: [],
     total: 0,
     isLoading: true,
@@ -61,18 +62,18 @@ export const noticesSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-      .addCase(fetchFavoriteNotices.pending, state => {
-        state.isLoading = true;
-        state.error = false;
-      })
-      .addCase(fetchFavoriteNotices.fulfilled, (state, action) => {
-        state.error = false;
-        state.favoriteList = action.payload;
-      })
-      .addCase(fetchFavoriteNotices.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
+      // .addCase(fetchFavoriteNotices.pending, state => {
+      //   state.isLoading = true;
+      //   state.error = false;
+      // })
+      // .addCase(fetchFavoriteNotices.fulfilled, (state, action) => {
+      //   state.error = false;
+      //   state.notices = action.payload;
+      // })
+      // .addCase(fetchFavoriteNotices.rejected, (state, action) => {
+      //   state.isLoading = false;
+      //   state.error = action.payload;
+      // })
       .addCase(deleteFromFavorite.pending, state => {
         state.isLoading = true;
         state.error = false;

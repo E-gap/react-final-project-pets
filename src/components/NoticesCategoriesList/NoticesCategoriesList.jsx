@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import NoticesCategoryItem from 'components/NoticesCategoryItem/NoticesCategoryItem';
 import {
   // getOwnNotices,
-  // getFavoriteNotices,
+  getFavoriteNotices,
   selectNotices,
 } from 'redux/selectors';
 
@@ -15,6 +15,8 @@ const NoticesCategoriesList = ({ category }) => {
   /* const pathnameArr = pathname.split('/');
   console.log(pathnameArr); */
   const notices = useSelector(selectNotices);
+  const favNotices = useSelector(getFavoriteNotices);
+
   //const ownNotices = useSelector(getOwnNotices);
 
   // const favorites = useSelector(getFavoriteNotices);
@@ -41,26 +43,24 @@ const NoticesCategoriesList = ({ category }) => {
         name={item.name}
       />
     ));
-  }
-  // else if (category === 'favorite') {
-  //   elements = ownNotices.map(item => (
-  //     <NoticesCategoryItem
-  //       key={item._id}
-  //       id={item._id}
-  //       src={item.url}
-  //       sex={item.sex}
-  //       location={item.location}
-  //       category={item.category}
-  //       birthday={item.birthday}
-  //       title={item.title}
-  //       price={item.price}
-  //       comments={item.comments}
-  //       breed={item.breed}
-  //       name={item.name}
-  //     />
-  //   ));
-  // }
-  else if (category === 'own') {
+  } else if (category === 'favorite') {
+    elements = favNotices.map(item => (
+      <NoticesCategoryItem
+        key={item._id}
+        id={item._id}
+        src={item.url}
+        sex={item.sex}
+        location={item.location}
+        category={item.category}
+        birthday={item.birthday}
+        title={item.title}
+        price={item.price}
+        comments={item.comments}
+        breed={item.breed}
+        name={item.name}
+      />
+    ));
+  } else if (category === 'own') {
     elements = notices.map(item => (
       <NoticesCategoryItem
         owner={item.owner}
