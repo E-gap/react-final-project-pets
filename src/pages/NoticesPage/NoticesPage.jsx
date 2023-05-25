@@ -20,7 +20,6 @@ import {
 import { getAuth } from '../../redux/auth/authSelector';
 import { totalNotices } from '../../redux/selectors';
 import options from '../../components/Pagination/options';
-import { instance } from 'redux/auth/authOperations';
 
 //import { Notify } from 'notiflix/build/notiflix-notify-aio';
 //import axios from 'axios';
@@ -32,11 +31,7 @@ const NoticesPage = () => {
   const { pathname } = useLocation();
   // const [pathFilter, setPathFilter] = useState('sell');
   const [searchParams, setSearchParams] = useSearchParams();
-  const fn = async () => {
-    const data = await instance.get('/notices/fvrt');
-    return data;
-  };
-  fn();
+
   //const [page, setPage] = useState(1);
 
   const [page, setPage] = useState(() => {
