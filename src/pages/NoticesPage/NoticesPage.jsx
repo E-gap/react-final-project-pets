@@ -189,7 +189,7 @@ const NoticesPage = () => {
 
           {/* <NoticesFilters /> */}
           {!total ? (
-            <p className={css.notNotices}>There are not any notice</p>
+            <p className={css.notNotices}>There are not any notices</p>
           ) : (
             <NoticesCategoriesList category={lastPartPath} />
           )}
