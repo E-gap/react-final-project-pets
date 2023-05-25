@@ -9,7 +9,7 @@ import css from './NoticesCategoryItem.module.css';
 import LearnMore from 'components/Buttons/LearnMore/LearnMore';
 
 import AddToFavorite from 'components/Buttons/AddToFavorite/AddToFavorite';
-// import RemovePetButton from 'components/Buttons/RemovePetButton/RemovePetButton';
+import RemovePetButton from 'components/Buttons/RemovePetButton/RemovePetButton';
 import ModalNotice from 'components/ModalNotice/ModalNotice';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { HiOutlineClock } from 'react-icons/hi';
@@ -17,10 +17,12 @@ import { GiFemale } from 'react-icons/gi';
 import { GiMale } from 'react-icons/gi';
 
 import { useSelector } from 'react-redux';
-import { getAuth } from '../../redux/auth/authSelector';
+import { deleteNotice } from '../../redux/notices/noticesOperations';
+import { getAuth, getUser } from '../../redux/auth/authSelector';
 import url from '../../images/default_pet.jpg';
 
 const NoticesCategoryItem = ({
+  owner,
   id,
   src = url,
   sex,
@@ -39,8 +41,13 @@ const NoticesCategoryItem = ({
   const [favorite, setFavorite] = useState(false);
 
   // const { current } = useRef(window.innerWidth);
+  // console.log(owner);
 
   const { isLogin } = useSelector(getAuth);
+  const { _id } = useSelector(getUser);
+
+  // console.log(_id);
+
   // const User = useSelector(getUser);
   // console.log(User.email);
 
@@ -100,6 +107,10 @@ const NoticesCategoryItem = ({
     }
   };
 
+  const onDeleteNotice = () => {
+    dispatch(deleteNotice(id));
+  };
+
   return (
     <li className={css.item}>
       <div className={css.relativeContainer}>
@@ -115,7 +126,7 @@ const NoticesCategoryItem = ({
                 : { position: 'absolute', top: 0, left: '277px' }
             }
           />
-          {/* <RemovePetButton /> */}
+          {_id === owner ? <RemovePetButton onClick={onDeleteNotice} /> : <></>}
         </div>
         <ul className={css.container}>
           <li className={css.wrap_text}>

@@ -112,10 +112,11 @@ export const addNotice = createAsyncThunk(
 
 export const deleteNotice = createAsyncThunk(
   'notices/deleteNotice',
-  async (noticeId, { rejectWithValue }) => {
+  async (id, { rejectWithValue }) => {
     try {
-      // const response = await axios.delete();
-      // return response.data;
+      const response = await instance.delete(`/notices/delete/${id}`);
+      console.log(response);
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
     }

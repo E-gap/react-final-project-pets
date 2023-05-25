@@ -48,7 +48,7 @@ const ModalNotice = ({ id, closeModal, src }) => {
       return setNotice(payload);
     };
     fn();
-  });
+  }, [dispatch, id]);
   useEffect(() => {
     function handleKeyDown(event) {
       if (event.key === 'Escape') {
