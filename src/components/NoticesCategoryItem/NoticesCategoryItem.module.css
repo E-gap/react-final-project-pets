@@ -73,7 +73,7 @@
 
 .sex_icon {
   font-size: 18px;
-  color: #54adff;
+  color: var(--color-blue);
 }
 
 .sex_desc {
