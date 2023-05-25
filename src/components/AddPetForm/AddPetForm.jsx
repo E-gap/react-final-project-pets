@@ -107,6 +107,67 @@ const AddPetForm = () => {
     setTitle(getPageTitle());
   }, [getPageTitle]);
 
+  function validateTitle(value) {
+    if (!value) {
+      return 'Title is required';
+    } else if (value.length < 4) {
+      return 'Title must be at least 4 characters';
+    } 
+  }
+
+  function validateName(value) {
+    if (!value) {
+      return 'Name is required';
+    } else if (value.length < 2) {
+      return 'Name must be at least 2 characters';
+    } else if (value.length > 16) {
+      return 'Name must not exceed 16 characters';
+    } 
+  }
+
+  function validateBirthday(value) {
+    if (!value) {
+      return 'Date is required';
+    } else if (!/^(\d{2})\.(\d{2})\.(\d{4})$/i.test(value)) {
+      return 'Invalid date format. Use DD.MM.YYYY';
+    }
+  }
+
+  function validateBreed(value) {
+    if (!value) {
+      return 'Breed is required';
+    } else if (value.length < 2) {
+      return 'Breed must be at least 2 characters';
+    } else if (value.length > 16) {
+      return 'Breed must not exceed 16 characters';
+    }
+  }
+
+  function validateLocation(value) {
+    if (!value) {
+      return 'Location is required';
+    } else if (!/^[A-Za-z\s]+$/i.test(value)) {
+      return 'Invalid location format';
+    }
+  }
+
+  function validatePrice(value) {
+    if (!value) {
+      return 'Price is required';
+    } 
+  }
+
+  function validateComments(value) {
+    if (!value) {
+      return 'Comments is required';
+    } else if (value.length < 4) {
+      return 'Comments should be at least 4 characters';
+    } else if (value.length > 120) {
+      return 'Comments should not exceed 120 characters';
+    }
+  }
+
+
   return (
     <main className={css.main}>
       <div className={css.formikWrapper + ' container'}>
@@ -122,6 +183,7 @@ const AddPetForm = () => {
             dirty,
             isValid,
             errors,
+            touched,
           }) => (
             <Form
               className={css.formik}
@@ -145,12 +207,23 @@ const AddPetForm = () => {
                   handleChange={handleChange}
                   setFieldValue={setFieldValue}
                   values={values}
+                  errors={errors}
+                  touched={touched}
+                  validateTitle={validateTitle}
+                  validateName={validateName}
+                  validateBirthday={validateBirthday}
+                  validateBreed={validateBreed}
                 />
               )}
               {step === 2 && (
                 <MoreInfo
                   category={category}
                   value={values}
+                  errors={errors}
+                  touched={touched}
+                  validateLocation={validateLocation}
+                  validatePrice={validatePrice}
+                  validateComments={validateComments}
                 />
               )}
               <div className={css.btnWrapper}>

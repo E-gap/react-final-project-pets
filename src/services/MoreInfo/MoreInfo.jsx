@@ -1,4 +1,5 @@
 import { Field, ErrorMessage, useFormikContext } from 'formik';
+import classnames from 'classnames';
 
 import PropTypes from 'prop-types';
 
@@ -6,8 +7,14 @@ import { BsPlusLg, BsGenderFemale, BsGenderMale } from 'react-icons/bs';
 
 import css from './MoreInfo.module.css';
 
-const MoreInfo = ({ category}) => {
-
+const MoreInfo = ({
+  category,
+  errors,
+  touched,
+  validateLocation,
+  validatePrice,
+  validateComments
+}) => {
   const { setFieldValue, values } = useFormikContext();
 
   const handleInputChange = e => {
@@ -94,9 +101,20 @@ const MoreInfo = ({ category}) => {
               placeholder="Type of location"
               type="text"
               name="location"
-              className={css.field}
+              validate={validateLocation}
+              className={classnames(css.field, {
+                [css.errorField]: errors.location && touched.location,
+                [css.validField]: !errors.location && touched.location,
+              })}
             />
-            <ErrorMessage name="location" component="div" />
+            <div className={css.errorMsg}>
+              <ErrorMessage name="location" component="div" />
+            </div>
+            {!errors.location && touched.location && (
+              <div className={css.validMsg}>
+                <p>Location is valid</p>
+              </div>
+            )}
           </label>
         )}
         {category === 'sell' && (
@@ -106,9 +124,20 @@ const MoreInfo = ({ category}) => {
               placeholder="Type of price"
               type="text"
               name="price"
-              className={css.field}
+              validate={validatePrice}
+              className={classnames(css.field, {
+                [css.errorField]: errors.price && touched.price,
+                [css.validField]: !errors.price && touched.price,
+              })}
             />
-            <ErrorMessage name="price" component="div" />
+            <div className={css.errorMsg}>
+              <ErrorMessage name="price" component="div" />
+            </div>
+            {!errors.price && touched.price && (
+              <div className={css.validMsg}>
+                <p>Price is valid</p>
+              </div>
+            )}
           </label>
         )}
         <label className={css.label}>
@@ -117,7 +146,11 @@ const MoreInfo = ({ category}) => {
             as="textarea"
             placeholder="Type comments"
             name="comments"
-            className={css.comments}
+            validate={validateComments}
+            className={classnames(css.comments, {
+              [css.errorComments]: errors.comments && touched.comments,
+              [css.validComments]: !errors.comments && touched.comments,
+            })}
             style={{
               height:
                 category === 'lost-found' || category === 'good-hands'
@@ -125,7 +158,14 @@ const MoreInfo = ({ category}) => {
                   : '79px',
             }}
           />
-          <ErrorMessage name="comments" component="div" />
+          <div className={css.errorMsgComments}>
+            <ErrorMessage name="comments" component="div" />
+          </div>
+          {!errors.comments && touched.comments && (
+            <div className={css.validMsgComments}>
+              <p>Comment is valid</p>
+            </div>
+          )}
         </label>
       </div>
     </div>
@@ -134,6 +174,11 @@ const MoreInfo = ({ category}) => {
 
 MoreInfo.propTypes = {
   category: PropTypes.string.isRequired,
+  errors: PropTypes.any,
+  touched: PropTypes.any,
+  validateLocation: PropTypes.func,
+  validatePrice: PropTypes.func,
+  validateComments: PropTypes.func,
 };
 
 export default MoreInfo;
