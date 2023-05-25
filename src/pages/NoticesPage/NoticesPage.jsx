@@ -1,5 +1,6 @@
 import css from './NoticesPage.module.css';
 import { useState, useEffect, useRef } from 'react';
+
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import NoticesCategoriesList from 'components/NoticesCategoriesList/NoticesCategoriesList';
 import NoticesSearch from 'components/InputSearch/InputSearch';
@@ -141,19 +142,13 @@ const NoticesPage = () => {
   };
 
   const onAddPetBtn = () => {
-    Notify.warning('Please, signup or login to add a pet', {
-      width: '600px',
-      position: 'center-top',
-      fontSize: '25px',
-      textAlign: 'center',
-      timeout: '1200',
-    });
+    Notify.warning('Please, signup or login to add a pet');
   };
 
   return (
     <>
       <section className={css.section}>
-        <div className='container' onClick={handleLearnMore}>
+        <div className="container" onClick={handleLearnMore}>
           <NoticesSearch
             search={submitSearch}
             title={'Find your favorite pet'}
@@ -176,7 +171,7 @@ const NoticesPage = () => {
                       width: '80px',
                       height: '80px',
                       flexDirection: 'column-reverse',
-
+                      fontSize: '12px',
                       lineHeight: '1.37',
                       padding: 0,
                     }

@@ -1,5 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, login, logout, refresh, updateUser, updateUserAvatar, clearIsNew } from './authOperations';
+import {
+  register,
+  login,
+  logout,
+  refresh,
+  updateUser,
+  updateUserAvatar,
+  clearIsNew,
+} from './authOperations';
 
 const authSlice = createSlice({
   name: 'auth',
@@ -7,12 +15,13 @@ const authSlice = createSlice({
     user: {
       email: null,
       password: null,
-      name: "",
-      birthday: "",
-      phone: "",
-      city: "",
-      avatarURL: "",
+      name: '',
+      birthday: '',
+      phone: '',
+      city: '',
+      avatarURL: '',
       isNew: true,
+      _id: '',
     },
     token: null,
     isLogin: false,
@@ -24,7 +33,7 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(register.fulfilled, (state, action) => {
-        state.user = {...state.user, ...action.payload.user};
+        state.user = { ...state.user, ...action.payload.user };
         state.token = action.payload.token;
         state.isLogin = true;
         state.isRefreshing = false;
@@ -36,7 +45,7 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(login.fulfilled, (state, action) => {
-        state.user = {...state.user, ...action.payload.user};
+        state.user = { ...state.user, ...action.payload.user };
         state.token = action.payload.token;
         state.isLogin = true;
         state.isRefreshing = false;
@@ -53,7 +62,7 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(refresh.fulfilled, (state, action) => {
-        state.user = {...state.user, ...action.payload};
+        state.user = { ...state.user, ...action.payload };
         state.isLogin = true;
         state.isRefreshing = false;
       })
@@ -64,7 +73,7 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
-        state.user = {...state.user, ...action.payload};
+        state.user = { ...state.user, ...action.payload };
         state.isLogin = true;
         state.isRefreshing = false;
       })
@@ -75,7 +84,7 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(updateUserAvatar.fulfilled, (state, action) => {
-        state.user = {...state.user, ...action.payload};
+        state.user = { ...state.user, ...action.payload };
         state.isRefreshing = false;
       })
       .addCase(updateUserAvatar.rejected, state => {
@@ -85,7 +94,7 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(clearIsNew.fulfilled, (state, action) => {
-        state.user = {...state.user, ...action.payload};
+        state.user = { ...state.user, ...action.payload };
         state.isRefreshing = false;
       })
       .addCase(clearIsNew.rejected, state => {

@@ -108,16 +108,13 @@ export const noticesSlice = createSlice({
       })
       .addCase(deleteNotice.fulfilled, (state, action) => {
         state.error = false;
-        const { noticeList, ownList } = state;
+        const { notices } = state;
 
-        const indexNotice = noticeList.findIndex(
-          notice => notice._id === action.payload.data._id
+        const indexNotice = notices.findIndex(
+          notice => notice._id === action.payload._id
         );
-        noticeList.splice(indexNotice, 1);
-        const indexOwn = ownList.findIndex(
-          notice => notice._id === action.payload.data._id
-        );
-        ownList.splice(indexOwn, 1);
+
+        notices.splice(indexNotice, 1);
       })
       .addCase(deleteNotice.rejected, (state, action) => {
         state.isLoading = false;

@@ -26,6 +26,7 @@ const NoticesCategoriesList = ({ category }) => {
   ) {
     elements = notices.map(item => (
       <NoticesCategoryItem
+        owner={item.owner}
         key={item._id}
         id={item._id}
         src={item.photo}
@@ -62,6 +63,7 @@ const NoticesCategoriesList = ({ category }) => {
   else if (category === 'own') {
     elements = notices.map(item => (
       <NoticesCategoryItem
+        owner={item.owner}
         key={item._id}
         id={item._id}
         src={item.photo}
