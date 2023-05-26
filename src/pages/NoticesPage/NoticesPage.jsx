@@ -180,7 +180,7 @@ const NoticesPage = () => {
           ) : (
             <NoticesCategoriesList category={lastPartPath} />
           )}
-          {total > options.noticesOptions.itemsPerPage && !isLoading ? (
+          {total > options.noticesOptions.itemsPerPage ? (
             <div className={css.paginationDiv}>
               <PaginationComponent
                 searchPage={searchPage}
