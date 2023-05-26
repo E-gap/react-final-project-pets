@@ -1,14 +1,11 @@
 import css from './NoticesPage.module.css';
 import { useState, useEffect, useCallback } from 'react';
 import { useMediaQuery } from 'react-responsive';
-
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import NoticesCategoriesList from 'components/NoticesCategoriesList/NoticesCategoriesList';
 import NoticesSearch from 'components/InputSearch/InputSearch';
-
 import NoticesCategoriesNav from 'components/NoticesCategoriesNav/NoticesCategoriesNav';
 import PaginationComponent from '../../components/Pagination/PaginationComponent';
-
 import AddPetButton from 'components/Buttons/AddPetButton/AddPetButton';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useDispatch, useSelector } from 'react-redux';
@@ -119,8 +116,6 @@ const NoticesPage = () => {
   const onAddPetBtn = useCallback(() => {
     Notify.warning('Please, signup or login to add a pet');
   }, []);
-
-  console.log('render');
 
   return (
     <>

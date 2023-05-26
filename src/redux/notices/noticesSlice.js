@@ -17,7 +17,7 @@ export const noticesSlice = createSlice({
     favList: [],
     notices: [],
     total: 0,
-    isLoading: true,
+    isLoading: false,
     error: null,
   },
   extraReducers: builder =>
@@ -82,6 +82,7 @@ export const noticesSlice = createSlice({
         state.error = false;
       })
       .addCase(deleteFromFavorite.fulfilled, (state, action) => {
+        state.isLoading = false;
         state.error = false;
         const { favList } = state;
         console.log(state, 'from splice 88');
@@ -101,6 +102,7 @@ export const noticesSlice = createSlice({
       })
       .addCase(addNotice.fulfilled, (state, action) => {
         state.error = false;
+        state.isLoading = false;
       })
       .addCase(addNotice.rejected, (state, action) => {
         state.isLoading = false;
@@ -112,6 +114,7 @@ export const noticesSlice = createSlice({
       })
       .addCase(deleteNotice.fulfilled, (state, action) => {
         state.error = false;
+        state.isLoading = false;
         const { notices } = state;
 
         const indexNotice = notices.findIndex(
