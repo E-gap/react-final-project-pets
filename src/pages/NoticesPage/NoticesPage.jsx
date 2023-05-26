@@ -9,11 +9,13 @@ import PaginationComponent from '../../components/Pagination/PaginationComponent
 import AddPetButton from 'components/Buttons/AddPetButton/AddPetButton';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useDispatch, useSelector } from 'react-redux';
+import { Audio } from 'react-loader-spinner';
 
 import {
   fetchAllNotices,
   fetchNoticeById,
   fetchNoticesByOwner,
+  fetchFavoriteNotices,
 } from '../../redux/notices/noticesOperations';
 import { getAuth } from '../../redux/auth/authSelector';
 import { totalNotices, getIsLoading, getError } from '../../redux/selectors';
@@ -91,6 +93,10 @@ const NoticesPage = () => {
       const queryParams = { category: '', title: query, page };
       searchNoticesByOwner(queryParams);
     }
+    if (isLogin && lastPartPath === 'favorite') {
+      dispatch(fetchFavoriteNotices());
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lastPartPath, query, page, isLogin]);
 
@@ -120,6 +126,8 @@ const NoticesPage = () => {
   const onAddPetBtn = useCallback(() => {
     Notify.warning('Please, signup or login to add a pet');
   }, []);
+
+  console.log('render');
 
   return (
     <>
@@ -159,10 +167,22 @@ const NoticesPage = () => {
           {error ? <p className={css.errorMessage}>${error}</p> : ''}
           {!total && !isLoading ? (
             <p className={css.notNotices}>There are not any notices</p>
+          ) : isLoading ? (
+            <div className={css.preloader}>
+              <Audio
+                height="80"
+                width="80"
+                radius="9"
+                color="green"
+                ariaLabel="three-dots-loading"
+                wrapperStyle
+                wrapperClass
+              />
+            </div>
           ) : (
             <NoticesCategoriesList category={lastPartPath} />
           )}
-          {total > options.noticesOptions.itemsPerPage ? (
+          {total > options.noticesOptions.itemsPerPage && !isLoading ? (
             <div className={css.paginationDiv}>
               <PaginationComponent
                 searchPage={searchPage}

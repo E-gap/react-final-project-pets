@@ -92,3 +92,9 @@
   font-weight: 600;
   text-align: center;
 }
+
+.preloader {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}

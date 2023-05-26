@@ -1,13 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-//import axios from 'axios';
-//import Notiflix from 'notiflix';
+
 import { instance } from '../auth/authOperations';
-
-/* const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
-}); */
-
-/* ((axios.defaults.baseURL = `http://localhost:3001`)); */
 
 export const fetchAllNotices = createAsyncThunk(
   'notices/fetchAllNotices',
@@ -35,7 +28,6 @@ export const fetchNoticeById = createAsyncThunk(
   'notices/fetchNoticeById',
   async function (id, { rejectWithValue }) {
     try {
-      // const response = await instance.get(`/notices/${id}`);
       const response = await instance.get(`/notices/id/${id}`);
 
       if (response.status !== 200) {
@@ -65,15 +57,10 @@ export const fetchFavoriteNotices = createAsyncThunk(
 export const addToFavorite = createAsyncThunk(
   'notices/addFavorite',
   async (noticeId, { rejectWithValue }) => {
-    // console.log(noticeId);
-    // const url = `;
     try {
-      // const result = await axios.patch(url);
-      // return result.data.data;
       const response = await instance.post(`/notices/${noticeId}/favorite`);
 
       return response.data;
-
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -83,14 +70,10 @@ export const addToFavorite = createAsyncThunk(
 export const deleteFromFavorite = createAsyncThunk(
   'notices/deleteFavorite',
   async (noticeId, { rejectWithValue }) => {
-    // const url = ;
     try {
-      // const result = await axios.patch(url);
-      // return result.data.data;
       const response = await instance.delete(`/notices/${noticeId}/favorite`);
 
       return response;
-
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -104,7 +87,6 @@ export const addNotice = createAsyncThunk(
     if (!token) {
       return thunkAPI.rejectWithValue('No valid token');
     }
-    // instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 
     try {
       const { data } = await instance.post('/notices/', FormData);
@@ -134,7 +116,6 @@ export const fetchNoticesByOwner = createAsyncThunk(
     const { title, page } = queryParams;
     const { token } = thunkApi.getState().auth;
     if (!token) return thunkApi.rejectWithValue('No valid token');
-    // instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 
     try {
       const result = await instance.get(

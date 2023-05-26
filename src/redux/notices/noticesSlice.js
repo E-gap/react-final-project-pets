@@ -70,8 +70,9 @@ export const noticesSlice = createSlice({
         state.error = false;
       })
       .addCase(fetchFavoriteNotices.fulfilled, (state, action) => {
+        state.isLoading = false;
         state.error = false;
-        // state.favList = { ...state.favList, ...action.payload.result };
+
         state.favList = action.payload.result;
         state.total = action.payload.count;
       })

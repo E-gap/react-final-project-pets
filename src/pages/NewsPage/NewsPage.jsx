@@ -7,6 +7,7 @@ import NewsItem from 'components/NewsItem/NewsItem';
 import NoticesSearch from 'components/InputSearch/InputSearch';
 import PaginationComponent from '../../components/Pagination/PaginationComponent';
 import options from '../../components/Pagination/options';
+import { Audio } from 'react-loader-spinner';
 
 const NewsPage = () => {
   const [wasSearch, setWasSearch] = useState(false);
@@ -58,6 +59,7 @@ const NewsPage = () => {
         }
         setError('');
         setWasSearch(true);
+
         setNews(response.data.result);
         setTotalNews(response.data.total);
 
@@ -84,7 +86,17 @@ const NewsPage = () => {
         ) : error ? (
           <p className={css.error}>{error}</p>
         ) : (
-          ''
+          <div className={css.preloader}>
+            <Audio
+              height="80"
+              width="80"
+              radius="9"
+              color="green"
+              ariaLabel="three-dots-loading"
+              wrapperStyle
+              wrapperClass
+            />
+          </div>
         )}
         {totalNews > options.newsOptions.itemsPerPage ? (
           <div className={css.paginationDiv}>
