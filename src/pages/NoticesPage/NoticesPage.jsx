@@ -127,8 +127,6 @@ const NoticesPage = () => {
     Notify.warning('Please, signup or login to add a pet');
   }, []);
 
-  console.log('render');
-
   return (
     <>
       <section className={css.section}>
