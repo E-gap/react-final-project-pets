@@ -43,6 +43,7 @@ export const noticesSlice = createSlice({
         state.error = false;
       })
       .addCase(fetchNoticeById.fulfilled, (state, action) => {
+        state.isLoading = false;
         state.error = false;
         state.oneNotice = action.payload;
       })
@@ -55,6 +56,7 @@ export const noticesSlice = createSlice({
         state.error = false;
       })
       .addCase(addToFavorite.fulfilled, (state, action) => {
+        state.isLoading = false;
         state.error = false;
         console.log(action.payload, 'paylaod from 59 ');
         state.favList.push(action.payload.data.notice);

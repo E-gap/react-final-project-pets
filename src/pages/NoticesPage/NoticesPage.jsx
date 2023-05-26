@@ -75,7 +75,9 @@ const NoticesPage = () => {
       page: page,
     };
 
-    dispatch(fetchAllNotices(queryParams));
+    if (queryParams.category !== 'favorite' && queryParams.category !== 'own') {
+      dispatch(fetchAllNotices(queryParams));
+    }
 
     const searchNoticesByOwner = queryParams => {
       try {
