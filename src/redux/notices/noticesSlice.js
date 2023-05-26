@@ -56,7 +56,8 @@ export const noticesSlice = createSlice({
       })
       .addCase(addToFavorite.fulfilled, (state, action) => {
         state.error = false;
-        state.favList.push(action.payload);
+        console.log(action.payload, 'paylaod from 59 ');
+        state.favList.push(action.payload.data.notice);
       })
       .addCase(addToFavorite.rejected, (state, action) => {
         state.isLoading = false;
@@ -71,8 +72,6 @@ export const noticesSlice = createSlice({
         // state.favList = { ...state.favList, ...action.payload.result };
         state.favList = action.payload.result;
         state.total = action.payload.count;
-        // console.log(state.favList);
-        // console.log(state.total);
       })
       .addCase(fetchFavoriteNotices.rejected, (state, action) => {
         state.isLoading = false;
@@ -85,6 +84,8 @@ export const noticesSlice = createSlice({
       .addCase(deleteFromFavorite.fulfilled, (state, action) => {
         state.error = false;
         const { favList } = state;
+        console.log(state, 'from splice 88');
+        console.log(action, 'from 89 slice');
         const index = favList.findIndex(
           notice => notice._id === action.payload._id
         );

@@ -24,7 +24,6 @@ const NoticesCategoriesList = ({ category }) => {
   console.log(pathnameArr); */
   const notices = useSelector(selectNotices);
   const favNotices = useSelector(getFavoriteNotices);
-  /* console.log(favNotices); */
 
   const { pathname } = useLocation();
   const pathnameArr = pathname.split('/');
@@ -46,6 +45,7 @@ const NoticesCategoriesList = ({ category }) => {
   ) {
     elements = notices.map(item => (
       <NoticesCategoryItem
+        favorite={item.favorite}
         owner={item.owner}
         key={item._id}
         id={item._id}
@@ -66,7 +66,7 @@ const NoticesCategoriesList = ({ category }) => {
       <NoticesCategoryItem
         key={item._id}
         id={item._id}
-        src={item.url}
+        src={item.photo}
         sex={item.sex}
         location={item.location}
         category={item.category}
@@ -76,6 +76,8 @@ const NoticesCategoriesList = ({ category }) => {
         comments={item.comments}
         breed={item.breed}
         name={item.name}
+        favorite={item.favorite}
+        owner={item.owner}
       />
     ));
   } else if (category === 'own') {
@@ -94,6 +96,7 @@ const NoticesCategoriesList = ({ category }) => {
         comments={item.comments}
         breed={item.breed}
         name={item.name}
+        favorite={item.favorite}
       />
     ));
   }

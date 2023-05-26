@@ -36,7 +36,7 @@
   font-size: 14px;
   line-height: 19px;
 
-  border: 1px solid  #F43F5E;
+  border: 1px solid #f43f5e;
   border-radius: 40px;
 }
 .validField {
@@ -47,7 +47,7 @@
   font-size: 14px;
   line-height: 19px;
 
-  border: 1px solid  #00C3AD;
+  border: 1px solid #00c3ad;
   border-radius: 40px;
 }
 .field::placeholder {
@@ -65,17 +65,17 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 16px;
-  color: #F43F5E;
+  color: #f43f5e;
 }
 .validMsg {
   position: absolute;
-   margin-top: 63px;
+  margin-top: 63px;
   margin-left: 17px;
   font-family: 'Manrope';
   font-weight: 400;
   font-size: 12px;
   line-height: 16px;
-  color: #00C3AD;
+  color: #00c3ad;
 }
 
 @media screen and (min-width: 768px) {
@@ -86,33 +86,32 @@
     line-height: 150%;
   }
   .errorField {
-  width: 394px;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 150%;
-  border: 1px solid #F43F5E;
-}
+    width: 394px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    border: 1px solid #f43f5e;
+  }
   .validField {
-  width: 394px;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 150%;
-  border: 1px solid #00C3AD;
-}
+    width: 394px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    border: 1px solid #00c3ad;
+  }
   .labelText {
     font-size: 20px;
     line-height: 26px;
     margin-bottom: 8px;
   }
-}
-.errorMsg {
-  margin-top: 81px;
-  margin-left: 17px;
- 
-}
-.validMsg {
-  margin-top: 81px;
-  margin-left: 17px;
+  .errorMsg {
+    margin-top: 81px;
+    margin-left: 17px;
+  }
+  .validMsg {
+    margin-top: 81px;
+    margin-left: 17px;
+  }
 }
 
 @media screen and (min-width: 1280px) {

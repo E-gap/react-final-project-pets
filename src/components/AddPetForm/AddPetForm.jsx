@@ -26,7 +26,7 @@ const AddPetForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   const isTabletOrDesktop = useMediaQuery({ query: '(min-width: 768px)' });
   // const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
 
@@ -46,52 +46,51 @@ const AddPetForm = () => {
   const handleSubmit = useCallback(
     async (values, resetForm) => {
       if (!category) return;
-  
+
       const formData = new FormData();
-  
+
       formData.append('name', values.name);
       formData.append('birthday', values.birthday);
       formData.append('breed', values.breed);
       formData.append('comments', values.comments);
-      formData.append('photo', values.photo); 
-  
+      formData.append('photo', values.photo);
+
       if (category === 'your-pet') {
         dispatch(createPet(formData));
         navigate(-1);
         return;
       }
-  
+
       formData.append('category', category);
       formData.append('title', values.title);
       formData.append('sex', values.sex);
       formData.append('location', values.location);
-  
+
       if (category === 'lost-found') {
         dispatch(addNotice(formData));
         navigate(-1);
         return;
       }
-  
+
       if (category === 'good-hands') {
         dispatch(addNotice(formData));
         navigate(-1);
         return;
       }
-  
+
       formData.append('price', values.price);
-  
+
       if (category === 'sell') {
         dispatch(addNotice(formData));
         navigate(-1);
         return;
       }
-  
+
       navigate(-1);
       resetForm();
     },
     [category, navigate, dispatch]
   );
-  
 
   const getPageTitle = useCallback(() => {
     const titles = {
@@ -100,8 +99,8 @@ const AddPetForm = () => {
       'lost-found': 'Add lost pet',
       'good-hands': 'Add to pet for adoption',
     };
-    return step === 0?'Add Pet' : titles[category];
-  },[category,step]);
+    return step === 0 ? null : titles[category];
+  }, [category, step]);
 
   useEffect(() => {
     setTitle(getPageTitle());
@@ -112,7 +111,7 @@ const AddPetForm = () => {
       return 'Title is required';
     } else if (value.length < 4) {
       return 'Title must be at least 4 characters';
-    } 
+    }
   }
 
   function validateName(value) {
@@ -122,7 +121,7 @@ const AddPetForm = () => {
       return 'Name must be at least 2 characters';
     } else if (value.length > 16) {
       return 'Name must not exceed 16 characters';
-    } 
+    }
   }
 
   function validateBirthday(value) {
@@ -154,7 +153,7 @@ const AddPetForm = () => {
   function validatePrice(value) {
     if (!value) {
       return 'Price is required';
-    } 
+    }
   }
 
   function validateComments(value) {
@@ -166,7 +165,6 @@ const AddPetForm = () => {
       return 'Comments should not exceed 120 characters';
     }
   }
-
 
   return (
     <main className={css.main}>
@@ -188,12 +186,17 @@ const AddPetForm = () => {
             <Form
               className={css.formik}
               style={{
-                width: isTabletOrDesktop && step === 2 ? '704px' : '458px',
+                width:
+                  isTabletOrDesktop && step === 2
+                    ? '704px'
+                    : isMobile
+                    ? '280px'
+                    : '458px',
                 alignItems:
                   isTabletOrDesktop && step === 2 ? 'center' : 'flex-start',
               }}
             >
-              <h1 className={css.title}>{title}</h1>
+              <h1 className={css.title}>{title ? title : 'Add pet'}</h1>
               <AddPetSteps currentStep={step} />
               {step === 0 && (
                 <ChooseOption
@@ -231,7 +234,7 @@ const AddPetForm = () => {
                   type={step === 2 ? 'submit' : 'button'}
                   text={step === 2 ? 'Done' : 'Next'}
                   clickHandler={step !== 2 ? handleNextClick : undefined}
-                  disabled={step === 0 ? !category : !isValid}
+                  disabled={!isValid ? true : false}
                 />
                 <ButtonBack
                   type="button"

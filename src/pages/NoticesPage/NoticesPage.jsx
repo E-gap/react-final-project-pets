@@ -1,5 +1,6 @@
 import css from './NoticesPage.module.css';
 import { useState, useEffect, useCallback } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import NoticesCategoriesList from 'components/NoticesCategoriesList/NoticesCategoriesList';
@@ -11,7 +12,7 @@ import PaginationComponent from '../../components/Pagination/PaginationComponent
 import AddPetButton from 'components/Buttons/AddPetButton/AddPetButton';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useDispatch, useSelector } from 'react-redux';
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
 import {
   fetchAllNotices,
   // fetchFavoriteNotices,
@@ -47,14 +48,16 @@ const NoticesPage = () => {
 
   const { isLogin } = useSelector(getAuth);
 
-  // const { current } = useRef(window.innerWidth);
-
   const dispatch = useDispatch();
 
   const pathnameArr = pathname.split('/');
   const lastPartPath = pathnameArr[pathnameArr.length - 1];
 
   const navigate = useNavigate();
+  // useEffect(() => {
+  //   const res = dispatch(fetchFavoriteNotices());
+  //   console.log(res);
+  // }, [dispatch]);
 
   useEffect(() => {
     if (pathname === '/notices') {
@@ -78,19 +81,16 @@ const NoticesPage = () => {
       setSearchParams({});
     }
 
-    console.log(pathname);
-    console.log(lastPartPath);
-
     const queryParams = {
-      category: lastPartPath,
+      category: lastPartPath === 'notices' ? 'sell' : lastPartPath,
       title: query,
-      page: page,
+      page: searchParams.get('page') ? searchParams.get('page') : 1,
     };
+
     /* if (lastPartPath === 'notices') {
       queryParams = {
         category: 'sell',
         title: query,
-        page: searchParams.get('page') ? searchParams.get('page') : 1,
       };
     } */
 
@@ -150,7 +150,7 @@ const NoticesPage = () => {
     Notify.warning('Please, signup or login to add a pet');
   }, []);
 
-  console.log(total);
+  console.log('render');
 
   return (
     <>

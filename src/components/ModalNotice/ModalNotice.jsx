@@ -19,7 +19,7 @@ import css from './ModalNotice.module.css';
 
 const modalRoot = document.querySelector('#notice-modal-root');
 
-const ModalNotice = ({ id, closeModal, src }) => {
+const ModalNotice = ({ id, closeModal, src, fav }) => {
   const dispatch = useDispatch();
   const [notice, setNotice] = useState({});
 
@@ -36,7 +36,7 @@ const ModalNotice = ({ id, closeModal, src }) => {
     sex,
   } = notice;
 
-  const [favorite, setFavorite] = useState(false);
+  const [favorite, setFavorite] = useState(fav);
 
   const { isLogin } = useSelector(getAuth);
 
