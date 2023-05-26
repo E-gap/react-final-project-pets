@@ -99,7 +99,7 @@ const AddPetForm = () => {
       'lost-found': 'Add lost pet',
       'good-hands': 'Add to pet for adoption',
     };
-    return step === 0 ? null : titles[category];
+    return step === 0 ? 'Add Pet' : titles[category];
   }, [category, step]);
 
   useEffect(() => {
@@ -196,7 +196,7 @@ const AddPetForm = () => {
                   isTabletOrDesktop && step === 2 ? 'center' : 'flex-start',
               }}
             >
-              <h1 className={css.title}>{title ? title : 'Add pet'}</h1>
+              <h1 className={css.title}>{title}</h1>
               <AddPetSteps currentStep={step} />
               {step === 0 && (
                 <ChooseOption
@@ -234,7 +234,7 @@ const AddPetForm = () => {
                   type={step === 2 ? 'submit' : 'button'}
                   text={step === 2 ? 'Done' : 'Next'}
                   clickHandler={step !== 2 ? handleNextClick : undefined}
-                  disabled={!isValid ? true : false}
+                  disabled={step === 0 ? !category : !isValid}
                 />
                 <ButtonBack
                   type="button"
