@@ -5,17 +5,16 @@ import { useMediaQuery } from 'react-responsive';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import NoticesCategoriesList from 'components/NoticesCategoriesList/NoticesCategoriesList';
 import NoticesSearch from 'components/InputSearch/InputSearch';
-// import NoticesFilters from 'components/NoticesFilters/NoticesFilters';
+
 import NoticesCategoriesNav from 'components/NoticesCategoriesNav/NoticesCategoriesNav';
 import PaginationComponent from '../../components/Pagination/PaginationComponent';
 
 import AddPetButton from 'components/Buttons/AddPetButton/AddPetButton';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useMediaQuery } from 'react-responsive';
+
 import {
   fetchAllNotices,
-  // fetchFavoriteNotices,
   fetchNoticeById,
   fetchNoticesByOwner,
 } from '../../redux/notices/noticesOperations';
@@ -23,18 +22,12 @@ import { getAuth } from '../../redux/auth/authSelector';
 import { totalNotices } from '../../redux/selectors';
 import options from '../../components/Pagination/options';
 
-//import { Notify } from 'notiflix/build/notiflix-notify-aio';
-//import axios from 'axios';
-
-//import url from './4.jpg';
-
 const NoticesPage = () => {
   const total = useSelector(totalNotices);
   const { pathname } = useLocation();
-  // const [pathFilter, setPathFilter] = useState('sell');
+
   const [searchParams, setSearchParams] = useSearchParams();
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
-  //const [page, setPage] = useState(1);
 
   const [page, setPage] = useState(() => {
     const params = searchParams.get('page');
@@ -54,10 +47,6 @@ const NoticesPage = () => {
   const lastPartPath = pathnameArr[pathnameArr.length - 1];
 
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   const res = dispatch(fetchFavoriteNotices());
-  //   console.log(res);
-  // }, [dispatch]);
 
   useEffect(() => {
     if (pathname === '/notices') {
@@ -84,17 +73,8 @@ const NoticesPage = () => {
     const queryParams = {
       category: lastPartPath === 'notices' ? 'sell' : lastPartPath,
       title: query,
-      page: searchParams.get('page') ? searchParams.get('page') : 1,
+      page: page,
     };
-
-    /* if (lastPartPath === 'notices') {
-      queryParams = {
-        category: 'sell',
-        title: query,
-      };
-    } */
-
-    //console.log(queryParams);
 
     dispatch(fetchAllNotices(queryParams));
 
@@ -111,17 +91,7 @@ const NoticesPage = () => {
       searchNoticesByOwner(queryParams);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    // dispatch,
-    lastPartPath,
-    query,
-    page,
-    // setSearchParams,
-    // pathname,
-    // navigate,
-    isLogin,
-    // searchParams,
-  ]);
+  }, [lastPartPath, query, page, isLogin]);
 
   const submitSearch = useCallback(search => {
     setQuery(search);
@@ -187,7 +157,6 @@ const NoticesPage = () => {
             />
           </div>
 
-          {/* <NoticesFilters /> */}
           {!total ? (
             <p className={css.notNotices}>There are not any notices</p>
           ) : (
