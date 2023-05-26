@@ -52,17 +52,17 @@ export const noticesSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(addToFavorite.pending, state => {
-        state.isLoading = true;
+        /* state.isLoading = true; */
         state.error = false;
       })
       .addCase(addToFavorite.fulfilled, (state, action) => {
-        state.isLoading = false;
+        /* state.isLoading = false; */
         state.error = false;
         console.log(action.payload, 'paylaod from 59 ');
         state.favList.push(action.payload.data.notice);
       })
       .addCase(addToFavorite.rejected, (state, action) => {
-        state.isLoading = false;
+        /* state.isLoading = false; */
         state.error = action.payload;
       })
       .addCase(fetchFavoriteNotices.pending, state => {
@@ -81,11 +81,11 @@ export const noticesSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(deleteFromFavorite.pending, state => {
-        state.isLoading = true;
+        /* state.isLoading = true; */
         state.error = false;
       })
       .addCase(deleteFromFavorite.fulfilled, (state, action) => {
-        state.isLoading = false;
+        /* state.isLoading = false; */
         state.error = false;
         const { favList } = state;
         console.log(state, 'from splice 88');
@@ -96,28 +96,28 @@ export const noticesSlice = createSlice({
         favList.splice(index, 1);
       })
       .addCase(deleteFromFavorite.rejected, (state, action) => {
-        state.isLoading = false;
+        /* state.isLoading = false; */
         state.error = action.payload;
       })
       .addCase(addNotice.pending, state => {
-        state.isLoading = true;
+        /* state.isLoading = true; */
         state.error = false;
       })
       .addCase(addNotice.fulfilled, (state, action) => {
         state.error = false;
-        state.isLoading = false;
+        /* state.isLoading = false; */
       })
       .addCase(addNotice.rejected, (state, action) => {
-        state.isLoading = false;
+        /* state.isLoading = false; */
         state.error = action.payload;
       })
       .addCase(deleteNotice.pending, state => {
-        state.isLoading = true;
+        /* state.isLoading = true; */
         state.error = false;
       })
       .addCase(deleteNotice.fulfilled, (state, action) => {
         state.error = false;
-        state.isLoading = false;
+        /*  state.isLoading = false; */
         const { notices } = state;
 
         const indexNotice = notices.findIndex(
@@ -127,7 +127,7 @@ export const noticesSlice = createSlice({
         notices.splice(indexNotice, 1);
       })
       .addCase(deleteNotice.rejected, (state, action) => {
-        state.isLoading = false;
+        /* state.isLoading = false; */
         state.error = action.payload;
       })
       .addCase(fetchNoticesByOwner.pending, state => {
