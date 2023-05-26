@@ -39,16 +39,16 @@ export const noticesSlice = createSlice({
         state.total = 0;
       })
       .addCase(fetchNoticeById.pending, state => {
-        state.isLoading = true;
+        //state.isLoading = true;
         state.error = false;
       })
       .addCase(fetchNoticeById.fulfilled, (state, action) => {
-        state.isLoading = false;
+        //state.isLoading = false;
         state.error = false;
         state.oneNotice = action.payload;
       })
       .addCase(fetchNoticeById.rejected, (state, action) => {
-        state.isLoading = false;
+        //state.isLoading = false;
         state.error = action.payload;
       })
       .addCase(addToFavorite.pending, state => {
