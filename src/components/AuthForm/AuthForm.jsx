@@ -1,14 +1,20 @@
 import css from './AuthForm.module.css';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import classnames from 'classnames';
 import AuthFormButton from 'components/Buttons/AuthButtons/AuthFormButton/AuthFormButton';
 import { VscClose } from 'react-icons/vsc';
 import { BsCheck2 } from 'react-icons/bs';
+import { BsEye } from 'react-icons/bs';
+import { BsEyeSlash } from 'react-icons/bs';
+
 
  
 const AuthForm = ({ isLoginForm, onSubmit }) => {
+  const [isShowPass, setIsShowPass] = useState(false);
+   const [isShowConfPass, setIsShowConfPass] = useState(false);
 
   function validateEmail(value) {
     if (!value) {
@@ -44,6 +50,26 @@ const AuthForm = ({ isLoginForm, onSubmit }) => {
 
   const handleSubmit = (values) => {
     onSubmit(values);
+  };
+
+ 
+  const toggleEyePass = () => {
+    if (isShowPass) {
+      document.getElementById('password').setAttribute('type', 'password');
+      setIsShowPass(false);
+    } else {
+      document.getElementById('password').setAttribute('type', 'text');
+      setIsShowPass(true);
+    }
+  }
+  const toggleEyeConfPass = () => {
+    if (isShowConfPass) {
+      document.getElementById('confirmPassword').setAttribute('type', 'password');
+      setIsShowConfPass(false);
+    } else {
+      document.getElementById('confirmPassword').setAttribute('type', 'text');
+      setIsShowConfPass(true);
+    }
   };
 
   return (
@@ -89,19 +115,36 @@ const AuthForm = ({ isLoginForm, onSubmit }) => {
                 [css.errorInput]: errors.password && touched.password,
                 [css.validInput]: !errors.password && touched.password,
               })}
+              id="password"
               type="password"
               name="password"
               placeholder="Password"
             />
+            <i
+              className={css.eyePass}
+              aria-hidden="true"
+              id="eye"
+              onClick={toggleEyePass}
+            >
+              {isShowPass ? <BsEye size="22px" /> : <BsEyeSlash size="22px" />}
+            </i>
             {errors.password && touched.password && (
               <div className={css.errorMessagePass}>
-                <VscClose className={css.close} size="26px" />
+                <VscClose
+                  className={css.close}
+                  size="26px"
+                  onClick={toggleEyePass}
+                />
                 <p>{errors.password}</p>
               </div>
             )}
             {!errors.password && touched.password && (
               <div className={css.validMessagePass}>
-                <BsCheck2 className={css.valid} size="26px" />
+                <BsCheck2
+                  className={css.valid}
+                  size="26px"
+                  onClick={toggleEyePass}
+                />
                 <p>Password is secure</p>
               </div>
             )}
@@ -113,17 +156,37 @@ const AuthForm = ({ isLoginForm, onSubmit }) => {
                 [css.validInput]:
                   !errors.confirmPassword && touched.confirmPassword,
               })}
+              id="confirmPassword"
               name="confirmPassword"
               required
               validate={value =>
-                validateConfirmPassword(values.password, value)}
+                validateConfirmPassword(values.password, value)
+              }
               placeholder="Confirm password"
             />
+            {!isLoginForm && (
+              <i
+                className={css.eyePassConfirm}
+                aria-hidden="true"
+                id="eye"
+                onClick={toggleEyeConfPass}
+              >
+                {isShowConfPass ? (
+                  <BsEye size="22px" />
+                ) : (
+                  <BsEyeSlash size="22px" />
+                )}
+              </i>
+            )}
             {!isLoginForm &&
               errors.confirmPassword &&
               touched.confirmPassword && (
                 <div className={css.errorMessageConfPass}>
-                  <VscClose className={css.close} size="26px" />
+                  <VscClose
+                    className={css.close}
+                    size="26px"
+                    onClick={toggleEyeConfPass}
+                  />
                   <p>{errors.confirmPassword}</p>
                 </div>
               )}
@@ -131,7 +194,11 @@ const AuthForm = ({ isLoginForm, onSubmit }) => {
               !errors.confirmPassword &&
               touched.confirmPassword && (
                 <div className={css.validMessageConfPass}>
-                  <BsCheck2 className={css.valid} size="26px" />
+                  <BsCheck2
+                    className={css.valid}
+                    size="26px"
+                    onClick={toggleEyeConfPass}
+                  />
                   <p>Password matched</p>
                 </div>
               )}

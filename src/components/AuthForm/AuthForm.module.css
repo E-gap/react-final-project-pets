@@ -193,11 +193,10 @@
          margin-top: 8px;
     }
 }
-
 .close {
     position: absolute;
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
     background-color: white;
     fill: #F43F5E;
     margin-top: -38px;
@@ -208,11 +207,10 @@
          margin-left: 400px;
     }
 }
-
 .valid {
     position: absolute;
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
     background-color: white;
     fill: #00C3AD;
     margin-top: -38px;
@@ -223,5 +221,34 @@
          margin-left: 400px;
     }
 }
+.eyePass{
+    position: absolute;
+    width: 21px;
+    height: 20  px;
+    margin-top: 84px;
+    margin-left: 216px;
+    color: #54ADFF;
+    fill: #54ADFF;
+    background-color: white;
 
+    @media (min-width: 768px) {
+         margin-top: 82px;
+         margin-left: 417px;
+    }
+}
+.eyePassConfirm{
+    position: absolute;
+    width: 21px;
+    height: 20  px;
+    margin-top: 156px;
+    margin-left: 216px;
+    color: #54ADFF;
+    fill: #54ADFF;
+    background-color: white;
+
+    @media (min-width: 768px) {
+         margin-top: 161px;
+         margin-left: 417px;
+    }
+}
 
