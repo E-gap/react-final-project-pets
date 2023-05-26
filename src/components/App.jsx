@@ -1,10 +1,13 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { PrivateRoute } from './PrivateRoute/PrivateRoute';
 
 import NoticesCategoriesList from './NoticesCategoriesList/NoticesCategoriesList';
 import MainPage from 'pages/MainPage/MainPage';
 import Header from '../components/Header/Header';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAuth } from 'redux/auth/authSelector';
+import { refresh } from 'redux/auth/authOperations';
 
 const Register = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const Login = lazy(() => import('../pages/LoginPage/LoginPage'));
@@ -16,6 +19,14 @@ const AddPetForm = lazy(() => import('./AddPetForm/AddPetForm'));
 const OurFriends = lazy(() => import('../pages/OurFriendsPage/OurFriendsPage'));
 
 export const App = () => {
+  const { isLogin, token } = useSelector(getAuth);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (!isLogin && token) {
+      dispatch(refresh());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <>
       <Header />
