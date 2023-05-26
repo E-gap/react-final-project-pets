@@ -5,7 +5,7 @@
 .container {
   margin: 0 auto;
   padding: 0 20px;
-  
+
   width: 320px;
 }
 .title {
@@ -47,7 +47,7 @@
 .item:hover,
 .item:focus {
   box-shadow: var(--shadow-hover);
-}   
+}
 .itemTitle {
   display: flex;
   justify-content: center;
@@ -60,7 +60,7 @@
   font-size: 18px;
   line-height: 1.35;
 
-  color: var(--color-blue)
+  color: var(--color-blue);
 }
 .itemWrapper {
   display: flex;
@@ -98,64 +98,75 @@
 
 @media screen and (min-width: 768px) {
   .section {
-  margin-top: 148px;
-}
+    margin-top: 148px;
+  }
   .container {
     padding: 0 32px;
     width: 768px;
   }
   .title {
-  margin-bottom: 60px;
-  font-size: 48px;
-}
+    margin-bottom: 60px;
+    font-size: 48px;
+  }
   .list {
-  gap: 32px;
+    gap: 32px;
   }
   .item {
-  width: 336px;
-  height: 310px;
-}
-.itemTitle {
-   margin-bottom: 16px;
-  font-size: 20px;
-}
-.itemText {
-  font-size: 14px;
-}
-.itemLogo {
-  margin-top: -110px;
-  width: 126px;
-}
+    width: 336px;
+    height: 310px;
+  }
+  .itemTitle {
+    margin-bottom: 16px;
+    font-size: 20px;
+  }
+  .itemText {
+    font-size: 14px;
+  }
+  .itemLogo {
+    margin-top: -110px;
+    width: 126px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-.section {
-  margin-top: 148px;
-}
-.container {
-  padding: 0 16px;
-  width: 1280px;
-}
-.title {
-  margin-bottom: 60px;
-  font-size: 48px;
-}
-.item {
-  width: 393px;
-  height: 330px;
-}
-.itemWrapper {
-  gap: 20px;
-}
-.itemLogo {
-  margin-top: -110px;
-  width: 146px;
-}
-.itemList {
-  gap: 12px;
-}
-.itemText {
-  font-size: 16px;
-}
+  .section {
+    margin-top: 148px;
+  }
+  .container {
+    padding: 0 16px;
+    width: 1280px;
+  }
+  .title {
+    margin-bottom: 60px;
+    font-size: 48px;
+  }
+  .item {
+    width: 393px;
+    height: 330px;
+  }
+  .itemWrapper {
+    gap: 20px;
+  }
+  .itemLogo {
+    margin-top: -110px;
+    width: 146px;
+  }
+  .itemList {
+    gap: 12px;
+  }
+  .itemText {
+    font-size: 16px;
+  }
 }
 
+.error {
+  font-size: 40;
+  color: red;
+  display: flex;
+}
+
+.preloader {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}

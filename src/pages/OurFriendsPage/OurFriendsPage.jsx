@@ -3,17 +3,24 @@ import { useState, useEffect } from 'react';
 import TimeSheet from 'services/TimeSheet/TimeSheet';
 import defaultImg from './petImg.png';
 import { instance } from 'redux/auth/authOperations';
+import { Audio } from 'react-loader-spinner';
 
 const OurFriendsPage = () => {
   const [friends, setFriends] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const getFriends = async () => {
       try {
         const response = await instance.get('/friends');
         setFriends(response.data);
+        setIsLoading(false);
+        setError('');
         return response.data;
       } catch (error) {
+        setIsLoading(false);
+        setError(error.message);
         return error.message;
       }
     };
@@ -88,7 +95,22 @@ const OurFriendsPage = () => {
     <section className={css.section}>
       <div className={css.container}>
         <h1 className={css.title}>Our friends</h1>
-        <ul className={css.list}>{elements}</ul>
+        {error ? <p className={css.error}>{error}</p> : ''}
+        {!isLoading ? (
+          <ul className={css.list}>{elements}</ul>
+        ) : (
+          <div className={css.preloader}>
+            <Audio
+              height="80"
+              width="80"
+              radius="9"
+              color="green"
+              ariaLabel="three-dots-loading"
+              wrapperStyle
+              wrapperClass
+            />
+          </div>
+        )}
       </div>
     </section>
   );
