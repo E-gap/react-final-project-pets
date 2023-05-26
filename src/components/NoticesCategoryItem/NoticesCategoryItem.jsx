@@ -45,21 +45,14 @@ const NoticesCategoryItem = ({
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
   const [showModal, setShowModal] = useState(false);
+
   const [fav, setFav] = useState(favorite);
-  // console.log(owner);
+
 
   const { isLogin } = useSelector(getAuth);
   const { _id } = useSelector(getUser);
 
-  // console.log(id);
-
-  // const User = useSelector(getUser);
-  // console.log(User.email);
-
-  // const oneNotice = useSelector(selectOneNotice);
   const dispatch = useDispatch();
-
-  // console.log(oneNotice);
 
   let categoryName = '';
 
@@ -176,13 +169,13 @@ export default NoticesCategoryItem;
 
 NoticesCategoryItem.propTypes = {
   /* src: propTypes.string.isRequired, */
-  sex: propTypes.string.isRequired,
-  birthday: propTypes.string.isRequired,
-  location: propTypes.string.isRequired,
-  category: propTypes.string.isRequired,
-  title: propTypes.string.isRequired,
-  breed: propTypes.string.isRequired,
+  sex: propTypes.string,
+  birthday: propTypes.string,
+  location: propTypes.string,
+  category: propTypes.string,
+  title: propTypes.string,
+  breed: propTypes.string,
   comments: propTypes.string,
-  id: propTypes.string.isRequired,
+  id: propTypes.string,
   price: propTypes.string,
 };
