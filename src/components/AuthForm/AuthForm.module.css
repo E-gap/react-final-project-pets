@@ -195,8 +195,8 @@
 }
 .close {
     position: absolute;
-    width: 24px;
-    height: 24px;
+    width: 23px;
+    height: 23px;
     background-color: white;
     fill: #F43F5E;
     margin-top: -38px;
@@ -204,13 +204,13 @@
 
       @media (min-width: 768px) {
          margin-top: -38px;
-         margin-left: 401px;
+         margin-left: 400px;
     }
 }
 .valid {
     position: absolute;
-    width: 24px;
-    height: 24px;
+    width: 23px;
+    height: 23px;
     background-color: white;
     fill: #00C3AD;
     margin-top: -38px;
@@ -218,13 +218,13 @@
 
       @media (min-width: 768px) {
          margin-top: -38px;
-         margin-left: 401px;
+         margin-left: 400px;
     }
 }
 .eyePass{
     position: absolute;
     width: 21px;
-    height: 20px;
+    height: 21px;
     margin-top: 84px;
     margin-left: 216px;
     color: #54ADFF;
@@ -233,13 +233,13 @@
 
     @media (min-width: 768px) {
          margin-top: 82px;
-         margin-left: 419px;
+         margin-left: 418px;
     }
 }
 .eyePassConfirm{
     position: absolute;
     width: 21px;
-    height: 20px;
+    height: 21px;
     margin-top: 156px;
     margin-left: 216px;
     color: #54ADFF;
@@ -248,7 +248,7 @@
 
     @media (min-width: 768px) {
          margin-top: 161px;
-         margin-left: 419px;
+         margin-left: 418px;
     }
 }
 
