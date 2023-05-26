@@ -16,12 +16,13 @@ import {
   fetchNoticesByOwner,
 } from '../../redux/notices/noticesOperations';
 import { getAuth } from '../../redux/auth/authSelector';
-import { totalNotices, getIsLoading } from '../../redux/selectors';
+import { totalNotices, getIsLoading, getError } from '../../redux/selectors';
 import options from '../../components/Pagination/options';
 
 const NoticesPage = () => {
   const total = useSelector(totalNotices);
   const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
   const { pathname } = useLocation();
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -153,6 +154,7 @@ const NoticesPage = () => {
             />
           </div>
 
+          {error ? <p className={css.errorMessage}>${error}</p> : ''}
           {!total && !isLoading ? (
             <p className={css.notNotices}>There are not any notices</p>
           ) : (
